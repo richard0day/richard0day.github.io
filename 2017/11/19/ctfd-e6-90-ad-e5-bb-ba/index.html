@@ -5,13 +5,16 @@
   
 
   
-  <title>Archives | rich4rd&#39;s blog</title>
+  <title>CTFd搭建 | rich4rd&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="rich4rd&#39;s blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;0d4y.cc&#x2F;archives&#x2F;index.html">
+  <meta name="description" content="0x00 前言 快到社团活动线下赛的时间了，搭个CTF平台用来做活动。 早就看中了CTFd这个平台，正好又要活动了，于是直接搭建。 系统: Ubuntu server 16.04 nginx: nginx&#x2F;1.10.3 (Ubuntu) Mysql: 5.7.20-0ubuntu0.16.04.1 (Ubuntu) Python: 2.7.12 0x01 下载项目&amp;amp;环境配置 下载 git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CTFd搭建">
+<meta property="og:url" content="http:&#x2F;&#x2F;0d4y.cc&#x2F;2017&#x2F;11&#x2F;19&#x2F;ctfd-e6-90-ad-e5-bb-ba&#x2F;index.html">
 <meta property="og:site_name" content="rich4rd&#39;s blog">
+<meta property="og:description" content="0x00 前言 快到社团活动线下赛的时间了，搭个CTF平台用来做活动。 早就看中了CTFd这个平台，正好又要活动了，于是直接搭建。 系统: Ubuntu server 16.04 nginx: nginx&#x2F;1.10.3 (Ubuntu) Mysql: 5.7.20-0ubuntu0.16.04.1 (Ubuntu) Python: 2.7.12 0x01 下载项目&amp;amp;环境配置 下载 git">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-30T08:51:08.632Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="rich4rd&#39;s blog" type="application/atom+xml">
@@ -59,216 +62,65 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/30/e5-88-a9-e7-94-a8powershell-e9-9a-90-e8-97-8f-e6-89-a7-e8-a1-8c-e5-90-8e-e9-97-a8/" class="archive-article-date">
-  <time datetime="2019-08-30T01:49:22.000Z" itemprop="datePublished">Aug 30</time>
+        <section id="main"><article id="post-ctfd-e6-90-ad-e5-bb-ba" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/19/ctfd-e6-90-ad-e5-bb-ba/" class="article-date">
+  <time datetime="2017-11-19T12:28:42.000Z" itemprop="datePublished">2017-11-19</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CTF%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/">CTF平台搭建</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/30/e5-88-a9-e7-94-a8powershell-e9-9a-90-e8-97-8f-e6-89-a7-e8-a1-8c-e5-90-8e-e9-97-a8/">利用powershell隐藏执行后门</a>
+    <h1 class="article-title" itemprop="name">
+      CTFd搭建
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/24/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-ef-bc-9acs-e4-bb-a3-e7-90-86proxychainsnmap-e8-bf-9b-e8-a1-8c-e5-86-85-e7-bd-91-e6-89-ab-e6-8f-8f/" class="archive-article-date">
-  <time datetime="2019-08-24T15:11:29.000Z" itemprop="datePublished">Aug 24</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-ef-bc-9acs-e4-bb-a3-e7-90-86proxychainsnmap-e8-bf-9b-e8-a1-8c-e5-86-85-e7-bd-91-e6-89-ab-e6-8f-8f/">内网渗透：CS代理+proxychains+nmap进行内网扫描</a>
-    </h1>
-  
+        <p><strong>0x00 前言</strong> 快到社团活动线下赛的时间了，搭个CTF平台用来做活动。 早就看中了CTFd这个平台，正好又要活动了，于是直接搭建。 系统: Ubuntu server 16.04 nginx: nginx/1.10.3 (Ubuntu) Mysql: 5.7.20-0ubuntu0.16.04.1 (Ubuntu) Python: 2.7.12 <strong>0x01 下载项目&amp;环境配置</strong> 下载 git clone <a href="https://github.com/isislab/CTFd.git" target="_blank" rel="noopener">https://github.com/isislab/CTFd.git</a> 在<a href="https://github.com/CTFd/CTFd下有个Install" target="_blank" rel="noopener">https://github.com/CTFd/CTFd下有个Install</a> Install: Run ./prepare.sh to install dependencies using apt. Modify CTFd/config.py to your liking. Use python serve.py in a terminal to drop into debug mode. Here are some deployment options You can check out the Getting Started guide for a breakdown of some of the features you need to get started. 环境： Nginx可以apt-get install nginx，mysql的话ubuntu server自带，python系统自带。 Ubuntu-server搭好之后apt-get update一下，然后apt-get upgrade一下，把该更新的都更新了。 <strong>0x02 安装&amp;排错</strong> 环境配置好了之后，运行CTFd-master目录下的./prepare.sh 之后CTFd/config.py文件，把HOST改成服务器ip CTFd-master目录下的server.py里边的host也改成服务器ip 这是为了方便外部访问。 然后再CTFd-master目录下python server.py 可以看到平台启动成功，running on ip：端口 现在就可以通过<a href="http://ip:port访问平台了，就酱" target="_blank" rel="noopener">http://ip:port访问平台了，就酱</a>~</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-ba-8c-ef-bc-9a-e6-8a-8acs-e4-b8-ad-e7-9a-84-e6-9c-ba-e5-99-a8spwan-e7-bb-99msf/" class="archive-article-date">
-  <time datetime="2019-08-24T14:36:35.000Z" itemprop="datePublished">Aug 24</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-ba-8c-ef-bc-9a-e6-8a-8acs-e4-b8-ad-e7-9a-84-e6-9c-ba-e5-99-a8spwan-e7-bb-99msf/">msf+cobaltstrike联动(二)：把cs中的机器spwan给msf</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-b8-80-ef-bc-9a-e6-8a-8amsf-e7-9a-84session-e5-8f-91-e7-bb-99cobaltstrike/" class="archive-article-date">
-  <time datetime="2019-08-24T14:19:27.000Z" itemprop="datePublished">Aug 24</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://0d4y.cc/2017/11/19/ctfd-e6-90-ad-e5-bb-ba/" data-id="ck2d1je7b000iv6ph5tf8atoy" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-b8-80-ef-bc-9a-e6-8a-8amsf-e7-9a-84session-e5-8f-91-e7-bb-99cobaltstrike/">msf+cobaltstrike联动(一)：把msf的session发给cobaltstrike</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/15/windows-e4-b8-8bhash-e6-8a-93-e5-8f-96-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e5-bc-8f/" class="archive-article-date">
-  <time datetime="2019-08-15T08:24:32.000Z" itemprop="datePublished">Aug 15</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/15/windows-e4-b8-8bhash-e6-8a-93-e5-8f-96-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e5-bc-8f/">windows下hash抓取的几种方式</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/11/21/e6-a0-91-e8-8e-93-e6-b4-beubuntu-mate-e7-b3-bb-e7-bb-9f-e4-b8-ad-e5-bc-80-e5-90-afssh/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          树莓派Ubuntu Mate系统中开启ssh
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/19/e7-ae-a1-e7-90-86-e6-a0-91-e8-8e-93-e6-b4-besd-e5-8d-a1-e5-88-86-e5-8c-ba-e7-a9-ba-e9-97-b4-ef-bc-88linux-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-ef-bc-89/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">管理树莓派SD卡分区空间（linux分区管理）</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/07/python-e6-9f-a5-e7-9c-8b-e6-9c-ac-e5-9c-b0-e5-ba-93-e7-94-a8-e6-b3-95/" class="archive-article-date">
-  <time datetime="2019-08-07T07:09:35.000Z" itemprop="datePublished">Aug 7</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/07/python-e6-9f-a5-e7-9c-8b-e6-9c-ac-e5-9c-b0-e5-ba-93-e7-94-a8-e6-b3-95/">python查看本地库用法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/07/python-e4-bd-bf-e7-94-a8isoparser-e6-a8-a1-e5-9d-97-e8-8e-b7-e5-8f-96iso-e9-95-9c-e5-83-8f-e6-96-87-e4-bb-b6-e5-86-85-e5-ae-b9/" class="archive-article-date">
-  <time datetime="2019-08-07T07:03:39.000Z" itemprop="datePublished">Aug 7</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/07/python-e4-bd-bf-e7-94-a8isoparser-e6-a8-a1-e5-9d-97-e8-8e-b7-e5-8f-96iso-e9-95-9c-e5-83-8f-e6-96-87-e4-bb-b6-e5-86-85-e5-ae-b9/">python使用isoparser模块获取iso镜像文件内容</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/15/prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708/" class="archive-article-date">
-  <time datetime="2019-05-15T01:54:29.000Z" itemprop="datePublished">May 15</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/15/prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708/">Prevent a worm by updating Remote Desktop Services (CVE-2019-0708)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8/" class="archive-article-date">
-  <time datetime="2019-04-06T17:26:09.000Z" itemprop="datePublished">Apr 7</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8/">内网渗透后门(一)：backdoor-factory</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/24/jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99/" class="archive-article-date">
-  <time datetime="2019-01-24T09:24:43.000Z" itemprop="datePublished">Jan 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/24/jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99/">jboss低版本漏洞拿站</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-  </nav>
 
 </section>
         

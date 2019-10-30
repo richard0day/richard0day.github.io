@@ -5,14 +5,27 @@
   
 
   
-  <title>Archives | rich4rd&#39;s blog</title>
+  <title>飞鱼星路由器从命令注入到getshell | rich4rd&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="rich4rd&#39;s blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;0d4y.cc&#x2F;archives&#x2F;index.html">
+  <meta name="description" content="一个偶然得到一个ip地址，发现8081端口是一个路由器管理界面，叫做飞鱼星。查阅资料知道低版本飞鱼星存在.htpasswd文件，是管理后台登录密码，形如：http:&#x2F;&#x2F;ip:8081&#x2F;.htpasswd。  复制.htpasswd，到kali中使用john破解，得到管理后台密码**。  使用admin&#x2F;**登录到管理后台   查看乌云知识库得知飞鱼星存在命令注入漏洞  在“系统工具”-&amp;gt;“网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="飞鱼星路由器从命令注入到getshell">
+<meta property="og:url" content="http:&#x2F;&#x2F;0d4y.cc&#x2F;2018&#x2F;11&#x2F;16&#x2F;e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3&#x2F;index.html">
 <meta property="og:site_name" content="rich4rd&#39;s blog">
+<meta property="og:description" content="一个偶然得到一个ip地址，发现8081端口是一个路由器管理界面，叫做飞鱼星。查阅资料知道低版本飞鱼星存在.htpasswd文件，是管理后台登录密码，形如：http:&#x2F;&#x2F;ip:8081&#x2F;.htpasswd。  复制.htpasswd，到kali中使用john破解，得到管理后台密码**。  使用admin&#x2F;**登录到管理后台   查看乌云知识库得知飞鱼星存在命令注入漏洞  在“系统工具”-&amp;gt;“网">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;112.74.49.123&#x2F;wp-content&#x2F;uploads&#x2F;2018&#x2F;11&#x2F;1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;112.74.49.123&#x2F;wp-content&#x2F;uploads&#x2F;2018&#x2F;11&#x2F;2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;112.74.49.123&#x2F;wp-content&#x2F;uploads&#x2F;2018&#x2F;11&#x2F;3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;112.74.49.123&#x2F;wp-content&#x2F;uploads&#x2F;2018&#x2F;11&#x2F;4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;112.74.49.123&#x2F;wp-content&#x2F;uploads&#x2F;2018&#x2F;11&#x2F;7.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;112.74.49.123&#x2F;wp-content&#x2F;uploads&#x2F;2018&#x2F;11&#x2F;5.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;112.74.49.123&#x2F;wp-content&#x2F;uploads&#x2F;2018&#x2F;11&#x2F;6.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;112.74.49.123&#x2F;wp-content&#x2F;uploads&#x2F;2018&#x2F;11&#x2F;8.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;112.74.49.123&#x2F;wp-content&#x2F;uploads&#x2F;2018&#x2F;11&#x2F;9.png">
+<meta property="og:updated_time" content="2019-10-30T08:51:08.633Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;112.74.49.123&#x2F;wp-content&#x2F;uploads&#x2F;2018&#x2F;11&#x2F;1.png">
   
     <link rel="alternate" href="/atom.xml" title="rich4rd&#39;s blog" type="application/atom+xml">
   
@@ -59,216 +72,65 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/30/e5-88-a9-e7-94-a8powershell-e9-9a-90-e8-97-8f-e6-89-a7-e8-a1-8c-e5-90-8e-e9-97-a8/" class="archive-article-date">
-  <time datetime="2019-08-30T01:49:22.000Z" itemprop="datePublished">Aug 30</time>
+        <section id="main"><article id="post-e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/16/e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3/" class="article-date">
+  <time datetime="2018-11-16T09:23:02.000Z" itemprop="datePublished">2018-11-16</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%BD%91%E4%BB%B6/">网件</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/30/e5-88-a9-e7-94-a8powershell-e9-9a-90-e8-97-8f-e6-89-a7-e8-a1-8c-e5-90-8e-e9-97-a8/">利用powershell隐藏执行后门</a>
+    <h1 class="article-title" itemprop="name">
+      飞鱼星路由器从命令注入到getshell
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/24/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-ef-bc-9acs-e4-bb-a3-e7-90-86proxychainsnmap-e8-bf-9b-e8-a1-8c-e5-86-85-e7-bd-91-e6-89-ab-e6-8f-8f/" class="archive-article-date">
-  <time datetime="2019-08-24T15:11:29.000Z" itemprop="datePublished">Aug 24</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-ef-bc-9acs-e4-bb-a3-e7-90-86proxychainsnmap-e8-bf-9b-e8-a1-8c-e5-86-85-e7-bd-91-e6-89-ab-e6-8f-8f/">内网渗透：CS代理+proxychains+nmap进行内网扫描</a>
-    </h1>
-  
+        <p>一个偶然得到一个ip地址，发现8081端口是一个路由器管理界面，叫做飞鱼星。查阅资料知道低版本飞鱼星存在.htpasswd文件，是管理后台登录密码，形如：<a href="http://ip:8081/.htpasswd。" target="_blank" rel="noopener">http://ip:8081/.htpasswd。</a> <img src="http://112.74.49.123/wp-content/uploads/2018/11/1.png" alt=".htpasswd"> 复制.htpasswd，到kali中使用john破解，得到管理后台密码<strong>**</strong>。 <img src="http://112.74.49.123/wp-content/uploads/2018/11/2.png" alt="john破解密码"> 使用admin/<strong>**</strong>登录到管理后台 <img src="http://112.74.49.123/wp-content/uploads/2018/11/3.png" alt=""> <img src="http://112.74.49.123/wp-content/uploads/2018/11/4.png" alt=""> 查看乌云知识库得知飞鱼星存在命令注入漏洞 <img src="http://112.74.49.123/wp-content/uploads/2018/11/7.png" alt="乌云知识库"> 在“系统工具”-&gt;“网络诊断”-&gt;“网络检测”中使用ping检测 <img src="http://112.74.49.123/wp-content/uploads/2018/11/5.png" alt="正常使用"> 命令注入，发现是root用户 <img src="http://112.74.49.123/wp-content/uploads/2018/11/6.png" alt="命令注入"> 通过查看/etc/ssh/sshd_config <img src="http://112.74.49.123/wp-content/uploads/2018/11/8.png" alt="sshd_config"> 发现ssh开在10089端口，并且允许密码登录 通过instruder大牛在github上边发的<a href="https://github.com/instruder/Security/blob/master/research/wifirouter/vul/D-Link/DI-7100(Beat%201022)/%E6%BC%8F%E6%B4%9E/%E7%BD%91%E7%BB%9C%E6%A3%80%E6%B5%8B%E5%8A%9F%E8%83%BD%E4%BB%BB%E6%84%8F%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5/exploit.txt" target="_blank" rel="noopener">exp</a>成功连上ssh 但是进了ssh发现shell是busybox的shell，还需要通过pwn获取路由器shell 放一张没有pwn的ssh <img src="http://112.74.49.123/wp-content/uploads/2018/11/9.png" alt="busybox的ssh"></p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-ba-8c-ef-bc-9a-e6-8a-8acs-e4-b8-ad-e7-9a-84-e6-9c-ba-e5-99-a8spwan-e7-bb-99msf/" class="archive-article-date">
-  <time datetime="2019-08-24T14:36:35.000Z" itemprop="datePublished">Aug 24</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-ba-8c-ef-bc-9a-e6-8a-8acs-e4-b8-ad-e7-9a-84-e6-9c-ba-e5-99-a8spwan-e7-bb-99msf/">msf+cobaltstrike联动(二)：把cs中的机器spwan给msf</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-b8-80-ef-bc-9a-e6-8a-8amsf-e7-9a-84session-e5-8f-91-e7-bb-99cobaltstrike/" class="archive-article-date">
-  <time datetime="2019-08-24T14:19:27.000Z" itemprop="datePublished">Aug 24</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://0d4y.cc/2018/11/16/e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3/" data-id="ck2d1je81001ev6ph7yllgyij" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-b8-80-ef-bc-9a-e6-8a-8amsf-e7-9a-84session-e5-8f-91-e7-bb-99cobaltstrike/">msf+cobaltstrike联动(一)：把msf的session发给cobaltstrike</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/15/windows-e4-b8-8bhash-e6-8a-93-e5-8f-96-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e5-bc-8f/" class="archive-article-date">
-  <time datetime="2019-08-15T08:24:32.000Z" itemprop="datePublished">Aug 15</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/15/windows-e4-b8-8bhash-e6-8a-93-e5-8f-96-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e5-bc-8f/">windows下hash抓取的几种方式</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/12/19/linux-e4-b8-8b-e9-80-9a-e8-bf-87-e8-84-9a-e6-9c-ac-e8-87-aa-e5-8a-a8-e6-90-ad-e5-bb-bass/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          linux下通过脚本自动搭建ss
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/11/16/linux-e5-8f-8d-e5-bc-b9shell-e6-80-bb-e7-bb-9315-e7-a7-8d-e6-96-b9-e6-b3-95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">linux反弹shell总结(15种方法)</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/07/python-e6-9f-a5-e7-9c-8b-e6-9c-ac-e5-9c-b0-e5-ba-93-e7-94-a8-e6-b3-95/" class="archive-article-date">
-  <time datetime="2019-08-07T07:09:35.000Z" itemprop="datePublished">Aug 7</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/07/python-e6-9f-a5-e7-9c-8b-e6-9c-ac-e5-9c-b0-e5-ba-93-e7-94-a8-e6-b3-95/">python查看本地库用法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/07/python-e4-bd-bf-e7-94-a8isoparser-e6-a8-a1-e5-9d-97-e8-8e-b7-e5-8f-96iso-e9-95-9c-e5-83-8f-e6-96-87-e4-bb-b6-e5-86-85-e5-ae-b9/" class="archive-article-date">
-  <time datetime="2019-08-07T07:03:39.000Z" itemprop="datePublished">Aug 7</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/07/python-e4-bd-bf-e7-94-a8isoparser-e6-a8-a1-e5-9d-97-e8-8e-b7-e5-8f-96iso-e9-95-9c-e5-83-8f-e6-96-87-e4-bb-b6-e5-86-85-e5-ae-b9/">python使用isoparser模块获取iso镜像文件内容</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/15/prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708/" class="archive-article-date">
-  <time datetime="2019-05-15T01:54:29.000Z" itemprop="datePublished">May 15</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/15/prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708/">Prevent a worm by updating Remote Desktop Services (CVE-2019-0708)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8/" class="archive-article-date">
-  <time datetime="2019-04-06T17:26:09.000Z" itemprop="datePublished">Apr 7</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8/">内网渗透后门(一)：backdoor-factory</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/24/jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99/" class="archive-article-date">
-  <time datetime="2019-01-24T09:24:43.000Z" itemprop="datePublished">Jan 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/24/jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99/">jboss低版本漏洞拿站</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-  </nav>
 
 </section>
         

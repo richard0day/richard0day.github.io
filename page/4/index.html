@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>rich4rd&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="rich4rd&#39;s blog">
+<meta property="og:url" content="http:&#x2F;&#x2F;0d4y.cc&#x2F;page&#x2F;4&#x2F;index.html">
+<meta property="og:site_name" content="rich4rd&#39;s blog">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="rich4rd&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">rich4rd&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://0d4y.cc"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-centos-e6-90-ad-e5-bb-badvwa-e5-ae-9e-e9-aa-8c-e5-b9-b3-e5-8f-b0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/19/centos-e6-90-ad-e5-bb-badvwa-e5-ae-9e-e9-aa-8c-e5-b9-b3-e5-8f-b0/" class="article-date">
+  <time datetime="2017-10-19T11:30:27.000Z" itemprop="datePublished">2017-10-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/centos/">centos</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/centos-e6-90-ad-e5-bb-badvwa-e5-ae-9e-e9-aa-8c-e5-b9-b3-e5-8f-b0/">Centos搭建DVWA实验平台</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.安装虚拟机 这个就不多说了，安装一个centos7最小模式就行 然后配置ssh yum install openssh* vi /etc/ssh/sshd_config 把下面两行取消注释 PermitEmptyPasswords no PasswordAuthentication yes 这里我们就不限制root用户登录ssh了 确保这个是 PermitRootLogin yes 就是确保我们可以用root登录ssh 重启ssh systemctl restart sshd.service 设置开机启动 systemctl enable sshd.service 添加防火墙策略 firewall-cmd –permanent –zone=public –add-service=ssh firewall-cmd –reload 2.配置网卡（不然没法上网） 首先我们进入这个配置文件目录 cd /etc/sysconfig/network-scripts 一般是在这个目录下有个叫 ifcfg-enp0s3 这样一个文件，没有的话找找其他的相似的文件 然后我们打开它 vi ifcfg-enp0s3 这个时候我们还没有vim的，所以只好用vi这个简版的 然后将 ONBOOT=no 改为 ONBOOT=yes 保存后重启网卡： service network restart 此时就可以上网了 3.各种前期准备工作（参考） 我们先更新一下cache yum makecache 升级一下 yum update 然后安装一下vim yum install vim 安装ifconfig yum install net-tools 这里生不升级看你，安不安vim也看你，没vim编辑配置文件很麻烦我感觉 4.安装必要组件 我们先安装Apache的服务器 yum install httpd 然后启动Apache service httpd start 然后看一下Apache的状态 service httpd status 然后设置httpd在运行级别为2、3、4、5的情况下都是on（开启）的状态 chkconfig –level 2345 httpd on firewall-cmd –permanent –zone=public –add-service=http 安装MySQL，mysql在centos的源中是没有的，只有mariadb，一样 你想自己官网下，然后编译安装也可以，这里我就用mysql的分之兼容产品mariadb了 [root@localhost ~]# yum search mariadb Loaded plugins: fastestmirror Loading mirror speeds from cached hostfile * base: centos.ustc.edu.cn * extras: centos.ustc.edu.cn * updates: centos.ustc.edu.cn ==================================================================================== N/S matched: mariadb ==================================================================================== mariadb-bench.x86_64 : MariaDB benchmark scripts and data mariadb-devel.i686 : Files for development of MariaDB/MySQL applications mariadb-devel.x86_64 : Files for development of MariaDB/MySQL applications mariadb-embedded.i686 : MariaDB as an embeddable library mariadb-embedded.x86_64 : MariaDB as an embeddable library mariadb-embedded-devel.i686 : Development files for MariaDB as an embeddable library mariadb-embedded-devel.x86_64 : Development files for MariaDB as an embeddable library mariadb-libs.i686 : The shared libraries required for MariaDB/MySQL clients mariadb-libs.x86_64 : The shared libraries required for MariaDB/MySQL clients mariadb-server.x86_64 : The MariaDB server and related files mariadb.x86_64 : A community developed branch of MySQL mariadb-test.x86_64 : The test suite distributed with MariaD Name and summary matches only, use “search all” for everything. [root@localhost ~]# 我们安装这几个包就可以了 yum install mariadb.x86_64 mariadb-server.x86_64 mariadb-libs.x86_64 mariadb-devel.x86_64 启动mysql service mariadb start chkconfig –level 2345 mariadb on 然后设置mariadb的初始密码 mysqladmin -u root -p password 然后就可以登录了 mysql -uroot -p 创建一个数据库 create database dvwa; quit; 然后我们安装PHP yum install php.x86_64 php-mysql.x86_64 php-pear php-pear-DB php-gd 然后我们下载DVWA的包，先安装一个wget yum install wget wget <a href="https://github.com/ethicalhack3r/DVWA/archive/v1.9.tar.gz" target="_blank" rel="noopener">https://github.com/ethicalhack3r/DVWA/archive/v1.9.tar.gz</a> cp v1.9.tar.gz /var/www/html/ cd /var/www/html tar zxvf v1.9.tar.gz mv DVWA-1.9 dvwa 然后我们用另一台机器的浏览器访问虚拟机的ip（这个时候确保机器网络设置为桥接，然后重启，然后再用ifconfig查看你虚拟机的ip，然后访问） <a href="http://x.x.x.x/dvwa/setup.php" target="_blank" rel="noopener">http://x.x.x.x/dvwa/setup.php</a> 然后根据红色那些提示，设置环境 一般就是这样的 vim /etc/php.ini 将这几个设置成这样的 allow_url_fopen = On allow_url_include = On 进入/var/www/html/dvwa/config目录下 先备份配置文件 cp config.inc.php config.inc.php.bak 改这么几个地方 vim config.inc.php $_DVWA[ ‘db_server’ ] = ‘localhost’; $_DVWA[ ‘db_password’ ] = ‘youmysqlpassword’; $_DVWA[ ‘recaptcha_public_key’ ] = ‘’; $_DVWA[ ‘recaptcha_private_key’ ] = ‘’; 然后下面这个赋权可写 /var/www/html/dvwa/hackable/uploads cd /var/www/html/dvwa/hackable/ chmod 777 uploads /var/www/html/dvwa/external/phpids/0.6/lib/IDS/tmp/phpids_log.txt cd /var/www/html/dvwa/external/phpids/0.6/lib/IDS/tmp chmod 777 phpids_log.txt ok 然后我们点一下Create/Reset那个按钮 然后就会自动跳到登录界面 默认的登录密码是 admin password</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://0d4y.cc/2017/10/19/centos-e6-90-ad-e5-bb-badvwa-e5-ae-9e-e9-aa-8c-e5-b9-b3-e5-8f-b0/" data-id="ck2d1je6y0007v6phbxig3vr5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e5-b8-b8-e8-a7-81-e5-8f-a4-e5-85-b8-e5-af-86-e7-a0-81-e5-8f-8a-e5-9c-a8-e7-ba-bf-e5-b7-a5-e5-85-b7" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/19/e5-b8-b8-e8-a7-81-e5-8f-a4-e5-85-b8-e5-af-86-e7-a0-81-e5-8f-8a-e5-9c-a8-e7-ba-bf-e5-b7-a5-e5-85-b7/" class="article-date">
+  <time datetime="2017-10-19T11:28:08.000Z" itemprop="datePublished">2017-10-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CTF%E5%AF%86%E7%A0%81/">CTF密码</a>►<a class="article-category-link" href="/categories/CTF%E5%AF%86%E7%A0%81/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/">古典密码</a>►<a class="article-category-link" href="/categories/CTF%E5%AF%86%E7%A0%81/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/e5-b8-b8-e8-a7-81-e5-8f-a4-e5-85-b8-e5-af-86-e7-a0-81-e5-8f-8a-e5-9c-a8-e7-ba-bf-e5-b7-a5-e5-85-b7/">常见古典密码及在线工具</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><strong>加密解密</strong><ul>
+<li><a href="http://jiema.wwei.cn/" target="_blank" rel="noopener">二维码解码</a></li>
+<li><a href="http://www.wwei.cn/" target="_blank" rel="noopener">二维码编码</a></li>
+<li><a href="http://www1.tc711.com/tool/BASE64.htm" target="_blank" rel="noopener">Base64编码/解码</a></li>
+<li><a href="http://pbaseconverter.com/" target="_blank" rel="noopener">Base32/Base16</a></li>
+<li><a href="http://tool.oschina.net/encode?type=4" target="_blank" rel="noopener">URL解码</a></li>
+<li><a href="http://www.cmd5.com/" target="_blank" rel="noopener">MD5查询</a></li>
+<li><a href="http://www.zhongguosou.com/zonghe/moErSiCodeConverter.aspx" target="_blank" rel="noopener">摩尔斯电码</a></li>
+<li><a href="http://www.5ixuexiwang.com/str/" target="_blank" rel="noopener">字符串处理</a></li>
+<li><a href="http://www.keyfc.net/bbs/tools/tudoucode.aspx" target="_blank" rel="noopener">与佛论禅</a></li>
+<li><a href="http://www.qqxiuzi.cn/bianma/wenbenjiami.php" target="_blank" rel="noopener">将文本加密为各种语言</a></li>
+<li><a href="http://web.chacuo.net/charsetuuencode" target="_blank" rel="noopener">UU编码</a>(邮件编码的一种)</li>
+<li><a href="http://dogmamix.com/MimeHeadersDecoder/" target="_blank" rel="noopener">MIME标准</a>(邮件编码的一种)</li>
+<li><a href="http://encoders-decoders.online-domain-tools.com/" target="_blank" rel="noopener">Binhex编码</a>(邮件编码的一种,常见于MAC机)</li>
+<li><a href="http://tomeko.net/online_tools" target="_blank" rel="noopener">在线工具集合</a></li>
+<li><a href="http://www.practicalcryptography.com/ciphers/classical-era/rail-fence/" target="_blank" rel="noopener">栅栏密码</a></li>
+<li><a href="http://serpent.online-domain-tools.com/" target="_blank" rel="noopener">serpent加密解密</a></li>
+<li><a href="http://planetcalc.com/1434/" target="_blank" rel="noopener">凯撒密码</a></li>
+<li><a href="http://www.qqxiuzi.cn/bianma/ROT5-13-18-47.php" target="_blank" rel="noopener">ROT5/13/18/47</a></li>
+<li><a href="https://tool.lu/js/" target="_blank" rel="noopener">js代码在线加密解密</a></li>
+<li><a href="http://quipqiup.com/index.php" target="_blank" rel="noopener">词频在线分析</a></li>
+</ul>
+</li>
+<li><strong>图像分析</strong><ul>
+<li><a href="http://www.360doc.com/content/13/0314/18/699582_271506280.shtml" target="_blank" rel="noopener">GIF逐帧分解</a></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>本地工具</p>
+</blockquote>
+<ul>
+<li><strong>信隐术</strong><ul>
+<li><a href="https://pan.baidu.com/s/1jIdMWIi" target="_blank" rel="noopener">Stegsolve</a> (图像通道分析工具)</li>
+<li><a href="http://pan.baidu.com/s/1i54jWOl" target="_blank" rel="noopener">PngCheck</a> (png图像区块分析工具)</li>
+<li><a href="http://pan.baidu.com/s/1mhHzTji" target="_blank" rel="noopener">OutGuess隐写工具</a> (图像隐写工具OutGuess)</li>
+<li><a href="http://pan.baidu.com/s/1jIpZNj4" target="_blank" rel="noopener">JHide隐写工具</a> (JHide图片隐写工具)</li>
+<li><a href="http://pan.baidu.com/s/1nvB8zDB" target="_blank" rel="noopener">PDF隐写工具</a> (PDF隐写工具)</li>
+<li><a href="https://pan.baidu.com/s/1slUwxhN" target="_blank" rel="noopener">WaveEditor</a> (音频波形编辑工具)</li>
+<li><a href="http://pan.baidu.com/s/1pLQxthD" target="_blank" rel="noopener">Sonicvisualiser</a> (音频频谱分析工具)</li>
+</ul>
+</li>
+<li><strong>反编译</strong><ul>
+<li><a href="http://pan.baidu.com/s/1nuHY7Bb" target="_blank" rel="noopener">IDAQ</a> (反编译工具)</li>
+</ul>
+</li>
+<li><strong>破解</strong><ul>
+<li><a href="http://pan.baidu.com/s/1mi8Nwdq" target="_blank" rel="noopener">ARPR</a> (压缩文件破解工具)</li>
+<li><a href="http://pan.baidu.com/s/1b0Knj4" target="_blank" rel="noopener">Base64编码解码器</a>(Base64编码解码器)</li>
+<li><a href="http://pan.baidu.com/s/1c1NIHFU" target="_blank" rel="noopener">F5算法(隐写)</a></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>文件</p>
+</blockquote>
+<ul>
+<li><a href="http://www.cnblogs.com/qfcndtt/archive/2012/05/08/2489761.html" target="_blank" rel="noopener">文件头</a></li>
+</ul>
+<blockquote>
+<p>编码</p>
+</blockquote>
+<ul>
+<li><a href="http://tool.oschina.net/commons?type=4" target="_blank" rel="noopener">ASCII</a></li>
+<li><a href="http://baike.baidu.com/link?url=EAHhU36dVREhqMHIQKTIntQR54YUck5k4fk75JGGjyNwB1nBMryoYzbQrzB7mc6y" target="_blank" rel="noopener">摩尔斯电码</a></li>
+<li><a href="http://baike.baidu.com/view/2238848.htm" target="_blank" rel="noopener">培根密码</a></li>
+</ul>
+<blockquote>
+<p>API</p>
+</blockquote>
+<ul>
+<li><a href="http://php.net/docs.php" target="_blank" rel="noopener">PHP API</a></li>
+</ul>
+<p>工具集： <a href="https://www.ctftools.com/down/down/passwd/" target="_blank" rel="noopener">密码机器</a>（强烈推荐） 包含了：栅栏密码 ，凯撒密码，维吉尼亚密码，摩斯电码，MD5 ，置换密码，替代密码 等。 常见密码： <a href="http://base64.xpcha.com/" target="_blank" rel="noopener">base64</a> <a href="http://www.ab126.com/goju/1711.html" target="_blank" rel="noopener">ascii与十六进制、十进制、二进制转换</a> <a href="https://www.convertstring.com/zh_CN/EncodeDecode/UrlDecode" target="_blank" rel="noopener">url解密</a> 编码： JavaScript之jsfuck： <a href="http://www.jsfuck.com/" target="_blank" rel="noopener">在线解码</a> 或 在浏览器F12的调试器中执行 <a href="http://esoteric.sange.fi/brainfuck/impl/interp/i.html" target="_blank" rel="noopener">brainfuck</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://0d4y.cc/2017/10/19/e5-b8-b8-e8-a7-81-e5-8f-a4-e5-85-b8-e5-af-86-e7-a0-81-e5-8f-8a-e5-9c-a8-e7-ba-bf-e5-b7-a5-e5-85-b7/" data-id="ck2d1je7o000yv6ph1oqbgb1a" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-aircrack-ng-e7-a0-b4-e8-a7-a3-e6-8f-a1-e6-89-8b-e5-8c-85" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/19/aircrack-ng-e7-a0-b4-e8-a7-a3-e6-8f-a1-e6-89-8b-e5-8c-85/" class="article-date">
+  <time datetime="2017-10-19T11:16:01.000Z" itemprop="datePublished">2017-10-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/kali-linux/">kali linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/aircrack-ng-e7-a0-b4-e8-a7-a3-e6-8f-a1-e6-89-8b-e5-8c-85/">aircrack-ng破解握手包</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>现在我们有个抓到的wifi握手包 使用aircrack-ng，配合密码字典，跑字典破解wifi密码 <img src="http://112.74.49.123/wp-content/uploads/2017/10/0956.jpg" alt=""> 从上边图片可以看到，抓到的握手包中的流量信息显示有三张网卡，可以看到第一张网卡No date，第二张网卡为内网有线网卡，而第三张网卡是D-Link的WPA加密的握手包，所以选择网卡三。 <img src="http://112.74.49.123/wp-content/uploads/2017/10/1337.jpg" alt=""> 经过三秒跑密码包，跑出wifi密码 ps：题目来自<a href="http://123.206.31.85/challenges" target="_blank" rel="noopener">CTF-练习平台</a>中MISC的“想蹭网先解开密码”</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://0d4y.cc/2017/10/19/aircrack-ng-e7-a0-b4-e8-a7-a3-e6-8f-a1-e6-89-8b-e5-8c-85/" data-id="ck2d1je6w0005v6ph9shph3kd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-binwalk-e7-9a-84-e4-bd-bf-e7-94-a8-e6-96-b9-e6-b3-95" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/19/binwalk-e7-9a-84-e4-bd-bf-e7-94-a8-e6-96-b9-e6-b3-95/" class="article-date">
+  <time datetime="2017-10-19T11:06:00.000Z" itemprop="datePublished">2017-10-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/kali-linux/">kali linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/binwalk-e7-9a-84-e4-bd-bf-e7-94-a8-e6-96-b9-e6-b3-95/">binwalk的使用方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、binwalk工具的基本用法介绍 1、获取帮助信息 binwalk -h 或 binwalk –help 2.文件分析扫描 binwalk 文件 3.提取文件系统 binwalk -e 文件 二、使用范例 实验吧的一道隐写术——“<a href="http://www.shiyanbar.com/ctf/58" target="_blank" rel="noopener">女神又和大家见面了</a>“ 附件为：<a href="http://ctf5.shiyanbar.com/stega/3.jpg" target="_blank" rel="noopener">3.jpg</a> 放在kali的root目录下，使用binwalk查看文件结构 <img src="http://112.74.49.123/wp-content/uploads/2017/10/019.jpg" alt=""> 发现有zip，且zip内有music.mp3一个 使用binwalk -e 3.jpg导出文件 <img src="http://112.74.49.123/wp-content/uploads/2017/10/342.jpg" alt=""> <img src="http://112.74.49.123/wp-content/uploads/2017/10/538.jpg" alt=""> 然后是MP3隐写，这段不提，想知道的朋友自行去实验吧查看writeup。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://0d4y.cc/2017/10/19/binwalk-e7-9a-84-e4-bd-bf-e7-94-a8-e6-96-b9-e6-b3-95/" data-id="ck2d1je700009v6ph2gy492og" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e6-b0-b8-e6-81-92-e4-b9-8b-e8-93-9d-ef-bc-88ms17-010-ef-bc-89-e5-a4-8d-e7-8e-b0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/19/e6-b0-b8-e6-81-92-e4-b9-8b-e8-93-9d-ef-bc-88ms17-010-ef-bc-89-e5-a4-8d-e7-8e-b0/" class="article-date">
+  <time datetime="2017-10-19T10:49:50.000Z" itemprop="datePublished">2017-10-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/kali-linux/">kali linux</a>►<a class="article-category-link" href="/categories/kali-linux/windows/">windows</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/e6-b0-b8-e6-81-92-e4-b9-8b-e8-93-9d-ef-bc-88ms17-010-ef-bc-89-e5-a4-8d-e7-8e-b0/">永恒之蓝（ms17-010）复现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先，在<a href="https://msdn.itellyou.cn/" target="_blank" rel="noopener">MSDN</a>下载一个<a href="http://ed2k://|file|cn_windows_7_professional_x64_dvd_x15-65791.iso|3341268992|3474800521D169FBF3F5E527CD835156|/" target="_blank" rel="noopener">Windows 7 Professional (x64) - DVD (Chinese-Simplified)</a>。 在虚拟机上安装好。 查看靶机ip <img src="http://112.74.49.123/wp-content/uploads/2017/10/214.jpg" alt=""> 打开kali linux里边的metasploit <img src="http://112.74.49.123/wp-content/uploads/2017/10/422.jpg" alt=""> search ms17 <img src="http://112.74.49.123/wp-content/uploads/2017/10/541.jpg" alt=""> 使用永恒之蓝漏洞 <img src="http://112.74.49.123/wp-content/uploads/2017/10/631.jpg" alt=""> 查看攻击载荷 <img src="http://112.74.49.123/wp-content/uploads/2017/10/716.jpg" alt=""> 配置靶机ip <img src="http://112.74.49.123/wp-content/uploads/2017/10/754.jpg" alt=""> exploit <img src="http://112.74.49.123/wp-content/uploads/2017/10/847.jpg" alt=""> 已获得最高权限 <img src="http://112.74.49.123/wp-content/uploads/2017/10/930.jpg" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://0d4y.cc/2017/10/19/e6-b0-b8-e6-81-92-e4-b9-8b-e8-93-9d-ef-bc-88ms17-010-ef-bc-89-e5-a4-8d-e7-8e-b0/" data-id="ck2d1je7w0016v6ph53pi1lh9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux-e5-bc-80-e5-90-afssh" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/19/linux-e5-bc-80-e5-90-afssh/" class="article-date">
+  <time datetime="2017-10-19T09:27:44.000Z" itemprop="datePublished">2017-10-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>►<a class="article-category-link" href="/categories/linux/linux%E9%80%9A%E7%94%A8/">linux通用</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/linux-e5-bc-80-e5-90-afssh/">linux开启ssh</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>第一步：安装sshd服务 Ubuntu等Debian系： apt-get install sshd Centos等Redhat系： yum install sshd 第二步：配置文件 *配置之前先备份：cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak vim /etc/ssh/sshd_config 将箭头所指的两项修改为 <img src="http://112.74.49.123/wp-content/uploads/2017/10/19-1.jpg" alt=""> <img src="http://112.74.49.123/wp-content/uploads/2017/10/19-2.jpg" alt=""> 保存并退出 第三步：重启sshd服务 service sshd restart 好了，可以连接了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://0d4y.cc/2017/10/19/linux-e5-bc-80-e5-90-afssh/" data-id="ck2d1je86001mv6ph0lx3bw15" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-kali-linux-e7-8e-af-e5-a2-83-e4-b8-8b-e7-9a-84arp-e6-94-bb-e5-87-bb" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/19/kali-linux-e7-8e-af-e5-a2-83-e4-b8-8b-e7-9a-84arp-e6-94-bb-e5-87-bb/" class="article-date">
+  <time datetime="2017-10-19T09:19:56.000Z" itemprop="datePublished">2017-10-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/kali-linux/">kali linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/kali-linux-e7-8e-af-e5-a2-83-e4-b8-8b-e7-9a-84arp-e6-94-bb-e5-87-bb/">kali linux环境下的arp攻击</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在kali linux系统下自带工具中有个arp神器叫做“arpspoof”，废话不多说，直接上手 此次实验环境为靶机与FTP服务器之间的arp中间人 靶机　　　　　ip：10.90.100.53　　 mac：04:69:f8:db:75:6b 中间人kali　　 ip：10.90.100.242　　 mac：00:0c:29:a7:16:35 FTP服务器　　 ip：10.90.100.68　 　mac：00:0c:29:bb:44:56 实验网络拓扑图如下 <img src="http://112.74.49.123/wp-content/uploads/2017/10/1.png" alt="null"> 第一步：echo 1 &gt; /proc/sys/net/ipv4/ip_forward kali开启转发功能 <img src="http://112.74.49.123/wp-content/uploads/2017/10/2.jpg" alt=""> 第二步：arp攻击前靶机ARP表中FTP服务器的mac地址 <img src="http://112.74.49.123/wp-content/uploads/2017/10/3.jpg" alt=""> 第三步：用arpspoof实现双向欺骗 <img src="http://112.74.49.123/wp-content/uploads/2017/10/41.jpg" alt=""> 第四步：在靶机上查看FTP服务器mac地址以验证是否欺骗成功 <img src="http://112.74.49.123/wp-content/uploads/2017/10/5.jpg" alt=""> 第五步：使用工具tcpdump监听ftp端口21端口并将所截获数据包导入到1.txt中（如没有1.txt，则自动新建） tcpdump -nn -X -i eth0 tcp prot 21 &gt; 1.txt <img src="http://112.74.49.123/wp-content/uploads/2017/10/6.jpg" alt=""> 第六步：查看数据包并查找有用信息 <img src="http://112.74.49.123/wp-content/uploads/2017/10/7.jpg" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://0d4y.cc/2017/10/19/kali-linux-e7-8e-af-e5-a2-83-e4-b8-8b-e7-9a-84arp-e6-94-bb-e5-87-bb/" data-id="ck2d1je83001iv6phfhhz6dh9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-e4-b8-80-e9-94-ae-e6-90-ad-e5-bb-bavpn" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/19/e4-b8-80-e9-94-ae-e6-90-ad-e5-bb-bavpn/" class="article-date">
+  <time datetime="2017-10-19T09:03:17.000Z" itemprop="datePublished">2017-10-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>►<a class="article-category-link" href="/categories/linux/linux%E9%80%9A%E7%94%A8/">linux通用</a>►<a class="article-category-link" href="/categories/linux/linux%E9%80%9A%E7%94%A8/%E4%BB%A3%E7%90%86/">代理</a>►<a class="article-category-link" href="/categories/linux/linux%E9%80%9A%E7%94%A8/%E4%BB%A3%E7%90%86/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">科学上网</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/e4-b8-80-e9-94-ae-e6-90-ad-e5-bb-bavpn/">一键搭建VPN(修改ing.....)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Ubuntu等debian系： wget <a href="https://git.io/vpnsetup" target="_blank" rel="noopener">https://git.io/vpnsetup</a> -O vpnsetup.sh centos等Redhat系： wget <a href="https://git.io/vpnsetup-centos" target="_blank" rel="noopener">https://git.io/vpnsetup-centos</a> -O vpnsetup.sh 先下载这个自动化脚本，然后vim vpnsetup.sh <img src="http://112.74.49.123/wp-content/uploads/2017/10/00.jpg" alt=""> 编辑 YOUR_IPSEC_PSK=’你的IPsec预共享密钥’ YOUR_USERNAME=’你的VPN用户名’ YOUR_PASSWORD=’你的VPN密码’ 然后运行脚本 一段时间等待后 <img src="http://112.74.49.123/wp-content/uploads/2017/10/4.jpg" alt=""> 恭喜你，拿着这些信息登录去吧</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://0d4y.cc/2017/10/19/e4-b8-80-e9-94-ae-e6-90-ad-e5-bb-bavpn/" data-id="ck2d1je7d000mv6phh84vgozl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos7-2-e6-90-ad-e5-bb-bass" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/19/centos7-2-e6-90-ad-e5-bb-bass/" class="article-date">
+  <time datetime="2017-10-19T08:43:22.000Z" itemprop="datePublished">2017-10-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/centos/">centos</a>►<a class="article-category-link" href="/categories/centos/linux/">linux</a>►<a class="article-category-link" href="/categories/centos/linux/%E4%BB%A3%E7%90%86/">代理</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/centos7-2-e6-90-ad-e5-bb-bass/">Centos7.2 搭建SS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天我把我的阿里云服务器系统改成了Centos7.2，为了能在本地享受到阿里云飞一般的网速，我决定在服务器上搭建一个ss。 第一步：安装 pip pip是python用来加载各种模块的一个工具。 我使用的是python下的shadowsocks模块。 这个shadowsocks模块可以在 pip 上直接安装。 curl “<a href="https://bootstrap.pypa.io/get-pip.py&quot;" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py&quot;</a> -o “get-pip.py” python get-pip.py 第二步：安装配置 shadowsocks 安装 shadowsocks： pip install –upgrade pip pip install shadowsocks 第三步：配置文件 安装完成后，需要创建配置文件/etc/shadowsocks.json，内容如下： { “server”: “0.0.0.0”, “server_port”: 8388, “password”: “你的密码”, “method”: “aes-256-cfb” } 第四步： 新建启动脚本文件/etc/systemd/system/shadowsocks.service，内容如下： [Unit] Description=Shadowsocks [Service] TimeoutStartSec=0 ExecStart=/usr/bin/ssserver -c /etc/shadowsocks.json [Install] WantedBy=multi-user.target 第五步：启动 shadowsocks 服务 systemctl start shadowsocks 接下来，就是在本地用ss软件连接我的阿里云服务器了，连上之后查一下ip emmmmm…..nice~ <img src="http://112.74.49.123/wp-content/uploads/2017/10/ip.jpg" alt="ip"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://0d4y.cc/2017/10/19/centos7-2-e6-90-ad-e5-bb-bass/" data-id="ck2d1je74000cv6ph39fefc2p" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CTF%E5%AF%86%E7%A0%81/">CTF密码</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CTF%E5%AF%86%E7%A0%81/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/">古典密码</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CTF%E5%AF%86%E7%A0%81/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/CTF%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA/">CTF平台搭建</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Iot%E5%AE%89%E5%85%A8/">Iot安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web%E5%AE%89%E5%85%A8/">Web安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/centos/">centos</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/centos/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/centos/linux/%E4%BB%A3%E7%90%86/">代理</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/kali-linux/">kali linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/kali-linux/windows/">windows</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/Web%E5%AE%89%E5%85%A8/">Web安全</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/linux%E9%80%9A%E7%94%A8/">linux通用</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/linux%E9%80%9A%E7%94%A8/%E4%BB%A3%E7%90%86/">代理</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux/linux%E9%80%9A%E7%94%A8/%E4%BB%A3%E7%90%86/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">科学上网</a></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux%E9%80%9A%E7%94%A8/">linux通用</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/linux%E9%80%9A%E7%94%A8/%E4%BB%A3%E7%90%86/">代理</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux%E9%80%9A%E7%94%A8/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">python程序设计</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/">威胁情报</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/">杂项</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">科学上网</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E4%BB%B6/">网件</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BD%91%E7%AB%99%E5%AE%89%E5%85%A8/">网站安全</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/30/e5-88-a9-e7-94-a8powershell-e9-9a-90-e8-97-8f-e6-89-a7-e8-a1-8c-e5-90-8e-e9-97-a8/">利用powershell隐藏执行后门</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/24/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-ef-bc-9acs-e4-bb-a3-e7-90-86proxychainsnmap-e8-bf-9b-e8-a1-8c-e5-86-85-e7-bd-91-e6-89-ab-e6-8f-8f/">内网渗透：CS代理+proxychains+nmap进行内网扫描</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-ba-8c-ef-bc-9a-e6-8a-8acs-e4-b8-ad-e7-9a-84-e6-9c-ba-e5-99-a8spwan-e7-bb-99msf/">msf+cobaltstrike联动(二)：把cs中的机器spwan给msf</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-b8-80-ef-bc-9a-e6-8a-8amsf-e7-9a-84session-e5-8f-91-e7-bb-99cobaltstrike/">msf+cobaltstrike联动(一)：把msf的session发给cobaltstrike</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/15/windows-e4-b8-8bhash-e6-8a-93-e5-8f-96-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e5-bc-8f/">windows下hash抓取的几种方式</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 rich4rd<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

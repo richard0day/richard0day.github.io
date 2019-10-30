@@ -5,13 +5,16 @@
   
 
   
-  <title>Archives | rich4rd&#39;s blog</title>
+  <title>Centos搭建DVWA实验平台 | rich4rd&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="rich4rd&#39;s blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;0d4y.cc&#x2F;archives&#x2F;index.html">
+  <meta name="description" content="1.安装虚拟机 这个就不多说了，安装一个centos7最小模式就行 然后配置ssh yum install openssh* vi &#x2F;etc&#x2F;ssh&#x2F;sshd_config 把下面两行取消注释 PermitEmptyPasswords no PasswordAuthentication yes 这里我们就不限制root用户登录ssh了 确保这个是 PermitRootLogin yes 就是确保我">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos搭建DVWA实验平台">
+<meta property="og:url" content="http:&#x2F;&#x2F;0d4y.cc&#x2F;2017&#x2F;10&#x2F;19&#x2F;centos-e6-90-ad-e5-bb-badvwa-e5-ae-9e-e9-aa-8c-e5-b9-b3-e5-8f-b0&#x2F;index.html">
 <meta property="og:site_name" content="rich4rd&#39;s blog">
+<meta property="og:description" content="1.安装虚拟机 这个就不多说了，安装一个centos7最小模式就行 然后配置ssh yum install openssh* vi &#x2F;etc&#x2F;ssh&#x2F;sshd_config 把下面两行取消注释 PermitEmptyPasswords no PasswordAuthentication yes 这里我们就不限制root用户登录ssh了 确保这个是 PermitRootLogin yes 就是确保我">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-30T08:51:08.633Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="rich4rd&#39;s blog" type="application/atom+xml">
@@ -59,216 +62,65 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/30/e5-88-a9-e7-94-a8powershell-e9-9a-90-e8-97-8f-e6-89-a7-e8-a1-8c-e5-90-8e-e9-97-a8/" class="archive-article-date">
-  <time datetime="2019-08-30T01:49:22.000Z" itemprop="datePublished">Aug 30</time>
+        <section id="main"><article id="post-centos-e6-90-ad-e5-bb-badvwa-e5-ae-9e-e9-aa-8c-e5-b9-b3-e5-8f-b0" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/19/centos-e6-90-ad-e5-bb-badvwa-e5-ae-9e-e9-aa-8c-e5-b9-b3-e5-8f-b0/" class="article-date">
+  <time datetime="2017-10-19T11:30:27.000Z" itemprop="datePublished">2017-10-19</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/centos/">centos</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/30/e5-88-a9-e7-94-a8powershell-e9-9a-90-e8-97-8f-e6-89-a7-e8-a1-8c-e5-90-8e-e9-97-a8/">利用powershell隐藏执行后门</a>
+    <h1 class="article-title" itemprop="name">
+      Centos搭建DVWA实验平台
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/24/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-ef-bc-9acs-e4-bb-a3-e7-90-86proxychainsnmap-e8-bf-9b-e8-a1-8c-e5-86-85-e7-bd-91-e6-89-ab-e6-8f-8f/" class="archive-article-date">
-  <time datetime="2019-08-24T15:11:29.000Z" itemprop="datePublished">Aug 24</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-ef-bc-9acs-e4-bb-a3-e7-90-86proxychainsnmap-e8-bf-9b-e8-a1-8c-e5-86-85-e7-bd-91-e6-89-ab-e6-8f-8f/">内网渗透：CS代理+proxychains+nmap进行内网扫描</a>
-    </h1>
-  
+        <p>1.安装虚拟机 这个就不多说了，安装一个centos7最小模式就行 然后配置ssh yum install openssh* vi /etc/ssh/sshd_config 把下面两行取消注释 PermitEmptyPasswords no PasswordAuthentication yes 这里我们就不限制root用户登录ssh了 确保这个是 PermitRootLogin yes 就是确保我们可以用root登录ssh 重启ssh systemctl restart sshd.service 设置开机启动 systemctl enable sshd.service 添加防火墙策略 firewall-cmd –permanent –zone=public –add-service=ssh firewall-cmd –reload 2.配置网卡（不然没法上网） 首先我们进入这个配置文件目录 cd /etc/sysconfig/network-scripts 一般是在这个目录下有个叫 ifcfg-enp0s3 这样一个文件，没有的话找找其他的相似的文件 然后我们打开它 vi ifcfg-enp0s3 这个时候我们还没有vim的，所以只好用vi这个简版的 然后将 ONBOOT=no 改为 ONBOOT=yes 保存后重启网卡： service network restart 此时就可以上网了 3.各种前期准备工作（参考） 我们先更新一下cache yum makecache 升级一下 yum update 然后安装一下vim yum install vim 安装ifconfig yum install net-tools 这里生不升级看你，安不安vim也看你，没vim编辑配置文件很麻烦我感觉 4.安装必要组件 我们先安装Apache的服务器 yum install httpd 然后启动Apache service httpd start 然后看一下Apache的状态 service httpd status 然后设置httpd在运行级别为2、3、4、5的情况下都是on（开启）的状态 chkconfig –level 2345 httpd on firewall-cmd –permanent –zone=public –add-service=http 安装MySQL，mysql在centos的源中是没有的，只有mariadb，一样 你想自己官网下，然后编译安装也可以，这里我就用mysql的分之兼容产品mariadb了 [root@localhost ~]# yum search mariadb Loaded plugins: fastestmirror Loading mirror speeds from cached hostfile * base: centos.ustc.edu.cn * extras: centos.ustc.edu.cn * updates: centos.ustc.edu.cn ==================================================================================== N/S matched: mariadb ==================================================================================== mariadb-bench.x86_64 : MariaDB benchmark scripts and data mariadb-devel.i686 : Files for development of MariaDB/MySQL applications mariadb-devel.x86_64 : Files for development of MariaDB/MySQL applications mariadb-embedded.i686 : MariaDB as an embeddable library mariadb-embedded.x86_64 : MariaDB as an embeddable library mariadb-embedded-devel.i686 : Development files for MariaDB as an embeddable library mariadb-embedded-devel.x86_64 : Development files for MariaDB as an embeddable library mariadb-libs.i686 : The shared libraries required for MariaDB/MySQL clients mariadb-libs.x86_64 : The shared libraries required for MariaDB/MySQL clients mariadb-server.x86_64 : The MariaDB server and related files mariadb.x86_64 : A community developed branch of MySQL mariadb-test.x86_64 : The test suite distributed with MariaD Name and summary matches only, use “search all” for everything. [root@localhost ~]# 我们安装这几个包就可以了 yum install mariadb.x86_64 mariadb-server.x86_64 mariadb-libs.x86_64 mariadb-devel.x86_64 启动mysql service mariadb start chkconfig –level 2345 mariadb on 然后设置mariadb的初始密码 mysqladmin -u root -p password 然后就可以登录了 mysql -uroot -p 创建一个数据库 create database dvwa; quit; 然后我们安装PHP yum install php.x86_64 php-mysql.x86_64 php-pear php-pear-DB php-gd 然后我们下载DVWA的包，先安装一个wget yum install wget wget <a href="https://github.com/ethicalhack3r/DVWA/archive/v1.9.tar.gz" target="_blank" rel="noopener">https://github.com/ethicalhack3r/DVWA/archive/v1.9.tar.gz</a> cp v1.9.tar.gz /var/www/html/ cd /var/www/html tar zxvf v1.9.tar.gz mv DVWA-1.9 dvwa 然后我们用另一台机器的浏览器访问虚拟机的ip（这个时候确保机器网络设置为桥接，然后重启，然后再用ifconfig查看你虚拟机的ip，然后访问） <a href="http://x.x.x.x/dvwa/setup.php" target="_blank" rel="noopener">http://x.x.x.x/dvwa/setup.php</a> 然后根据红色那些提示，设置环境 一般就是这样的 vim /etc/php.ini 将这几个设置成这样的 allow_url_fopen = On allow_url_include = On 进入/var/www/html/dvwa/config目录下 先备份配置文件 cp config.inc.php config.inc.php.bak 改这么几个地方 vim config.inc.php $_DVWA[ ‘db_server’ ] = ‘localhost’; $_DVWA[ ‘db_password’ ] = ‘youmysqlpassword’; $_DVWA[ ‘recaptcha_public_key’ ] = ‘’; $_DVWA[ ‘recaptcha_private_key’ ] = ‘’; 然后下面这个赋权可写 /var/www/html/dvwa/hackable/uploads cd /var/www/html/dvwa/hackable/ chmod 777 uploads /var/www/html/dvwa/external/phpids/0.6/lib/IDS/tmp/phpids_log.txt cd /var/www/html/dvwa/external/phpids/0.6/lib/IDS/tmp chmod 777 phpids_log.txt ok 然后我们点一下Create/Reset那个按钮 然后就会自动跳到登录界面 默认的登录密码是 admin password</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-ba-8c-ef-bc-9a-e6-8a-8acs-e4-b8-ad-e7-9a-84-e6-9c-ba-e5-99-a8spwan-e7-bb-99msf/" class="archive-article-date">
-  <time datetime="2019-08-24T14:36:35.000Z" itemprop="datePublished">Aug 24</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-ba-8c-ef-bc-9a-e6-8a-8acs-e4-b8-ad-e7-9a-84-e6-9c-ba-e5-99-a8spwan-e7-bb-99msf/">msf+cobaltstrike联动(二)：把cs中的机器spwan给msf</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-b8-80-ef-bc-9a-e6-8a-8amsf-e7-9a-84session-e5-8f-91-e7-bb-99cobaltstrike/" class="archive-article-date">
-  <time datetime="2019-08-24T14:19:27.000Z" itemprop="datePublished">Aug 24</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://0d4y.cc/2017/10/19/centos-e6-90-ad-e5-bb-badvwa-e5-ae-9e-e9-aa-8c-e5-b9-b3-e5-8f-b0/" data-id="ck2d1je6y0007v6phbxig3vr5" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-b8-80-ef-bc-9a-e6-8a-8amsf-e7-9a-84session-e5-8f-91-e7-bb-99cobaltstrike/">msf+cobaltstrike联动(一)：把msf的session发给cobaltstrike</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/15/windows-e4-b8-8bhash-e6-8a-93-e5-8f-96-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e5-bc-8f/" class="archive-article-date">
-  <time datetime="2019-08-15T08:24:32.000Z" itemprop="datePublished">Aug 15</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/15/windows-e4-b8-8bhash-e6-8a-93-e5-8f-96-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e5-bc-8f/">windows下hash抓取的几种方式</a>
-    </h1>
-  
-
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/10/20/e5-9c-a8linux-e7-9a-84-ef-bc-88-e6-a0-b9-ef-bc-89-e7-9b-ae-e5-bd-95-e4-b8-8b-e6-89-a7-e8-a1-8crm-rf-e7-9a-84-e6-84-89-e5-bf-ab-e7-bb-8f-e5-8e-86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          在linux的/（根）目录下执行rm -rf *的愉快经历
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/19/e5-b8-b8-e8-a7-81-e5-8f-a4-e5-85-b8-e5-af-86-e7-a0-81-e5-8f-8a-e5-9c-a8-e7-ba-bf-e5-b7-a5-e5-85-b7/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">常见古典密码及在线工具</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/07/python-e6-9f-a5-e7-9c-8b-e6-9c-ac-e5-9c-b0-e5-ba-93-e7-94-a8-e6-b3-95/" class="archive-article-date">
-  <time datetime="2019-08-07T07:09:35.000Z" itemprop="datePublished">Aug 7</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/07/python-e6-9f-a5-e7-9c-8b-e6-9c-ac-e5-9c-b0-e5-ba-93-e7-94-a8-e6-b3-95/">python查看本地库用法</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/08/07/python-e4-bd-bf-e7-94-a8isoparser-e6-a8-a1-e5-9d-97-e8-8e-b7-e5-8f-96iso-e9-95-9c-e5-83-8f-e6-96-87-e4-bb-b6-e5-86-85-e5-ae-b9/" class="archive-article-date">
-  <time datetime="2019-08-07T07:03:39.000Z" itemprop="datePublished">Aug 7</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/07/python-e4-bd-bf-e7-94-a8isoparser-e6-a8-a1-e5-9d-97-e8-8e-b7-e5-8f-96iso-e9-95-9c-e5-83-8f-e6-96-87-e4-bb-b6-e5-86-85-e5-ae-b9/">python使用isoparser模块获取iso镜像文件内容</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/05/15/prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708/" class="archive-article-date">
-  <time datetime="2019-05-15T01:54:29.000Z" itemprop="datePublished">May 15</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/05/15/prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708/">Prevent a worm by updating Remote Desktop Services (CVE-2019-0708)</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8/" class="archive-article-date">
-  <time datetime="2019-04-06T17:26:09.000Z" itemprop="datePublished">Apr 7</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8/">内网渗透后门(一)：backdoor-factory</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/24/jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99/" class="archive-article-date">
-  <time datetime="2019-01-24T09:24:43.000Z" itemprop="datePublished">Jan 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/24/jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99/">jboss低版本漏洞拿站</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-  </nav>
 
 </section>
         
