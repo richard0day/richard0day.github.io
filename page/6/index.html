@@ -151,19 +151,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-web-e5-ae-89-e5-85-a8-e6-96-87-e4-bb-b6-e5-8c-85-e5-90-ab-e6-bc-8f-e6-b4-9e-ef-bc-88-e4-b8-80-ef-bc-89" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-web-e5-ae-89-e5-85-a8-e6-96-87-e4-bb-b6-e5-8c-85-e5-90-ab-e6-bc-8f-e6-b4-9e-ef-bc-88-e4-b8-80-ef-bc-89-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/16/web-e5-ae-89-e5-85-a8-e6-96-87-e4-bb-b6-e5-8c-85-e5-90-ab-e6-bc-8f-e6-b4-9e-ef-bc-88-e4-b8-80-ef-bc-89/">Web安全——文件包含漏洞（一）</a>
+      <a class="article-title" href="/2018/07/16/web-e5-ae-89-e5-85-a8-e6-96-87-e4-bb-b6-e5-8c-85-e5-90-ab-e6-bc-8f-e6-b4-9e-ef-bc-88-e4-b8-80-ef-bc-89-1/">Web安全——文件包含漏洞（一）</a>
     </h1>
   
 
         
-        <a href="/2018/07/16/web-e5-ae-89-e5-85-a8-e6-96-87-e4-bb-b6-e5-8c-85-e5-90-ab-e6-bc-8f-e6-b4-9e-ef-bc-88-e4-b8-80-ef-bc-89/" class="archive-article-date">
+        <a href="/2018/07/16/web-e5-ae-89-e5-85-a8-e6-96-87-e4-bb-b6-e5-8c-85-e5-90-ab-e6-bc-8f-e6-b4-9e-ef-bc-88-e4-b8-80-ef-bc-89-1/" class="archive-article-date">
   	<time datetime="2018-07-16T13:19:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-16</time>
 </a>
         
@@ -199,183 +199,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/16/web-e5-ae-89-e5-85-a8-e6-96-87-e4-bb-b6-e5-8c-85-e5-90-ab-e6-bc-8f-e6-b4-9e-ef-bc-88-e4-b8-80-ef-bc-89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/09/mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae-2/">MYSQL:基础—主键</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/09/mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae-2/" class="archive-article-date">
-  	<time datetime="2018-05-09T07:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-什么是主键"><a href="#1-什么是主键" class="headerlink" title="1.什么是主键"></a>1.什么是主键</h3><p>表中的<strong>每一行都应该具有可以唯一标识自己的一列</strong>(或一组列)。而这个承担标识作用的<strong>列称为主键</strong>。 如果没有主键，数据的管理将会十分混乱。比如会存在多条一模一样的记录，删除和修改特定行十分困难。</p>
-<h3 id="2-那些列可以作为主键："><a href="#2-那些列可以作为主键：" class="headerlink" title="2.那些列可以作为主键："></a>2.那些列可以作为主键：</h3><p>任何列都可以作为主键，只要它满足以下条件：</p>
-<blockquote>
-<p>• 任何两行都不具有相同的主键值。就是说这列的值都是互不相同的。 • 每个行都必须具有一个主键值。主键列不允许设置为NULL。 • 主键列的值不允许进行修改和更新。</p>
-</blockquote>
-<h3 id="3-声明主键的方法"><a href="#3-声明主键的方法" class="headerlink" title="3.声明主键的方法"></a><strong>3.声明主键的方法</strong></h3><p><strong>在创建表的时候决定是否有主键</strong>: <strong>1.最简单的：</strong></p>
-<p>CREATE TABLE t1(<br>   id int not null,<br>   name char(20)<br>);</p>
-<p><strong>2.带主键的：</strong></p>
-<p>CREATE TABLE t1(<br>   id int not null primary key,<br>   name char(20)<br>);</p>
-<p><strong>3.带复合主键的：</strong></p>
-<p>CREATE TABLE t1(<br>   id int not null,<br>   name char(20),<br>   primary key (id,name)<br>);</p>
-<p><strong>4.主键自增的：</strong></p>
-<p>create table dd(<br>    id int primary key not null auto_increment,<br>    name varchar(20),<br>    time timestamp default current_timestamp<br>    );</p>
-<p><strong>创建完后再决定主键</strong></p>
-<p>create table t(<br>id int not null,<br>    name varchar(200) not null,<br>    time timestamp default, current_timestamp<br>);<br>alter table t add primary key (id);</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySQL//" class="article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/09/mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/09/mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae-1/">MYSQL:基础—主键</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/09/mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae-1/" class="archive-article-date">
-  	<time datetime="2018-05-09T07:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-什么是主键"><a href="#1-什么是主键" class="headerlink" title="1.什么是主键"></a>1.什么是主键</h3><p>表中的<strong>每一行都应该具有可以唯一标识自己的一列</strong>(或一组列)。而这个承担标识作用的<strong>列称为主键</strong>。 如果没有主键，数据的管理将会十分混乱。比如会存在多条一模一样的记录，删除和修改特定行十分困难。</p>
-<h3 id="2-那些列可以作为主键："><a href="#2-那些列可以作为主键：" class="headerlink" title="2.那些列可以作为主键："></a>2.那些列可以作为主键：</h3><p>任何列都可以作为主键，只要它满足以下条件：</p>
-<blockquote>
-<p>• 任何两行都不具有相同的主键值。就是说这列的值都是互不相同的。 • 每个行都必须具有一个主键值。主键列不允许设置为NULL。 • 主键列的值不允许进行修改和更新。</p>
-</blockquote>
-<h3 id="3-声明主键的方法"><a href="#3-声明主键的方法" class="headerlink" title="3.声明主键的方法"></a><strong>3.声明主键的方法</strong></h3><p><strong>在创建表的时候决定是否有主键</strong>: <strong>1.最简单的：</strong></p>
-<p>CREATE TABLE t1(<br>   id int not null,<br>   name char(20)<br>);</p>
-<p><strong>2.带主键的：</strong></p>
-<p>CREATE TABLE t1(<br>   id int not null primary key,<br>   name char(20)<br>);</p>
-<p><strong>3.带复合主键的：</strong></p>
-<p>CREATE TABLE t1(<br>   id int not null,<br>   name char(20),<br>   primary key (id,name)<br>);</p>
-<p><strong>4.主键自增的：</strong></p>
-<p>create table dd(<br>    id int primary key not null auto_increment,<br>    name varchar(20),<br>    time timestamp default current_timestamp<br>    );</p>
-<p><strong>创建完后再决定主键</strong></p>
-<p>create table t(<br>id int not null,<br>    name varchar(200) not null,<br>    time timestamp default, current_timestamp<br>);<br>alter table t add primary key (id);</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySQL//" class="article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/09/mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae-1/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/07/16/web-e5-ae-89-e5-85-a8-e6-96-87-e4-bb-b6-e5-8c-85-e5-90-ab-e6-bc-8f-e6-b4-9e-ef-bc-88-e4-b8-80-ef-bc-89-1/">展开全文 >></a>
         </p>
       
 
@@ -493,27 +317,41 @@
 
 
   
-    <article id="post-csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/08/csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1/">CSRF的检测与防御</a>
+      <a class="article-title" href="/2018/05/09/mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae-1/">MYSQL:基础—主键</a>
     </h1>
   
 
         
-        <a href="/2018/05/08/csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1/" class="archive-article-date">
-  	<time datetime="2018-05-07T16:51:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
+        <a href="/2018/05/09/mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae-1/" class="archive-article-date">
+  	<time datetime="2018-05-09T07:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>CSRF漏洞检测：</strong> 检测CSRF漏洞是一项比较繁琐的工作，最简单的方法就是抓取一个正常请求的数据包，去掉Referer字段后再重新提交，如果该提交还有效，那么基本上可以确定存在CSRF漏洞。 随着对CSRF漏洞研究的不断深入，不断涌现出一些专门针对CSRF漏洞进行检测的工具，如CSRFTester，CSRF Request Builder等。 以CSRFTester工具为例，CSRF漏洞检测工具的测试原理如下：使用CSRFTester进行测试时，首先需要抓取我们在浏览器中访问过的所有链接以及所有的表单等信息，然后通过在CSRFTester中修改相应的表单等信息，重新提交，这相当于一次伪造客户端请求。如果修改后的测试请求成功被网站服务器接受，则说明存在CSRF漏洞，当然此款工具也可以被用来进行CSRF攻击。 <strong>防御CSRF攻击：</strong> 目前防御 CSRF 攻击主要有三种策略： 1.验证 HTTP Referer 字段； 2.在请求地址中添加 token 并验证； 3.在 HTTP 头中自定义属性并验证。   <strong>（1）验证 HTTP Referer 字段</strong> 根据 HTTP 协议，在 HTTP 头中有一个字段叫 Referer，它记录了该 HTTP 请求的来源地址。在通常情况下，访问一个安全受限页面的请求来自于同一个网站。这种方法的显而易见的好处就是简单易行，网站的普通开发人员不需要操心 CSRF 的漏洞，只需要在最后给所有安全敏感的请求统一增加一个拦截器来检查 Referer 的值就可以。特别是对于当前现有的系统，不需要改变当前系统的任何已有代码和逻辑，没有风险，非常便捷。 然而，这种方法并非万无一失。Referer 的值是由浏览器提供的，虽然 HTTP 协议上有明确的要求，但是每个浏览器对于 Referer 的具体实现可能有差别，并不能保证浏览器自身没有安全漏洞。使用验证 Referer 值的方法，就是把安全性都依赖于第三方（即浏览器）来保障，从理论上来讲，这样并不安全。我们可以通过burpsuite或者使用浏览器插件(如modify headers)等方式修改refer，这样就可以通过验证，从而进行 CSRF 攻击。 而且使用refer进行验证还存在误报的风险。因为 Referer 值会记录下用户的访问来源，有些用户认为这样会侵犯到他们自己的隐私权，特别是有些组织担心 Referer 值会把组织内网中的某些信息泄露到外网中。因此，用户自己可以设置浏览器使其在发送请求时不再提供 Referer。当他们正常访问银行网站时，网站会因为请求没有 Referer 值而认为是 CSRF 攻击，拒绝合法用户的访问。 <strong>（2）在请求地址中添加 token 并验证</strong> CSRF 攻击之所以能够成功，是因为黑客可以完全伪造用户的请求，该请求中所有的用户验证信息都是存在于 cookie 中，因此黑客可以在不知道这些验证信息的情况下直接利用用户自己的 cookie 来通过安全验证。要抵御 CSRF，关键在于在请求中放入黑客所不能伪造的信息，并且该信息不存在于 cookie 之中。可以在 HTTP 请求中以参数的形式加入一个随机产生的 token，并在服务器端建立一个拦截器来验证这个 token，如果请求中没有 token 或者 token 内容不正确，则认为可能是 CSRF 攻击而拒绝该请求。 这种方法要比检查 Referer 要安全一些，token 可以在用户登陆后产生并放于 session 之中，然后在每次请求时把 token 从 session 中拿出，与请求中的 token 进行比对，但这种方法的难点在于如何把 token 以参数的形式加入请求。对于 GET 请求，token 将附在请求地址之后，这样 URL 就变成 <a href="http://url?csrftoken=tokenvalue。" target="_blank" rel="noopener">http://url?csrftoken=tokenvalue。</a> 而对于 POST 请求来说，要在 form 的最后加上 <input type=”hidden” name=”csrftoken” value=”tokenvalue”/>，这样就把 token 以参数的形式加入请求了。 <strong>（3）在 HTTP 头中自定义属性并验证</strong> 这种方法也是使用 token 并进行验证，和上一种方法不同的是，这里并不是把 token 以参数的形式置于 HTTP 请求之中，而是把它放到 HTTP 头中自定义的属性里。通过 XMLHttpRequest 这个类，可以一次性给所有该类请求加上 csrftoken 这个 HTTP 头属性，并把 token 值放入其中。这样解决了上种方法在请求中加入 token 的不便，同时，通过 XMLHttpRequest 请求的地址不会被记录到浏览器的地址栏，也不用担心 token 会透过 Referer 泄露到其他网站中去。 然而这种方法的局限性非常大。XMLHttpRequest 请求通常用于 Ajax 方法中对于页面局部的异步刷新，并非所有的请求都适合用这个类来发起，而且通过该类请求得到的页面不能被浏览器所记录下，从而进行前进，后退，刷新，收藏等操作，给用户带来不便。另外，对于没有进行 CSRF 防护的遗留系统来说，要采用这种方法来进行防护，要把所有请求都改为 XMLHttpRequest 请求，这样几乎是要重写整个网站，这代价无疑是不能接受的。</p>
+        <h3 id="1-什么是主键"><a href="#1-什么是主键" class="headerlink" title="1.什么是主键"></a>1.什么是主键</h3><p>表中的<strong>每一行都应该具有可以唯一标识自己的一列</strong>(或一组列)。而这个承担标识作用的<strong>列称为主键</strong>。 如果没有主键，数据的管理将会十分混乱。比如会存在多条一模一样的记录，删除和修改特定行十分困难。</p>
+<h3 id="2-那些列可以作为主键："><a href="#2-那些列可以作为主键：" class="headerlink" title="2.那些列可以作为主键："></a>2.那些列可以作为主键：</h3><p>任何列都可以作为主键，只要它满足以下条件：</p>
+<blockquote>
+<p>• 任何两行都不具有相同的主键值。就是说这列的值都是互不相同的。 • 每个行都必须具有一个主键值。主键列不允许设置为NULL。 • 主键列的值不允许进行修改和更新。</p>
+</blockquote>
+<h3 id="3-声明主键的方法"><a href="#3-声明主键的方法" class="headerlink" title="3.声明主键的方法"></a><strong>3.声明主键的方法</strong></h3><p><strong>在创建表的时候决定是否有主键</strong>: <strong>1.最简单的：</strong></p>
+<p>CREATE TABLE t1(<br>   id int not null,<br>   name char(20)<br>);</p>
+<p><strong>2.带主键的：</strong></p>
+<p>CREATE TABLE t1(<br>   id int not null primary key,<br>   name char(20)<br>);</p>
+<p><strong>3.带复合主键的：</strong></p>
+<p>CREATE TABLE t1(<br>   id int not null,<br>   name char(20),<br>   primary key (id,name)<br>);</p>
+<p><strong>4.主键自增的：</strong></p>
+<p>create table dd(<br>    id int primary key not null auto_increment,<br>    name varchar(20),<br>    time timestamp default current_timestamp<br>    );</p>
+<p><strong>创建完后再决定主键</strong></p>
+<p>create table t(<br>id int not null,<br>    name varchar(200) not null,<br>    time timestamp default, current_timestamp<br>);<br>alter table t add primary key (id);</p>
 
       
 
@@ -528,7 +366,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/网站安全//" class="article-tag-list-link color5">网站安全</a>
+        			<a href="/categories/MySQL//" class="article-tag-list-link color1">MySQL</a>
         		</li>
       		
 		</ul>
@@ -537,7 +375,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/08/csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/05/09/mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae-1/">展开全文 >></a>
         </p>
       
 
@@ -567,27 +405,41 @@
 
 
   
-    <article id="post-csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/08/csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1-1/">CSRF的检测与防御</a>
+      <a class="article-title" href="/2018/05/09/mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae-2/">MYSQL:基础—主键</a>
     </h1>
   
 
         
-        <a href="/2018/05/08/csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1-1/" class="archive-article-date">
-  	<time datetime="2018-05-07T16:51:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
+        <a href="/2018/05/09/mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae-2/" class="archive-article-date">
+  	<time datetime="2018-05-09T07:23:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>CSRF漏洞检测：</strong> 检测CSRF漏洞是一项比较繁琐的工作，最简单的方法就是抓取一个正常请求的数据包，去掉Referer字段后再重新提交，如果该提交还有效，那么基本上可以确定存在CSRF漏洞。 随着对CSRF漏洞研究的不断深入，不断涌现出一些专门针对CSRF漏洞进行检测的工具，如CSRFTester，CSRF Request Builder等。 以CSRFTester工具为例，CSRF漏洞检测工具的测试原理如下：使用CSRFTester进行测试时，首先需要抓取我们在浏览器中访问过的所有链接以及所有的表单等信息，然后通过在CSRFTester中修改相应的表单等信息，重新提交，这相当于一次伪造客户端请求。如果修改后的测试请求成功被网站服务器接受，则说明存在CSRF漏洞，当然此款工具也可以被用来进行CSRF攻击。 <strong>防御CSRF攻击：</strong> 目前防御 CSRF 攻击主要有三种策略： 1.验证 HTTP Referer 字段； 2.在请求地址中添加 token 并验证； 3.在 HTTP 头中自定义属性并验证。   <strong>（1）验证 HTTP Referer 字段</strong> 根据 HTTP 协议，在 HTTP 头中有一个字段叫 Referer，它记录了该 HTTP 请求的来源地址。在通常情况下，访问一个安全受限页面的请求来自于同一个网站。这种方法的显而易见的好处就是简单易行，网站的普通开发人员不需要操心 CSRF 的漏洞，只需要在最后给所有安全敏感的请求统一增加一个拦截器来检查 Referer 的值就可以。特别是对于当前现有的系统，不需要改变当前系统的任何已有代码和逻辑，没有风险，非常便捷。 然而，这种方法并非万无一失。Referer 的值是由浏览器提供的，虽然 HTTP 协议上有明确的要求，但是每个浏览器对于 Referer 的具体实现可能有差别，并不能保证浏览器自身没有安全漏洞。使用验证 Referer 值的方法，就是把安全性都依赖于第三方（即浏览器）来保障，从理论上来讲，这样并不安全。我们可以通过burpsuite或者使用浏览器插件(如modify headers)等方式修改refer，这样就可以通过验证，从而进行 CSRF 攻击。 而且使用refer进行验证还存在误报的风险。因为 Referer 值会记录下用户的访问来源，有些用户认为这样会侵犯到他们自己的隐私权，特别是有些组织担心 Referer 值会把组织内网中的某些信息泄露到外网中。因此，用户自己可以设置浏览器使其在发送请求时不再提供 Referer。当他们正常访问银行网站时，网站会因为请求没有 Referer 值而认为是 CSRF 攻击，拒绝合法用户的访问。 <strong>（2）在请求地址中添加 token 并验证</strong> CSRF 攻击之所以能够成功，是因为黑客可以完全伪造用户的请求，该请求中所有的用户验证信息都是存在于 cookie 中，因此黑客可以在不知道这些验证信息的情况下直接利用用户自己的 cookie 来通过安全验证。要抵御 CSRF，关键在于在请求中放入黑客所不能伪造的信息，并且该信息不存在于 cookie 之中。可以在 HTTP 请求中以参数的形式加入一个随机产生的 token，并在服务器端建立一个拦截器来验证这个 token，如果请求中没有 token 或者 token 内容不正确，则认为可能是 CSRF 攻击而拒绝该请求。 这种方法要比检查 Referer 要安全一些，token 可以在用户登陆后产生并放于 session 之中，然后在每次请求时把 token 从 session 中拿出，与请求中的 token 进行比对，但这种方法的难点在于如何把 token 以参数的形式加入请求。对于 GET 请求，token 将附在请求地址之后，这样 URL 就变成 <a href="http://url?csrftoken=tokenvalue。" target="_blank" rel="noopener">http://url?csrftoken=tokenvalue。</a> 而对于 POST 请求来说，要在 form 的最后加上 <input type=”hidden” name=”csrftoken” value=”tokenvalue”/>，这样就把 token 以参数的形式加入请求了。 <strong>（3）在 HTTP 头中自定义属性并验证</strong> 这种方法也是使用 token 并进行验证，和上一种方法不同的是，这里并不是把 token 以参数的形式置于 HTTP 请求之中，而是把它放到 HTTP 头中自定义的属性里。通过 XMLHttpRequest 这个类，可以一次性给所有该类请求加上 csrftoken 这个 HTTP 头属性，并把 token 值放入其中。这样解决了上种方法在请求中加入 token 的不便，同时，通过 XMLHttpRequest 请求的地址不会被记录到浏览器的地址栏，也不用担心 token 会透过 Referer 泄露到其他网站中去。 然而这种方法的局限性非常大。XMLHttpRequest 请求通常用于 Ajax 方法中对于页面局部的异步刷新，并非所有的请求都适合用这个类来发起，而且通过该类请求得到的页面不能被浏览器所记录下，从而进行前进，后退，刷新，收藏等操作，给用户带来不便。另外，对于没有进行 CSRF 防护的遗留系统来说，要采用这种方法来进行防护，要把所有请求都改为 XMLHttpRequest 请求，这样几乎是要重写整个网站，这代价无疑是不能接受的。</p>
+        <h3 id="1-什么是主键"><a href="#1-什么是主键" class="headerlink" title="1.什么是主键"></a>1.什么是主键</h3><p>表中的<strong>每一行都应该具有可以唯一标识自己的一列</strong>(或一组列)。而这个承担标识作用的<strong>列称为主键</strong>。 如果没有主键，数据的管理将会十分混乱。比如会存在多条一模一样的记录，删除和修改特定行十分困难。</p>
+<h3 id="2-那些列可以作为主键："><a href="#2-那些列可以作为主键：" class="headerlink" title="2.那些列可以作为主键："></a>2.那些列可以作为主键：</h3><p>任何列都可以作为主键，只要它满足以下条件：</p>
+<blockquote>
+<p>• 任何两行都不具有相同的主键值。就是说这列的值都是互不相同的。 • 每个行都必须具有一个主键值。主键列不允许设置为NULL。 • 主键列的值不允许进行修改和更新。</p>
+</blockquote>
+<h3 id="3-声明主键的方法"><a href="#3-声明主键的方法" class="headerlink" title="3.声明主键的方法"></a><strong>3.声明主键的方法</strong></h3><p><strong>在创建表的时候决定是否有主键</strong>: <strong>1.最简单的：</strong></p>
+<p>CREATE TABLE t1(<br>   id int not null,<br>   name char(20)<br>);</p>
+<p><strong>2.带主键的：</strong></p>
+<p>CREATE TABLE t1(<br>   id int not null primary key,<br>   name char(20)<br>);</p>
+<p><strong>3.带复合主键的：</strong></p>
+<p>CREATE TABLE t1(<br>   id int not null,<br>   name char(20),<br>   primary key (id,name)<br>);</p>
+<p><strong>4.主键自增的：</strong></p>
+<p>create table dd(<br>    id int primary key not null auto_increment,<br>    name varchar(20),<br>    time timestamp default current_timestamp<br>    );</p>
+<p><strong>创建完后再决定主键</strong></p>
+<p>create table t(<br>id int not null,<br>    name varchar(200) not null,<br>    time timestamp default, current_timestamp<br>);<br>alter table t add primary key (id);</p>
 
       
 
@@ -602,7 +454,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/网站安全//" class="article-tag-list-link color5">网站安全</a>
+        			<a href="/categories/MySQL//" class="article-tag-list-link color1">MySQL</a>
         		</li>
       		
 		</ul>
@@ -611,7 +463,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/08/csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1-1/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/05/09/mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae-2/">展开全文 >></a>
         </p>
       
 
@@ -715,64 +567,28 @@
 
 
   
-    <article id="post-e4-b8-80-e4-b8-aa-e7-82-b9-e5-87-bb-e5-8a-ab-e6-8c-81-e7-9a-84demo-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/27/e4-b8-80-e4-b8-aa-e7-82-b9-e5-87-bb-e5-8a-ab-e6-8c-81-e7-9a-84demo-1/">一个点击劫持的demo</a>
+      <a class="article-title" href="/2018/05/08/csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1-1/">CSRF的检测与防御</a>
     </h1>
   
 
         
-        <a href="/2018/04/27/e4-b8-80-e4-b8-aa-e7-82-b9-e5-87-bb-e5-8a-ab-e6-8c-81-e7-9a-84demo-1/" class="archive-article-date">
-  	<time datetime="2018-04-27T09:51:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-27</time>
+        <a href="/2018/05/08/csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1-1/" class="archive-article-date">
+  	<time datetime="2018-05-07T16:51:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;style&gt;
-#father{
-position:relative;
-}
-#dj{
-position:absolute;
-top:0px;
-left:10px;
-height:100%;
-width:100%;
-z-index:10;
-left:0px;
-}
-#imgdiv{
-text-align:center;
-z-index:0;
-}
-&lt;/style&gt;
-&lt;script&gt;
-function fun(){
-window.open(&quot;https://www.baidu.com&quot;);
-}
-&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div id=&quot;father&quot;&gt;
-&lt;div id=&quot;imgdiv&quot;&gt;
-&lt;img src=&quot;./timg.jpg&quot; alt=&quot;&quot;&gt;
-&lt;/div&gt;
-&lt;div id=&quot;dj&quot; onclick=&quot;fun()&quot;&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
+        <p><strong>CSRF漏洞检测：</strong> 检测CSRF漏洞是一项比较繁琐的工作，最简单的方法就是抓取一个正常请求的数据包，去掉Referer字段后再重新提交，如果该提交还有效，那么基本上可以确定存在CSRF漏洞。 随着对CSRF漏洞研究的不断深入，不断涌现出一些专门针对CSRF漏洞进行检测的工具，如CSRFTester，CSRF Request Builder等。 以CSRFTester工具为例，CSRF漏洞检测工具的测试原理如下：使用CSRFTester进行测试时，首先需要抓取我们在浏览器中访问过的所有链接以及所有的表单等信息，然后通过在CSRFTester中修改相应的表单等信息，重新提交，这相当于一次伪造客户端请求。如果修改后的测试请求成功被网站服务器接受，则说明存在CSRF漏洞，当然此款工具也可以被用来进行CSRF攻击。 <strong>防御CSRF攻击：</strong> 目前防御 CSRF 攻击主要有三种策略： 1.验证 HTTP Referer 字段； 2.在请求地址中添加 token 并验证； 3.在 HTTP 头中自定义属性并验证。   <strong>（1）验证 HTTP Referer 字段</strong> 根据 HTTP 协议，在 HTTP 头中有一个字段叫 Referer，它记录了该 HTTP 请求的来源地址。在通常情况下，访问一个安全受限页面的请求来自于同一个网站。这种方法的显而易见的好处就是简单易行，网站的普通开发人员不需要操心 CSRF 的漏洞，只需要在最后给所有安全敏感的请求统一增加一个拦截器来检查 Referer 的值就可以。特别是对于当前现有的系统，不需要改变当前系统的任何已有代码和逻辑，没有风险，非常便捷。 然而，这种方法并非万无一失。Referer 的值是由浏览器提供的，虽然 HTTP 协议上有明确的要求，但是每个浏览器对于 Referer 的具体实现可能有差别，并不能保证浏览器自身没有安全漏洞。使用验证 Referer 值的方法，就是把安全性都依赖于第三方（即浏览器）来保障，从理论上来讲，这样并不安全。我们可以通过burpsuite或者使用浏览器插件(如modify headers)等方式修改refer，这样就可以通过验证，从而进行 CSRF 攻击。 而且使用refer进行验证还存在误报的风险。因为 Referer 值会记录下用户的访问来源，有些用户认为这样会侵犯到他们自己的隐私权，特别是有些组织担心 Referer 值会把组织内网中的某些信息泄露到外网中。因此，用户自己可以设置浏览器使其在发送请求时不再提供 Referer。当他们正常访问银行网站时，网站会因为请求没有 Referer 值而认为是 CSRF 攻击，拒绝合法用户的访问。 <strong>（2）在请求地址中添加 token 并验证</strong> CSRF 攻击之所以能够成功，是因为黑客可以完全伪造用户的请求，该请求中所有的用户验证信息都是存在于 cookie 中，因此黑客可以在不知道这些验证信息的情况下直接利用用户自己的 cookie 来通过安全验证。要抵御 CSRF，关键在于在请求中放入黑客所不能伪造的信息，并且该信息不存在于 cookie 之中。可以在 HTTP 请求中以参数的形式加入一个随机产生的 token，并在服务器端建立一个拦截器来验证这个 token，如果请求中没有 token 或者 token 内容不正确，则认为可能是 CSRF 攻击而拒绝该请求。 这种方法要比检查 Referer 要安全一些，token 可以在用户登陆后产生并放于 session 之中，然后在每次请求时把 token 从 session 中拿出，与请求中的 token 进行比对，但这种方法的难点在于如何把 token 以参数的形式加入请求。对于 GET 请求，token 将附在请求地址之后，这样 URL 就变成 <a href="http://url?csrftoken=tokenvalue。" target="_blank" rel="noopener">http://url?csrftoken=tokenvalue。</a> 而对于 POST 请求来说，要在 form 的最后加上 <input type=”hidden” name=”csrftoken” value=”tokenvalue”/>，这样就把 token 以参数的形式加入请求了。 <strong>（3）在 HTTP 头中自定义属性并验证</strong> 这种方法也是使用 token 并进行验证，和上一种方法不同的是，这里并不是把 token 以参数的形式置于 HTTP 请求之中，而是把它放到 HTTP 头中自定义的属性里。通过 XMLHttpRequest 这个类，可以一次性给所有该类请求加上 csrftoken 这个 HTTP 头属性，并把 token 值放入其中。这样解决了上种方法在请求中加入 token 的不便，同时，通过 XMLHttpRequest 请求的地址不会被记录到浏览器的地址栏，也不用担心 token 会透过 Referer 泄露到其他网站中去。 然而这种方法的局限性非常大。XMLHttpRequest 请求通常用于 Ajax 方法中对于页面局部的异步刷新，并非所有的请求都适合用这个类来发起，而且通过该类请求得到的页面不能被浏览器所记录下，从而进行前进，后退，刷新，收藏等操作，给用户带来不便。另外，对于没有进行 CSRF 防护的遗留系统来说，要采用这种方法来进行防护，要把所有请求都改为 XMLHttpRequest 请求，这样几乎是要重写整个网站，这代价无疑是不能接受的。</p>
+
       
 
       
@@ -786,7 +602,7 @@ window.open(&quot;https://www.baidu.com&quot;);
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/html//" class="article-tag-list-link color5">html</a>
+        			<a href="/categories/网站安全//" class="article-tag-list-link color5">网站安全</a>
         		</li>
       		
 		</ul>
@@ -795,7 +611,81 @@ window.open(&quot;https://www.baidu.com&quot;);
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/27/e4-b8-80-e4-b8-aa-e7-82-b9-e5-87-bb-e5-8a-ab-e6-8c-81-e7-9a-84demo-1/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/05/08/csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/08/csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1/">CSRF的检测与防御</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/08/csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1/" class="archive-article-date">
+  	<time datetime="2018-05-07T16:51:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>CSRF漏洞检测：</strong> 检测CSRF漏洞是一项比较繁琐的工作，最简单的方法就是抓取一个正常请求的数据包，去掉Referer字段后再重新提交，如果该提交还有效，那么基本上可以确定存在CSRF漏洞。 随着对CSRF漏洞研究的不断深入，不断涌现出一些专门针对CSRF漏洞进行检测的工具，如CSRFTester，CSRF Request Builder等。 以CSRFTester工具为例，CSRF漏洞检测工具的测试原理如下：使用CSRFTester进行测试时，首先需要抓取我们在浏览器中访问过的所有链接以及所有的表单等信息，然后通过在CSRFTester中修改相应的表单等信息，重新提交，这相当于一次伪造客户端请求。如果修改后的测试请求成功被网站服务器接受，则说明存在CSRF漏洞，当然此款工具也可以被用来进行CSRF攻击。 <strong>防御CSRF攻击：</strong> 目前防御 CSRF 攻击主要有三种策略： 1.验证 HTTP Referer 字段； 2.在请求地址中添加 token 并验证； 3.在 HTTP 头中自定义属性并验证。   <strong>（1）验证 HTTP Referer 字段</strong> 根据 HTTP 协议，在 HTTP 头中有一个字段叫 Referer，它记录了该 HTTP 请求的来源地址。在通常情况下，访问一个安全受限页面的请求来自于同一个网站。这种方法的显而易见的好处就是简单易行，网站的普通开发人员不需要操心 CSRF 的漏洞，只需要在最后给所有安全敏感的请求统一增加一个拦截器来检查 Referer 的值就可以。特别是对于当前现有的系统，不需要改变当前系统的任何已有代码和逻辑，没有风险，非常便捷。 然而，这种方法并非万无一失。Referer 的值是由浏览器提供的，虽然 HTTP 协议上有明确的要求，但是每个浏览器对于 Referer 的具体实现可能有差别，并不能保证浏览器自身没有安全漏洞。使用验证 Referer 值的方法，就是把安全性都依赖于第三方（即浏览器）来保障，从理论上来讲，这样并不安全。我们可以通过burpsuite或者使用浏览器插件(如modify headers)等方式修改refer，这样就可以通过验证，从而进行 CSRF 攻击。 而且使用refer进行验证还存在误报的风险。因为 Referer 值会记录下用户的访问来源，有些用户认为这样会侵犯到他们自己的隐私权，特别是有些组织担心 Referer 值会把组织内网中的某些信息泄露到外网中。因此，用户自己可以设置浏览器使其在发送请求时不再提供 Referer。当他们正常访问银行网站时，网站会因为请求没有 Referer 值而认为是 CSRF 攻击，拒绝合法用户的访问。 <strong>（2）在请求地址中添加 token 并验证</strong> CSRF 攻击之所以能够成功，是因为黑客可以完全伪造用户的请求，该请求中所有的用户验证信息都是存在于 cookie 中，因此黑客可以在不知道这些验证信息的情况下直接利用用户自己的 cookie 来通过安全验证。要抵御 CSRF，关键在于在请求中放入黑客所不能伪造的信息，并且该信息不存在于 cookie 之中。可以在 HTTP 请求中以参数的形式加入一个随机产生的 token，并在服务器端建立一个拦截器来验证这个 token，如果请求中没有 token 或者 token 内容不正确，则认为可能是 CSRF 攻击而拒绝该请求。 这种方法要比检查 Referer 要安全一些，token 可以在用户登陆后产生并放于 session 之中，然后在每次请求时把 token 从 session 中拿出，与请求中的 token 进行比对，但这种方法的难点在于如何把 token 以参数的形式加入请求。对于 GET 请求，token 将附在请求地址之后，这样 URL 就变成 <a href="http://url?csrftoken=tokenvalue。" target="_blank" rel="noopener">http://url?csrftoken=tokenvalue。</a> 而对于 POST 请求来说，要在 form 的最后加上 <input type=”hidden” name=”csrftoken” value=”tokenvalue”/>，这样就把 token 以参数的形式加入请求了。 <strong>（3）在 HTTP 头中自定义属性并验证</strong> 这种方法也是使用 token 并进行验证，和上一种方法不同的是，这里并不是把 token 以参数的形式置于 HTTP 请求之中，而是把它放到 HTTP 头中自定义的属性里。通过 XMLHttpRequest 这个类，可以一次性给所有该类请求加上 csrftoken 这个 HTTP 头属性，并把 token 值放入其中。这样解决了上种方法在请求中加入 token 的不便，同时，通过 XMLHttpRequest 请求的地址不会被记录到浏览器的地址栏，也不用担心 token 会透过 Referer 泄露到其他网站中去。 然而这种方法的局限性非常大。XMLHttpRequest 请求通常用于 Ajax 方法中对于页面局部的异步刷新，并非所有的请求都适合用这个类来发起，而且通过该类请求得到的页面不能被浏览器所记录下，从而进行前进，后退，刷新，收藏等操作，给用户带来不便。另外，对于没有进行 CSRF 防护的遗留系统来说，要采用这种方法来进行防护，要把所有请求都改为 XMLHttpRequest 请求，这样几乎是要重写整个网站，这代价无疑是不能接受的。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/网站安全//" class="article-tag-list-link color5">网站安全</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/08/csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1/">展开全文 >></a>
         </p>
       
 
@@ -1016,6 +906,116 @@ window.open(&quot;https://www.baidu.com&quot;);
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/04/27/e4-b8-80-e4-b8-aa-e7-82-b9-e5-87-bb-e5-8a-ab-e6-8c-81-e7-9a-84demo/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-e4-b8-80-e4-b8-aa-e7-82-b9-e5-87-bb-e5-8a-ab-e6-8c-81-e7-9a-84demo-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/27/e4-b8-80-e4-b8-aa-e7-82-b9-e5-87-bb-e5-8a-ab-e6-8c-81-e7-9a-84demo-1/">一个点击劫持的demo</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/27/e4-b8-80-e4-b8-aa-e7-82-b9-e5-87-bb-e5-8a-ab-e6-8c-81-e7-9a-84demo-1/" class="archive-article-date">
+  	<time datetime="2018-04-27T09:51:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;style&gt;
+#father{
+position:relative;
+}
+#dj{
+position:absolute;
+top:0px;
+left:10px;
+height:100%;
+width:100%;
+z-index:10;
+left:0px;
+}
+#imgdiv{
+text-align:center;
+z-index:0;
+}
+&lt;/style&gt;
+&lt;script&gt;
+function fun(){
+window.open(&quot;https://www.baidu.com&quot;);
+}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;father&quot;&gt;
+&lt;div id=&quot;imgdiv&quot;&gt;
+&lt;img src=&quot;./timg.jpg&quot; alt=&quot;&quot;&gt;
+&lt;/div&gt;
+&lt;div id=&quot;dj&quot; onclick=&quot;fun()&quot;&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/html//" class="article-tag-list-link color5">html</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/27/e4-b8-80-e4-b8-aa-e7-82-b9-e5-87-bb-e5-8a-ab-e6-8c-81-e7-9a-84demo-1/">展开全文 >></a>
         </p>
       
 
