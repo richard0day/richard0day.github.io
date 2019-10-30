@@ -8,14 +8,14 @@
   <link rel="dns-prefetch" href="http://0d4y.cc">
   <title>CTFd搭建 | rich4rd&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="0x00 前言 快到社团活动线下赛的时间了，搭个CTF平台用来做活动。 早就看中了CTFd这个平台，正好又要活动了，于是直接搭建。 系统: Ubuntu server 16.04 nginx: nginx&#x2F;1.10.3 (Ubuntu) Mysql: 5.7.20-0ubuntu0.16.04.1 (Ubuntu) Python: 2.7.12 0x01 下载项目&amp;amp;环境配置 下载 git">
+  <meta name="description" content="0x00 前言 快到社团活动线下赛的时间了，搭个CTF平台用来做活动。 早就看中了CTFd这个平台，正好又要活动了，于是直接搭建。 系统: Ubuntu server 16.04 nginx: nginx&#x2F;1.10.3 (Ubuntu) Mysql: 5.7.20-0ubuntu0.16.04.1 (Ubuntu) Python: 2.7.12 0x01 下载项目&amp;amp;环境配置 下载 gi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CTFd搭建">
 <meta property="og:url" content="http:&#x2F;&#x2F;0d4y.cc&#x2F;2017&#x2F;11&#x2F;19&#x2F;ctfd-e6-90-ad-e5-bb-ba&#x2F;index.html">
 <meta property="og:site_name" content="rich4rd&#39;s blog">
-<meta property="og:description" content="0x00 前言 快到社团活动线下赛的时间了，搭个CTF平台用来做活动。 早就看中了CTFd这个平台，正好又要活动了，于是直接搭建。 系统: Ubuntu server 16.04 nginx: nginx&#x2F;1.10.3 (Ubuntu) Mysql: 5.7.20-0ubuntu0.16.04.1 (Ubuntu) Python: 2.7.12 0x01 下载项目&amp;amp;环境配置 下载 git">
+<meta property="og:description" content="0x00 前言 快到社团活动线下赛的时间了，搭个CTF平台用来做活动。 早就看中了CTFd这个平台，正好又要活动了，于是直接搭建。 系统: Ubuntu server 16.04 nginx: nginx&#x2F;1.10.3 (Ubuntu) Mysql: 5.7.20-0ubuntu0.16.04.1 (Ubuntu) Python: 2.7.12 0x01 下载项目&amp;amp;环境配置 下载 gi">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-30T08:51:08.632Z">
+<meta property="og:updated_time" content="2019-10-30T10:00:43.673Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="rich4rd&#39;s blog" type="application/atom+xml">
@@ -248,7 +248,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>0x00 前言</strong> 快到社团活动线下赛的时间了，搭个CTF平台用来做活动。 早就看中了CTFd这个平台，正好又要活动了，于是直接搭建。 系统: Ubuntu server 16.04 nginx: nginx/1.10.3 (Ubuntu) Mysql: 5.7.20-0ubuntu0.16.04.1 (Ubuntu) Python: 2.7.12 <strong>0x01 下载项目&amp;环境配置</strong> 下载 git clone <a href="https://github.com/isislab/CTFd.git" target="_blank" rel="noopener">https://github.com/isislab/CTFd.git</a> 在<a href="https://github.com/CTFd/CTFd下有个Install" target="_blank" rel="noopener">https://github.com/CTFd/CTFd下有个Install</a> Install: Run ./prepare.sh to install dependencies using apt. Modify CTFd/config.py to your liking. Use python serve.py in a terminal to drop into debug mode. Here are some deployment options You can check out the Getting Started guide for a breakdown of some of the features you need to get started. 环境： Nginx可以apt-get install nginx，mysql的话ubuntu server自带，python系统自带。 Ubuntu-server搭好之后apt-get update一下，然后apt-get upgrade一下，把该更新的都更新了。 <strong>0x02 安装&amp;排错</strong> 环境配置好了之后，运行CTFd-master目录下的./prepare.sh 之后CTFd/config.py文件，把HOST改成服务器ip CTFd-master目录下的server.py里边的host也改成服务器ip 这是为了方便外部访问。 然后再CTFd-master目录下python server.py 可以看到平台启动成功，running on ip：端口 现在就可以通过<a href="http://ip:port访问平台了，就酱" target="_blank" rel="noopener">http://ip:port访问平台了，就酱</a>~</p>
+        <a id="more"></a>
+
+<p><strong>0x00 前言</strong> 快到社团活动线下赛的时间了，搭个CTF平台用来做活动。 早就看中了CTFd这个平台，正好又要活动了，于是直接搭建。 系统: Ubuntu server 16.04 nginx: nginx/1.10.3 (Ubuntu) Mysql: 5.7.20-0ubuntu0.16.04.1 (Ubuntu) Python: 2.7.12 <strong>0x01 下载项目&amp;环境配置</strong> 下载 git clone <a href="https://github.com/isislab/CTFd.git" target="_blank" rel="noopener">https://github.com/isislab/CTFd.git</a> 在<a href="https://github.com/CTFd/CTFd下有个Install" target="_blank" rel="noopener">https://github.com/CTFd/CTFd下有个Install</a> Install: Run ./prepare.sh to install dependencies using apt. Modify CTFd/config.py to your liking. Use python serve.py in a terminal to drop into debug mode. Here are some deployment options You can check out the Getting Started guide for a breakdown of some of the features you need to get started. 环境： Nginx可以apt-get install nginx，mysql的话ubuntu server自带，python系统自带。 Ubuntu-server搭好之后apt-get update一下，然后apt-get upgrade一下，把该更新的都更新了。 <strong>0x02 安装&amp;排错</strong> 环境配置好了之后，运行CTFd-master目录下的./prepare.sh 之后CTFd/config.py文件，把HOST改成服务器ip CTFd-master目录下的server.py里边的host也改成服务器ip 这是为了方便外部访问。 然后再CTFd-master目录下python server.py 可以看到平台启动成功，running on ip：端口 现在就可以通过<a href="http://ip:port访问平台了，就酱" target="_blank" rel="noopener">http://ip:port访问平台了，就酱</a>~</p>
 
       
 
@@ -346,7 +348,7 @@
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 

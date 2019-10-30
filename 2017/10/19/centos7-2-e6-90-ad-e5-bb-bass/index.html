@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://0d4y.cc">
   <title>Centos7.2 搭建SS | rich4rd&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="今天我把我的阿里云服务器系统改成了Centos7.2，为了能在本地享受到阿里云飞一般的网速，我决定在服务器上搭建一个ss。 第一步：安装 pip pip是python用来加载各种模块的一个工具。 我使用的是python下的shadowsocks模块。 这个shadowsocks模块可以在 pip 上直接安装。 curl “https:&#x2F;&#x2F;bootstrap.pypa.io&#x2F;get-pip.py&amp;q">
+  <meta name="description" content="今天我把我的阿里云服务器系统改成了Centos7.2，为了能在本地享受到阿里云飞一般的网速，我决定在服务器上搭建一个ss。 第一步：安装 pip pip是python用来加载各种模块的一个工具。 我使用的是python下的shadowsocks模块。 这个shadowsocks模块可以在 pip 上直接安装。 curl “https:&#x2F;&#x2F;bootstrap.pypa.io&#x2F;get-pip.py">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Centos7.2 搭建SS">
 <meta property="og:url" content="http:&#x2F;&#x2F;0d4y.cc&#x2F;2017&#x2F;10&#x2F;19&#x2F;centos7-2-e6-90-ad-e5-bb-bass&#x2F;index.html">
 <meta property="og:site_name" content="rich4rd&#39;s blog">
-<meta property="og:description" content="今天我把我的阿里云服务器系统改成了Centos7.2，为了能在本地享受到阿里云飞一般的网速，我决定在服务器上搭建一个ss。 第一步：安装 pip pip是python用来加载各种模块的一个工具。 我使用的是python下的shadowsocks模块。 这个shadowsocks模块可以在 pip 上直接安装。 curl “https:&#x2F;&#x2F;bootstrap.pypa.io&#x2F;get-pip.py&amp;q">
+<meta property="og:description" content="今天我把我的阿里云服务器系统改成了Centos7.2，为了能在本地享受到阿里云飞一般的网速，我决定在服务器上搭建一个ss。 第一步：安装 pip pip是python用来加载各种模块的一个工具。 我使用的是python下的shadowsocks模块。 这个shadowsocks模块可以在 pip 上直接安装。 curl “https:&#x2F;&#x2F;bootstrap.pypa.io&#x2F;get-pip.py">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http:&#x2F;&#x2F;112.74.49.123&#x2F;wp-content&#x2F;uploads&#x2F;2017&#x2F;10&#x2F;ip.jpg">
-<meta property="og:updated_time" content="2019-10-30T08:51:08.633Z">
+<meta property="og:updated_time" content="2019-10-30T10:00:14.864Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;112.74.49.123&#x2F;wp-content&#x2F;uploads&#x2F;2017&#x2F;10&#x2F;ip.jpg">
   
@@ -250,7 +250,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天我把我的阿里云服务器系统改成了Centos7.2，为了能在本地享受到阿里云飞一般的网速，我决定在服务器上搭建一个ss。 第一步：安装 pip pip是python用来加载各种模块的一个工具。 我使用的是python下的shadowsocks模块。 这个shadowsocks模块可以在 pip 上直接安装。 curl “<a href="https://bootstrap.pypa.io/get-pip.py&quot;" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py&quot;</a> -o “get-pip.py” python get-pip.py 第二步：安装配置 shadowsocks 安装 shadowsocks： pip install –upgrade pip pip install shadowsocks 第三步：配置文件 安装完成后，需要创建配置文件/etc/shadowsocks.json，内容如下： { “server”: “0.0.0.0”, “server_port”: 8388, “password”: “你的密码”, “method”: “aes-256-cfb” } 第四步： 新建启动脚本文件/etc/systemd/system/shadowsocks.service，内容如下： [Unit] Description=Shadowsocks [Service] TimeoutStartSec=0 ExecStart=/usr/bin/ssserver -c /etc/shadowsocks.json [Install] WantedBy=multi-user.target 第五步：启动 shadowsocks 服务 systemctl start shadowsocks 接下来，就是在本地用ss软件连接我的阿里云服务器了，连上之后查一下ip emmmmm…..nice~ <img src="http://112.74.49.123/wp-content/uploads/2017/10/ip.jpg" alt="ip"></p>
+        <a id="more"></a>
+
+<p>今天我把我的阿里云服务器系统改成了Centos7.2，为了能在本地享受到阿里云飞一般的网速，我决定在服务器上搭建一个ss。 第一步：安装 pip pip是python用来加载各种模块的一个工具。 我使用的是python下的shadowsocks模块。 这个shadowsocks模块可以在 pip 上直接安装。 curl “<a href="https://bootstrap.pypa.io/get-pip.py&quot;" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py&quot;</a> -o “get-pip.py” python get-pip.py 第二步：安装配置 shadowsocks 安装 shadowsocks： pip install –upgrade pip pip install shadowsocks 第三步：配置文件 安装完成后，需要创建配置文件/etc/shadowsocks.json，内容如下： { “server”: “0.0.0.0”, “server_port”: 8388, “password”: “你的密码”, “method”: “aes-256-cfb” } 第四步： 新建启动脚本文件/etc/systemd/system/shadowsocks.service，内容如下： [Unit] Description=Shadowsocks [Service] TimeoutStartSec=0 ExecStart=/usr/bin/ssserver -c /etc/shadowsocks.json [Install] WantedBy=multi-user.target 第五步：启动 shadowsocks 服务 systemctl start shadowsocks 接下来，就是在本地用ss软件连接我的阿里云服务器了，连上之后查一下ip emmmmm…..nice~ <img src="http://112.74.49.123/wp-content/uploads/2017/10/ip.jpg" alt="ip"></p>
 
       
 
@@ -361,7 +363,7 @@
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
