@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="rich4rd&#39;s blog">
 <meta property="og:description" content="内网渗透1.信息收集1.1.windows 1.1.1用户操作 query user #查看当前在线的用户whoami #查看当前用户net user #查看当前系统的用户net1 user #查看当前系统的用户net user &#x2F;domain #查看当前域里面的用户net user administrator    #查看当前用户的详细信息net localgroup #查看本地用户组net">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-07T07:41:20.107Z">
+<meta property="og:updated_time" content="2020-01-07T07:48:43.677Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="rich4rd&#39;s blog" type="application/atom+xml">
@@ -184,11 +184,24 @@
 </li>
 <li>1.1.4主动搜集<ul>
 <li>搜索文件<ul>
-<li>@echo off<br>set “FileName=password.txt”<br>echo searching..<br>for %%a in (C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (<br>if exist %%a:\ (<br>for /f “delims=” %%b in (‘dir /a-d /s /b “%%a:*%FileName%” 2^&gt;nul’) do (<br>if /i “%%~nxb” equ “%FileName%” (<br>  echo,%%b<br>)<br>)<br>)<br>)</li>
+<li><pre>@echo off
+set "FileName=password.txt"
+echo searching..
+for %%a in (C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (
+  if exist %%a:\ (
+      for /f "delims=" %%b in ('dir /a-d /s /b "%%a:\*%FileName%" 2^>nul') do (
+          if /i "%%~nxb" equ "%FileName%" (
+              echo,%%b
+              )
+          )
+      )
+)</pre></li>
 </ul>
 </li>
 <li>判断主机存活<ul>
-<li>@echo off<br>for /l %%i in (1 1 254) do ping -v 4 -n 1 192.168.5.%%i || find “TTL” &gt;&gt;hots.txt<br>pause</li>
+<li><pre>@echo off
+for /l %%i in (1 1 254) do ping -v 4 -n 1 192.168.5.%%i || find "TTL" >>hots.txt
+pause</pre></li>
 </ul>
 </li>
 </ul>

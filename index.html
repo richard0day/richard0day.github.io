@@ -182,11 +182,24 @@
 </li>
 <li>1.1.4主动搜集<ul>
 <li>搜索文件<ul>
-<li>@echo off<br>set “FileName=password.txt”<br>echo searching..<br>for %%a in (C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (<br>if exist %%a:\ (<br>for /f “delims=” %%b in (‘dir /a-d /s /b “%%a:*%FileName%” 2^&gt;nul’) do (<br>if /i “%%~nxb” equ “%FileName%” (<br>  echo,%%b<br>)<br>)<br>)<br>)</li>
+<li><pre>@echo off
+set "FileName=password.txt"
+echo searching..
+for %%a in (C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (
+  if exist %%a:\ (
+      for /f "delims=" %%b in ('dir /a-d /s /b "%%a:\*%FileName%" 2^>nul') do (
+          if /i "%%~nxb" equ "%FileName%" (
+              echo,%%b
+              )
+          )
+      )
+)</pre></li>
 </ul>
 </li>
 <li>判断主机存活<ul>
-<li>@echo off<br>for /l %%i in (1 1 254) do ping -v 4 -n 1 192.168.5.%%i || find “TTL” &gt;&gt;hots.txt<br>pause</li>
+<li><pre>@echo off
+for /l %%i in (1 1 254) do ping -v 4 -n 1 192.168.5.%%i || find "TTL" >>hots.txt
+pause</pre></li>
 </ul>
 </li>
 </ul>
