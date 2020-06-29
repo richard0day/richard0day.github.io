@@ -145,6 +145,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-test-md" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/29/test-md/">test.md</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/29/test-md/" class="archive-article-date">
+  	<time datetime="2020-06-29T06:51:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1>this is a test</h1>
+# test
+## test
+### test
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/29/test-md/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-内网渗透" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1531,83 +1596,9 @@
 
 
   
-    <article id="post-e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8/">内网渗透后门(一)：backdoor-factory</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8/" class="archive-article-date">
-  	<time datetime="2019-04-06T17:26:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前提：拿下一台机器之后，需要持续控制，可以种一个后门 kali里边有一款强大的工具——backdoor-factory，github地址：<a href="https://github.com/secretsquirrel/the-backdoor-factory" target="_blank" rel="noopener">the-backdoor-factory</a> 该软件的原理：可执行二进制文件中有大量的00，这些00是不包含数据的，将这些数据替换成payload，并且在程序执行的时候，jmp到代码段，来触发payload。 第一步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor1.jpg" alt="选择一个想要植入后门的exe"> 选择一个想要植入后门的exe，将该exe拷贝至kali 第二步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor2.jpg" alt="检查是否能被植入后门"> 检查是否能被植入后门 第三步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor3.jpg" alt="检查是否有足够空间用于加载后门"> 检查是否有足够空间用于加载后门 第四步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor4.jpg" alt="查看能够使用的payload"> 查看能够使用的payload 第五步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor5.jpg" alt="设置payload"> 设置payload并选择加载payload的位置，上图选择将payload加载在2处 第六步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor6.jpg" alt="msf开启监听"> 攻击机的msf开启监听 第七步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor7.jpg" alt="在靶机中执行带有后门的exe"> 在靶机中执行带有后门的exe 第八步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor8.jpg" alt="接收到shell"> 接收到shell</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/内网渗透//" class="article-tag-list-link color5">内网渗透</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 

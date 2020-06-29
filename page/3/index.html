@@ -145,6 +145,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/08/csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1/">CSRF的检测与防御</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/08/csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1/" class="archive-article-date">
+  	<time datetime="2018-05-07T16:51:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>CSRF漏洞检测：</strong> 检测CSRF漏洞是一项比较繁琐的工作，最简单的方法就是抓取一个正常请求的数据包，去掉Referer字段后再重新提交，如果该提交还有效，那么基本上可以确定存在CSRF漏洞。 随着对CSRF漏洞研究的不断深入，不断涌现出一些专门针对CSRF漏洞进行检测的工具，如CSRFTester，CSRF Request Builder等。 以CSRFTester工具为例，CSRF漏洞检测工具的测试原理如下：使用CSRFTester进行测试时，首先需要抓取我们在浏览器中访问过的所有链接以及所有的表单等信息，然后通过在CSRFTester中修改相应的表单等信息，重新提交，这相当于一次伪造客户端请求。如果修改后的测试请求成功被网站服务器接受，则说明存在CSRF漏洞，当然此款工具也可以被用来进行CSRF攻击。 <strong>防御CSRF攻击：</strong> 目前防御 CSRF 攻击主要有三种策略： 1.验证 HTTP Referer 字段； 2.在请求地址中添加 token 并验证； 3.在 HTTP 头中自定义属性并验证。   <strong>（1）验证 HTTP Referer 字段</strong> 根据 HTTP 协议，在 HTTP 头中有一个字段叫 Referer，它记录了该 HTTP 请求的来源地址。在通常情况下，访问一个安全受限页面的请求来自于同一个网站。这种方法的显而易见的好处就是简单易行，网站的普通开发人员不需要操心 CSRF 的漏洞，只需要在最后给所有安全敏感的请求统一增加一个拦截器来检查 Referer 的值就可以。特别是对于当前现有的系统，不需要改变当前系统的任何已有代码和逻辑，没有风险，非常便捷。 然而，这种方法并非万无一失。Referer 的值是由浏览器提供的，虽然 HTTP 协议上有明确的要求，但是每个浏览器对于 Referer 的具体实现可能有差别，并不能保证浏览器自身没有安全漏洞。使用验证 Referer 值的方法，就是把安全性都依赖于第三方（即浏览器）来保障，从理论上来讲，这样并不安全。我们可以通过burpsuite或者使用浏览器插件(如modify headers)等方式修改refer，这样就可以通过验证，从而进行 CSRF 攻击。 而且使用refer进行验证还存在误报的风险。因为 Referer 值会记录下用户的访问来源，有些用户认为这样会侵犯到他们自己的隐私权，特别是有些组织担心 Referer 值会把组织内网中的某些信息泄露到外网中。因此，用户自己可以设置浏览器使其在发送请求时不再提供 Referer。当他们正常访问银行网站时，网站会因为请求没有 Referer 值而认为是 CSRF 攻击，拒绝合法用户的访问。 <strong>（2）在请求地址中添加 token 并验证</strong> CSRF 攻击之所以能够成功，是因为黑客可以完全伪造用户的请求，该请求中所有的用户验证信息都是存在于 cookie 中，因此黑客可以在不知道这些验证信息的情况下直接利用用户自己的 cookie 来通过安全验证。要抵御 CSRF，关键在于在请求中放入黑客所不能伪造的信息，并且该信息不存在于 cookie 之中。可以在 HTTP 请求中以参数的形式加入一个随机产生的 token，并在服务器端建立一个拦截器来验证这个 token，如果请求中没有 token 或者 token 内容不正确，则认为可能是 CSRF 攻击而拒绝该请求。 这种方法要比检查 Referer 要安全一些，token 可以在用户登陆后产生并放于 session 之中，然后在每次请求时把 token 从 session 中拿出，与请求中的 token 进行比对，但这种方法的难点在于如何把 token 以参数的形式加入请求。对于 GET 请求，token 将附在请求地址之后，这样 URL 就变成 <a href="http://url?csrftoken=tokenvalue。" target="_blank" rel="noopener">http://url?csrftoken=tokenvalue。</a> 而对于 POST 请求来说，要在 form 的最后加上 <input type="hidden" name="csrftoken" value="tokenvalue"/>，这样就把 token 以参数的形式加入请求了。 <strong>（3）在 HTTP 头中自定义属性并验证</strong> 这种方法也是使用 token 并进行验证，和上一种方法不同的是，这里并不是把 token 以参数的形式置于 HTTP 请求之中，而是把它放到 HTTP 头中自定义的属性里。通过 XMLHttpRequest 这个类，可以一次性给所有该类请求加上 csrftoken 这个 HTTP 头属性，并把 token 值放入其中。这样解决了上种方法在请求中加入 token 的不便，同时，通过 XMLHttpRequest 请求的地址不会被记录到浏览器的地址栏，也不用担心 token 会透过 Referer 泄露到其他网站中去。 然而这种方法的局限性非常大。XMLHttpRequest 请求通常用于 Ajax 方法中对于页面局部的异步刷新，并非所有的请求都适合用这个类来发起，而且通过该类请求得到的页面不能被浏览器所记录下，从而进行前进，后退，刷新，收藏等操作，给用户带来不便。另外，对于没有进行 CSRF 防护的遗留系统来说，要采用这种方法来进行防护，要把所有请求都改为 XMLHttpRequest 请求，这样几乎是要重写整个网站，这代价无疑是不能接受的。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/网站安全//" class="article-tag-list-link color5">网站安全</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/08/csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-e4-b8-80-e4-b8-aa-e7-82-b9-e5-87-bb-e5-8a-ab-e6-8c-81-e7-9a-84demo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -897,87 +971,9 @@ for i in range(1,19):
 
 
   
-    <article id="post-e7-ae-a1-e7-90-86-e6-a0-91-e8-8e-93-e6-b4-besd-e5-8d-a1-e5-88-86-e5-8c-ba-e7-a9-ba-e9-97-b4-ef-bc-88linux-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-ef-bc-89" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/19/e7-ae-a1-e7-90-86-e6-a0-91-e8-8e-93-e6-b4-besd-e5-8d-a1-e5-88-86-e5-8c-ba-e7-a9-ba-e9-97-b4-ef-bc-88linux-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-ef-bc-89/">管理树莓派SD卡分区空间（linux分区管理）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/11/19/e7-ae-a1-e7-90-86-e6-a0-91-e8-8e-93-e6-b4-besd-e5-8d-a1-e5-88-86-e5-8c-ba-e7-a9-ba-e9-97-b4-ef-bc-88linux-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-ef-bc-89/" class="archive-article-date">
-  	<time datetime="2017-11-19T09:22:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前几天入了个树莓派3b+，一到手就各种系统：Ubuntu-server Ubuntu-mate，但是这些都不适合做安全，于是，我上了神器，kali-2017.2-rpi3-nexmon 首先下载并把镜像烧写到SD卡上。然后进树莓派，装系统。 装完之后进去发现就一个空壳啊，什么都没有，搜了一下才发现，原来还要装工具：apt-get install kali-linux-all 安装过程中报错，磁盘剩余空间不足。但我用的是32G内存卡啊，df -h一下才发现，/分区只分了两个多G。 于是，修改SD卡分区。 首先，查看一下硬盘使用情况，命令如下： df -h 然后用fdisk命令进行分区操作 (实际操作前最好先熟悉一下fdisk的用法) 命令格式： fdisk &lt;存储设备名&gt; //如: fdisk /dev/sda 进入fdisk 后，使用单键命令 m 显示Help p 列出所有分区 d 删除分区 n 新建分区 w 存盘退出 q 不存盘退出 对主设备进行fdisk，命令如下： sudo fdisk /dev/sda (如果是在物理机器上操作，命令应是 sudo fdisk /dev/mmcblk0) 按 p 键 列出所有分区，可见有两个或三个分区 第一个分区是 FAT32分区，是引导用的 第二个分区是Linux 主分区 第三个分区是Linux Swap交换文件分区(虚拟机中可能没有) 用笔记下Linux 主分区的Start Sector号 按 d 键 Partition Number (分区号) 选 2, 删除linux主分区（第2个区） 如果有linuxSwap分区，再按d键 Partition Number (分区号) 选 3, 删除linuxSwap分区（第3个区） 按 p 键 列出所有分区，可见只剩第一个分区了 按 n 键，重新创建linux主分区 Partition Type(分类类型) 选 P (Primary) Partition Number (分区号) 选 2 First Sector(起始Sector) 一定要输入刚才记下来的Start Sector号 Last Sector (终止Sector)用默认值，直接回车 按 p 键 列出所有分区，可见有两个分区，linux主分区在第2个，起始位置是原位置 按 w 键 存盘退出fdisk 接下来，立即重启，不要做任何其它事情 sudo reboot 重启并登录后，立即用以下命令 sudo resize2fs /dev/sda2 (如果是在物理机器上操作，命令应是sudo resize2fs /dev/mmcblk0p2) 该命令将把第二个分区扩展到新的空间中 查看一下硬盘使用情况，OK了 df -h 上述操作的原理是： 首先删除了linux主分区和Swap分区，重建的主分区起始Sector位置与原主分区一致，再resize2fs，则原主分区数据完全没变，但改变了主分区的大小。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/linux通用//" class="article-tag-list-link color3">linux通用</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/linux通用/树莓派//" class="article-tag-list-link color4">树莓派</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/11/19/e7-ae-a1-e7-90-86-e6-a0-91-e8-8e-93-e6-b4-besd-e5-8d-a1-e5-88-86-e5-8c-ba-e7-a9-ba-e9-97-b4-ef-bc-88linux-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-ef-bc-89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
     </nav>
   
 

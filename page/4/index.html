@@ -145,6 +145,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-e7-ae-a1-e7-90-86-e6-a0-91-e8-8e-93-e6-b4-besd-e5-8d-a1-e5-88-86-e5-8c-ba-e7-a9-ba-e9-97-b4-ef-bc-88linux-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-ef-bc-89" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/19/e7-ae-a1-e7-90-86-e6-a0-91-e8-8e-93-e6-b4-besd-e5-8d-a1-e5-88-86-e5-8c-ba-e7-a9-ba-e9-97-b4-ef-bc-88linux-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-ef-bc-89/">管理树莓派SD卡分区空间（linux分区管理）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/19/e7-ae-a1-e7-90-86-e6-a0-91-e8-8e-93-e6-b4-besd-e5-8d-a1-e5-88-86-e5-8c-ba-e7-a9-ba-e9-97-b4-ef-bc-88linux-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-ef-bc-89/" class="archive-article-date">
+  	<time datetime="2017-11-19T09:22:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前几天入了个树莓派3b+，一到手就各种系统：Ubuntu-server Ubuntu-mate，但是这些都不适合做安全，于是，我上了神器，kali-2017.2-rpi3-nexmon 首先下载并把镜像烧写到SD卡上。然后进树莓派，装系统。 装完之后进去发现就一个空壳啊，什么都没有，搜了一下才发现，原来还要装工具：apt-get install kali-linux-all 安装过程中报错，磁盘剩余空间不足。但我用的是32G内存卡啊，df -h一下才发现，/分区只分了两个多G。 于是，修改SD卡分区。 首先，查看一下硬盘使用情况，命令如下： df -h 然后用fdisk命令进行分区操作 (实际操作前最好先熟悉一下fdisk的用法) 命令格式： fdisk &lt;存储设备名&gt; //如: fdisk /dev/sda 进入fdisk 后，使用单键命令 m 显示Help p 列出所有分区 d 删除分区 n 新建分区 w 存盘退出 q 不存盘退出 对主设备进行fdisk，命令如下： sudo fdisk /dev/sda (如果是在物理机器上操作，命令应是 sudo fdisk /dev/mmcblk0) 按 p 键 列出所有分区，可见有两个或三个分区 第一个分区是 FAT32分区，是引导用的 第二个分区是Linux 主分区 第三个分区是Linux Swap交换文件分区(虚拟机中可能没有) 用笔记下Linux 主分区的Start Sector号 按 d 键 Partition Number (分区号) 选 2, 删除linux主分区（第2个区） 如果有linuxSwap分区，再按d键 Partition Number (分区号) 选 3, 删除linuxSwap分区（第3个区） 按 p 键 列出所有分区，可见只剩第一个分区了 按 n 键，重新创建linux主分区 Partition Type(分类类型) 选 P (Primary) Partition Number (分区号) 选 2 First Sector(起始Sector) 一定要输入刚才记下来的Start Sector号 Last Sector (终止Sector)用默认值，直接回车 按 p 键 列出所有分区，可见有两个分区，linux主分区在第2个，起始位置是原位置 按 w 键 存盘退出fdisk 接下来，立即重启，不要做任何其它事情 sudo reboot 重启并登录后，立即用以下命令 sudo resize2fs /dev/sda2 (如果是在物理机器上操作，命令应是sudo resize2fs /dev/mmcblk0p2) 该命令将把第二个分区扩展到新的空间中 查看一下硬盘使用情况，OK了 df -h 上述操作的原理是： 首先删除了linux主分区和Swap分区，重建的主分区起始Sector位置与原主分区一致，再resize2fs，则原主分区数据完全没变，但改变了主分区的大小。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/linux通用//" class="article-tag-list-link color3">linux通用</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/linux通用/树莓派//" class="article-tag-list-link color4">树莓派</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/19/e7-ae-a1-e7-90-86-e6-a0-91-e8-8e-93-e6-b4-besd-e5-8d-a1-e5-88-86-e5-8c-ba-e7-a9-ba-e9-97-b4-ef-bc-88linux-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-ef-bc-89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-e5-9c-a8linux-e7-9a-84-ef-bc-88-e6-a0-b9-ef-bc-89-e7-9b-ae-e5-bd-95-e4-b8-8b-e6-89-a7-e8-a1-8crm-rf-e7-9a-84-e6-84-89-e5-bf-ab-e7-bb-8f-e5-8e-86" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -921,93 +999,9 @@
 
 
   
-    <article id="post-centos7-2-e6-90-ad-e5-bb-bass" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/19/centos7-2-e6-90-ad-e5-bb-bass/">Centos7.2 搭建SS</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/19/centos7-2-e6-90-ad-e5-bb-bass/" class="archive-article-date">
-  	<time datetime="2017-10-19T08:43:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-
-<p>今天我把我的阿里云服务器系统改成了Centos7.2，为了能在本地享受到阿里云飞一般的网速，我决定在服务器上搭建一个ss。 第一步：安装 pip pip是python用来加载各种模块的一个工具。 我使用的是python下的shadowsocks模块。 这个shadowsocks模块可以在 pip 上直接安装。 curl “<a href="https://bootstrap.pypa.io/get-pip.py&quot;" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py&quot;</a> -o “get-pip.py” python get-pip.py 第二步：安装配置 shadowsocks 安装 shadowsocks： pip install –upgrade pip pip install shadowsocks 第三步：配置文件 安装完成后，需要创建配置文件/etc/shadowsocks.json，内容如下： { “server”: “0.0.0.0”, “server_port”: 8388, “password”: “你的密码”, “method”: “aes-256-cfb” } 第四步： 新建启动脚本文件/etc/systemd/system/shadowsocks.service，内容如下： [Unit] Description=Shadowsocks [Service] TimeoutStartSec=0 ExecStart=/usr/bin/ssserver -c /etc/shadowsocks.json [Install] WantedBy=multi-user.target 第五步：启动 shadowsocks 服务 systemctl start shadowsocks 接下来，就是在本地用ss软件连接我的阿里云服务器了，连上之后查一下ip emmmmm…..nice~ <img src="http://112.74.49.123/wp-content/uploads/2017/10/ip.jpg" alt="ip"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/centos//" class="article-tag-list-link color2">centos</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/centos/linux//" class="article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/centos/linux/代理//" class="article-tag-list-link color3">代理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/19/centos7-2-e6-90-ad-e5-bb-bass/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
     </nav>
   
 
