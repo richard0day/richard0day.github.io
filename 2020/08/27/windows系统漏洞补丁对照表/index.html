@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Linux执行可执行文件提示No such file or directory的解决方法 |  
+    windows系统漏洞补丁对照表 |  
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -36,7 +36,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-linux-e6-89-a7-e8-a1-8c-e5-8f-af-e6-89-a7-e8-a1-8c-e6-96-87-e4-bb-b6-e6-8f-90-e7-a4-bano-such-file-or-directory-e7-9a-84-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95"
+  id="post-windows系统漏洞补丁对照表"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -47,18 +47,18 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Linux执行可执行文件提示No such file or directory的解决方法
+  windows系统漏洞补丁对照表
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2017/11/22/linux-e6-89-a7-e8-a1-8c-e5-8f-af-e6-89-a7-e8-a1-8c-e6-96-87-e4-bb-b6-e6-8f-90-e7-a4-bano-such-file-or-directory-e7-9a-84-e8-a7-a3-e5-86-b3-e6-96-b9-e6-b3-95/" class="article-date">
-  <time datetime="2017-11-22T07:04:02.000Z" itemprop="datePublished">2017-11-22</time>
+      <a href="/2020/08/27/windows%E7%B3%BB%E7%BB%9F%E6%BC%8F%E6%B4%9E%E8%A1%A5%E4%B8%81%E5%AF%B9%E7%85%A7%E8%A1%A8/" class="article-date">
+  <time datetime="2020-08-27T04:36:09.000Z" itemprop="datePublished">2020-08-27</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/linux%E9%80%9A%E7%94%A8/">linux通用</a>
+    <a class="article-category-link" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a>
   </div>
   
 <div class="word_count">
@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">244</span>
+            <span class="post-count">499</span>
         </span>
     </span>
 
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">3 min</span>
         </span>
     </span>
 </div>
@@ -88,12 +88,9 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>最近在划水一个ctf比赛时，做到re的一道题目，在新装的Ubuntu-server 16.04.2上运行./re0，结果出现了No such file or directory。</p>
-<pre><code>./re0
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">MS17-017 [KB4013081] [GDI Palette Objects Local Privilege Escalation] (windows 7/8)</span><br><span class="line"></span><br><span class="line">CVE-2017-8464 [LNK Remote Code Execution Vulnerability] (windows10/8.1/7/2016/2010/2008)</span><br><span class="line"></span><br><span class="line">CVE-2017-0213 [Windows COM Elevation of Privilege Vulnerability] (windows10/8.1/7/2016/2010/2008)</span><br><span class="line"></span><br><span class="line">MS17-010 [KB4013389] [Windows Kernel Mode Drivers] (windows7/2008/2003/XP)</span><br><span class="line"></span><br><span class="line">MS16-135 [KB3199135] [Windows Kernel Mode Drivers] (2016)</span><br><span class="line"></span><br><span class="line">MS16-111 [KB3186973] [kernel api] (Windows 10 10586 (32/64)/8.1)</span><br><span class="line"></span><br><span class="line">MS16-098 [KB3178466] [Kernel Driver] (Win 8.1)</span><br><span class="line"></span><br><span class="line">MS16-075 [KB3164038] [Hot Potato] (2003/2008/7/8/2012)</span><br><span class="line"></span><br><span class="line">MS16-034 [KB3143145] [Kernel Driver] (2008/7/8/10/2012)</span><br><span class="line"></span><br><span class="line">MS16-032 [KB3143141] [Secondary Logon Handle] (2008/7/8/10/2012)</span><br><span class="line"></span><br><span class="line">MS16-016 [KB3136041] [WebDAV] (2008/Vista/7)</span><br><span class="line"></span><br><span class="line">MS15-097 [KB3089656] [remote code execution] (win8.1/2012)</span><br><span class="line"></span><br><span class="line">MS15-076 [KB3067505] [RPC] (2003/2008/7/8/2012)</span><br><span class="line"></span><br><span class="line">MS15-077 [KB3077657] [ATM] (XP/Vista/Win7/Win8/2000/2003/2008/2012)</span><br><span class="line"></span><br><span class="line">MS15-061 [KB3057839] [Kernel Driver] (2003/2008/7/8/2012)</span><br><span class="line"></span><br><span class="line">MS15-051 [KB3057191] [Windows Kernel Mode Drivers] (2003/2008/7/8/2012)</span><br><span class="line"></span><br><span class="line">MS15-010 [KB3036220] [Kernel Driver] (2003/2008/7/8)</span><br><span class="line"></span><br><span class="line">MS15-015 [KB3031432] [Kernel Driver] (Win7/8/8.1/2012/RT/2012 R2/2008R2)</span><br><span class="line"></span><br><span class="line">MS15-001 [KB3023266] [Kernel Driver] (2008/2012/7/8)</span><br><span class="line"></span><br><span class="line">MS14-070 [KB2989935] [Kernel Driver] (2003)</span><br><span class="line"></span><br><span class="line">MS14-068 [KB3011780] [Domain Privilege Escalation] (2003/2008/2012/7/8)</span><br><span class="line"></span><br><span class="line">MS14-058 [KB3000061] [Win32k.sys] (2003/2008/2012/7/8)</span><br><span class="line"></span><br><span class="line">MS14-040 [KB2975684] [AFD Driver] (2003/2008/2012/7/8)</span><br><span class="line"></span><br><span class="line">MS14-002 [KB2914368] [NDProxy] (2003/XP)</span><br><span class="line"></span><br><span class="line">MS13-053 [KB2850851] [win32k.sys] (XP/Vista/2003/2008/win 7)</span><br><span class="line"></span><br><span class="line">MS13-046 [KB2840221] [dxgkrnl.sys] (Vista/2003/2008/2012/7)</span><br><span class="line"></span><br><span class="line">MS13-005 [KB2778930] [Kernel Mode Driver] (2003/2008/2012/win7/8)</span><br><span class="line"></span><br><span class="line">MS12-042 [KB2972621] [Service Bus] (2008/2012/win7)</span><br><span class="line"></span><br><span class="line">MS12-020 [KB2671387] [RDP] (2003/2008/7/XP)</span><br><span class="line"></span><br><span class="line">MS11-080 [KB2592799] [AFD.sys] (2003/XP)</span><br><span class="line"></span><br><span class="line">MS11-062 [KB2566454] [NDISTAPI] (2003/XP)</span><br><span class="line"></span><br><span class="line">MS11-046 [KB2503665] [AFD.sys] (2003/2008/7/XP)</span><br><span class="line"></span><br><span class="line">MS11-011 [KB2393802] [kernel Driver] (2003/2008/7/XP/Vista)</span><br><span class="line"></span><br><span class="line">MS10-092 [KB2305420] [Task Scheduler] (2008/7)</span><br><span class="line"></span><br><span class="line">MS10-065 [KB2267960] [FastCGI] (IIS 5.1, 6.0, 7.0, and 7.5)</span><br><span class="line"></span><br><span class="line">MS10-059 [KB982799] [ACL-Churraskito] (2008/7/Vista)</span><br><span class="line"></span><br><span class="line">MS10-048 [KB2160329] [win32k.sys] (XP SP2 &amp; SP3/2003 SP2/Vista SP1 &amp;SP2/2008 Gold &amp; SP2 &amp; R2/Win7)</span><br><span class="line"></span><br><span class="line">MS10-015 [KB977165] [KiTrap0D] (2003/2008/7/XP)</span><br><span class="line"></span><br><span class="line">MS10-012 [KB971468] [SMB Client Trans2 stack overflow] (Windows7/2008R2)</span><br><span class="line"></span><br><span class="line">MS09-050 [KB975517] [Remote Code Execution] (2008/Vista)</span><br><span class="line"></span><br><span class="line">MS09-020 [KB970483] [IIS 6.0] (IIS 5.1 and 6.0)</span><br><span class="line"></span><br><span class="line">MS09-012 [KB959454] [Chimichurri] (Vista/win7/2008/Vista)</span><br><span class="line"></span><br><span class="line">MS08-068 [KB957097] [Remote Code Execution] (2000/XP)</span><br><span class="line"></span><br><span class="line">MS08-067 [KB958644] [Remote Code Execution] (Windows 2000/XP/Server 2003/Vista/Server 2008)</span><br><span class="line"></span><br><span class="line">MS08-066 [] [] (Windows 2000/XP/Server 2003)</span><br><span class="line"></span><br><span class="line">MS08-025 [KB941693] [Win32.sys] (XP/2003/2008/Vista)</span><br><span class="line"></span><br><span class="line">MS06-040 [KB921883] [Remote Code Execution] (2003/xp/2000)</span><br><span class="line"></span><br><span class="line">MS05-039 [KB899588] [PnP Service] (Win 9X/ME/NT/2000/XP/2003)</span><br><span class="line"></span><br><span class="line">MS03-026 [KB823980] [Buffer Overrun In RPC Interface] (/NT/2000/XP/2003)</span><br></pre></td></tr></table></figure>
 
--bash: ./tshref: No such file or directory</code></pre><p>查看文件信息，可以看到文件是存在的，并且是可以执行的。</p>
-<pre><code>-rwxrwxrwx 1 root root 9712 Nov 17 20:50 re0</code></pre><p><img src="http://112.74.49.123/wp-content/uploads/2017/11/1-1.jpg" alt=""> 经过一番google，发现可能是系统位数与该可执行文件需要的lib库位数不匹配。 用uname命令打印系统信息，可以看到系统是64位系统 <img src="http://112.74.49.123/wp-content/uploads/2017/11/11.jpg" alt=""> 用file命令查看re0这个文件的信息</p>
-<pre><code>file ./re0</code></pre><p><img src="http://112.74.49.123/wp-content/uploads/2017/11/111.jpg" alt=""> 可以看到这是一个32位可执行文件。 要想在64位系统上与运行32位程序，则需要安装32位lib库。 于是，安装就好 <img src="http://112.74.49.123/wp-content/uploads/2017/11/1111.jpg" alt=""> 没找到google上说的需要的库，但是会有几个替代包，选择安装其中一个。 apt-get install lib32z1 <img src="http://112.74.49.123/wp-content/uploads/2017/11/qweqweqe.jpg" alt=""> 然后就可以正常运行之前的可执行文件了。</p>
+<p>未完待续…</p>
  
       <!-- reward -->
       
@@ -110,19 +107,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2017/12/12/e5-8f-8d-e5-bc-b9shell-e5-91-bd-e4-bb-a4/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            反弹shell命令
-          
-        </div>
-      </a>
     
-    
-      <a href="/2017/11/21/e6-a0-91-e8-8e-93-e6-b4-beubuntu-mate-e8-a3-85vnc/" class="article-nav-link">
+      <a href="/2020/08/22/%E5%AE%9D%E5%A1%947-4-2phpmyadmin%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">树莓派Ubuntu-mate装vnc</div>
+        <div class="article-nav-title">宝塔7.4.2phpmyadmin未授权访问</div>
       </a>
     
   </nav>
