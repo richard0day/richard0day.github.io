@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Centos搭建DVWA实验平台 |  
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/img.jpg" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'https://www.googletagmanager.com/gtag/js?id=G-CCKT5MSND1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-centos-e6-90-ad-e5-bb-badvwa-e5-ae-9e-e9-aa-8c-e5-b9-b3-e5-8f-b0"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Centos搭建DVWA实验平台
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2017/10/19/centos-e6-90-ad-e5-bb-badvwa-e5-ae-9e-e9-aa-8c-e5-b9-b3-e5-8f-b0/" class="article-date">
+  <time datetime="2017-10-19T19:30:27.000Z" itemprop="datePublished">2017-10-19</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/centos/">centos</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">6 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <span id="more"></span>
+
+<p>1.安装虚拟机 这个就不多说了，安装一个centos7最小模式就行 然后配置ssh yum install openssh* vi &#x2F;etc&#x2F;ssh&#x2F;sshd_config 把下面两行取消注释 PermitEmptyPasswords no PasswordAuthentication yes 这里我们就不限制root用户登录ssh了 确保这个是 PermitRootLogin yes 就是确保我们可以用root登录ssh 重启ssh systemctl restart sshd.service 设置开机启动 systemctl enable sshd.service 添加防火墙策略 firewall-cmd –permanent –zone&#x3D;public –add-service&#x3D;ssh firewall-cmd –reload 2.配置网卡（不然没法上网） 首先我们进入这个配置文件目录 cd &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts 一般是在这个目录下有个叫 ifcfg-enp0s3 这样一个文件，没有的话找找其他的相似的文件 然后我们打开它 vi ifcfg-enp0s3 这个时候我们还没有vim的，所以只好用vi这个简版的 然后将 ONBOOT&#x3D;no 改为 ONBOOT&#x3D;yes 保存后重启网卡： service network restart 此时就可以上网了 3.各种前期准备工作（参考） 我们先更新一下cache yum makecache 升级一下 yum update 然后安装一下vim yum install vim 安装ifconfig yum install net-tools 这里生不升级看你，安不安vim也看你，没vim编辑配置文件很麻烦我感觉 4.安装必要组件 我们先安装Apache的服务器 yum install httpd 然后启动Apache service httpd start 然后看一下Apache的状态 service httpd status 然后设置httpd在运行级别为2、3、4、5的情况下都是on（开启）的状态 chkconfig –level 2345 httpd on firewall-cmd –permanent –zone&#x3D;public –add-service&#x3D;http 安装MySQL，mysql在centos的源中是没有的，只有mariadb，一样 你想自己官网下，然后编译安装也可以，这里我就用mysql的分之兼容产品mariadb了 [root@localhost ~]# yum search mariadb Loaded plugins: fastestmirror Loading mirror speeds from cached hostfile * base: centos.ustc.edu.cn * extras: centos.ustc.edu.cn * updates: centos.ustc.edu.cn &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; N&#x2F;S matched: mariadb &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; mariadb-bench.x86_64 : MariaDB benchmark scripts and data mariadb-devel.i686 : Files for development of MariaDB&#x2F;MySQL applications mariadb-devel.x86_64 : Files for development of MariaDB&#x2F;MySQL applications mariadb-embedded.i686 : MariaDB as an embeddable library mariadb-embedded.x86_64 : MariaDB as an embeddable library mariadb-embedded-devel.i686 : Development files for MariaDB as an embeddable library mariadb-embedded-devel.x86_64 : Development files for MariaDB as an embeddable library mariadb-libs.i686 : The shared libraries required for MariaDB&#x2F;MySQL clients mariadb-libs.x86_64 : The shared libraries required for MariaDB&#x2F;MySQL clients mariadb-server.x86_64 : The MariaDB server and related files mariadb.x86_64 : A community developed branch of MySQL mariadb-test.x86_64 : The test suite distributed with MariaD Name and summary matches only, use “search all” for everything. [root@localhost ~]# 我们安装这几个包就可以了 yum install mariadb.x86_64 mariadb-server.x86_64 mariadb-libs.x86_64 mariadb-devel.x86_64 启动mysql service mariadb start chkconfig –level 2345 mariadb on 然后设置mariadb的初始密码 mysqladmin -u root -p password 然后就可以登录了 mysql -uroot -p 创建一个数据库 create database dvwa; quit; 然后我们安装PHP yum install php.x86_64 php-mysql.x86_64 php-pear php-pear-DB php-gd 然后我们下载DVWA的包，先安装一个wget yum install wget wget <a target="_blank" rel="noopener" href="https://github.com/ethicalhack3r/DVWA/archive/v1.9.tar.gz">https://github.com/ethicalhack3r/DVWA/archive/v1.9.tar.gz</a> cp v1.9.tar.gz &#x2F;var&#x2F;www&#x2F;html&#x2F; cd &#x2F;var&#x2F;www&#x2F;html tar zxvf v1.9.tar.gz mv DVWA-1.9 dvwa 然后我们用另一台机器的浏览器访问虚拟机的ip（这个时候确保机器网络设置为桥接，然后重启，然后再用ifconfig查看你虚拟机的ip，然后访问） <a target="_blank" rel="noopener" href="http://x.x.x.x/dvwa/setup.php">http://x.x.x.x/dvwa/setup.php</a> 然后根据红色那些提示，设置环境 一般就是这样的 vim &#x2F;etc&#x2F;php.ini 将这几个设置成这样的 allow_url_fopen &#x3D; On allow_url_include &#x3D; On 进入&#x2F;var&#x2F;www&#x2F;html&#x2F;dvwa&#x2F;config目录下 先备份配置文件 cp config.inc.php config.inc.php.bak 改这么几个地方 vim config.inc.php $_DVWA[ ‘db_server’ ] &#x3D; ‘localhost’; $_DVWA[ ‘db_password’ ] &#x3D; ‘youmysqlpassword’; $_DVWA[ ‘recaptcha_public_key’ ] &#x3D; ‘’; $_DVWA[ ‘recaptcha_private_key’ ] &#x3D; ‘’; 然后下面这个赋权可写 &#x2F;var&#x2F;www&#x2F;html&#x2F;dvwa&#x2F;hackable&#x2F;uploads cd &#x2F;var&#x2F;www&#x2F;html&#x2F;dvwa&#x2F;hackable&#x2F; chmod 777 uploads &#x2F;var&#x2F;www&#x2F;html&#x2F;dvwa&#x2F;external&#x2F;phpids&#x2F;0.6&#x2F;lib&#x2F;IDS&#x2F;tmp&#x2F;phpids_log.txt cd &#x2F;var&#x2F;www&#x2F;html&#x2F;dvwa&#x2F;external&#x2F;phpids&#x2F;0.6&#x2F;lib&#x2F;IDS&#x2F;tmp chmod 777 phpids_log.txt ok 然后我们点一下Create&#x2F;Reset那个按钮 然后就会自动跳到登录界面 默认的登录密码是 admin password</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2017/10/20/e5-9c-a8linux-e7-9a-84-ef-bc-88-e6-a0-b9-ef-bc-89-e7-9b-ae-e5-bd-95-e4-b8-8b-e6-89-a7-e8-a1-8crm-rf-e7-9a-84-e6-84-89-e5-bf-ab-e7-bb-8f-e5-8e-86/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            在linux的/（根）目录下执行rm -rf *的愉快经历
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2017/10/19/e5-b8-b8-e8-a7-81-e5-8f-a4-e5-85-b8-e5-af-86-e7-a0-81-e5-8f-8a-e5-9c-a8-e7-ba-bf-e5-b7-a5-e5-85-b7/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">常见古典密码及在线工具</div>
+      </a>
+    
+  </nav>
+
+  
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2018-2026
+        <i class="ri-heart-fill heart_icon"></i> rich4rd
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1279215658&amp;web_id=1279215658'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/img.jpg" alt="rich4rd&#39;s blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/HW/">HW行动</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories/Web%E5%AE%89%E5%85%A8/">web安全</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories/linux/">linux</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories/%E7%94%9F%E6%B4%BB%E4%B8%AD%E7%9A%84%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8">生活中的网络安全</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i></p>
+  <div class="reward-box">
+    
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/js/clickLove.js"></script>
+
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+<script src="/js/dz.js"></script>
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=432506367&auto=1&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+</body>
+
+</html>
